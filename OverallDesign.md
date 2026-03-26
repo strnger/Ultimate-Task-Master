@@ -1,7 +1,8 @@
-# Design V3 — League Task Optimizer
+# Ultimate Task Master — Design Document
 
 > Local plugins wiki: `C:\Users\Strnger\Documents\Repos\runelite-wiki\docs\`
 > Local examples: `C:\Users\Strnger\Documents\Repos\examples\`
+> Task data & tools: `temp/` directory in this repo
 
 ---
 
@@ -39,7 +40,11 @@ plugin talks to this over HTTP (POST to submit, GET to retrieve).
 - POST-then-GET flow from ToG: submit data, immediately refresh
 - `DataStoreReader` interface pattern from Tasks Tracker for testability
 - Exponential backoff retry from ToG's `@Schedule` error handler
-  (retry at 10s, 20s, 30s, 60s, 120s, 300s, 300s, ...)
+
+**Additional wiki references:**
+- Plugin lifecycle: `docs/plugin-api/lifecycle.md`
+- Dependency injection: `docs/architecture/dependency-injection.md`
+- Annotations (`@PluginDescriptor`, `@Singleton`): `docs/plugin-api/annotations.md`
 
 ### 2. Crowdsourcing System (Community Links + Votes)
 
@@ -61,6 +66,9 @@ results back to the user.
   - Example: `C:\Users\Strnger\Documents\Repos\examples\tog-crowdsourcing\`
     (see `StreamOrderDetector.java` for auto-detection pattern,
     `CrowdsourcingManager.java` for submit + retrieve flow)
+- **RuneLite Crowdsourcing** — built-in plugin. Different pattern (one-way
+  POST only), but shows the `CrowdsourcingManager` singleton approach.
+  - Wiki: `docs/api-reference/client-packages/net-runelite-client-plugins-crowdsourcing.md`
 - **Tasks Tracker** — throttled varp updates. Shows batching game state
   changes before sending.
   - Wiki: `docs/examples/example-plugins-leagues-region-tasks.md`
@@ -88,8 +96,7 @@ Block buttons, Link/Linked buttons with vote counts. Swing-based side panel.
 - **ToG Crowdsourcing** — `WorldSwitcherPanel` extends `PluginPanel`.
   Sortable table with header click-to-sort, `WorldTableRow` components,
   alternating row colors, right-click refresh (throttled to 60s), error
-  state messaging, and world filtering by config. Good reference for our
-  task list with sortable columns and row interaction.
+  state messaging, and world filtering by config.
   - Example: `C:\Users\Strnger\Documents\Repos\examples\tog-crowdsourcing\`
     (see `ui/WorldSwitcherPanel.java`, `ui/WorldTableRow.java`,
     `ui/WorldTableHeader.java`)
@@ -107,6 +114,10 @@ Block buttons, Link/Linked buttons with vote counts. Swing-based side panel.
 - Alternating row colors with `ODD_ROW` / `ColorScheme.DARK_GRAY_COLOR`
 - Error state + "no data" state messaging (ToG pattern)
 - Virtualized/lazy task list for performance (1,589 tasks is a lot)
+
+**Additional wiki references:**
+- Common patterns / best practices: `docs/common-patterns/overview.md`
+- UI components: `docs/api-reference/client-packages/net-runelite-client-ui-components.md`
 
 ### 4. Wiki Data Integration (Task Definitions + Completion %)
 
@@ -177,6 +188,10 @@ directional indicators, minimap dots.
 - `OverlayLayer.ABOVE_MAP` for minimap
 - Multiple overlay classes per plugin (separate concerns)
 
+**Additional wiki references:**
+- Widget manipulation: `docs/overlays/widget-manipulation.md`
+- Infoboxes: `docs/overlays/infoboxes.md`
+
 ### 7. Local Persistence (Block List + Player Preferences)
 
 Block list, "Not Interested" session state, player preferences (default
@@ -201,6 +216,9 @@ goal count, preferred skills, etc.). Stored locally via RuneLite config.
 - `@ConfigGroup` / `@ConfigItem` for simple settings
 - `configManager.setConfiguration()` for dynamic structured data
 - JSON serialization via `Gson` for complex objects (block list)
+
+**Additional wiki references:**
+- Config items detail: `docs/configuration/config-items.md`
 
 ### 8. Task Completion Detection (Event System)
 
@@ -227,6 +245,11 @@ the UI, remove it from the todo list, and trigger suggestions.
 - Data validation before submission (ToG validates 6 consecutive
   streams with timing checks before considering data valid)
 
+**Additional wiki references:**
+- Client events: `docs/events/client-events.md`
+- Menu system events: `docs/events/menu-system.md`
+- Input and hotkeys: `docs/plugin-api/input-and-hotkeys.md`
+
 ---
 
 ## Core Edge Types
@@ -240,6 +263,129 @@ the UI, remove it from the todo list, and trigger suggestions.
 | 5 | **COMMUNITY_LINKED** | Manual (crowdsource) | Players know these go together for a reason no algorithm catches. |
 
 All edges are voteable. Community thumbs up/down is the ultimate validation layer.
+
+### SUBSET vs CHAIN — The Key Distinction
+
+These two are the trickiest to tell apart:
+
+- **SUBSET**: "Can I complete A without making ANY progress on B?" If NO -> SUBSET.
+  Progress on A literally IS progress on B. Same progress bar.
+  Example: Lap 10 of Draynor counts toward both "10 laps" and "50 laps."
+
+- **CHAIN**: "Does completing A remove a blocker for B?" If YES -> CHAIN.
+  A enables B, but they're different activities.
+  Example: Easy Diary completion unlocks Medium Diary claiming.
+
+### Edge Comparison Matrix
+
+```
+                    SUBSET  CHAIN  CO_LOC  SKILL  COMMUNITY
+Same activity?       Yes     No     No     Yes*    Varies
+Same location?       Yes     No     Yes    No      Varies
+Directional?         Yes     Yes    No     No      Varies
+Auto-detectable?     Easy    Med    Med    Easy    No
+Confidence floor     0.95    0.80   0.70   0.60    0.30
+```
+*SAME_SKILL tasks share the skill but not necessarily the same specific activity
+
+### Edge Data Model
+
+```json
+{
+  "source_task_id": "complete-10-laps-draynor",
+  "target_task_id": "complete-50-laps-draynor",
+  "edge_type": "SUBSET",
+  "confidence": 0.95,
+  "sources": [
+    {
+      "type": "AI_WIKI",
+      "reason": "Pattern match: same activity, count 10 < 50",
+      "generated_at": "2025-05-20T00:00:00Z"
+    },
+    {
+      "type": "TELEMETRY",
+      "co_completion_rate": 0.89,
+      "avg_time_between_sec": 240,
+      "sample_size": 1523,
+      "updated_at": "2025-06-20T12:00:00Z"
+    }
+  ],
+  "votes": { "up": 47, "down": 3 }
+}
+```
+
+### Confidence Scoring
+
+```
+confidence = weighted_average(
+    ai_wiki_confidence   * 0.3,   # Starting baseline from auto-detect
+    manual_link_votes    * 0.4,   # High trust — humans said so
+    telemetry_confidence * 0.3    # Proven by data volume
+)
+
+Where:
+  ai_wiki_confidence   = 0.0-1.0 based on pattern match quality
+  manual_link_votes    = upvotes / (upvotes + downvotes)
+  telemetry_confidence = min(1.0, sample_size / 100) * co_completion_rate
+```
+
+### Telemetry Edge Auto-Generation
+
+Plugin silently logs `{ task_id, timestamp, player_hash }` on each
+task completion. Backend finds pairs completed close together by many players:
+
+```python
+def find_temporal_edges(completions_log):
+    edges = defaultdict(lambda: {"count": 0, "total_time": 0})
+
+    for session in group_by_player(completions_log):
+        for task_a, task_b in sliding_window(session, window=2):
+            time_gap = task_b.timestamp - task_a.timestamp
+            if time_gap < MAX_GAP_SECONDS:  # e.g., 30 minutes
+                pair = tuple(sorted([task_a.id, task_b.id]))
+                edges[pair]["count"] += 1
+                edges[pair]["total_time"] += time_gap
+
+    return {
+        pair: {
+            "co_completion_rate": data["count"] / total_completions(pair),
+            "avg_time_between": data["total_time"] / data["count"],
+            "sample_size": data["count"],
+        }
+        for pair, data in edges.items()
+        if data["count"] >= MIN_SAMPLE_SIZE  # e.g., 50
+    }
+```
+
+---
+
+## Focus / AFK Rating System
+
+A crowdsourced metric for how much attention each task requires.
+
+### Rating Scale
+
+| Rating | Meaning | Example |
+|--------|---------|---------|
+| 1 | **Sweaty** — constant clicking, full attention | Inferno, complex boss |
+| 2 | **Active** — clicking every few seconds | Agility course laps |
+| 3 | **Semi-AFK** — check every 30s-1min | Fishing, woodcutting |
+| 4 | **Chill** — check every few minutes | NMZ, some farming tasks |
+| 5 | **Full AFK** — set and forget 20min | Splashing, some gathering |
+
+### How It Works
+1. Player completes a task (detected via varp change)
+2. Plugin shows a small, non-intrusive prompt: "How AFK was that?"
+3. Rating is POSTed: `{ task_id, rating, player_hash }`
+4. Backend aggregates: trimmed mean + vote count
+5. Ratings included in task data on next fetch
+
+### Anti-Gaming Measures
+- One rating per player per task (update allowed, not duplicate)
+- `client.getAccountHash()` for anonymous dedup (no usernames stored)
+- Require task to actually be completed before rating (varp check)
+- Outlier detection: ignore if < 3 ratings, use trimmed mean
+- Rate limit: max 30 ratings per hour
 
 ---
 
@@ -310,7 +456,7 @@ Each task in the tree has three buttons:
 | Button | What it does |
 |--------|-------------|
 | **Add** | Puts task on todo list. Tree re-scores: connected tasks get boosted. Counter updates. |
-| **Not Interested** | Removes task + subtree from current tree. Non-persistent -- comes back next generate. |
+| **Not Interested** | Removes task + subtree from current tree. Non-persistent — comes back next generate. |
 | **Block** | Same as Not Interested + adds to permanent block list. Never appears again (until unblocked). |
 
 ### Step 5: Completed list
@@ -407,7 +553,7 @@ Many-to-many: one task can link to any number of others.
 ### Linked Button
 Shows ALL edges for a task (auto-detected + community-submitted).
 Each edge has thumbs up/down. Community can vote on auto-detected edges
-too -- if an auto-edge consistently gets thumbs down, confidence drops.
+too — if an auto-edge consistently gets thumbs down, confidence drops.
 
 ```
 +-------------------------------------+
@@ -444,6 +590,122 @@ too -- if an auto-edge consistently gets thumbs down, confidence drops.
 
 ---
 
+## Backend API Endpoints
+
+```
+# Task Data
+GET  /api/v1/tasks                  -> Full task list JSON (ETag cached)
+GET  /api/v1/tasks/version          -> { "version": "abc123", "updated_at": "..." }
+
+# Focus Ratings
+GET  /api/v1/focus-ratings          -> { "task_id_1": { "avg": 2.3, "count": 150 }, ... }
+POST /api/v1/focus-ratings          -> { "task_id": 1234, "rating": 3, "player_hash": "..." }
+
+# Task Graph Edges
+GET  /api/v1/edges                  -> All edges with confidence scores (ETag cached)
+POST /api/v1/edges/suggest          -> { "source": "abc", "target": "def", "player_hash": "..." }
+POST /api/v1/edges/vote             -> { "edge_id": "...", "vote": "up"|"down", "player_hash": "..." }
+
+# Telemetry (silent collection)
+POST /api/v1/telemetry/completion   -> { "task_id": "abc", "timestamp": 1234567890, "player_hash": "..." }
+```
+
+Tech stack recommendation: **Cloudflare Workers + D1 (SQLite)**.
+Free tier, globally distributed, dead simple.
+
+---
+
+## Day-1 Launch Pipeline
+
+League launches -> wiki has tasks -> we need data FAST.
+
+```
+Hour 0:  League announced / wiki task page goes live
+         |
+Hour 0:  Run scraper (adapted from temp/scrape_tasks.py)
+         - Task list: name, description, area, points, tier
+         - Requirements: skills, quests, items
+         - Locations: infer/scrape from wiki content
+         |
+Hour 1:  Push tasks.json to API server
+         |
+Hour 1:  Plugin auto-fetches on startup (version check -> download if newer)
+         |
+Hour 1:  Auto-generate SUBSET + CHAIN + SAME_SKILL edges from task data
+         Push edges to API server (hundreds of edges, zero human effort)
+         |
+Hour 2+: Crowdsourced focus ratings start flowing in
+         Completion % scraped from wiki periodically
+         Telemetry collection begins (silent)
+         |
+Week 2+: First telemetry edges processed
+         Community links accumulate votes
+```
+
+### Handling New Leagues
+- Tasks keyed by name + area (not numeric ID, since IDs change)
+- Scraper diffs against previous league data
+- Focus ratings from previous league carry over for repeated tasks
+  (with "from previous league" flag, decayed weight)
+
+---
+
+## Location Mapping Strategy
+
+We have 1,589 tasks and need WorldPoint coordinates for each.
+
+**Tier 1 — Specific location in description (~40%)**
+Task literally says WHERE: "Complete a lap of the Draynor Rooftop Agility Course"
+We know Draynor agility is at WorldPoint(3104, 3279, 0).
+
+**Tier 2 — Area-level location (~30%)**
+"Equip a Rune Scimitar" — could be done anywhere. Assign to area centroid
+or skip for geographic routing.
+
+**Tier 3 — Context-dependent (~20%)**
+"Reach level 50 in any skill" — depends on training method.
+Show in panel only, don't include in geographic routing.
+
+**Tier 4 — Boss/dungeon specific (~10%)**
+"Complete all CAs for Theatre of Blood" — map to dungeon entrance WorldPoint.
+
+**Data sources for coordinates:**
+1. OSRS Wiki API — `{{Map|x=N|y=N}}` templates on location pages
+2. Shortest Path plugin — transport nodes with coordinates
+3. Leagues Planner — existing task-to-location mappings
+4. Manual curation — for the most important tasks
+
+---
+
+## Data Architecture (Runtime)
+
+```
++------------------------------------------------------+
+|                 RuneLite Plugin                        |
+|                                                       |
+|  Remote API (our server)                              |
+|  |-- GET  /tasks           -> all task data           |
+|  |-- GET  /edges           -> task graph edges        |
+|  |-- POST /focus-rating    -> submit AFK rating       |
+|  |-- POST /edges/suggest   -> submit community link   |
+|  +-- POST /telemetry       -> silent completion log   |
+|                                                       |
+|  Local State (ConfigManager)                          |
+|  |-- Block list            <- persistent per-player   |
+|  |-- Player's task list    <- user-built list         |
+|  |-- Player's ratings      <- what they've rated      |
+|  +-- Filter preferences    <- tier, area, etc.        |
+|                                                       |
+|  Game State (live from client)                        |
+|  |-- Current WorldPoint    <- client.getLocalPlayer() |
+|  |-- Skill levels          <- client.getRealSkillLevel|
+|  |-- Quest completion      <- varbits                 |
+|  +-- Task completion       <- varp bits (bitpacked)   |
++------------------------------------------------------+
+```
+
+---
+
 ---
 
 ## Phase 3 (Future)
@@ -452,13 +714,13 @@ too -- if an auto-edge consistently gets thumbs down, confidence drops.
 
 CHAIN has two flavors worth distinguishing eventually:
 
-**CHAIN_HARD** -- B is literally impossible without A.
+**CHAIN_HARD** — B is literally impossible without A.
 ```
 "Complete Demon Slayer" -> "Complete Recipe for Disaster"
 RFD requires Demon Slayer. The game blocks you.
 ```
 
-**CHAIN_SOFT** -- B can be partially worked on, but not claimed until A is done.
+**CHAIN_SOFT** — B can be partially worked on, but not claimed until A is done.
 ```
 "Complete Easy Lumbridge Diary" -> "Complete Medium Lumbridge Diary"
 You CAN do Medium diary tasks before finishing Easy.
@@ -480,3 +742,35 @@ that need the same weapon setup = zero bank trips between them.
 
 Hard to detect accurately. Telemetry data (log equipment hash on task
 completion) could eventually make this viable. Not worth building for MVP.
+
+### Route Sharing
+
+Routes are just ordered task ID lists. Trivially shareable:
+```json
+{
+  "name": "Misthalin Speedrun",
+  "author": "FattestCat",
+  "tasks": [1234, 1235, 1240, 1242, 1250],
+  "notes": "Start at Lumbridge, work north to Varrock"
+}
+```
+- Export as JSON (copy to clipboard)
+- Import by pasting
+- Community could share optimized routes on Reddit/Discord
+
+### Pathfinding / AI Routing
+
+Use the task graph to make pathfinding tractable:
+1. Use edges to identify natural clusters (~50-100 clusters vs 1,589 nodes)
+2. Use Leagues Planner / Shortest Path pathfinder for distances between clusters
+3. Greedy or branch-and-bound to order clusters
+4. Within each cluster, nearest-neighbor ordering
+
+Collision maps + transport data already exist in the Leagues Planner plugin.
+We'd integrate, not rebuild.
+
+### Party Integration
+
+Share routes with party members via RuneLite's Party system.
+- Wiki: `docs/networking/party-system.md`
+- Custom `PartyMemberMessage` subclass for route sync
