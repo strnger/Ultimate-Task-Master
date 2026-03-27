@@ -4,23 +4,49 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.Range;
 
+/**
+ * Plugin configuration.
+ *
+ * Each @ConfigItem becomes a setting in the RuneLite plugin config panel.
+ * Pattern follows ToGCrowdsourcingConfig (simple, focused config items).
+ *
+ * TODO: Add filter config items for tier, area, requirements met (Feature 1).
+ * TODO: Add Feature 2 config items (goal count, preferred skills) when tree explorer is built.
+ * TODO: Add block list config (stored as JSON via ConfigManager, see OverallDesign.md §7).
+ */
 @ConfigGroup(UltimateTaskMasterPlugin.CONFIG_GROUP)
 public interface UltimateTaskMasterConfig extends Config
 {
+	// --- Near Me Settings ---
+
 	@ConfigSection(
-		name = "General",
-		description = "General settings",
+		name = "Near Me",
+		description = "Settings for the 'What's Near Me?' spatial query feature",
 		position = 0
 	)
-	String generalSettings = "generalSettings";
+	String nearMeSettings = "nearMeSettings";
 
 	@ConfigItem(
 		position = 0,
+		keyName = "searchRadius",
+		name = "Search Radius",
+		description = "How many tiles away to search for nearby tasks (Chebyshev distance)",
+		section = nearMeSettings
+	)
+	@Range(min = 10, max = 500)
+	default int searchRadius()
+	{
+		return 100;
+	}
+
+	@ConfigItem(
+		position = 1,
 		keyName = "showOverlay",
 		name = "Show Overlay",
-		description = "Display the task progress overlay in-game",
-		section = generalSettings
+		description = "Display nearby task highlights in the game world and minimap",
+		section = nearMeSettings
 	)
 	default boolean showOverlay()
 	{
@@ -28,11 +54,32 @@ public interface UltimateTaskMasterConfig extends Config
 	}
 
 	@ConfigItem(
-		position = 1,
+		position = 2,
+		keyName = "showWorldMapMarkers",
+		name = "Show Map Markers",
+		description = "Display nearby task markers on the world map (click to jump)",
+		section = nearMeSettings
+	)
+	default boolean showWorldMapMarkers()
+	{
+		return true;
+	}
+
+	// --- Notification Settings ---
+
+	@ConfigSection(
+		name = "Notifications",
+		description = "Notification settings",
+		position = 1
+	)
+	String notificationSettings = "notificationSettings";
+
+	@ConfigItem(
+		position = 0,
 		keyName = "notifyOnComplete",
 		name = "Notify on Completion",
-		description = "Send a notification when a tracked task is completed",
-		section = generalSettings
+		description = "Send a notification when a nearby task is completed",
+		section = notificationSettings
 	)
 	default boolean notifyOnComplete()
 	{
