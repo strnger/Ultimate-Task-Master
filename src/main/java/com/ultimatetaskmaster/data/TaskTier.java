@@ -57,6 +57,10 @@ public enum TaskTier
 	 */
 	public static TaskTier fromString(String name)
 	{
+		if (name == null)
+		{
+			return EASY;
+		}
 		return BY_NAME.getOrDefault(name.toLowerCase(), EASY);
 	}
 }
