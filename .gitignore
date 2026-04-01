@@ -29,3 +29,5 @@ server/*.db-shm
 *.db
 .beads-credential-key
 PACK_LEADER_SESSION.md  
+"server/"  
+"*.py"  
