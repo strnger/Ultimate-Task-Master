@@ -8,18 +8,15 @@ import com.ultimatetaskmaster.crowdsource.TaskLocationResolver;
 import net.runelite.api.coords.WorldPoint;
 
 /**
- * Spatial query engine for "What's Near Me?" (Feature 1).
+ * Spatial query engine for "What's Near Me?".
  *
  * Finds tasks within a tile radius of the player, using 2D Chebyshev distance
  * (ignoring plane) so tasks on different floors are still discoverable.
  *
- * Location data comes from the {@link TaskLocationResolver} (crowdsourced completion data),
- * NOT from static task definitions. This means:
- * - Tasks with no completion records yet won't appear in results
- * - As players complete tasks, more locations become discoverable
- * - The heatmap grows over time — the more you play, the more tasks appear nearby
+ * Location data is resolved via {@link TaskLocationResolver} at query time.
+ * Tasks without a known location won't appear in results.
  *
- * TODO: Add tier/area/skill filters (OverallDesign.md Feature 1 spec).
+ * TODO: Add tier/area/skill filters.
  * TODO: Add "requirements met" filter using client.getRealSkillLevel().
  */
 public final class SpatialTaskQuery
@@ -36,7 +33,7 @@ public final class SpatialTaskQuery
 	 * @param origin           player's current position
 	 * @param radius           search radius in tiles (Chebyshev distance)
 	 * @param sortBy           how to sort results
-	 * @param locationResolver resolves crowdsourced locations per task
+	 * @param locationResolver resolves locations per task
 	 * @return sorted list of nearby tasks with distances and resolved locations
 	 */
 	public static List<NearbyTask> findNearby(
@@ -99,7 +96,6 @@ public final class SpatialTaskQuery
 
 	/**
 	 * How to sort "Near Me" results.
-	 * TODO: Add AFK_RATING sort when focus rating system is implemented (OverallDesign.md §Focus).
 	 */
 	public enum SortCriteria
 	{
