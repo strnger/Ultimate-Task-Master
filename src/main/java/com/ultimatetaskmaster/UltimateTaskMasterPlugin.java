@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.Getter;
@@ -19,11 +18,9 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.CommandExecuted;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
-import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.task.Schedule;
@@ -32,10 +29,6 @@ import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.worldmap.WorldMapPointManager;
-import com.ultimatetaskmaster.crowdsource.CompletionLocationStore;
-import com.ultimatetaskmaster.crowdsource.CompletionRecord;
-import com.ultimatetaskmaster.crowdsource.LocalCompletionStore;
-import com.ultimatetaskmaster.crowdsource.TaskLocationResolver;
 import com.ultimatetaskmaster.data.NearbyTask;
 import com.ultimatetaskmaster.data.SpatialTaskQuery;
 import com.ultimatetaskmaster.data.HttpTaskDataProvider;
@@ -52,13 +45,11 @@ import com.ultimatetaskmaster.worldmap.TaskWorldMapPoint;
 /**
  * Ultimate Task Master — main plugin entry point.
  *
- * Feature 1: "What's Near Me?" — spatial query for nearby tasks using crowdsourced
- * completion locations. Players complete tasks -> we record their position -> that builds
- * a heatmap of where tasks are typically done.
+ * Feature 1: "What's Near Me?" — spatial query for nearby tasks using location data
+ * from TaskData, populated by scraper coordinate data.
  *
  * Detection flow:
  *   ChatMessage -> TaskCompletionListener -> TaskCompletionEvent -> Plugin.onTaskCompletionEvent()
- *     -> CompletionLocationStore.save() -> TaskLocationResolver cache invalidated
  *     -> auto-refresh nearby query -> overlays + panel update immediately
  *
  * Lifecycle follows the standard RuneLite pattern (see docs/plugin-api/lifecycle.md):
@@ -95,19 +86,10 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private WorldMapPointManager worldMapPointManager;
 
 	@Inject
-	private EventBus eventBus;
-
-	@Inject
 	private TaskDataProvider taskDataProvider;
 
 	@Inject
 	private HttpTaskDataProvider httpTaskDataProvider;
-
-	@Inject
-	private TaskLocationResolver locationResolver;
-
-	@Inject
-	private CompletionLocationStore completionStore;
 
 	@Inject
 	private TaskCompletionListener completionListener;
@@ -121,6 +103,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
 
+	private Set<String> completedTaskNames = Collections.emptySet();
+
 	/**
 	 * The current "near me" results. Shared with overlays via getter.
 	 * Empty list (never null) when no query has been run.
@@ -132,7 +116,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 	public void configure(Binder binder)
 	{
 		binder.bind(TaskDataProvider.class).to(StaticTaskDataProvider.class);
-		binder.bind(CompletionLocationStore.class).to(LocalCompletionStore.class);
 	}
 
 	@Provides
@@ -151,7 +134,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		SwingUtilities.invokeLater(() ->
 		{
 			panel.setAllTasks(taskDataProvider.getTasks());
-			panel.setCompletedTaskNames(getCompletedTaskNames());
+			panel.setCompletedTaskNames(loadCompletedNames());
 		});
 
 		// Attempt HTTP refresh in background
@@ -185,8 +168,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		// 4. Wire up completion detection
 		completionListener.register();
 
-		log.info("Ultimate Task Master started! {} tasks loaded, {} completion records.",
-			taskDataProvider.getTasks().size(), completionStore.getRecordCount());
+		log.info("Ultimate Task Master started! {} tasks loaded.", taskDataProvider.getTasks().size());
 	}
 
 	@Override
@@ -213,84 +195,17 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 	}
 
-	/**
-	 * Debug command: type  ::utmtest easy Catch a Shrimp  in chat to simulate
-	 * a task completion at the player's current location.
-	 *
-	 * Fires a TaskCompletionEvent directly, exercising the full pipeline:
-	 * detection -> storage -> resolver -> spatial query -> overlays.
-	 *
-	 * Usage:   ::utmtest <tier> <task name>
-	 * Example: ::utmtest easy Catch a Shrimp
-	 * Example: ::utmtest master Complete the Inferno
-	 */
-	@Subscribe
-	public void onCommandExecuted(CommandExecuted event)
-	{
-		if (!event.getCommand().equalsIgnoreCase("utmtest"))
-		{
-			return;
-		}
-
-		if (client.getGameState() != GameState.LOGGED_IN || client.getLocalPlayer() == null)
-		{
-			return;
-		}
-
-		String[] args = event.getArguments();
-		if (args.length < 2)
-		{
-			client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-				"Usage: ::utmtest <tier> <task name>  (e.g. ::utmtest easy Catch a Shrimp)", CHAT_SENDER);
-			return;
-		}
-
-		String tier = args[0].toLowerCase();
-		StringBuilder taskNameBuilder = new StringBuilder(args[1]);
-		for (int i = 2; i < args.length; i++)
-		{
-			taskNameBuilder.append(" ").append(args[i]);
-		}
-		String taskName = taskNameBuilder.toString();
-
-		WorldPoint location = client.getLocalPlayer().getWorldLocation();
-		TaskCompletionEvent completionEvent = new TaskCompletionEvent(
-			taskName, tier, location, System.currentTimeMillis());
-		eventBus.post(completionEvent);
-	}
-
-	/**
-	 * Handle a detected task completion.
-	 * Records the location, gives the user visual feedback in chat,
-	 * updates the panel's completed-task set, and auto-refreshes overlays.
-	 */
 	@Subscribe
 	public void onTaskCompletionEvent(TaskCompletionEvent event)
 	{
-		CompletionRecord record = new CompletionRecord(
-			event.getTaskName(),
-			event.getPlayerLocation().getX(),
-			event.getPlayerLocation().getY(),
-			event.getPlayerLocation().getPlane(),
-			event.getTimestamp()
-		);
+		completedTaskNames = new java.util.HashSet<>(completedTaskNames);
+		completedTaskNames.add(event.getTaskName());
 
-		completionStore.save(record);
-		locationResolver.invalidateCache();
+		client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
+			"Task completed: " + event.getTaskName(), CHAT_SENDER);
+		log.info("Task completed: {}", event.getTaskName());
 
-		// Visual feedback in chat
-		String feedback = String.format("Recorded: \"%s\" at (%d, %d) — %d record(s) total",
-			event.getTaskName(),
-			event.getPlayerLocation().getX(),
-			event.getPlayerLocation().getY(),
-			completionStore.getRecordCount());
-
-		client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER, feedback, CHAT_SENDER);
-		log.info("[{}] {}", CHAT_SENDER, feedback);
-
-		// Update panel: mark task as completed + auto-refresh nearby query
-		SwingUtilities.invokeLater(() -> panel.setCompletedTaskNames(getCompletedTaskNames()));
-		refreshNearbyQuery();
+		SwingUtilities.invokeLater(() -> panel.setCompletedTaskNames(completedTaskNames));
 	}
 
 	/**
@@ -320,29 +235,17 @@ public class UltimateTaskMasterPlugin extends Plugin
 			taskDataProvider.getTasks(),
 			playerLocation,
 			config.searchRadius(),
-			sort,
-			locationResolver
+			sort
 		);
 
 		SwingUtilities.invokeLater(() -> panel.updateResults(nearbyTasks));
 		updateWorldMapMarkers();
-
-		log.debug("Found {} nearby tasks within {} tiles of {} ({} tasks have locations)",
-			nearbyTasks.size(), config.searchRadius(), playerLocation,
-			taskDataProvider.getTasks().stream()
-				.filter(t -> locationResolver.hasLocation(t.getName()))
-				.count());
 	}
 
-	/**
-	 * Build the set of task names that have at least one completion record.
-	 * Used to mark tasks as "completed" in the panel (green background).
-	 */
-	private Set<String> getCompletedTaskNames()
+	private Set<String> loadCompletedNames()
 	{
-		return completionStore.getAllRecords().stream()
-			.map(CompletionRecord::getTaskName)
-			.collect(Collectors.toSet());
+		// TODO: Load from ConfigManager when persistence is implemented
+		return Collections.emptySet();
 	}
 
 	private void updateWorldMapMarkers()
@@ -382,7 +285,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			SwingUtilities.invokeLater(() -> {
 				panel.setAllTasks(httpTasks);
-				panel.setCompletedTaskNames(getCompletedTaskNames());
+				panel.setCompletedTaskNames(loadCompletedNames());
 			});
 		}
 	}
