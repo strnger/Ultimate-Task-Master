@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
@@ -86,9 +85,9 @@ public class StaticTaskDataProvider implements TaskDataProvider
 			}
 
 			List<TaskData> result = new ArrayList<>(defs.size());
-			for (int i = 0; i < defs.size(); i++)
+			for (JsonTaskDefinition def : defs)
 			{
-				result.add(toTaskData(defs.get(i), i + 1));
+				result.add(HttpTaskDataProvider.toTaskData(def));
 			}
 			return result;
 		}
@@ -99,30 +98,5 @@ public class StaticTaskDataProvider implements TaskDataProvider
 		}
 	}
 
-	private static TaskData toTaskData(JsonTaskDefinition def, int id)
-	{
-		List<TaskSkillRequirement> reqs;
-		if (def.getRequirements() != null && !def.getRequirements().isEmpty())
-		{
-			reqs = def.getRequirements().stream()
-				.map(r -> new TaskSkillRequirement(r.getSkill(), r.getLevel()))
-				.collect(Collectors.toList());
-		}
-		else
-		{
-			reqs = Collections.emptyList();
-		}
-
-		return TaskData.builder()
-			.id(id)
-			.name(def.getName())
-			.description(def.getDescription() != null ? def.getDescription() : "")
-			.area(TaskArea.fromString(def.getArea()))
-			.tier(TaskTier.fromString(def.getTier()))
-			.points(def.getPoints())
-			.completionPct(def.getCompletion_pct())
-			.location(null) // Locations come from crowdsourced data, not static definitions
-			.requirements(reqs)
-			.build();
-	}
+	// Conversion logic shared with HttpTaskDataProvider — see HttpTaskDataProvider.toTaskData()
 }
