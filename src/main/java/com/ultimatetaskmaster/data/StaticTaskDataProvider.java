@@ -9,13 +9,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Loads all 1,589 tasks from the bundled JSON resource (from full-task-scraper data).
+ * Loads all 1,589 tasks from the bundled JSON resource (scraped from OSRS wiki).
  *
  * <h3>Bundled Data (MVP)</h3>
  * Task definitions are baked into the JAR as {@code tasks.json}. This is the
@@ -86,9 +85,9 @@ public class StaticTaskDataProvider implements TaskDataProvider
 			}
 
 			List<TaskData> result = new ArrayList<>(defs.size());
-			for (int i = 0; i < defs.size(); i++)
+			for (JsonTaskDefinition def : defs)
 			{
-				result.add(toTaskData(defs.get(i)));
+				result.add(HttpTaskDataProvider.toTaskData(def));
 			}
 			return result;
 		}
@@ -99,35 +98,5 @@ public class StaticTaskDataProvider implements TaskDataProvider
 		}
 	}
 
-	private static TaskData toTaskData(JsonTaskDefinition def)
-	{
-		List<TaskSkillRequirement> reqs;
-		if (def.getSkills() != null && !def.getSkills().isEmpty())
-		{
-			reqs = def.getSkills().stream()
-				.map(r -> new TaskSkillRequirement(r.getSkill(), r.getLevel()))
-				.collect(Collectors.toList());
-		}
-		else
-		{
-			reqs = Collections.emptyList();
-		}
-
-		TaskTier tier = TaskTier.fromInt(def.getTier());
-
-		return TaskData.builder()
-			.structId(def.getStructId())
-			.sortId(def.getSortId())
-			.name(def.getName())
-			.description(def.getDescription() != null ? def.getDescription() : "")
-			.area(TaskArea.fromString(def.getArea()))
-			.tier(tier)
-			.points(tier.getDefaultPoints())
-			.category(def.getCategory())
-			.skill(def.getSkill())
-			.location(null) // Locations come from crowdsourced data, not static definitions
-			.completionPct(def.getCompletionPercent())
-			.requirements(reqs)
-			.build();
-	}
+	// Conversion logic shared with HttpTaskDataProvider — see HttpTaskDataProvider.toTaskData()
 }
