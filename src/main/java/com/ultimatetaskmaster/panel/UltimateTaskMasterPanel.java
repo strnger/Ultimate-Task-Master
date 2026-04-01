@@ -68,6 +68,8 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final JLabel nearbyStatusLabel = new JLabel();
 	private final JPanel nearbyTaskListContainer = new JPanel();
 
+	private final JLabel leagueInfoLabel = new JLabel();
+
 	private final CardLayout cardLayout = new CardLayout();
 	private final JPanel cardPanel = new JPanel(cardLayout);
 
@@ -123,6 +125,13 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		tabRow.add(nearbyTab);
 		tabRow.add(Box.createHorizontalGlue());
 		header.add(tabRow);
+		header.add(Box.createVerticalStrut(4));
+
+		leagueInfoLabel.setFont(FontManager.getRunescapeSmallFont());
+		leagueInfoLabel.setForeground(new Color(200, 180, 120));
+		leagueInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		leagueInfoLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		header.add(leagueInfoLabel);
 
 		add(header, BorderLayout.NORTH);
 
@@ -294,10 +303,16 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		return (SpatialTaskQuery.SortCriteria) sortDropdown.getSelectedItem();
 	}
 
+	public void setLeagueInfo(String leagueName, int taskCount, String dataSource)
+	{
+		leagueInfoLabel.setText(leagueName + " | " + taskCount + " tasks | " + dataSource);
+	}
+
 	/** Set the full task list (called once on startup). Must be on EDT. */
 	public void setAllTasks(List<TaskData> tasks)
 	{
 		this.allTasks = tasks != null ? tasks : Collections.emptyList();
+		leagueInfoLabel.setText(allTasks.size() + " tasks loaded");
 		rebuildAllTasksList();
 	}
 
