@@ -14,30 +14,13 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Loads all 1,589 tasks from the bundled JSON resource (scraped from OSRS wiki).
+ * Loads tasks from the bundled JSON resource. Serves as offline fallback.
  *
- * <h3>Bundled Data (MVP)</h3>
- * Task definitions are baked into the JAR as {@code tasks.json}. This is the
- * simplest approach — no server dependency, works offline, zero startup latency.
- *
- * <h3>Future: HTTP Task Provider (WikiSync Manifest Pattern)</h3>
- * Replace with {@code HttpTaskDataProvider} that follows the WikiSync manifest flow:
- * <ol>
- *   <li>On startup: {@code GET /api/v1/tasks/version} — check if cached data is stale</li>
- *   <li>If version differs: {@code GET /api/v1/tasks} — download full task list</li>
- *   <li>Cache response in ConfigManager (or local file) for offline fallback</li>
- *   <li>Use ETag/If-None-Match headers for efficient caching</li>
- * </ol>
- *
- * <p>This mirrors WikiSync's manifest check exactly:
- * {@code WikiSyncPlugin.checkManifest()} fetches the manifest periodically
- * (every 1200 seconds) and the plugin auto-adapts to server-side changes.
- * Reference: {@code examples/WikiSync/WikiSyncPlugin.java} — see
- * {@code checkManifest()} and {@code MANIFEST_URL}.</p>
- *
- * <p>Task locations come from TaskData.location, populated by scraper coordinate data.</p>
+ * Task definitions are baked into the JAR as {@code tasks.json}.
+ * No server dependency, works offline, zero startup latency.
  *
  * @see TaskDataProvider
+ * @see HttpTaskDataProvider
  */
 @Singleton
 @Slf4j

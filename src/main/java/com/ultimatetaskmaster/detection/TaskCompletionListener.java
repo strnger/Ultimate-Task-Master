@@ -21,12 +21,6 @@ import net.runelite.client.util.Text;
 /**
  * Detects task completions via GAMEMESSAGE chat and fires {@link TaskCompletionEvent}s.
  *
- * <h3>Architecture: Swappable Detection</h3>
- * This is ONE of potentially many detectors. The plugin subscribes to
- * {@link TaskCompletionEvent} and does not care who fires it. To add a new
- * detection method, create a class that posts TaskCompletionEvent on the EventBus.
- * See {@link TaskCompletionEvent} javadoc for the full contract.
- *
  * <h3>Pattern: Dink LeaguesNotifier</h3>
  * Regex and message handling copied from Dink's LeaguesNotifier (proven in production).
  * Source: {@code examples/DinkPlugin/src/main/java/dinkplugin/notifiers/LeaguesNotifier.java}
@@ -35,41 +29,6 @@ import net.runelite.client.util.Text;
  *   <li>Handles "double-pop" — multiple tasks completing in one tick</li>
  *   <li>Queues on ChatMessage, flushes on GameTick for stable player position</li>
  * </ul>
- *
- * <h3>Manual Testing</h3>
- * Send fake GAMEMESSAGE chat in-game via developer tools to bootstrap the location
- * database. The listener will record the player position for each "completed" task:
- * <pre>
- *   client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
- *       "Congratulations, you've completed an easy task: Cook Shrimp.", null);
- * </pre>
- *
- * <h3>Next Step: Varbit-Based Detection (WikiSync Pattern)</h3>
- * League tasks are stored as bitpacked VarPlayers (varps). Each varp holds 32 bits,
- * each bit = one task's completion flag. When a bit flips 0->1, that task was completed.
- *
- * <p>Known league task varp IDs (from wikisync-api/src/runelite/data/leagueTaskVarps.json):</p>
- * <pre>
- *   Group 1: varps 2616-2631 (16 varps, 512 task slots)
- *   Group 2: varps 2808-2835 (28 varps, 896 task slots)
- *   Group 3: varps 3339-3342 ( 4 varps, 128 task slots)
- *   Group 4: varps 4036-4049 (14 varps, 448 task slots)
- *   Total: 62 varps, 1,984 task slots (>1,589 tasks)
- * </pre>
- *
- * <p>Detection algorithm (from wikisync-api LeagueTransformer.ts):</p>
- * <pre>
- *   for each varp in LEAGUE_TASK_VARPS:
- *     for bit 0..31:
- *       if (varp & (1 << bit)) != 0:
- *         task at index (32 * varpIndex + bit) is completed
- * </pre>
- *
- * <p>To detect NEW completions, compare previous varp values with current on
- * VarbitChanged. See OverallDesign.md section 8 "Method 2" for full Java code.</p>
- *
- * <p>Ideally the varp list would come from a server manifest (WikiSync pattern:
- * server tells plugin what varps to read), so new leagues don't need plugin updates.</p>
  *
  * @see TaskCompletionEvent
  */

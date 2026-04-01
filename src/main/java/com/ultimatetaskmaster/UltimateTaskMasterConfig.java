@@ -10,11 +10,6 @@ import net.runelite.client.config.Range;
  * Plugin configuration.
  *
  * Each @ConfigItem becomes a setting in the RuneLite plugin config panel.
- * Pattern follows ToGCrowdsourcingConfig (simple, focused config items).
- *
- * TODO: Add filter config items for tier, area, requirements met (Feature 1).
- * TODO: Add Feature 2 config items (goal count, preferred skills) when tree explorer is built.
- * TODO: Add block list config (stored as JSON via ConfigManager, see OverallDesign.md §7).
  */
 @ConfigGroup(UltimateTaskMasterPlugin.CONFIG_GROUP)
 public interface UltimateTaskMasterConfig extends Config

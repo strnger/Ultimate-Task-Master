@@ -34,7 +34,7 @@ import okhttp3.Response;
  *    find active league, GET full.json, parse, cache, update in-memory list
  * 3. getTasks() always returns the current in-memory list
  *
- * Follows the WikiSync manifest pattern - periodic fetch with local cache.
+ * Periodic remote fetch with local ConfigManager cache for offline use.
  *
  * @see TaskDataProvider
  * @see StaticTaskDataProvider
