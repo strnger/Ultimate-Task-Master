@@ -30,8 +30,8 @@ import net.runelite.client.ui.PluginPanel;
  * - Rich tooltip on hover with full task details
  *
  * Layout:
- *   [tier bar 4px] [name     ] [points]
- *                  [description] [area ]
+ *   [tier bar 4px] [name          ] [points]
+ *                  [category/skill] [area  ]
  */
 public class TaskRowPanel extends JPanel
 {
@@ -75,7 +75,7 @@ public class TaskRowPanel extends JPanel
 		tierBar.setBackground(task.getTier().getColor());
 		container.add(tierBar, BorderLayout.WEST);
 
-		// --- Body: name + description (CENTER) ---
+		// --- Body: name + category/skill (CENTER) ---
 		body = new JPanel();
 		body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
 		body.setOpaque(false);
@@ -86,13 +86,13 @@ public class TaskRowPanel extends JPanel
 		nameLabel.setForeground(Color.WHITE);
 		body.add(nameLabel);
 
-		String descText = truncate(task.getDescription(), 45);
-		if (!descText.isEmpty())
+		String categorySkill = buildCategorySkillText(task);
+		if (!categorySkill.isEmpty())
 		{
-			JLabel descLabel = new JLabel(descText);
-			descLabel.setFont(FontManager.getRunescapeSmallFont());
-			descLabel.setForeground(Color.GRAY);
-			body.add(descLabel);
+			JLabel categoryLabel = new JLabel(categorySkill);
+			categoryLabel.setFont(FontManager.getRunescapeSmallFont());
+			categoryLabel.setForeground(new Color(200, 180, 120)); // gold-ish color for category
+			body.add(categoryLabel);
 		}
 
 		container.add(body, BorderLayout.CENTER);
@@ -191,6 +191,14 @@ public class TaskRowPanel extends JPanel
 		sb.append("<b>").append(task.getName()).append("</b><br>");
 		sb.append(task.getDescription()).append("<br><br>");
 		sb.append("Area: ").append(task.getArea().getDisplayName()).append("<br>");
+		if (task.getCategory() != null)
+		{
+			sb.append("Category: ").append(task.getCategory()).append("<br>");
+		}
+		if (task.getSkill() != null)
+		{
+			sb.append("Skill: ").append(task.getSkill()).append("<br>");
+		}
 		sb.append("Tier: ").append(task.getTier().getDisplayName())
 			.append(" (").append(task.getPoints()).append(" pts)").append("<br>");
 
@@ -220,7 +228,26 @@ public class TaskRowPanel extends JPanel
 			}
 		}
 
+		sb.append("<br><span style='color:gray;font-size:9px'>Struct ID: ").append(task.getStructId()).append("</span><br>");
 		sb.append("</body></html>");
+		return sb.toString();
+	}
+
+	private static String buildCategorySkillText(TaskData task)
+	{
+		StringBuilder sb = new StringBuilder();
+		if (task.getCategory() != null && !task.getCategory().isEmpty())
+		{
+			sb.append(task.getCategory());
+		}
+		if (task.getSkill() != null && !task.getSkill().isEmpty() && !"All".equals(task.getSkill()))
+		{
+			if (sb.length() > 0)
+			{
+				sb.append(" \u2022 ");
+			}
+			sb.append(task.getSkill());
+		}
 		return sb.toString();
 	}
 
@@ -237,12 +264,4 @@ public class TaskRowPanel extends JPanel
 		return Color.WHITE;
 	}
 
-	private static String truncate(String text, int maxLen)
-	{
-		if (text == null || text.isEmpty())
-		{
-			return "";
-		}
-		return text.length() > maxLen ? text.substring(0, maxLen - 3) + "..." : text;
-	}
 }
