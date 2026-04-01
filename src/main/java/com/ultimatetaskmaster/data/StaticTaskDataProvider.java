@@ -35,9 +35,7 @@ import lombok.extern.slf4j.Slf4j;
  * Reference: {@code examples/WikiSync/WikiSyncPlugin.java} — see
  * {@code checkManifest()} and {@code MANIFEST_URL}.</p>
  *
- * <p>Task locations are NOT part of the definition — they come from crowdsourced
- * completion data via {@link com.ultimatetaskmaster.crowdsource.TaskLocationResolver}.
- * All tasks have location=null here; the spatial query resolves locations at query time.</p>
+ * <p>Task locations come from TaskData.location, populated by scraper coordinate data.</p>
  *
  * @see TaskDataProvider
  */

@@ -38,7 +38,7 @@ import net.runelite.client.ui.components.IconTextField;
  *
  * Two tabs (tasks-tracker toggle-button pattern):
  * 1. "All Tasks" — browse/search/filter all 1,589 tasks
- * 2. "Near Me"   — find tasks near the player's position using crowdsourced data
+ * 2. "Near Me"   — find tasks near the player's position using scraper location data
  *
  * Shared state: allTasks, completedTaskNames, sort criteria.
  * Each tab has its own scrollable task list and status label.
