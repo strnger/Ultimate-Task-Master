@@ -2,6 +2,7 @@ package com.ultimatetaskmaster;
 
 import com.google.inject.Binder;
 import com.google.inject.Provides;
+import java.time.temporal.ChronoUnit;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -25,6 +26,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
+import net.runelite.client.task.Schedule;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
@@ -36,7 +38,9 @@ import com.ultimatetaskmaster.crowdsource.LocalCompletionStore;
 import com.ultimatetaskmaster.crowdsource.TaskLocationResolver;
 import com.ultimatetaskmaster.data.NearbyTask;
 import com.ultimatetaskmaster.data.SpatialTaskQuery;
+import com.ultimatetaskmaster.data.HttpTaskDataProvider;
 import com.ultimatetaskmaster.data.StaticTaskDataProvider;
+import com.ultimatetaskmaster.data.TaskData;
 import com.ultimatetaskmaster.data.TaskDataProvider;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
@@ -97,6 +101,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private TaskDataProvider taskDataProvider;
 
 	@Inject
+	private HttpTaskDataProvider httpTaskDataProvider;
+
+	@Inject
 	private TaskLocationResolver locationResolver;
 
 	@Inject
@@ -146,6 +153,20 @@ public class UltimateTaskMasterPlugin extends Plugin
 			panel.setAllTasks(taskDataProvider.getTasks());
 			panel.setCompletedTaskNames(getCompletedTaskNames());
 		});
+
+		// Attempt HTTP refresh in background
+		new Thread(() -> {
+			httpTaskDataProvider.refreshFromRemote();
+			List<TaskData> httpTasks = httpTaskDataProvider.getTasks();
+			if (!httpTasks.isEmpty())
+			{
+				SwingUtilities.invokeLater(() -> {
+					panel.setAllTasks(httpTasks);
+					log.info("Refreshed tasks from remote: {} tasks for {}",
+						httpTasks.size(), httpTaskDataProvider.getCurrentLeagueName());
+				});
+			}
+		}, "utm-http-refresh").start();
 
 		// 2. Register navigation button
 		final BufferedImage icon = createPlaceholderIcon();
@@ -346,6 +367,24 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private void clearWorldMapMarkers()
 	{
 		worldMapPointManager.removeIf(point -> point instanceof TaskWorldMapPoint);
+	}
+
+	@Schedule(
+		period = 30,
+		unit = ChronoUnit.MINUTES,
+		asynchronous = true
+	)
+	public void refreshTaskData()
+	{
+		httpTaskDataProvider.refreshFromRemote();
+		List<TaskData> httpTasks = httpTaskDataProvider.getTasks();
+		if (!httpTasks.isEmpty())
+		{
+			SwingUtilities.invokeLater(() -> {
+				panel.setAllTasks(httpTasks);
+				panel.setCompletedTaskNames(getCompletedTaskNames());
+			});
+		}
 	}
 
 	/**
