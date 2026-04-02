@@ -24,9 +24,13 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
+import com.ultimatetaskmaster.data.LocationCluster;
 import com.ultimatetaskmaster.data.NearbyTask;
+import com.ultimatetaskmaster.data.PlanItem;
+import com.ultimatetaskmaster.data.PlanService;
 import com.ultimatetaskmaster.data.SpatialTaskQuery;
 import com.ultimatetaskmaster.data.TaskData;
+import com.ultimatetaskmaster.data.TaskLocationService;
 import lombok.Getter;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
@@ -47,10 +51,12 @@ public class UltimateTaskMasterPanel extends PluginPanel
 {
 	private static final String CARD_ALL = "ALL";
 	private static final String CARD_NEARBY = "NEARBY";
+	private static final String CARD_PLAN = "PLAN";
 
 	// --- Shared controls ---
 	private final JToggleButton allTasksTab = new JToggleButton("All Tasks");
 	private final JToggleButton nearbyTab = new JToggleButton("Near Me");
+	private final JToggleButton planTab = new JToggleButton("Plan");
 
 	// --- "All Tasks" tab ---
 	private final IconTextField allSearchField = new IconTextField();
@@ -68,12 +74,20 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final JLabel nearbyStatusLabel = new JLabel();
 	private final JPanel nearbyTaskListContainer = new JPanel();
 
+	// --- "Current Plan" tab ---
+	private final JLabel planStatusLabel = new JLabel();
+	private final JPanel planListContainer = new JPanel();
+
 	private final JLabel leagueInfoLabel = new JLabel();
 
 	private final CardLayout cardLayout = new CardLayout();
 	private final JPanel cardPanel = new JPanel(cardLayout);
 
 	private Runnable onFindNearby;
+	private PlanService planService;
+	private TaskLocationService locationService;
+	private java.util.function.BiConsumer<String, LocationCluster> onPinCallback;
+	private java.util.function.Consumer<String> onRemoveFromPlanCallback;
 
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
 	private List<TaskData> allTasks = Collections.emptyList();
@@ -112,17 +126,22 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		ButtonGroup tabGroup = new ButtonGroup();
 		styleTabButton(allTasksTab);
 		styleTabButton(nearbyTab);
+		styleTabButton(planTab);
 		tabGroup.add(allTasksTab);
 		tabGroup.add(nearbyTab);
+		tabGroup.add(planTab);
 
 		allTasksTab.setSelected(true);
 		allTasksTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_ALL));
 		nearbyTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_NEARBY));
+		planTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_PLAN));
 
 		tabRow.add(Box.createHorizontalGlue());
 		tabRow.add(allTasksTab);
 		tabRow.add(Box.createHorizontalGlue());
 		tabRow.add(nearbyTab);
+		tabRow.add(Box.createHorizontalGlue());
+		tabRow.add(planTab);
 		tabRow.add(Box.createHorizontalGlue());
 		header.add(tabRow);
 		header.add(Box.createVerticalStrut(4));
@@ -144,6 +163,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 		cardPanel.add(buildAllTasksCard(), CARD_ALL);
 		cardPanel.add(buildNearbyCard(), CARD_NEARBY);
+		cardPanel.add(buildPlanCard(), CARD_PLAN);
 		cardLayout.show(cardPanel, CARD_ALL);
 
 		add(cardPanel, BorderLayout.CENTER);
@@ -272,6 +292,29 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		return card;
 	}
 
+	// ========== "Current Plan" card ==========
+
+	private JPanel buildPlanCard()
+	{
+		JPanel card = new JPanel(new BorderLayout());
+		card.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
+		JPanel controls = new JPanel();
+		controls.setLayout(new BoxLayout(controls, BoxLayout.Y_AXIS));
+		controls.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		controls.setBorder(new EmptyBorder(6, 10, 4, 10));
+
+		planStatusLabel.setFont(FontManager.getRunescapeSmallFont());
+		planStatusLabel.setForeground(Color.GRAY);
+		planStatusLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		planStatusLabel.setText("Add tasks from the All Tasks tab");
+		controls.add(planStatusLabel);
+
+		card.add(controls, BorderLayout.NORTH);
+		card.add(buildScrollableList(planListContainer), BorderLayout.CENTER);
+		return card;
+	}
+
 	// ========== Shared scroll pane builder ==========
 
 	private JScrollPane buildScrollableList(JPanel listContainer)
@@ -340,6 +383,26 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		addMessageLabel(nearbyTaskListContainer, "Log in to use this feature.");
 		nearbyTaskListContainer.revalidate();
 		nearbyTaskListContainer.repaint();
+	}
+
+	public void setPlanService(PlanService planService)
+	{
+		this.planService = planService;
+	}
+
+	public void setLocationService(TaskLocationService locationService)
+	{
+		this.locationService = locationService;
+	}
+
+	public void setOnPinCallback(java.util.function.BiConsumer<String, LocationCluster> callback)
+	{
+		this.onPinCallback = callback;
+	}
+
+	public void setOnRemoveFromPlanCallback(java.util.function.Consumer<String> callback)
+	{
+		this.onRemoveFromPlanCallback = callback;
 	}
 
 	// ========== Rebuild: All Tasks tab ==========
@@ -430,6 +493,63 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 		nearbyTaskListContainer.revalidate();
 		nearbyTaskListContainer.repaint();
+	}
+
+	// ========== Rebuild: Plan tab ==========
+
+	public void rebuildPlanList()
+	{
+		planListContainer.removeAll();
+
+		if (planService == null)
+		{
+			planStatusLabel.setText("Plan not available");
+			planListContainer.revalidate();
+			planListContainer.repaint();
+			return;
+		}
+
+		java.util.List<PlanItem> items = planService.getItems();
+		if (items.isEmpty())
+		{
+			planStatusLabel.setText("No tasks in plan. Add tasks from All Tasks tab.");
+			addMessageLabel(planListContainer, "Click '+' on any task to add it to your plan.");
+		}
+		else
+		{
+			int totalPoints = 0;
+			for (PlanItem item : items)
+			{
+				TaskData t = findTaskByName(item.getTaskName());
+				totalPoints += t != null ? t.getPoints() : 0;
+			}
+			planStatusLabel.setText(items.size() + " tasks \u00b7 " + totalPoints + " pts");
+
+			for (int i = 0; i < items.size(); i++)
+			{
+				PlanItem item = items.get(i);
+				TaskData t = findTaskByName(item.getTaskName());
+				java.util.List<LocationCluster> locs = locationService != null && t != null
+					? locationService.getLocationsForTask(t.getStructId())
+					: java.util.Collections.emptyList();
+				planListContainer.add(new PlanItemPanel(item, t, locs, i % 2 == 0, onPinCallback, onRemoveFromPlanCallback));
+			}
+		}
+
+		planListContainer.revalidate();
+		planListContainer.repaint();
+	}
+
+	private TaskData findTaskByName(String name)
+	{
+		for (TaskData t : allTasks)
+		{
+			if (t.getName().equals(name))
+			{
+				return t;
+			}
+		}
+		return null;
 	}
 
 	// ========== Comparators ==========
