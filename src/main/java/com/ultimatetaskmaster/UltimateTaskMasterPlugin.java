@@ -29,12 +29,16 @@ import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.worldmap.WorldMapPointManager;
+import com.ultimatetaskmaster.data.LocationCluster;
 import com.ultimatetaskmaster.data.NearbyTask;
+import com.ultimatetaskmaster.data.PlanItem;
+import com.ultimatetaskmaster.data.PlanService;
 import com.ultimatetaskmaster.data.SpatialTaskQuery;
 import com.ultimatetaskmaster.data.HttpTaskDataProvider;
 import com.ultimatetaskmaster.data.StaticTaskDataProvider;
 import com.ultimatetaskmaster.data.TaskData;
 import com.ultimatetaskmaster.data.TaskDataProvider;
+import com.ultimatetaskmaster.data.TaskLocationService;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
 import com.ultimatetaskmaster.overlay.NearbyTaskMinimapOverlay;
@@ -95,6 +99,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private TaskCompletionListener completionListener;
 
 	@Inject
+	private PlanService planService;
+
+	@Inject
+	private TaskLocationService locationService;
+
+	@Inject
 	private NearbyTaskWorldOverlay worldOverlay;
 
 	@Inject
@@ -131,10 +141,31 @@ public class UltimateTaskMasterPlugin extends Plugin
 		panel = new UltimateTaskMasterPanel();
 		panel.setOnFindNearby(this::onFindNearbyTasks);
 
+		// Wire plan services
+		panel.setPlanService(planService);
+		panel.setLocationService(locationService);
+
+		panel.setOnPinCallback((taskName, cluster) -> {
+			planService.pinLocation(taskName, cluster.getX(), cluster.getY());
+			SwingUtilities.invokeLater(() -> {
+				panel.rebuildPlanList();
+				updateWorldMapMarkers();
+			});
+		});
+
+		panel.setOnRemoveFromPlanCallback(taskName -> {
+			planService.removeTask(taskName);
+			SwingUtilities.invokeLater(() -> {
+				panel.rebuildPlanList();
+				updateWorldMapMarkers();
+			});
+		});
+
 		SwingUtilities.invokeLater(() ->
 		{
 			panel.setAllTasks(taskDataProvider.getTasks());
 			panel.setCompletedTaskNames(loadCompletedNames());
+			panel.rebuildPlanList();
 		});
 
 		// Attempt HTTP refresh in background
@@ -265,6 +296,25 @@ public class UltimateTaskMasterPlugin extends Plugin
 				worldMapPointManager.add(new TaskWorldMapPoint(location, nearbyTask.getTask()));
 			}
 		}
+
+		// Show pinned plan locations
+		for (PlanItem planItem : planService.getPinnedItems())
+		{
+			TaskData planTask = null;
+			for (TaskData t : taskDataProvider.getTasks())
+			{
+				if (t.getName().equals(planItem.getTaskName()))
+				{
+					planTask = t;
+					break;
+				}
+			}
+			if (planTask != null && planItem.getPinnedX() != null && planItem.getPinnedY() != null)
+			{
+				WorldPoint planPoint = new WorldPoint(planItem.getPinnedX(), planItem.getPinnedY(), 0);
+				worldMapPointManager.add(new TaskWorldMapPoint(planPoint, planTask));
+			}
+		}
 	}
 
 	private void clearWorldMapMarkers()
@@ -286,6 +336,18 @@ public class UltimateTaskMasterPlugin extends Plugin
 			SwingUtilities.invokeLater(() -> {
 				panel.setAllTasks(httpTasks);
 				panel.setCompletedTaskNames(loadCompletedNames());
+				panel.rebuildPlanList();
+			});
+		}
+	}
+
+	public void addTaskToPlan(TaskData task)
+	{
+		if (task != null && planService.addTask(task.getName(), task.getStructId()))
+		{
+			SwingUtilities.invokeLater(() -> {
+				panel.rebuildPlanList();
+				updateWorldMapMarkers();
 			});
 		}
 	}
