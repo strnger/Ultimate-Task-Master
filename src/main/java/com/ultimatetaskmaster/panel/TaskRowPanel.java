@@ -17,7 +17,6 @@ import com.ultimatetaskmaster.data.TaskSkillRequirement;
 import lombok.Getter;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
-import net.runelite.client.ui.PluginPanel;
 
 /**
  * A single task row in the task list panel.
@@ -59,6 +58,7 @@ public class TaskRowPanel extends JPanel
 	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow)
 	{
 		super(new BorderLayout());
+		setAlignmentX(LEFT_ALIGNMENT);
 		this.task = task;
 		this.completed = completed;
 		this.distance = distance;
@@ -176,7 +176,7 @@ public class TaskRowPanel extends JPanel
 	@Override
 	public Dimension getMaximumSize()
 	{
-		return new Dimension(PluginPanel.PANEL_WIDTH, getPreferredSize().height);
+		return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
 	}
 
 	private void setBackgroundColor(Color color)
