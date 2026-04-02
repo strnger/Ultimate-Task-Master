@@ -88,6 +88,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private TaskLocationService locationService;
 	private java.util.function.BiConsumer<String, LocationCluster> onPinCallback;
 	private java.util.function.Consumer<String> onRemoveFromPlanCallback;
+	private java.util.function.Consumer<TaskData> onAddToPlanCallback;
 
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
 	private List<TaskData> allTasks = Collections.emptyList();
@@ -405,6 +406,11 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.onRemoveFromPlanCallback = callback;
 	}
 
+	public void setOnAddToPlan(java.util.function.Consumer<TaskData> callback)
+	{
+		this.onAddToPlanCallback = callback;
+	}
+
 	// ========== Rebuild: All Tasks tab ==========
 
 	private void rebuildAllTasksList()
@@ -436,7 +442,9 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			{
 				TaskData t = filtered.get(i);
 				boolean done = completedTaskNames.contains(t.getName());
-				allTaskListContainer.add(new TaskRowPanel(t, done, null, i % 2 == 0));
+				TaskRowPanel row = new TaskRowPanel(t, done, null, i % 2 == 0);
+				row.setOnAddToPlan(onAddToPlanCallback);
+				allTaskListContainer.add(row);
 			}
 		}
 
@@ -486,8 +494,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			{
 				NearbyTask nt = filtered.get(i);
 				boolean done = completedTaskNames.contains(nt.getTask().getName());
-				nearbyTaskListContainer.add(new TaskRowPanel(
-					nt.getTask(), done, nt.getDistance(), i % 2 == 0));
+				TaskRowPanel nearbyRow = new TaskRowPanel(
+					nt.getTask(), done, nt.getDistance(), i % 2 == 0);
+				nearbyRow.setOnAddToPlan(onAddToPlanCallback);
+				nearbyTaskListContainer.add(nearbyRow);
 			}
 		}
 

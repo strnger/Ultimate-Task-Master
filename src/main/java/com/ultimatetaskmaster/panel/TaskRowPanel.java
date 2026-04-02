@@ -7,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToolTip;
@@ -114,21 +113,35 @@ public class TaskRowPanel extends JPanel
 		pointsLabel.setAlignmentX(RIGHT_ALIGNMENT);
 		rightSide.add(pointsLabel);
 
-		JButton addPlanBtn = new JButton("+");
-		addPlanBtn.setFont(FontManager.getRunescapeSmallFont());
-		addPlanBtn.setForeground(new Color(0, 200, 100));
-		addPlanBtn.setBackground(ColorScheme.DARKER_GRAY_COLOR);
-		addPlanBtn.setBorder(new EmptyBorder(0, 3, 0, 3));
-		addPlanBtn.setFocusPainted(false);
-		addPlanBtn.setToolTipText("Add to plan");
-		addPlanBtn.setAlignmentX(RIGHT_ALIGNMENT);
-		addPlanBtn.addActionListener(e -> {
-			if (onAddToPlan != null)
+		JLabel addPlanLabel = new JLabel("+");
+		addPlanLabel.setFont(FontManager.getRunescapeBoldFont());
+		addPlanLabel.setForeground(new Color(0, 200, 83));
+		addPlanLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		addPlanLabel.setAlignmentX(RIGHT_ALIGNMENT);
+		addPlanLabel.setToolTipText("Add to plan");
+		addPlanLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		addPlanLabel.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mousePressed(MouseEvent e)
 			{
-				onAddToPlan.accept(task);
+				if (onAddToPlan != null)
+				{
+					onAddToPlan.accept(task);
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e)
+			{
+				addPlanLabel.setForeground(Color.WHITE);
+			}
+			@Override
+			public void mouseExited(MouseEvent e)
+			{
+				addPlanLabel.setForeground(new Color(0, 200, 83));
 			}
 		});
-		rightSide.add(addPlanBtn);
+		rightSide.add(addPlanLabel);
 
 		if (distance != null)
 		{

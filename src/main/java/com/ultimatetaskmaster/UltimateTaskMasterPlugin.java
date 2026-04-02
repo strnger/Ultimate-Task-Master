@@ -161,6 +161,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 			});
 		});
 
+		panel.setOnAddToPlan(this::addTaskToPlan);
+
 		SwingUtilities.invokeLater(() ->
 		{
 			panel.setAllTasks(taskDataProvider.getTasks());
