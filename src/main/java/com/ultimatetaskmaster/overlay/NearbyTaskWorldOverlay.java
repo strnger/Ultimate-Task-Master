@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import com.ultimatetaskmaster.UltimateTaskMasterConfig;
 import com.ultimatetaskmaster.UltimateTaskMasterPlugin;
 import com.ultimatetaskmaster.data.NearbyTask;
+import com.ultimatetaskmaster.data.PlanItem;
+import com.ultimatetaskmaster.data.PlanService;
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
 import net.runelite.api.Scene;
@@ -44,6 +46,9 @@ public class NearbyTaskWorldOverlay extends Overlay
 	private final UltimateTaskMasterConfig config;
 
 	@Inject
+	private PlanService planService;
+
+	@Inject
 	private NearbyTaskWorldOverlay(Client client, UltimateTaskMasterPlugin plugin, UltimateTaskMasterConfig config)
 	{
 		this.client = client;
@@ -63,17 +68,60 @@ public class NearbyTaskWorldOverlay extends Overlay
 		}
 
 		List<NearbyTask> nearbyTasks = plugin.getNearbyTasks();
-		if (nearbyTasks == null || nearbyTasks.isEmpty())
+		if (nearbyTasks != null)
 		{
-			return null;
+			for (NearbyTask nearbyTask : nearbyTasks)
+			{
+				renderTaskTile(graphics, nearbyTask);
+			}
 		}
 
-		for (NearbyTask nearbyTask : nearbyTasks)
+		// Render pinned plan locations (orange color)
+		if (planService != null)
 		{
-			renderTaskTile(graphics, nearbyTask);
+			List<PlanItem> pinned = planService.getPinnedItems();
+			for (PlanItem item : pinned)
+			{
+				if (item.getPinnedX() != null && item.getPinnedY() != null)
+				{
+					WorldPoint planPoint = new WorldPoint(item.getPinnedX(), item.getPinnedY(), 0);
+					renderPlanTile(graphics, planPoint);
+				}
+			}
 		}
 
 		return null;
+	}
+
+	private void renderPlanTile(Graphics2D graphics, WorldPoint point)
+	{
+		WorldView worldView = client.getTopLevelWorldView();
+		for (WorldPoint wp : WorldPoint.toLocalInstance(worldView.getScene(), point))
+		{
+			if (wp.getPlane() != worldView.getPlane())
+			{
+				continue;
+			}
+
+			LocalPoint lp = LocalPoint.fromWorld(worldView, wp);
+			if (lp == null)
+			{
+				continue;
+			}
+
+			Polygon poly = Perspective.getCanvasTilePoly(client, lp, 0);
+			if (poly == null)
+			{
+				continue;
+			}
+
+			Color planColor = new Color(255, 140, 0);
+			graphics.setColor(planColor);
+			graphics.setStroke(new BasicStroke(STROKE_WIDTH));
+			graphics.draw(poly);
+			graphics.setColor(new Color(255, 140, 0, FILL_ALPHA));
+			graphics.fill(poly);
+		}
 	}
 
 	private void renderTaskTile(Graphics2D graphics, NearbyTask nearbyTask)
