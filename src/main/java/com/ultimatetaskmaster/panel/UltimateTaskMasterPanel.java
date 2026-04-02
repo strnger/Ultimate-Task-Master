@@ -90,6 +90,8 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private java.util.function.Consumer<String> onRemoveFromPlanCallback;
 	private java.util.function.Consumer<TaskData> onAddToPlanCallback;
 	private java.util.function.Consumer<TaskData> onRemoveFromPlanTaskCallback;
+	private java.util.function.BiConsumer<String, Boolean> onToggleShowLocationsCallback;
+	private java.util.Set<String> shownLocationTasks = new java.util.HashSet<>();
 
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
 	private List<TaskData> allTasks = Collections.emptyList();
@@ -423,6 +425,23 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.onRemoveFromPlanTaskCallback = callback;
 	}
 
+	public void setOnToggleShowLocations(java.util.function.BiConsumer<String, Boolean> callback)
+	{
+		this.onToggleShowLocationsCallback = callback;
+	}
+
+	public void setTaskLocationsShown(String taskName, boolean shown)
+	{
+		if (shown)
+		{
+			shownLocationTasks.add(taskName);
+		}
+		else
+		{
+			shownLocationTasks.remove(taskName);
+		}
+	}
+
 	// ========== Rebuild: All Tasks tab ==========
 
 	public void rebuildAllTasksList()
@@ -582,12 +601,12 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					if (locationService != null) {
 						List<LocationCluster> locations = locationService.getLocationsForTask(taskData.getStructId());
 						if (locations != null && !locations.isEmpty()) {
+							boolean isShown = shownLocationTasks.contains(planItem.getTaskName());
 							LocationButtonsPanel locationPanel = new LocationButtonsPanel(
 								planItem.getTaskName(),
 								locations,
-								onPinCallback,
-								planItem.getPinnedX(),
-								planItem.getPinnedY()
+								onToggleShowLocationsCallback,
+								isShown
 							);
 							itemWrapper.add(locationPanel);
 						}

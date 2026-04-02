@@ -113,6 +113,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
 
+	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
+
 	private Set<String> completedTaskNames = Collections.emptySet();
 
 	/**
@@ -155,6 +157,14 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 		panel.setOnRemoveFromPlanCallback(taskName -> {
 			planService.removeTask(taskName);
+			// Also hide locations from map if shown
+			java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(taskName);
+			if (points != null) {
+				for (TaskWorldMapPoint p : points) {
+					worldMapPointManager.remove(p);
+				}
+			}
+			panel.setTaskLocationsShown(taskName, false);
 			SwingUtilities.invokeLater(() -> {
 				panel.rebuildPlanList();
 				panel.rebuildAllTasksList();
@@ -166,6 +176,14 @@ public class UltimateTaskMasterPlugin extends Plugin
 		panel.setOnRemoveFromPlan(task -> {
 			if (task != null && planService != null) {
 				planService.removeTask(task.getName());
+				// Also hide locations from map if shown
+				java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(task.getName());
+				if (points != null) {
+					for (TaskWorldMapPoint p : points) {
+						worldMapPointManager.remove(p);
+					}
+				}
+				panel.setTaskLocationsShown(task.getName(), false);
 				SwingUtilities.invokeLater(() -> {
 					panel.rebuildPlanList();
 					panel.rebuildAllTasksList();
@@ -176,6 +194,41 @@ public class UltimateTaskMasterPlugin extends Plugin
 		});
 
 			panel.setOnAddToPlan(this::addTaskToPlan);
+
+		panel.setOnToggleShowLocations((taskName, show) -> {
+			if (show) {
+				// Find the task data
+				TaskData task = null;
+				for (TaskData t : taskDataProvider.getTasks()) {
+					if (t.getName().equals(taskName)) {
+						task = t;
+						break;
+					}
+				}
+				if (task != null && locationService != null) {
+					java.util.List<LocationCluster> locations = locationService.getLocationsForTask(task.getStructId());
+					if (locations != null) {
+						java.util.List<TaskWorldMapPoint> points = new java.util.ArrayList<>();
+						for (LocationCluster loc : locations) {
+							WorldPoint wp = new WorldPoint(loc.getX(), loc.getY(), 0);
+							TaskWorldMapPoint point = new TaskWorldMapPoint(wp, task);
+							worldMapPointManager.add(point);
+							points.add(point);
+						}
+						shownLocationPoints.put(taskName, points);
+					}
+				}
+			} else {
+				// Remove shown points for this task
+				java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(taskName);
+				if (points != null) {
+					for (TaskWorldMapPoint p : points) {
+						worldMapPointManager.remove(p);
+					}
+				}
+			}
+			panel.setTaskLocationsShown(taskName, show);
+		});
 
 		SwingUtilities.invokeLater(() ->
 		{

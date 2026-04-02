@@ -30,4 +30,4 @@ Set up a few tasks initially for nearby completion
 the algorithm tree for completing nearby tasks should look for nearby tasks (including via teleport, shortest path will be helpful here), then it will look for tasks close to that one, etc, and note all requirements/items for that task
 
 
-Excellent! Okay, next task is a BIG one! I want to integrate locations whenever available. This repo C:\Users\Strnger\Documents\Repos\NonPluginExamples\LeaguesMap is really cool. On the website, it shows the entire OSRS map, and then has a side panel with a list of tasks and where they can be completed! They key features I want from it (in a new "current plan" tab) are the list of tasks the user has selected (in their selection order), a list of places that task can be completed (I'm not sure how the program finds it, but when you add a task, it suggests possible coordinates), and the ability to "pin" those coordinates. Does all that make sense? If so, you may deploy a pack of up to 30 puppies to make it happen!
+Okay, great! go ahead and commit where we are and implement the features! you may use up to 20 puppies in parallel
