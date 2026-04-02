@@ -170,6 +170,12 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		add(cardPanel, BorderLayout.CENTER);
 	}
 
+	@Override
+	public Dimension getPreferredSize()
+	{
+		return new Dimension(PANEL_WIDTH + SCROLLBAR_WIDTH, super.getPreferredSize().height);
+	}
+
 	// ========== "All Tasks" card ==========
 
 	private JPanel buildAllTasksCard()
