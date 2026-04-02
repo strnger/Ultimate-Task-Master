@@ -11,6 +11,8 @@ import net.runelite.client.ui.overlay.worldmap.WorldMapPoint;
 /**
  * A clickable world map marker for a task location.
  *
+ * Used for both 'Near Me' nearby task markers and 'Current Plan' pinned location markers.
+ *
  * Uses jump-on-click so players can quickly navigate to task locations
  * on the world map. Color-coded by task tier.
  *
