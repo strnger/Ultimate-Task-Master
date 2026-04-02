@@ -17,8 +17,14 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.MenuAction;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.MenuEntryAdded;
+import net.runelite.api.widgets.ComponentID;
+import net.runelite.api.widgets.Widget;
+import net.runelite.client.util.ColorUtil;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -211,7 +217,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 						java.util.List<TaskWorldMapPoint> points = new java.util.ArrayList<>();
 						for (LocationCluster loc : locations) {
 							WorldPoint wp = new WorldPoint(loc.getX(), loc.getY(), 0);
-							TaskWorldMapPoint point = new TaskWorldMapPoint(wp, task);
+							TaskWorldMapPoint point = new TaskWorldMapPoint(wp, task, new Color(255, 140, 0), 14);
 							worldMapPointManager.add(point);
 							points.add(point);
 						}
@@ -306,6 +312,71 @@ public class UltimateTaskMasterPlugin extends Plugin
 		log.info("Task completed: {}", event.getTaskName());
 
 		SwingUtilities.invokeLater(() -> panel.setCompletedTaskNames(completedTaskNames));
+	}
+
+	@Subscribe
+	public void onMenuEntryAdded(MenuEntryAdded event)
+	{
+		// Only add menu entries when we have shown location points on the map
+		if (shownLocationPoints.isEmpty())
+		{
+			return;
+		}
+
+		final Widget map = client.getWidget(ComponentID.WORLD_MAP_MAPVIEW);
+		if (map == null)
+		{
+			return;
+		}
+
+		if (!map.getBounds().contains(
+			client.getMouseCanvasPosition().getX(),
+			client.getMouseCanvasPosition().getY()))
+		{
+			return;
+		}
+
+		// Get the world point the mouse is hovering over on the map
+		WorldPoint mouseWorldPoint = client.getRenderOverview().getMouseLocation();
+		if (mouseWorldPoint == null)
+		{
+			return;
+		}
+
+		// Check if mouse is near any of our shown location dots
+		for (java.util.Map.Entry<String, java.util.List<TaskWorldMapPoint>> entry : shownLocationPoints.entrySet())
+		{
+			String taskName = entry.getKey();
+			for (TaskWorldMapPoint point : entry.getValue())
+			{
+				WorldPoint pointWp = point.getWorldPoint();
+				// Within 5 tiles of a dot
+				if (mouseWorldPoint.distanceTo2D(pointWp) <= 5)
+				{
+					client.createMenuEntry(0)
+						.setOption("Pin location")
+						.setTarget(ColorUtil.wrapWithColorTag(taskName, new java.awt.Color(255, 140, 0)))
+						.setType(MenuAction.RUNELITE)
+						.onClick(e -> {
+							pinLocationForTask(taskName, pointWp.getX(), pointWp.getY());
+						});
+					return; // Only add one menu entry
+				}
+			}
+		}
+	}
+
+	private void pinLocationForTask(String taskName, int x, int y)
+	{
+		if (planService == null)
+		{
+			return;
+		}
+		planService.pinLocation(taskName, x, y);
+		SwingUtilities.invokeLater(() -> {
+			panel.rebuildPlanList();
+			updateWorldMapMarkers();
+		});
 	}
 
 	/**
