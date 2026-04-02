@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolTip;
-import javax.swing.SwingConstants;
 import javax.swing.ToolTipManager;
 import javax.swing.border.EmptyBorder;
 import com.ultimatetaskmaster.data.TaskData;
@@ -28,33 +27,43 @@ import net.runelite.client.util.SwingUtil;
  * Layout follows tasks-tracker's TaskPanel pattern exactly.
  *
  * Layout:
- *   [tier bar] [name          ] [+ btn]
+ *   [tier bar] [name          ] [+/- btn]
  *              [category · pts]
  */
 public class TaskRowPanel extends JPanel
 {
 	static final Color COMPLETED_BG = new Color(0, 50, 0);
 
+	private static final javax.swing.ImageIcon PLUS_ICON = new javax.swing.ImageIcon(
+		net.runelite.client.util.ImageUtil.loadImageResource(
+			com.ultimatetaskmaster.UltimateTaskMasterPlugin.class, "plus.png"));
+	private static final javax.swing.ImageIcon MINUS_ICON = new javax.swing.ImageIcon(
+		net.runelite.client.util.ImageUtil.loadImageResource(
+			com.ultimatetaskmaster.UltimateTaskMasterPlugin.class, "minus.png"));
+
 	@Getter
 	private final TaskData task;
 	@Getter
 	private final boolean completed;
 	private final Integer distance;
+	private boolean isInPlan;
 
 	private Consumer<TaskData> onAddToPlan;
+	private Consumer<TaskData> onRemoveFromPlan;
 
 	private final JPanel container;
 	private final JPanel body;
 	private final JPanel buttons;
 	private Color baseBackground;
 
-	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow)
+	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow, boolean isInPlan)
 	{
 		super(new BorderLayout());
 		setAlignmentX(LEFT_ALIGNMENT);
 		this.task = task;
 		this.completed = completed;
 		this.distance = distance;
+		this.isInPlan = isInPlan;
 
 		setLayout(new BorderLayout());
 		setBorder(new EmptyBorder(0, 0, 7, 0));
@@ -98,23 +107,29 @@ public class TaskRowPanel extends JPanel
 		buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
 		buttons.setBorder(new EmptyBorder(0, 0, 0, 7));
 
-		javax.swing.ImageIcon plusIcon = new javax.swing.ImageIcon(
-			net.runelite.client.util.ImageUtil.loadImageResource(
-				com.ultimatetaskmaster.UltimateTaskMasterPlugin.class, "plus.png"));
-		JToggleButton addBtn = new JToggleButton(plusIcon);
-		addBtn.setSelectedIcon(plusIcon);
-		addBtn.setPreferredSize(new Dimension(8, 8));
-		addBtn.setToolTipText("Add to plan");
-		addBtn.setBorder(new EmptyBorder(5, 0, 5, 0));
-		addBtn.addActionListener(e -> {
-			if (onAddToPlan != null)
+		// Create toggle button (icons are static constants - loaded once, shared by all rows)
+		JToggleButton planBtn = new JToggleButton();
+		planBtn.setIcon(PLUS_ICON);
+		planBtn.setSelectedIcon(MINUS_ICON);
+		planBtn.setSelected(isInPlan);
+		planBtn.setPreferredSize(new Dimension(16, 16));
+		planBtn.setToolTipText(isInPlan ? "Remove from plan" : "Add to plan");
+		planBtn.setBorder(new EmptyBorder(5, 0, 5, 0));
+		planBtn.addActionListener(e -> {
+			boolean nowSelected = planBtn.isSelected();
+			if (nowSelected && onAddToPlan != null)
 			{
 				onAddToPlan.accept(task);
+				planBtn.setToolTipText("Remove from plan");
 			}
-			addBtn.setSelected(false);
+			else if (!nowSelected && onRemoveFromPlan != null)
+			{
+				onRemoveFromPlan.accept(task);
+				planBtn.setToolTipText("Add to plan");
+			}
 		});
-		SwingUtil.removeButtonDecorations(addBtn);
-		buttons.add(addBtn);
+		SwingUtil.removeButtonDecorations(planBtn);
+		buttons.add(planBtn);
 
 		container.add(buttons, BorderLayout.EAST);
 
@@ -151,6 +166,11 @@ public class TaskRowPanel extends JPanel
 	public void setOnAddToPlan(Consumer<TaskData> callback)
 	{
 		this.onAddToPlan = callback;
+	}
+
+	public void setOnRemoveFromPlan(Consumer<TaskData> callback)
+	{
+		this.onRemoveFromPlan = callback;
 	}
 
 	@Override

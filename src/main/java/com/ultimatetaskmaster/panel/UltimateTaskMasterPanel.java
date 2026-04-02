@@ -89,6 +89,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private java.util.function.BiConsumer<String, LocationCluster> onPinCallback;
 	private java.util.function.Consumer<String> onRemoveFromPlanCallback;
 	private java.util.function.Consumer<TaskData> onAddToPlanCallback;
+	private java.util.function.Consumer<TaskData> onRemoveFromPlanTaskCallback;
 
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
 	private List<TaskData> allTasks = Collections.emptyList();
@@ -417,9 +418,14 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.onAddToPlanCallback = callback;
 	}
 
+	public void setOnRemoveFromPlan(java.util.function.Consumer<TaskData> callback)
+	{
+		this.onRemoveFromPlanTaskCallback = callback;
+	}
+
 	// ========== Rebuild: All Tasks tab ==========
 
-	private void rebuildAllTasksList()
+	public void rebuildAllTasksList()
 	{
 		allTaskListContainer.removeAll();
 
@@ -444,12 +450,15 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			allStatusLabel.setText(String.format(
 				"%d tasks shown (%d/%d completed)", filtered.size(), completedCount, allTasks.size()));
 
+			Set<String> planNames = getPlanTaskNames();
 			for (int i = 0; i < filtered.size(); i++)
 			{
 				TaskData t = filtered.get(i);
 				boolean done = completedTaskNames.contains(t.getName());
-				TaskRowPanel row = new TaskRowPanel(t, done, null, i % 2 == 0);
+				boolean inPlan = planNames.contains(t.getName());
+				TaskRowPanel row = new TaskRowPanel(t, done, null, i % 2 == 0, inPlan);
 				row.setOnAddToPlan(onAddToPlanCallback);
+				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 				allTaskListContainer.add(row);
 			}
 		}
@@ -460,7 +469,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 	// ========== Rebuild: Nearby tab ==========
 
-	private void rebuildNearbyList()
+	public void rebuildNearbyList()
 	{
 		nearbyTaskListContainer.removeAll();
 
@@ -496,13 +505,16 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			nearbyStatusLabel.setText(filtered.size() + " nearby task"
 				+ (filtered.size() != 1 ? "s" : "") + " found");
 
+			Set<String> planNames = getPlanTaskNames();
 			for (int i = 0; i < filtered.size(); i++)
 			{
 				NearbyTask nt = filtered.get(i);
 				boolean done = completedTaskNames.contains(nt.getTask().getName());
+				boolean inPlan = planNames.contains(nt.getTask().getName());
 				TaskRowPanel nearbyRow = new TaskRowPanel(
-					nt.getTask(), done, nt.getDistance(), i % 2 == 0);
+					nt.getTask(), done, nt.getDistance(), i % 2 == 0, inPlan);
 				nearbyRow.setOnAddToPlan(onAddToPlanCallback);
+				nearbyRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 				nearbyTaskListContainer.add(nearbyRow);
 			}
 		}
@@ -543,12 +555,46 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 			for (int i = 0; i < items.size(); i++)
 			{
-				PlanItem item = items.get(i);
-				TaskData t = findTaskByName(item.getTaskName());
-				java.util.List<LocationCluster> locs = locationService != null && t != null
-					? locationService.getLocationsForTask(t.getStructId())
-					: java.util.Collections.emptyList();
-				planListContainer.add(new PlanItemPanel(item, t, locs, i % 2 == 0, onPinCallback, onRemoveFromPlanCallback));
+				PlanItem planItem = items.get(i);
+				
+				// Find TaskData for this plan item
+				TaskData taskData = allTasks.stream()
+					.filter(t -> t.getName().equals(planItem.getTaskName()))
+					.findFirst()
+					.orElse(null);
+				
+				if (taskData != null) {
+					boolean done = completedTaskNames.contains(taskData.getName());
+					
+					// Wrapper panel to stack TaskRowPanel + LocationButtonsPanel
+					JPanel itemWrapper = new JPanel();
+					itemWrapper.setLayout(new BoxLayout(itemWrapper, BoxLayout.Y_AXIS));
+					itemWrapper.setOpaque(false);
+					itemWrapper.setAlignmentX(LEFT_ALIGNMENT);
+					
+					// Task row (same as All Tasks, but isInPlan=true always)
+					TaskRowPanel taskRow = new TaskRowPanel(taskData, done, null, i % 2 == 0, true);
+					taskRow.setOnAddToPlan(onAddToPlanCallback);
+					taskRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
+					itemWrapper.add(taskRow);
+					
+					// Location buttons panel (the extra piece for Plan tab)
+					if (locationService != null) {
+						List<LocationCluster> locations = locationService.getLocationsForTask(taskData.getStructId());
+						if (locations != null && !locations.isEmpty()) {
+							LocationButtonsPanel locationPanel = new LocationButtonsPanel(
+								planItem.getTaskName(),
+								locations,
+								onPinCallback,
+								planItem.getPinnedX(),
+								planItem.getPinnedY()
+							);
+							itemWrapper.add(locationPanel);
+						}
+					}
+					
+					planListContainer.add(itemWrapper);
+				}
 			}
 		}
 
@@ -566,6 +612,17 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			}
 		}
 		return null;
+	}
+
+	private Set<String> getPlanTaskNames()
+	{
+		if (planService == null)
+		{
+			return Collections.emptySet();
+		}
+		return planService.getItems().stream()
+			.map(PlanItem::getTaskName)
+			.collect(Collectors.toSet());
 	}
 
 	// ========== Comparators ==========

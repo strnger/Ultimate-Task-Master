@@ -157,11 +157,25 @@ public class UltimateTaskMasterPlugin extends Plugin
 			planService.removeTask(taskName);
 			SwingUtilities.invokeLater(() -> {
 				panel.rebuildPlanList();
+				panel.rebuildAllTasksList();
+				panel.rebuildNearbyList();
 				updateWorldMapMarkers();
 			});
 		});
 
-		panel.setOnAddToPlan(this::addTaskToPlan);
+		panel.setOnRemoveFromPlan(task -> {
+			if (task != null && planService != null) {
+				planService.removeTask(task.getName());
+				SwingUtilities.invokeLater(() -> {
+					panel.rebuildPlanList();
+					panel.rebuildAllTasksList();
+					panel.rebuildNearbyList();
+					updateWorldMapMarkers();
+				});
+			}
+		});
+
+			panel.setOnAddToPlan(this::addTaskToPlan);
 
 		SwingUtilities.invokeLater(() ->
 		{
