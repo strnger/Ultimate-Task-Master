@@ -1,0 +1,106 @@
+
+`TaskCompletionListener.java` — Updated with Dink's proven regex:
+ java ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// Copied verbatim from Dink's LeaguesNotifier (the gold standard)
+Pattern.compile("Congratulations, you've completed an? (?<tier>\\w+) task: (?<task>.+)\\.")
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+• Matches: "Congratulations, you've completed an easy task: 1 Sarachnis Kill."
+• Captures: tier="easy", task="1 Sarachnis Kill"
+• The trailing \\. matches the period at the end (which the user confirmed)
+• Uses Text.removeTags() just like Dink's Utils.sanitize()
+• PendingCompletion inner class queues parsed results until the next GameTick (double-pop safety)
+• Package-visible TASK_PATTERN constant for easy unit testing
+
+`TaskCompletionEvent.java` — Added tier field:
+• Now includes the difficulty tier as a lowercase string ("easy", "medium", etc.)
+• @Nullable since varbit-based detection might not know the tier
+• Clear javadoc explaining the swappability contract:
+
+To add a new detection method:
+ 1. Create a new class (like VarbitCompletionDetector)
+ 2. Inject EventBus and call eventBus.post(new TaskCompletionEvent(...))
+ 3. Register it in the plugin's startUp(), unregister in shutDown()
+That's it. No other code changes needed.
+
+Swappability Architecture
+
+The TaskCompletionEvent is the contract boundary. The plugin subscribes to it and doesn't care who fires it:
+
+[ChatMessageDetector] ──fires──→ TaskCompletionEvent ←──subscribes── [Plugin]
+[VarbitDetector]      ──fires──→ TaskCompletionEvent ←──subscribes── [Plugin]  (future)
+[WidgetDetector]      ──fires──→ TaskCompletionEvent ←──subscribes── [Plugin]  (future)
+
+To swap out chat detection for something better: just write a new class that eventBus.post(new TaskCompletionEvent(...)) and register it. Zero changes to the plugin, store, resolver, or UI.
+
+Testing with Manual Messages
+
+As the user noted, you can send fake GAMEMESSAGE chat messages in-game via developer tools to build up the initial database. The listener will pick them up and record completion locations. This is documented in the code comments.
+
+
+
+
+
+
+
+
+
+
+
+
+§1 Backend Server — WikiSync is no longer a one-liner. Now has detailed coverage of:
+• Manifest pattern (server tells plugin what to collect)
+• Delta-only submission (only POST changed values)
+• Quadratic backoff retry strategy
+• Scheduled uploads with @Schedule
+• Profile awareness for leagues vs main game
+• Collection log sync via base64 BitSet
+• Backend API architecture: Express + TypeORM + MySQL + Docker Compose
+• Stub server for offline testing
+
+§2 Crowdsourcing — Added WikiSync merge pattern reference for how our server should handle data updates ({ ...old, ...new } spread)
+
+§3 Side Panel — Added WikiSync SyncButtonManager as reference for injecting custom buttons inside game interfaces (collection log). Future possibility: add "Near Me" button inside the leagues task interface itself.
+
+§4 Wiki Data — Added WikiSync manifest version check pattern, and parseCacheForClog() as reference for reading game cache data via StructComposition + EnumComposition traversal.
+
+§7 Local Persistence — Added WikiSync hidden config pattern (wikiSyncVersion key) as reference for tracking sync state.
+
+§8 Task Completion Detection — MASSIVE expansion, now has 3 documented methods:
+• Method 1: Chat Messages (MVP) — Dink regex, exact message format, manual testing instructions
+• Method 2: Bitpacked Varp Reading (next) — Complete implementation reference with:
+  ◦ All 62 league task varp IDs (from wikisync-api/src/runelite/data/leagueTaskVarps.json)
+  ◦ 4 varp groups totaling 1,984 task slots
+  ◦ JavaScript algorithm from LeagueTransformer.ts
+  ◦ Full Java equivalent code for VarbitCompletionDetector
+  ◦ Manifest-driven varp list concept
+• Method 3: Widget Popup (supplementary) — described as secondary validation
+
+New sections added:
+• "Backend Architecture Reference (from WikiSync)" — complete data model comparison, submission flow, dev environment setup reference
+• "MVP Implementation Status" under Feature 1 — documents what's actually built
+• "Bootstrapping the Location Database" — how to seed initial data
+• Updated Data Architecture diagram with detection layer detail
+• In-Game UI Integration section in Phase 3
+
+Code Comments Updated (7 files)
+
+┌──────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ File                         │ What Changed                                                                                            │
+├──────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ TaskCompletionListener.java  │ Full javadoc with varp IDs, bit-decoding algorithm from WikiSync API, manifest-driven varp list concept │
+│ CompletionLocationStore.java │ WikiSync submission flow reference, quadratic backoff, append-only vs delta comparison                  │
+│ LocalCompletionStore.java    │ WikiSync JSON blob comparison, hidden config pattern for sync tracking, future HTTP sync flow           │
+│ TaskLocationResolver.java    │ Server-side aggregation reference (WikiSync LeagueTransformer pattern)                                  │
+│ TaskDataProvider.java        │ WikiSync manifest pattern for auto-fetching task updates                                                │
+│ StaticTaskDataProvider.java  │ WikiSync checkManifest() as reference for version-check caching                                         │
+│ TaskCompletionEvent.java     │ Already had good swappability docs (unchanged)                                                          │
+└──────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Key Takeaways from WikiSync for Us
+
+• Manifest-driven everything: Server tells plugin what data to collect. New leagues = update manifest, zero plugin code changes.
+• The varp IDs are REAL: 62 varps covering 1,984 task slots. These are the exact varps to monitor for Method 2 detection.
+• Delta-only submission saves bandwidth: WikiSync only sends changed values. Our completion records are append-only (simpler), but task state could use this pattern.
+• Quadratic backoff is clever: Retry on perfect squares (1, 4, 9, 16, 25...) — lighter than exponential, just as effective.
+• `SyncButtonManager` is advanced UI: Injecting custom widgets into existing game interfaces. Cool for Phase 3.
+• `stub_server.py` is genius: A 40-line Falcon server that mimics the real backend. We should do the same.
