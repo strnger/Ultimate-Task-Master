@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToolTip;
@@ -44,6 +46,8 @@ public class TaskRowPanel extends JPanel
 	@Getter
 	private final boolean completed;
 	private final Integer distance;
+
+	private Consumer<TaskData> onAddToPlan;
 
 	private final JPanel container;
 	private final JPanel body;
@@ -110,6 +114,22 @@ public class TaskRowPanel extends JPanel
 		pointsLabel.setAlignmentX(RIGHT_ALIGNMENT);
 		rightSide.add(pointsLabel);
 
+		JButton addPlanBtn = new JButton("+");
+		addPlanBtn.setFont(FontManager.getRunescapeSmallFont());
+		addPlanBtn.setForeground(new Color(0, 200, 100));
+		addPlanBtn.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		addPlanBtn.setBorder(new EmptyBorder(0, 3, 0, 3));
+		addPlanBtn.setFocusPainted(false);
+		addPlanBtn.setToolTipText("Add to plan");
+		addPlanBtn.setAlignmentX(RIGHT_ALIGNMENT);
+		addPlanBtn.addActionListener(e -> {
+			if (onAddToPlan != null)
+			{
+				onAddToPlan.accept(task);
+			}
+		});
+		rightSide.add(addPlanBtn);
+
 		if (distance != null)
 		{
 			JLabel distLabel = new JLabel(distance + " tiles");
@@ -157,6 +177,11 @@ public class TaskRowPanel extends JPanel
 
 		// --- Tooltip ---
 		ToolTipManager.sharedInstance().registerComponent(this);
+	}
+
+	public void setOnAddToPlan(Consumer<TaskData> callback)
+	{
+		this.onAddToPlan = callback;
 	}
 
 	@Override
