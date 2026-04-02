@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 import javax.swing.JToolTip;
 import javax.swing.SwingConstants;
 import javax.swing.ToolTipManager;
@@ -18,27 +19,20 @@ import com.ultimatetaskmaster.data.TaskSkillRequirement;
 import lombok.Getter;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
+import net.runelite.client.ui.PluginPanel;
+import net.runelite.client.util.SwingUtil;
 
 /**
  * A single task row in the task list panel.
- *
- * Visual pattern copied from tasks-tracker's TaskPanel:
- * - BorderLayout container with tier icon/bar on WEST, body in CENTER, metadata on EAST
- * - Background color encodes state: normal, completed (green tint), unqualified (red tint)
- * - RunescapeSmallFont for consistency with other RuneLite panels
- * - Hover highlight for interactivity feedback
- * - Rich tooltip on hover with full task details
+ * Layout follows tasks-tracker's TaskPanel pattern exactly.
  *
  * Layout:
- *   [tier bar 4px] [name          ] [points]
- *                  [category/skill] [area  ]
+ *   [tier bar] [name          ] [+ btn]
+ *              [category · pts]
  */
 public class TaskRowPanel extends JPanel
 {
-	/** Background for completed tasks — green tint, matches tasks-tracker. */
 	static final Color COMPLETED_BG = new Color(0, 50, 0);
-	/** Background for odd rows to create visual banding. */
-	private static final Color ODD_ROW_BG = new Color(44, 44, 44);
 
 	@Getter
 	private final TaskData task;
@@ -50,129 +44,88 @@ public class TaskRowPanel extends JPanel
 
 	private final JPanel container;
 	private final JPanel body;
+	private final JPanel buttons;
 	private Color baseBackground;
 
-	/**
-	 * @param task      the task to display
-	 * @param completed whether this task has been completed by the player
-	 * @param distance  tiles from player (null if no location / not in "nearby" mode)
-	 * @param isOddRow  for alternating row backgrounds
-	 */
 	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow)
 	{
 		super(new BorderLayout());
-		setAlignmentX(LEFT_ALIGNMENT);
 		this.task = task;
 		this.completed = completed;
 		this.distance = distance;
 
-		setBorder(new EmptyBorder(0, 0, 1, 0));
+		setLayout(new BorderLayout());
+		setBorder(new EmptyBorder(0, 0, 7, 0));
 
-		// --- Container with padding ---
+		// --- Highlight wrapper (tasks-tracker pattern) ---
+		JPanel highlightContainer = new JPanel(new BorderLayout());
+
+		// --- Main container ---
 		container = new JPanel(new BorderLayout());
-		container.setBorder(new EmptyBorder(4, 0, 3, 0));
+		container.setBorder(new EmptyBorder(7, 7, 6, 0));
 
-		// --- Tier color bar (WEST) ---
-		JPanel tierBar = new JPanel();
+		// --- Tier color bar (WEST) - as a JLabel for consistency ---
+		JLabel tierBar = new JLabel();
+		tierBar.setMinimumSize(new Dimension(4, 0));
 		tierBar.setPreferredSize(new Dimension(4, 0));
+		tierBar.setOpaque(true);
 		tierBar.setBackground(task.getTier().getColor());
 		container.add(tierBar, BorderLayout.WEST);
 
-		// --- Body: name + category/skill (CENTER) ---
-		body = new JPanel();
-		body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
-		body.setOpaque(false);
-		body.setBorder(new EmptyBorder(0, 6, 0, 4));
+		// --- Body (CENTER) - using BorderLayout like tasks-tracker ---
+		body = new JPanel(new BorderLayout());
+		body.setBorder(new EmptyBorder(0, 6, 0, 0));
 
+		// Name (NORTH of body)
 		JLabel nameLabel = new JLabel(task.getName());
 		nameLabel.setFont(FontManager.getRunescapeSmallFont());
 		nameLabel.setForeground(Color.WHITE);
-		body.add(nameLabel);
+		body.add(nameLabel, BorderLayout.NORTH);
 
-		String categorySkill = buildCategorySkillText(task);
-		if (!categorySkill.isEmpty())
-		{
-			JLabel categoryLabel = new JLabel(categorySkill);
-			categoryLabel.setFont(FontManager.getRunescapeSmallFont());
-			categoryLabel.setForeground(new Color(200, 180, 120)); // gold-ish color for category
-			body.add(categoryLabel);
-		}
+		// Subtitle: category + points + area (CENTER of body)
+		String subtitle = buildSubtitle(task, distance);
+		JLabel subtitleLabel = new JLabel(subtitle);
+		subtitleLabel.setFont(FontManager.getRunescapeSmallFont());
+		subtitleLabel.setForeground(Color.GRAY);
+		body.add(subtitleLabel, BorderLayout.CENTER);
 
 		container.add(body, BorderLayout.CENTER);
 
-		// --- Right side: points + area/distance (EAST) ---
-		JPanel rightSide = new JPanel();
-		rightSide.setLayout(new BoxLayout(rightSide, BoxLayout.Y_AXIS));
-		rightSide.setOpaque(false);
-		rightSide.setBorder(new EmptyBorder(0, 4, 0, 7));
+		// --- Buttons (EAST) - following tasks-tracker pattern ---
+		buttons = new JPanel();
+		buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
+		buttons.setBorder(new EmptyBorder(0, 0, 0, 7));
 
-		JLabel pointsLabel = new JLabel(task.getPoints() + " pts");
-		pointsLabel.setFont(FontManager.getRunescapeSmallFont());
-		pointsLabel.setForeground(task.getTier().getColor());
-		pointsLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		pointsLabel.setAlignmentX(RIGHT_ALIGNMENT);
-		rightSide.add(pointsLabel);
-
-		JLabel addPlanLabel = new JLabel("+");
-		addPlanLabel.setFont(FontManager.getRunescapeBoldFont());
-		addPlanLabel.setForeground(new Color(0, 200, 83));
-		addPlanLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		addPlanLabel.setAlignmentX(RIGHT_ALIGNMENT);
-		addPlanLabel.setToolTipText("Add to plan");
-		addPlanLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		addPlanLabel.addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mousePressed(MouseEvent e)
+		JToggleButton addBtn = new JToggleButton();
+		addBtn.setPreferredSize(new Dimension(10, 10));
+		addBtn.setFont(FontManager.getRunescapeBoldFont());
+		addBtn.setText("+");
+		addBtn.setForeground(new Color(0, 200, 83));
+		addBtn.setToolTipText("Add to plan");
+		addBtn.setBorder(new EmptyBorder(3, 0, 3, 0));
+		addBtn.addActionListener(e -> {
+			if (onAddToPlan != null)
 			{
-				if (onAddToPlan != null)
-				{
-					onAddToPlan.accept(task);
-				}
+				onAddToPlan.accept(task);
 			}
-			@Override
-			public void mouseEntered(MouseEvent e)
-			{
-				addPlanLabel.setForeground(Color.WHITE);
-			}
-			@Override
-			public void mouseExited(MouseEvent e)
-			{
-				addPlanLabel.setForeground(new Color(0, 200, 83));
-			}
+			addBtn.setSelected(false);
 		});
-		rightSide.add(addPlanLabel);
+		SwingUtil.removeButtonDecorations(addBtn);
+		buttons.add(addBtn);
 
-		if (distance != null)
-		{
-			JLabel distLabel = new JLabel(distance + " tiles");
-			distLabel.setFont(FontManager.getRunescapeSmallFont());
-			distLabel.setForeground(getDistanceColor(distance));
-			distLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-			distLabel.setAlignmentX(RIGHT_ALIGNMENT);
-			rightSide.add(distLabel);
-		}
-		else
-		{
-			JLabel areaLabel = new JLabel(task.getArea().getDisplayName());
-			areaLabel.setFont(FontManager.getRunescapeSmallFont());
-			areaLabel.setForeground(Color.GRAY);
-			areaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-			areaLabel.setAlignmentX(RIGHT_ALIGNMENT);
-			rightSide.add(areaLabel);
-		}
+		container.add(buttons, BorderLayout.EAST);
 
-		container.add(rightSide, BorderLayout.EAST);
+		// --- Wire it all together (tasks-tracker pattern) ---
+		highlightContainer.add(container, BorderLayout.NORTH);
+		add(highlightContainer, BorderLayout.NORTH);
 
-		// --- Background color ---
+		// --- Background ---
 		baseBackground = completed ? COMPLETED_BG
-			: isOddRow ? ODD_ROW_BG
+			: isOddRow ? new Color(44, 44, 44)
 			: ColorScheme.DARKER_GRAY_COLOR;
 		setBackgroundColor(baseBackground);
 
-		add(container, BorderLayout.CENTER);
-
-		// --- Hover effect (tasks-tracker pattern) ---
+		// --- Hover ---
 		addMouseListener(new MouseAdapter()
 		{
 			@Override
@@ -214,13 +167,41 @@ public class TaskRowPanel extends JPanel
 	@Override
 	public Dimension getMaximumSize()
 	{
-		return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
+		return new Dimension(PluginPanel.PANEL_WIDTH, getPreferredSize().height);
 	}
 
 	private void setBackgroundColor(Color color)
 	{
 		container.setBackground(color);
 		body.setBackground(color);
+		buttons.setBackground(color);
+	}
+
+	private static String buildSubtitle(TaskData task, Integer distance)
+	{
+		StringBuilder sb = new StringBuilder();
+
+		// Category
+		if (task.getCategory() != null && !task.getCategory().isEmpty())
+		{
+			sb.append(task.getCategory());
+		}
+
+		// Points
+		sb.append(sb.length() > 0 ? " \u00b7 " : "");
+		sb.append(task.getPoints()).append(" pts");
+
+		// Area or distance
+		if (distance != null)
+		{
+			sb.append(" \u00b7 ").append(distance).append(" tiles");
+		}
+		else
+		{
+			sb.append(" \u00b7 ").append(task.getArea().getDisplayName());
+		}
+
+		return sb.toString();
 	}
 
 	private String buildTooltip()
@@ -247,7 +228,7 @@ public class TaskRowPanel extends JPanel
 
 		if (completed)
 		{
-			sb.append("<br><b style='color:#22b14d'>✔ Completed</b><br>");
+			sb.append("<br><b style='color:#22b14d'>\u2714 Completed</b><br>");
 		}
 
 		if (task.getCompletionPct() != null)
@@ -261,7 +242,7 @@ public class TaskRowPanel extends JPanel
 			sb.append("<br>Requirements:<br>");
 			for (TaskSkillRequirement req : task.getRequirements())
 			{
-				sb.append("&bull; ").append(req.getLevel()).append(" ")
+				sb.append("\u2022 ").append(req.getLevel()).append(" ")
 					.append(req.getSkill()).append("<br>");
 			}
 		}
@@ -270,36 +251,4 @@ public class TaskRowPanel extends JPanel
 		sb.append("</body></html>");
 		return sb.toString();
 	}
-
-	private static String buildCategorySkillText(TaskData task)
-	{
-		StringBuilder sb = new StringBuilder();
-		if (task.getCategory() != null && !task.getCategory().isEmpty())
-		{
-			sb.append(task.getCategory());
-		}
-		if (task.getSkill() != null && !task.getSkill().isEmpty() && !"All".equals(task.getSkill()))
-		{
-			if (sb.length() > 0)
-			{
-				sb.append(" \u2022 ");
-			}
-			sb.append(task.getSkill());
-		}
-		return sb.toString();
-	}
-
-	private static Color getDistanceColor(int distance)
-	{
-		if (distance <= 10)
-		{
-			return new Color(34, 177, 77);
-		}
-		if (distance <= 50)
-		{
-			return new Color(210, 193, 53);
-		}
-		return Color.WHITE;
-	}
-
 }
