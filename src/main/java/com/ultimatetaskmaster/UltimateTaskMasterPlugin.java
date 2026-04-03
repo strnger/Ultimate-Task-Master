@@ -5,6 +5,7 @@ import com.google.inject.Provides;
 import java.time.temporal.ChronoUnit;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Rectangle;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Collections;
@@ -20,6 +21,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.widgets.ComponentID;
@@ -336,8 +338,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 			return;
 		}
 
-		// Get the world point the mouse is hovering over on the map
-		WorldPoint mouseWorldPoint = client.getRenderOverview().getMouseLocation();
+		// Calculate the world point the mouse is hovering over on the map
+		WorldPoint mouseWorldPoint = getMouseWorldPointOnMap();
 		if (mouseWorldPoint == null)
 		{
 			return;
@@ -364,6 +366,31 @@ public class UltimateTaskMasterPlugin extends Plugin
 				}
 			}
 		}
+	}
+
+	/**
+	 * Converts mouse canvas position to a world point on the world map.
+	 * Adapted from shortest-path plugin's calculateMapPoint approach.
+	 */
+	private WorldPoint getMouseWorldPointOnMap()
+	{
+		Widget map = client.getWidget(ComponentID.WORLD_MAP_MAPVIEW);
+		if (map == null)
+		{
+			return null;
+		}
+
+		WorldMap worldMap = client.getWorldMap();
+		float zoom = worldMap.getWorldMapZoom();
+		net.runelite.api.Point center = worldMap.getWorldMapPosition();
+		Rectangle bounds = map.getBounds();
+
+		net.runelite.api.Point mouse = client.getMouseCanvasPosition();
+
+		int dx = (int) ((mouse.getX() - bounds.getCenterX()) / zoom);
+		int dy = (int) ((-(mouse.getY() - bounds.getCenterY())) / zoom);
+
+		return new WorldPoint(center.getX() + dx, center.getY() + dy, 0);
 	}
 
 	private void pinLocationForTask(String taskName, int x, int y)
