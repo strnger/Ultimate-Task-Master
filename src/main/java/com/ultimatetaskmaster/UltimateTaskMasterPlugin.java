@@ -704,7 +704,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 			enrichedTasks.isEmpty() ? taskDataProvider.getTasks() : enrichedTasks,
 			playerLocation,
 			config.searchRadius(),
-			sort
+			sort,
+			locationService
 		);
 
 		SwingUtilities.invokeLater(() -> panel.updateResults(nearbyTasks));

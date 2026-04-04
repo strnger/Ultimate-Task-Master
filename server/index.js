@@ -207,7 +207,7 @@ app.get('/api/locations/clustered', (req, res) => {
       // Apply threshold filter and build results
       for (const cluster of clusters) {
         const pct = cluster.hits / totalHits;
-        if (pct >= MIN_CLUSTER_PCT) {
+        if (pct >= MIN_CLUSTER_PCT || cluster.hits >= 100) {
           results.push({
             task_name: task.task_name,
             struct_id: parseInt(structId),

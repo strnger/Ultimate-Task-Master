@@ -1,8 +1,8 @@
 package com.ultimatetaskmaster.data;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import net.runelite.api.coords.WorldPoint;
 
 /**
@@ -28,14 +28,67 @@ public final class SpatialTaskQuery
 		List<TaskData> allTasks,
 		WorldPoint origin,
 		int radius,
+		SortCriteria sortBy,
+		TaskLocationService locationService)
+	{
+		List<NearbyTask> results = new ArrayList<>();
+
+		for (TaskData task : allTasks)
+		{
+			// Check all location clusters for this task
+			WorldPoint bestLocation = null;
+			int bestDistance = Integer.MAX_VALUE;
+
+			if (locationService != null)
+			{
+				List<LocationCluster> clusters = locationService.getLocationsForTask(task.getStructId());
+				if (clusters != null)
+				{
+					for (LocationCluster cluster : clusters)
+					{
+						WorldPoint clusterPoint = new WorldPoint(cluster.getX(), cluster.getY(), 0);
+						int dist = distance2D(origin, clusterPoint);
+						if (dist <= radius && dist < bestDistance)
+						{
+							bestDistance = dist;
+							bestLocation = clusterPoint;
+						}
+					}
+				}
+			}
+
+			// Fall back to TaskData.location if no cluster matches
+			if (bestLocation == null && task.getLocation() != null)
+			{
+				int dist = distance2D(origin, task.getLocation());
+				if (dist <= radius)
+				{
+					bestDistance = dist;
+					bestLocation = task.getLocation();
+				}
+			}
+
+			if (bestLocation != null)
+			{
+				results.add(new NearbyTask(task, bestLocation, bestDistance));
+			}
+		}
+
+		results.sort(getSorter(sortBy));
+		return results;
+	}
+
+	/**
+	 * Backward-compatible overload without TaskLocationService.
+	 * Falls back to using only TaskData.location.
+	 */
+	public static List<NearbyTask> findNearby(
+		List<TaskData> allTasks,
+		WorldPoint origin,
+		int radius,
 		SortCriteria sortBy)
 	{
-		return allTasks.stream()
-			.filter(task -> task.getLocation() != null)
-			.map(task -> new NearbyTask(task, task.getLocation(), distance2D(origin, task.getLocation())))
-			.filter(nt -> nt.getDistance() <= radius)
-			.sorted(getSorter(sortBy))
-			.collect(Collectors.toList());
+		return findNearby(allTasks, origin, radius, sortBy, null);
 	}
 
 	/**
