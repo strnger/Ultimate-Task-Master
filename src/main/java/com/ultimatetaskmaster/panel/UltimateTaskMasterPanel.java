@@ -83,6 +83,11 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final CardLayout cardLayout = new CardLayout();
 	private final JPanel cardPanel = new JPanel(cardLayout);
 
+	// --- Beta lock ---
+	private boolean betaUnlocked = false;
+	private JPanel lockPanel;
+	private Runnable onBetaUnlocked;
+
 	private Runnable onFindNearby;
 	private PlanService planService;
 	private TaskLocationService locationService;
@@ -91,6 +96,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private java.util.function.Consumer<TaskData> onAddToPlanCallback;
 	private java.util.function.Consumer<TaskData> onRemoveFromPlanTaskCallback;
 	private java.util.function.BiConsumer<String, Boolean> onToggleShowLocationsCallback;
+	private java.util.function.Consumer<TaskData> onMarkCompletedCallback;
 	private java.util.Set<String> shownLocationTasks = new java.util.HashSet<>();
 
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
@@ -170,7 +176,109 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		cardPanel.add(buildPlanCard(), CARD_PLAN);
 		cardLayout.show(cardPanel, CARD_ALL);
 
+		// Build lock panel (shown until beta key entered)
+		lockPanel = buildLockPanel();
+
 		add(cardPanel, BorderLayout.CENTER);
+	}
+
+	// ========== Beta Lock ==========
+
+	public void setOnBetaUnlocked(Runnable callback)
+	{
+		this.onBetaUnlocked = callback;
+	}
+
+	public void setBetaUnlocked(boolean unlocked)
+	{
+		this.betaUnlocked = unlocked;
+		if (unlocked && lockPanel != null)
+		{
+			remove(lockPanel);
+			lockPanel = null;
+			add(cardPanel, BorderLayout.CENTER);
+			revalidate();
+			repaint();
+		}
+	}
+
+	public void showBetaLock()
+	{
+		if (lockPanel == null) return;
+		remove(cardPanel);
+		add(lockPanel, BorderLayout.CENTER);
+		revalidate();
+		repaint();
+	}
+
+	private JPanel buildLockPanel()
+	{
+		JPanel lock = new JPanel();
+		lock.setLayout(new BoxLayout(lock, BoxLayout.Y_AXIS));
+		lock.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		lock.setBorder(new EmptyBorder(40, 20, 40, 20));
+
+		JLabel lockIcon = new JLabel("\uD83D\uDD12");
+		lockIcon.setFont(new java.awt.Font("Segoe UI Emoji", java.awt.Font.PLAIN, 32));
+		lockIcon.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lock.add(lockIcon);
+		lock.add(Box.createVerticalStrut(12));
+
+		JLabel lockTitle = new JLabel("Beta Access Required");
+		lockTitle.setFont(FontManager.getRunescapeBoldFont());
+		lockTitle.setForeground(ColorScheme.BRAND_ORANGE);
+		lockTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lock.add(lockTitle);
+		lock.add(Box.createVerticalStrut(8));
+
+		JLabel lockDesc = new JLabel("<html><center>Enter the beta key to<br>unlock the plugin.</center></html>");
+		lockDesc.setFont(FontManager.getRunescapeSmallFont());
+		lockDesc.setForeground(Color.GRAY);
+		lockDesc.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lock.add(lockDesc);
+		lock.add(Box.createVerticalStrut(16));
+
+		javax.swing.JTextField keyField = new javax.swing.JTextField(12);
+		keyField.setMaximumSize(new Dimension(160, 28));
+		keyField.setAlignmentX(Component.CENTER_ALIGNMENT);
+		keyField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+		keyField.setToolTipText("Enter beta key");
+		lock.add(keyField);
+		lock.add(Box.createVerticalStrut(8));
+
+		JButton unlockBtn = new JButton("Unlock");
+		unlockBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+		unlockBtn.setFont(FontManager.getRunescapeSmallFont());
+		lock.add(unlockBtn);
+		lock.add(Box.createVerticalStrut(8));
+
+		JLabel errorLabel = new JLabel(" ");
+		errorLabel.setFont(FontManager.getRunescapeSmallFont());
+		errorLabel.setForeground(new Color(255, 80, 80));
+		errorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lock.add(errorLabel);
+
+		Runnable tryUnlock = () -> {
+			String input = keyField.getText().trim().toLowerCase();
+			if ("fat cat".equals(input))
+			{
+				if (onBetaUnlocked != null)
+				{
+					onBetaUnlocked.run();
+				}
+				setBetaUnlocked(true);
+			}
+			else
+			{
+				errorLabel.setText("Incorrect beta key");
+				keyField.setText("");
+			}
+		};
+
+		unlockBtn.addActionListener(e -> tryUnlock.run());
+		keyField.addActionListener(e -> tryUnlock.run());
+
+		return lock;
 	}
 
 	@Override
@@ -430,6 +538,11 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.onToggleShowLocationsCallback = callback;
 	}
 
+	public void setOnMarkCompleted(java.util.function.Consumer<TaskData> callback)
+	{
+		this.onMarkCompletedCallback = callback;
+	}
+
 	public void setTaskLocationsShown(String taskName, boolean shown)
 	{
 		if (shown)
@@ -478,6 +591,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				TaskRowPanel row = new TaskRowPanel(t, done, null, i % 2 == 0, inPlan);
 				row.setOnAddToPlan(onAddToPlanCallback);
 				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
+				row.setOnMarkCompleted(onMarkCompletedCallback);
 				allTaskListContainer.add(row);
 			}
 		}
@@ -534,6 +648,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					nt.getTask(), done, nt.getDistance(), i % 2 == 0, inPlan);
 				nearbyRow.setOnAddToPlan(onAddToPlanCallback);
 				nearbyRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
+				nearbyRow.setOnMarkCompleted(onMarkCompletedCallback);
 				nearbyTaskListContainer.add(nearbyRow);
 			}
 		}
@@ -595,6 +710,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					TaskRowPanel taskRow = new TaskRowPanel(taskData, done, null, i % 2 == 0, true);
 					taskRow.setOnAddToPlan(onAddToPlanCallback);
 					taskRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
+					taskRow.setOnMarkCompleted(onMarkCompletedCallback);
 					itemWrapper.add(taskRow);
 					
 					// Location buttons panel (the extra piece for Plan tab)

@@ -37,6 +37,7 @@ import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.worldmap.WorldMapPointManager;
+import com.ultimatetaskmaster.data.CrowdsourcingService;
 import com.ultimatetaskmaster.data.LocationCluster;
 import com.ultimatetaskmaster.data.NearbyTask;
 import com.ultimatetaskmaster.data.PlanItem;
@@ -89,6 +90,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private UltimateTaskMasterConfig config;
 
 	@Inject
+	private ConfigManager configManager;
+
+	@Inject
 	private ClientToolbar clientToolbar;
 
 	@Inject
@@ -111,6 +115,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	@Inject
 	private TaskLocationService locationService;
+
+	@Inject
+	private CrowdsourcingService crowdsourcingService;
 
 	@Inject
 	private NearbyTaskWorldOverlay worldOverlay;
@@ -150,6 +157,21 @@ public class UltimateTaskMasterPlugin extends Plugin
 		// 1. Build the side panel and populate with all tasks
 		panel = new UltimateTaskMasterPanel();
 		panel.setOnFindNearby(this::onFindNearbyTasks);
+
+		// Beta lock check
+		boolean unlocked = config.betaUnlocked();
+		if (unlocked)
+		{
+			panel.setBetaUnlocked(true);
+		}
+		else
+		{
+			panel.showBetaLock();
+		}
+
+		panel.setOnBetaUnlocked(() -> {
+			configManager.setConfiguration(CONFIG_GROUP, "betaUnlocked", true);
+		});
 
 		// Wire plan services
 		panel.setPlanService(planService);
@@ -202,6 +224,32 @@ public class UltimateTaskMasterPlugin extends Plugin
 		});
 
 			panel.setOnAddToPlan(this::addTaskToPlan);
+
+		panel.setOnMarkCompleted(task -> {
+			// Get player position from game thread
+			clientThread.invokeLater(() -> {
+				if (client.getLocalPlayer() != null)
+				{
+					WorldPoint pos = client.getLocalPlayer().getWorldLocation();
+					crowdsourcingService.submitCompletion(
+						task.getName(),
+						task.getStructId(),
+						pos.getX(),
+						pos.getY(),
+						pos.getPlane()
+					);
+					// Also mark as locally completed
+					completedTaskNames = new java.util.HashSet<>(completedTaskNames);
+					completedTaskNames.add(task.getName());
+					SwingUtilities.invokeLater(() -> {
+						panel.setCompletedTaskNames(completedTaskNames);
+						panel.rebuildAllTasksList();
+						panel.rebuildNearbyList();
+						panel.rebuildPlanList();
+					});
+				}
+			});
+		});
 
 		panel.setOnToggleShowLocations((taskName, show) -> {
 			if (show) {

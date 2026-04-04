@@ -50,6 +50,7 @@ public class TaskRowPanel extends JPanel
 
 	private Consumer<TaskData> onAddToPlan;
 	private Consumer<TaskData> onRemoveFromPlan;
+	private Consumer<TaskData> onMarkCompleted;
 
 	private final JPanel container;
 	private final JPanel body;
@@ -131,6 +132,30 @@ public class TaskRowPanel extends JPanel
 		SwingUtil.removeButtonDecorations(planBtn);
 		buttons.add(planBtn);
 
+		// "Mark as Completed" button — sends completion to crowdsourcing server
+		if (!completed)
+		{
+			JToggleButton markDoneBtn = new JToggleButton();
+			// Use a checkmark Unicode character as a simple icon
+			markDoneBtn.setText("\u2713");
+			markDoneBtn.setFont(FontManager.getRunescapeSmallFont());
+			markDoneBtn.setForeground(new Color(100, 255, 100));
+			markDoneBtn.setPreferredSize(new Dimension(16, 16));
+			markDoneBtn.setToolTipText("Mark as Completed (submit to crowdsourcing)");
+			markDoneBtn.setBorder(new EmptyBorder(2, 0, 2, 0));
+			SwingUtil.removeButtonDecorations(markDoneBtn);
+			markDoneBtn.addActionListener(e -> {
+				if (onMarkCompleted != null)
+				{
+					onMarkCompleted.accept(task);
+					markDoneBtn.setEnabled(false);
+					markDoneBtn.setForeground(Color.GRAY);
+					markDoneBtn.setToolTipText("Submitted!");
+				}
+			});
+			buttons.add(markDoneBtn);
+		}
+
 		container.add(buttons, BorderLayout.EAST);
 
 		// --- Wire it all together (tasks-tracker pattern) ---
@@ -171,6 +196,11 @@ public class TaskRowPanel extends JPanel
 	public void setOnRemoveFromPlan(Consumer<TaskData> callback)
 	{
 		this.onRemoveFromPlan = callback;
+	}
+
+	public void setOnMarkCompleted(Consumer<TaskData> callback)
+	{
+		this.onMarkCompleted = callback;
 	}
 
 	@Override

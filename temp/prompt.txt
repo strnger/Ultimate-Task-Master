@@ -1,4 +1,4 @@
-We will need a database of some sort for our crowdsourcing (so that the data can be shared across the community). We'll need something similar to C:\Users\Strnger\Documents\Repos\examples\tog-crowdsourcing. We can start with a local database for testing. What tog-crowdsourcing does is:
+We will need a database of some sort for our crowdsourcing (so that the data can be shared across the community). We'll need something similar to C:\Users\Strnger\Documents\Repos\examples\tog-crowdsourcing. We can start with a local database for testing (we will want a linux-compatible DB). What tog-crowdsourcing does is:
 When the plugin submits a finding, it sends a POST to /worldinfo with {world_number, stream_order}. The server first validates the payload and checks whether that IP has already submitted for that world by hashing ip + world_number and looking it up in IP_World_Blacklist. If not already present, it inserts that hash into IP_World_Blacklist. Then it looks in World_Information for an existing row with the same (world_number, stream_order). If one exists, it increments hits; otherwise it inserts a new row with hits = 1. (We won't need to blacklist, people will often play on multiple accounts, so each account could submit a task completion spot. HOWEVER, we should keep track of submission by IP. if there's a bad actor, we'll want to blacklist their IP and revoke all of their contributions)
 So the persistent data is stored in a local SQLite file on the server named ./ToGWorldInformation.db. That file contains exactly two tables: World_Information(world_number, hits, stream_order) for the crowdsourced results, and IP_World_Blacklist(ip_world_hash) for one-submission-per-IP-per-world enforcement.
 When the plugin wants the list, it sends a GET to /worldinfo. The server returns all rows from World_Information as JSON, and the plugin parses that response into an in-memory list for display. The client README explicitly says the web server is a separate repo.
@@ -17,8 +17,13 @@ The second scale-up step is multiple app instances behind a load balancer. For e
 At that point, the normal move is to switch the database to a managed relational database. In Lightsail, managed databases start at $15/month standard or $30/month high availability; in Amazon RDS for PostgreSQL, pricing becomes more flexible but also more variable, based on instance-hours, storage, backups, and data transfer rather than one simple flat VM price.
 Once you outgrow Lightsail entirely, AWS’s own guidance is that Lightsail load balancing is for low-volume traffic—they describe it as suitable for up to 5 GB and 400k connections per hour—and that services like ECS, EKS, App Runner, Elastic Beanstalk, Lambda, or EC2/ELB offer greater vertical and horizontal scaling.
 
+------------------------------------
 
+Once that's done, we'll need to be able to test it. So, as a "beta" or "feature" mode addition, please add a button to tasks that says "Mark as Completed". When the user clicks that button, it should send a POST request to our server with the task information (task, player position,etc).
 
+Another beta feature I would like is a "password block" which just puts a block or something on the plugin. I want my friends to be able to beta test this, but not random people. So, somehow, when the user enters "fat cat" it will unlock the plugin.
+
+STOP HERE -------------------------------------------------
 
 
 
@@ -30,4 +35,4 @@ Set up a few tasks initially for nearby completion
 the algorithm tree for completing nearby tasks should look for nearby tasks (including via teleport, shortest path will be helpful here), then it will look for tasks close to that one, etc, and note all requirements/items for that task
 
 
-Okay, great! go ahead and commit where we are and implement the features! you may use up to 20 puppies in parallel
+

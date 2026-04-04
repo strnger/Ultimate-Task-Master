@@ -60,6 +60,28 @@ public interface UltimateTaskMasterConfig extends Config
 		return true;
 	}
 
+	// --- Beta Settings ---
+
+	@ConfigSection(
+		name = "Beta",
+		description = "Beta access settings",
+		position = 2
+	)
+	String betaSettings = "betaSettings";
+
+	@ConfigItem(
+		position = 0,
+		keyName = "betaUnlocked",
+		name = "Beta Unlocked",
+		description = "Whether the beta key has been entered",
+		section = betaSettings,
+		hidden = true
+	)
+	default boolean betaUnlocked()
+	{
+		return false;
+	}
+
 	// --- Notification Settings ---
 
 	@ConfigSection(
