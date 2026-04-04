@@ -793,6 +793,14 @@ public class UltimateTaskMasterPlugin extends Plugin
 				.collect(java.util.stream.Collectors.toList());
 		}
 
+		// Filter out completed tasks
+		if (!completedTaskNames.isEmpty())
+		{
+			nearbyTasks = nearbyTasks.stream()
+				.filter(nt -> !completedTaskNames.contains(nt.getTask().getName()))
+				.collect(java.util.stream.Collectors.toList());
+		}
+
 		SwingUtilities.invokeLater(() -> panel.updateResults(nearbyTasks));
 		updateWorldMapMarkers();
 	}

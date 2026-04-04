@@ -1,10 +1,6 @@
 You may use up to 30 parallel puppies to complete the following:
 
-if a task is hidden, and we're in the "show hidden" section, the button should be "show" instead
-
-hiding a task in the plugin panel does not hide it from the in-game overlay ("find nearby tasks")
-
-record what we've done in the relevant .md files
+Implement a level requirement filtering. each task has a "skills" section. These should map perfectly to ingame skills. For the "find nearby" button, we need to filter out any task we lack the level requirement for. There's probably a plugin that checks levels in C:\Users\Strnger\Documents\Repos\examples, but you might be able to find a quicker example in 
 
 STOP HERE -------------------------------------------------
 
