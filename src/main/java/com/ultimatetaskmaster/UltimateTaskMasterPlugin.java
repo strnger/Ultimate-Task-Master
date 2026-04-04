@@ -23,6 +23,7 @@ import net.runelite.api.MenuEntry;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
@@ -38,6 +39,7 @@ import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.worldmap.WorldMapPointManager;
 import com.ultimatetaskmaster.data.CrowdsourcingService;
+import com.ultimatetaskmaster.data.LocalCompletionStore;
 import com.ultimatetaskmaster.data.LocationCluster;
 import com.ultimatetaskmaster.data.NearbyTask;
 import com.ultimatetaskmaster.data.PlanItem;
@@ -120,6 +122,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private CrowdsourcingService crowdsourcingService;
 
 	@Inject
+	private LocalCompletionStore localCompletionStore;
+
+	@Inject
 	private NearbyTaskWorldOverlay worldOverlay;
 
 	@Inject
@@ -129,6 +134,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private NavigationButton navButton;
 
 	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
+
+	private volatile WorldPoint cachedPlayerPosition;
 
 	private Set<String> completedTaskNames = Collections.emptySet();
 
@@ -172,6 +179,16 @@ public class UltimateTaskMasterPlugin extends Plugin
 		panel.setOnBetaUnlocked(() -> {
 			configManager.setConfiguration(CONFIG_GROUP, "betaUnlocked", true);
 		});
+
+		// Load locally stored completed task names
+		completedTaskNames = localCompletionStore.getCompletedNames();
+
+		// Show pending count if any
+		int pendingCount = localCompletionStore.getPendingCount();
+		if (pendingCount > 0)
+		{
+			panel.setSyncStatus(pendingCount + " pending", new Color(255, 200, 100));
+		}
 
 		// Wire plan services
 		panel.setPlanService(planService);
@@ -226,29 +243,73 @@ public class UltimateTaskMasterPlugin extends Plugin
 			panel.setOnAddToPlan(this::addTaskToPlan);
 
 		panel.setOnMarkCompleted(task -> {
-			// Get player position from game thread
-			clientThread.invokeLater(() -> {
-				if (client.getLocalPlayer() != null)
+			// Save locally — instant, no network, no freeze
+			WorldPoint pos = cachedPlayerPosition;
+			int x = pos != null ? pos.getX() : 0;
+			int y = pos != null ? pos.getY() : 0;
+			int plane = pos != null ? pos.getPlane() : 0;
+
+			localCompletionStore.addPending(task.getName(), task.getStructId(), x, y, plane);
+
+			// Update in-memory completed set
+			completedTaskNames = new java.util.HashSet<>(completedTaskNames);
+			completedTaskNames.add(task.getName());
+
+			// Update sync status to show pending count
+			int pending = localCompletionStore.getPendingCount();
+			panel.setSyncStatus(pending + " pending", new Color(255, 200, 100));
+		});
+
+		panel.setOnSync(() -> {
+			// Run sync on a background thread — never block EDT
+			new Thread(() -> {
+				try
 				{
-					WorldPoint pos = client.getLocalPlayer().getWorldLocation();
-					crowdsourcingService.submitCompletion(
-						task.getName(),
-						task.getStructId(),
-						pos.getX(),
-						pos.getY(),
-						pos.getPlane()
-					);
-					// Also mark as locally completed
-					completedTaskNames = new java.util.HashSet<>(completedTaskNames);
-					completedTaskNames.add(task.getName());
+					java.util.List<LocalCompletionStore.PendingCompletion> pending = localCompletionStore.getPending();
+					int pushed = 0;
+
+					// Push pending completions
+					if (!pending.isEmpty())
+					{
+						SwingUtilities.invokeLater(() -> panel.setSyncStatus("Pushing " + pending.size() + "...", Color.YELLOW));
+						pushed = crowdsourcingService.pushPending(pending);
+						if (pushed > 0)
+						{
+							localCompletionStore.removePending(pending.subList(0, Math.min(pushed, pending.size())));
+						}
+					}
+
+					// Pull latest locations from server
+					SwingUtilities.invokeLater(() -> panel.setSyncStatus("Pulling locations...", Color.YELLOW));
+					java.util.List<CrowdsourcingService.ServerLocation> serverLocations = crowdsourcingService.pullLocations();
+
+					// Update UI on EDT
+					final int finalPushed = pushed;
+					final int pulled = serverLocations.size();
+					int remaining = localCompletionStore.getPendingCount();
+
 					SwingUtilities.invokeLater(() -> {
-						panel.setCompletedTaskNames(completedTaskNames);
+						String status = "Pushed " + finalPushed + ", pulled " + pulled + " locations";
+						if (remaining > 0)
+						{
+							status += " (" + remaining + " still pending)";
+						}
+						panel.setSyncStatus(status, new Color(100, 255, 100));
+						panel.setSyncEnabled(true);
 						panel.rebuildAllTasksList();
 						panel.rebuildNearbyList();
 						panel.rebuildPlanList();
 					});
 				}
-			});
+				catch (Exception e)
+				{
+					log.error("Sync failed", e);
+					SwingUtilities.invokeLater(() -> {
+						panel.setSyncStatus("Sync failed: " + e.getMessage(), new Color(255, 80, 80));
+						panel.setSyncEnabled(true);
+					});
+				}
+			}, "utm-sync").start();
 		});
 
 		panel.setOnToggleShowLocations((taskName, show) -> {
@@ -338,6 +399,15 @@ public class UltimateTaskMasterPlugin extends Plugin
 		nearbyTasks = Collections.emptyList();
 
 		log.info("Ultimate Task Master stopped!");
+	}
+
+	@Subscribe
+	public void onGameTick(GameTick event)
+	{
+		if (client.getLocalPlayer() != null)
+		{
+			cachedPlayerPosition = client.getLocalPlayer().getWorldLocation();
+		}
 	}
 
 	@Subscribe

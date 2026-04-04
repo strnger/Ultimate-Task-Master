@@ -1,6 +1,7 @@
 package com.ultimatetaskmaster.data;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Data;
@@ -13,6 +14,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * HTTP client for submitting task completions to the crowdsourcing server.
@@ -32,6 +37,7 @@ public class CrowdsourcingService
 	// Local dev server — change to production URL when deployed
 	private static final String SERVER_BASE_URL = "http://localhost:3847";
 	private static final String SUBMIT_URL = SERVER_BASE_URL + "/api/submit";
+	private static final String LOCATIONS_URL = SERVER_BASE_URL + "/api/locations";
 	private static final MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
 
 	private final OkHttpClient okHttpClient;
@@ -48,6 +54,20 @@ public class CrowdsourcingService
 		private final int x;
 		private final int y;
 		private final int plane;
+	}
+
+	/**
+	 * Location data returned from the server.
+	 */
+	@Data
+	public static class ServerLocation
+	{
+		private String task_name;
+		private int struct_id;
+		private int x;
+		private int y;
+		private int plane;
+		private int hits;
 	}
 
 	@Inject
@@ -105,6 +125,78 @@ public class CrowdsourcingService
 				}
 			}
 		});
+	}
+
+	/**
+	 * Push a batch of pending completions to the server.
+	 * Synchronous — MUST be called from a background thread, not EDT or game thread.
+	 *
+	 * @param pending list of completions to push
+	 * @return number of successfully pushed items
+	 */
+	public int pushPending(List<LocalCompletionStore.PendingCompletion> pending)
+	{
+		int pushed = 0;
+		for (LocalCompletionStore.PendingCompletion item : pending)
+		{
+			try
+			{
+				CompletionPayload payload = new CompletionPayload(
+					item.getTaskName(), item.getStructId(),
+					item.getX(), item.getY(), item.getPlane()
+				);
+				Request request = new Request.Builder()
+					.url(SUBMIT_URL)
+					.post(RequestBody.create(JSON_TYPE, gson.toJson(payload)))
+					.build();
+				try (Response response = okHttpClient.newCall(request).execute())
+				{
+					if (response.isSuccessful())
+					{
+						pushed++;
+					}
+					else
+					{
+						log.debug("Push failed for {}: {}", item.getTaskName(), response.code());
+					}
+				}
+			}
+			catch (IOException e)
+			{
+				log.debug("Push failed for {}: {}", item.getTaskName(), e.getMessage());
+			}
+		}
+		return pushed;
+	}
+
+	/**
+	 * Pull all crowdsourced locations from the server.
+	 * Synchronous — MUST be called from a background thread.
+	 *
+	 * @return list of server locations, or empty list on failure
+	 */
+	public List<ServerLocation> pullLocations()
+	{
+		try
+		{
+			Request request = new Request.Builder()
+				.url(LOCATIONS_URL)
+				.build();
+			try (Response response = okHttpClient.newCall(request).execute())
+			{
+				if (response.isSuccessful() && response.body() != null)
+				{
+					Type listType = new TypeToken<List<ServerLocation>>(){}.getType();
+					List<ServerLocation> locations = gson.fromJson(response.body().string(), listType);
+					return locations != null ? locations : Collections.emptyList();
+				}
+			}
+		}
+		catch (IOException e)
+		{
+			log.debug("Failed to pull locations: {}", e.getMessage());
+		}
+		return Collections.emptyList();
 	}
 
 	/**

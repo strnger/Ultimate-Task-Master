@@ -89,6 +89,9 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private Runnable onBetaUnlocked;
 
 	private Runnable onFindNearby;
+	private Runnable onSyncCallback;
+	private JLabel syncStatusLabel;
+	private JButton syncButton;
 	private PlanService planService;
 	private TaskLocationService locationService;
 	private java.util.function.BiConsumer<String, LocationCluster> onPinCallback;
@@ -161,6 +164,38 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		leagueInfoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		leagueInfoLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		header.add(leagueInfoLabel);
+
+		header.add(Box.createVerticalStrut(4));
+
+		// Sync row
+		JPanel syncRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 0));
+		syncRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		syncRow.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+		syncButton = new JButton("\u21BB Sync");
+		syncButton.setFont(FontManager.getRunescapeSmallFont());
+		syncButton.setForeground(Color.WHITE);
+		syncButton.setBackground(new Color(60, 60, 60));
+		syncButton.setPreferredSize(new Dimension(70, 20));
+		syncButton.setBorder(new EmptyBorder(2, 8, 2, 8));
+		syncButton.setFocusPainted(false);
+		syncButton.setToolTipText("Push local completions to server & pull latest locations");
+		syncButton.addActionListener(e -> {
+			if (onSyncCallback != null)
+			{
+				syncButton.setEnabled(false);
+				syncButton.setText("Syncing...");
+				onSyncCallback.run();
+			}
+		});
+		syncRow.add(syncButton);
+
+		syncStatusLabel = new JLabel("");
+		syncStatusLabel.setFont(FontManager.getRunescapeSmallFont());
+		syncStatusLabel.setForeground(Color.GRAY);
+		syncRow.add(syncStatusLabel);
+
+		header.add(syncRow);
 
 		add(header, BorderLayout.NORTH);
 
@@ -453,6 +488,28 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	}
 
 	// ========== Public API (called from the plugin on the EDT) ==========
+
+	public void setOnSync(Runnable callback)
+	{
+		this.onSyncCallback = callback;
+	}
+
+	public void setSyncStatus(String text, Color color)
+	{
+		if (syncStatusLabel != null)
+		{
+			syncStatusLabel.setText(text);
+			syncStatusLabel.setForeground(color);
+		}
+	}
+
+	public void setSyncEnabled(boolean enabled)
+	{
+		if (syncButton != null)
+		{
+			syncButton.setEnabled(enabled);
+		}
+	}
 
 	public void setOnFindNearby(Runnable callback)
 	{
