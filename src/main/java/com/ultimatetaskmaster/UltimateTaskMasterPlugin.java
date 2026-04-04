@@ -27,8 +27,12 @@ import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
+import net.runelite.api.ScriptEvent;
+import net.runelite.api.SpriteID;
 import net.runelite.api.widgets.ComponentID;
+import net.runelite.api.widgets.JavaScriptCallback;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetType;
 import net.runelite.client.util.ColorUtil;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -163,6 +167,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
+	private Widget utmBankButton;
 
 	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
 
@@ -482,6 +487,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 		overlayManager.remove(bankItemOverlay);
 		clearWorldMapMarkers();
 		nearbyTasks = Collections.emptyList();
+
+		if (utmBankButton != null)
+		{
+			utmBankButton.setHidden(true);
+			utmBankButton = null;
+		}
 
 		log.info("Ultimate Task Master stopped!");
 	}
@@ -1002,10 +1013,48 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
-		if (event.getGroupId() == InterfaceID.BANK && tagManager != null)
+		if (event.getGroupId() == InterfaceID.BANK)
 		{
-			refreshPlanBankTag();
+			// Create the UTM button on the bank interface
+			clientThread.invokeLater(this::createBankButton);
+
+			// Also refresh bank tag if available
+			if (tagManager != null)
+			{
+				refreshPlanBankTag();
+			}
 		}
+	}
+
+	private void createBankButton()
+	{
+		// Get the bank container widget
+		Widget parent = client.getWidget(ComponentID.BANK_CONTAINER);
+		if (parent == null)
+		{
+			return;
+		}
+
+		// Create background button (25x25, positioned near top-right of bank)
+		utmBankButton = parent.createChild(-1, WidgetType.GRAPHIC);
+		utmBankButton.setSpriteId(SpriteID.TAB_INVENTORY);
+		utmBankButton.setOriginalWidth(25);
+		utmBankButton.setOriginalHeight(25);
+		utmBankButton.setOriginalX(434);
+		utmBankButton.setOriginalY(5);
+		utmBankButton.setHasListener(true);
+		utmBankButton.setAction(1, "UTM Plan Items");
+		utmBankButton.setOnOpListener((JavaScriptCallback) e -> onUtmBankButtonClicked());
+		utmBankButton.setName("utm-plan");
+		utmBankButton.revalidate();
+
+		log.info("UTM bank button created");
+	}
+
+	private void onUtmBankButtonClicked()
+	{
+		client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
+			"UTM Plan Items button clicked!", CHAT_SENDER);
 	}
 
 	/**
