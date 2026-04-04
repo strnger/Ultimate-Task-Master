@@ -147,6 +147,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Getter
 	private List<NearbyTask> nearbyTasks = Collections.emptyList();
 
+	/**
+	 * Cached enriched task list with location data populated from TaskLocationService.
+	 * Used by refreshNearbyQuery() and panel so that SpatialTaskQuery can find nearby tasks.
+	 */
+	private List<TaskData> enrichedTasks = Collections.emptyList();
+
 	@Override
 	public void configure(Binder binder)
 	{
@@ -337,9 +343,11 @@ public class UltimateTaskMasterPlugin extends Plugin
 			panel.setTaskLocationsShown(taskName, show);
 		});
 
+		List<TaskData> allTasks = enrichTasksWithLocations(taskDataProvider.getTasks());
+		enrichedTasks = allTasks;
 		SwingUtilities.invokeLater(() ->
 		{
-			panel.setAllTasks(taskDataProvider.getTasks());
+			panel.setAllTasks(allTasks);
 			panel.setCompletedTaskNames(loadCompletedNames());
 			panel.rebuildPlanList();
 		});
@@ -350,10 +358,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 			List<TaskData> httpTasks = httpTaskDataProvider.getTasks();
 			if (!httpTasks.isEmpty())
 			{
+				List<TaskData> enrichedHttpTasks = enrichTasksWithLocations(httpTasks);
+				enrichedTasks = enrichedHttpTasks;
 				SwingUtilities.invokeLater(() -> {
-					panel.setAllTasks(httpTasks);
+					panel.setAllTasks(enrichedHttpTasks);
 					log.info("Refreshed tasks from remote: {} tasks for {}",
-						httpTasks.size(), httpTaskDataProvider.getCurrentLeagueName());
+						enrichedHttpTasks.size(), httpTaskDataProvider.getCurrentLeagueName());
 				});
 			}
 		}, "utm-http-refresh").start();
@@ -672,7 +682,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		SpatialTaskQuery.SortCriteria sort = panel.getSelectedSort();
 
 		nearbyTasks = SpatialTaskQuery.findNearby(
-			taskDataProvider.getTasks(),
+			enrichedTasks.isEmpty() ? taskDataProvider.getTasks() : enrichedTasks,
 			playerLocation,
 			config.searchRadius(),
 			sort
@@ -742,8 +752,10 @@ public class UltimateTaskMasterPlugin extends Plugin
 		List<TaskData> httpTasks = httpTaskDataProvider.getTasks();
 		if (!httpTasks.isEmpty())
 		{
+			List<TaskData> enrichedHttpTasks = enrichTasksWithLocations(httpTasks);
+			enrichedTasks = enrichedHttpTasks;
 			SwingUtilities.invokeLater(() -> {
-				panel.setAllTasks(httpTasks);
+				panel.setAllTasks(enrichedHttpTasks);
 				panel.setCompletedTaskNames(loadCompletedNames());
 				panel.rebuildPlanList();
 			});
@@ -759,6 +771,63 @@ public class UltimateTaskMasterPlugin extends Plugin
 				updateWorldMapMarkers();
 			});
 		}
+	}
+
+	/**
+	 * Enriches tasks with location data from TaskLocationService.
+	 * Sets each task's location to the highest-count cluster centroid.
+	 * Since TaskData is @Value (immutable), we rebuild each task with the location set.
+	 */
+	private List<TaskData> enrichTasksWithLocations(List<TaskData> tasks)
+	{
+		if (locationService == null)
+		{
+			return tasks;
+		}
+
+		List<TaskData> enriched = new java.util.ArrayList<>(tasks.size());
+		int located = 0;
+
+		for (TaskData task : tasks)
+		{
+			List<LocationCluster> clusters = locationService.getLocationsForTask(task.getStructId());
+			if (clusters != null && !clusters.isEmpty())
+			{
+				// Use highest-count cluster as primary location
+				LocationCluster best = clusters.get(0);
+				for (LocationCluster c : clusters)
+				{
+					if (c.getCount() > best.getCount())
+					{
+						best = c;
+					}
+				}
+
+				TaskData enrichedTask = TaskData.builder()
+					.structId(task.getStructId())
+					.sortId(task.getSortId())
+					.name(task.getName())
+					.description(task.getDescription())
+					.area(task.getArea())
+					.tier(task.getTier())
+					.points(task.getPoints())
+					.category(task.getCategory())
+					.skill(task.getSkill())
+					.completionPct(task.getCompletionPct())
+					.location(new WorldPoint(best.getX(), best.getY(), 0))
+					.requirements(task.getRequirements())
+					.build();
+				enriched.add(enrichedTask);
+				located++;
+			}
+			else
+			{
+				enriched.add(task);
+			}
+		}
+
+		log.info("Enriched {} of {} tasks with location data", located, tasks.size());
+		return enriched;
 	}
 
 	/**
