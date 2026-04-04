@@ -184,7 +184,7 @@ app.post('/api/admin/blacklist', (req, res) => {
 app.get('/api/submissions', (req, res) => {
   try {
     const rows = db.prepare(`
-      SELECT ip_hash, struct_id, x, y, plane, submitted_at
+      SELECT id, ip_hash, struct_id, x, y, plane, submitted_at
       FROM ip_submissions
       ORDER BY submitted_at DESC
       LIMIT 1000
@@ -192,6 +192,46 @@ app.get('/api/submissions', (req, res) => {
     res.json(rows);
   } catch (err) {
     console.error('GET /api/submissions error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+/**
+ * DELETE /api/submissions/:id
+ * Deletes a specific submission and decrements the corresponding location hits.
+ */
+app.delete('/api/submissions/:id', (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid submission ID' });
+    }
+
+    // Get the submission details before deleting
+    const submission = db.prepare(
+      'SELECT struct_id, x, y, plane FROM ip_submissions WHERE id = ?'
+    ).get(id);
+
+    if (!submission) {
+      return res.status(404).json({ error: 'Submission not found' });
+    }
+
+    // Delete the submission
+    db.prepare('DELETE FROM ip_submissions WHERE id = ?').run(id);
+
+    // Decrement hits for the corresponding location
+    db.prepare(`
+      UPDATE task_completions
+      SET hits = hits - 1
+      WHERE struct_id = ? AND x = ? AND y = ? AND plane = ?
+    `).run(submission.struct_id, submission.x, submission.y, submission.plane);
+
+    // Clean up zero-hit locations
+    db.prepare('DELETE FROM task_completions WHERE hits <= 0').run();
+
+    res.json({ success: true, message: 'Submission deleted' });
+  } catch (err) {
+    console.error('DELETE /api/submissions/:id error:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

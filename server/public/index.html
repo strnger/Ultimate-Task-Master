@@ -305,7 +305,10 @@ function renderSubmissions() {
       <td class="mono">${s.y}</td>
       <td class="mono">${s.plane}</td>
       <td style="color:#888; font-size:12px;">${s.submitted_at || '-'}</td>
-      <td><button class="danger" style="font-size:11px; padding:2px 8px;" onclick="blacklistFromSub('${esc(s.ip_hash)}')">Ban</button></td>
+      <td>
+        <button class="danger" style="font-size:11px; padding:2px 8px; margin-right:4px;" onclick="deleteSubmission(${s.id})">Delete</button>
+        <button class="danger" style="font-size:11px; padding:2px 8px;" onclick="blacklistFromSub('${esc(s.ip_hash)}')">Ban</button>
+      </td>
     </tr>
   `).join('');
 }
@@ -358,6 +361,20 @@ async function blacklistIp() {
     document.getElementById('bl-reason').value = '';
     await Promise.all([loadBlacklist(), loadLocations(), loadStats()]);
   } catch(e) { toast('Blacklist failed: ' + e.message, 'error'); }
+}
+
+async function deleteSubmission(id) {
+  if (!confirm('Delete this submission? This will also decrement the location hit count.')) return;
+  try {
+    const res = await fetch(`${API}/api/submissions/${id}`, { method: 'DELETE' });
+    const data = await res.json();
+    if (res.ok) {
+      toast('Submission deleted', 'success');
+      await Promise.all([loadSubmissions(), loadLocations(), loadStats()]);
+    } else {
+      toast('Delete failed: ' + data.error, 'error');
+    }
+  } catch(e) { toast('Delete failed: ' + e.message, 'error'); }
 }
 
 function blacklistFromSub(ipHash) {

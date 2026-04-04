@@ -299,55 +299,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		});
 
 		panel.setOnSync(() -> {
-			// Run sync on a background thread — never block EDT
-			new Thread(() -> {
-				try
-				{
-					java.util.List<LocalCompletionStore.PendingCompletion> pending = localCompletionStore.getPending();
-					int pushed = 0;
-
-					// Push pending completions
-					if (!pending.isEmpty())
-					{
-						SwingUtilities.invokeLater(() -> panel.setSyncStatus("Pushing " + pending.size() + "...", Color.YELLOW));
-						pushed = crowdsourcingService.pushPending(pending);
-						if (pushed > 0)
-						{
-							localCompletionStore.removePending(pending.subList(0, Math.min(pushed, pending.size())));
-						}
-					}
-
-					// Pull latest locations from server
-					SwingUtilities.invokeLater(() -> panel.setSyncStatus("Pulling locations...", Color.YELLOW));
-					java.util.List<CrowdsourcingService.ServerLocation> serverLocations = crowdsourcingService.pullLocations();
-
-					// Update UI on EDT
-					final int finalPushed = pushed;
-					final int pulled = serverLocations.size();
-					int remaining = localCompletionStore.getPendingCount();
-
-					SwingUtilities.invokeLater(() -> {
-						String status = "Pushed " + finalPushed + ", pulled " + pulled + " locations";
-						if (remaining > 0)
-						{
-							status += " (" + remaining + " still pending)";
-						}
-						panel.setSyncStatus(status, new Color(100, 255, 100));
-						panel.setSyncEnabled(true);
-						panel.rebuildAllTasksList();
-						panel.rebuildNearbyList();
-						panel.rebuildPlanList();
-					});
-				}
-				catch (Exception e)
-				{
-					log.error("Sync failed", e);
-					SwingUtilities.invokeLater(() -> {
-						panel.setSyncStatus("Sync failed: " + e.getMessage(), new Color(255, 80, 80));
-						panel.setSyncEnabled(true);
-					});
-				}
-			}, "utm-sync").start();
+			performSync(true);
 		});
 
 		panel.setOnToggleShowLocations((taskName, show) -> {
@@ -451,11 +403,23 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged event)
 	{
-		if (event.getGameState() == GameState.LOGIN_SCREEN)
+		switch (event.getGameState())
 		{
-			nearbyTasks = Collections.emptyList();
-			clearWorldMapMarkers();
-			SwingUtilities.invokeLater(() -> panel.showNotLoggedIn());
+			case LOGGED_IN:
+				// Auto-sync on login: push pending completions + pull latest locations
+				performSync(true);
+				break;
+			case LOGIN_SCREEN:
+			case HOPPING:
+				// Push any pending completions before leaving
+				if (localCompletionStore.getPendingCount() > 0)
+				{
+					performSync(false);
+				}
+				nearbyTasks = Collections.emptyList();
+				clearWorldMapMarkers();
+				SwingUtilities.invokeLater(() -> panel.showNotLoggedIn());
+				break;
 		}
 	}
 
@@ -613,6 +577,75 @@ public class UltimateTaskMasterPlugin extends Plugin
 			panel.rebuildPlanList();
 			updateWorldMapMarkers();
 		});
+	}
+
+	/**
+	 * Run a sync on a background thread: push pending completions, pull latest locations.
+	 * Safe to call from any thread (spawns its own background thread).
+	 *
+	 * @param updateUi if true, updates sync button status on EDT
+	 */
+	private void performSync(boolean updateUi)
+	{
+		new Thread(() -> {
+			try
+			{
+				java.util.List<LocalCompletionStore.PendingCompletion> pending = localCompletionStore.getPending();
+				int pushed = 0;
+
+				if (!pending.isEmpty())
+				{
+					if (updateUi)
+					{
+						SwingUtilities.invokeLater(() -> panel.setSyncStatus("Pushing " + pending.size() + "...", Color.YELLOW));
+					}
+					pushed = crowdsourcingService.pushPending(pending);
+					if (pushed > 0)
+					{
+						localCompletionStore.removePending(pending.subList(0, Math.min(pushed, pending.size())));
+					}
+				}
+
+				if (updateUi)
+				{
+					SwingUtilities.invokeLater(() -> panel.setSyncStatus("Pulling locations...", Color.YELLOW));
+				}
+				java.util.List<CrowdsourcingService.ServerLocation> serverLocations = crowdsourcingService.pullLocations();
+
+				final int finalPushed = pushed;
+				final int pulled = serverLocations.size();
+				int remaining = localCompletionStore.getPendingCount();
+
+				if (updateUi)
+				{
+					SwingUtilities.invokeLater(() -> {
+						String status = "Pushed " + finalPushed + ", pulled " + pulled + " locations";
+						if (remaining > 0)
+						{
+							status += " (" + remaining + " still pending)";
+						}
+						panel.setSyncStatus(status, new Color(100, 255, 100));
+						panel.setSyncEnabled(true);
+						panel.rebuildAllTasksList();
+						panel.rebuildNearbyList();
+						panel.rebuildPlanList();
+					});
+				}
+
+				log.debug("Sync complete: pushed {}, pulled {} locations, {} remaining", finalPushed, pulled, remaining);
+			}
+			catch (Exception e)
+			{
+				log.error("Sync failed", e);
+				if (updateUi)
+				{
+					SwingUtilities.invokeLater(() -> {
+						panel.setSyncStatus("Sync failed: " + e.getMessage(), new Color(255, 80, 80));
+						panel.setSyncEnabled(true);
+					});
+				}
+			}
+		}, "utm-sync").start();
 	}
 
 	/**
