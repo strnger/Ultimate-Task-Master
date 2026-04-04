@@ -1028,26 +1028,29 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	private void createBankButton()
 	{
-		// Get the bank container widget
 		Widget parent = client.getWidget(ComponentID.BANK_CONTAINER);
 		if (parent == null)
 		{
 			return;
 		}
 
-		// Create background button (25x25, positioned near top-right of bank)
+		// Background button
 		utmBankButton = parent.createChild(-1, WidgetType.GRAPHIC);
 		utmBankButton.setSpriteId(SpriteID.TAB_INVENTORY);
 		utmBankButton.setOriginalWidth(25);
 		utmBankButton.setOriginalHeight(25);
 		utmBankButton.setOriginalX(434);
 		utmBankButton.setOriginalY(5);
+		utmBankButton.setName("UTM Plan");
 		utmBankButton.setHasListener(true);
-		utmBankButton.setAction(1, "UTM Plan Items");
-		utmBankButton.setOnOpListener((JavaScriptCallback) e -> onUtmBankButtonClicked());
-		utmBankButton.setName("utm-plan");
-		utmBankButton.revalidate();
 
+		// Left-click action
+		utmBankButton.setAction(0, "View UTM Plan Items");
+		utmBankButton.setOnOpListener((JavaScriptCallback) e -> {
+			onUtmBankButtonClicked();
+		});
+
+		utmBankButton.revalidate();
 		log.info("UTM bank button created");
 	}
 
