@@ -101,6 +101,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private java.util.function.BiConsumer<String, Boolean> onToggleShowLocationsCallback;
 	private java.util.function.Consumer<TaskData> onMarkCompletedCallback;
 	private java.util.Set<String> shownLocationTasks = new java.util.HashSet<>();
+	private java.util.Set<String> hiddenTaskNames = new java.util.HashSet<>();
+	private java.util.function.Consumer<String> onHideTaskCallback;
+	private java.util.function.Consumer<String> onUnhideTaskCallback;
+	private boolean showHidden = false;
 
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
 	private List<TaskData> allTasks = Collections.emptyList();
@@ -347,10 +351,24 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		controls.add(allSearchField);
 		controls.add(Box.createVerticalStrut(4));
 
+		JPanel toggleRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
+		toggleRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		toggleRow.setAlignmentX(Component.LEFT_ALIGNMENT);
+
 		allHideCompletedToggle.setFont(FontManager.getRunescapeSmallFont());
-		allHideCompletedToggle.setAlignmentX(Component.LEFT_ALIGNMENT);
 		allHideCompletedToggle.addActionListener(e -> rebuildAllTasksList());
-		controls.add(allHideCompletedToggle);
+		toggleRow.add(allHideCompletedToggle);
+
+		JToggleButton showHiddenToggle = new JToggleButton("Show Hidden");
+		showHiddenToggle.setFont(FontManager.getRunescapeSmallFont());
+		showHiddenToggle.setPreferredSize(new Dimension(85, 22));
+		showHiddenToggle.addActionListener(e -> {
+			showHidden = showHiddenToggle.isSelected();
+			rebuildAllTasksList();
+		});
+		toggleRow.add(showHiddenToggle);
+
+		controls.add(toggleRow);
 		controls.add(Box.createVerticalStrut(4));
 
 		JPanel allSortRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
@@ -508,6 +526,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		if (syncButton != null)
 		{
 			syncButton.setEnabled(enabled);
+			if (enabled)
+			{
+				syncButton.setText("\u21BB Sync");
+			}
 		}
 	}
 
@@ -612,6 +634,21 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		}
 	}
 
+	public void setOnHideTask(java.util.function.Consumer<String> callback)
+	{
+		this.onHideTaskCallback = callback;
+	}
+
+	public void setOnUnhideTask(java.util.function.Consumer<String> callback)
+	{
+		this.onUnhideTaskCallback = callback;
+	}
+
+	public void setHiddenTaskNames(java.util.Set<String> names)
+	{
+		this.hiddenTaskNames = names != null ? names : new java.util.HashSet<>();
+	}
+
 	// ========== Rebuild: All Tasks tab ==========
 
 	public void rebuildAllTasksList()
@@ -624,6 +661,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		List<TaskData> filtered = allTasks.stream()
 			.filter(t -> searchText.isEmpty() || t.getName().toLowerCase().contains(searchText))
 			.filter(t -> !hideCompleted || !completedTaskNames.contains(t.getName()))
+			.filter(t -> showHidden || !hiddenTaskNames.contains(t.getName()))
 			.sorted(getTaskComparator(allSortDropdown))
 			.collect(Collectors.toList());
 
@@ -649,6 +687,14 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				row.setOnAddToPlan(onAddToPlanCallback);
 				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 				row.setOnMarkCompleted(onMarkCompletedCallback);
+				row.setOnHideTask(td -> {
+					if (onHideTaskCallback != null)
+					{
+						onHideTaskCallback.accept(td.getName());
+					}
+					hiddenTaskNames.add(td.getName());
+					rebuildAllTasksList();
+				});
 				allTaskListContainer.add(row);
 			}
 		}

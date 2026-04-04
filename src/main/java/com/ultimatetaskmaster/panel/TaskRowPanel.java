@@ -51,6 +51,7 @@ public class TaskRowPanel extends JPanel
 	private Consumer<TaskData> onAddToPlan;
 	private Consumer<TaskData> onRemoveFromPlan;
 	private Consumer<TaskData> onMarkCompleted;
+	private Consumer<TaskData> onHideTask;
 
 	private final JPanel container;
 	private final JPanel body;
@@ -156,6 +157,22 @@ public class TaskRowPanel extends JPanel
 			buttons.add(markDoneBtn);
 		}
 
+		// Hide button - small x to hide this task from the list
+		JToggleButton hideBtn = new JToggleButton("\u2715");
+		hideBtn.setFont(FontManager.getRunescapeSmallFont());
+		hideBtn.setForeground(Color.GRAY);
+		hideBtn.setPreferredSize(new Dimension(16, 16));
+		hideBtn.setToolTipText("Hide this task");
+		hideBtn.setBorder(new EmptyBorder(2, 0, 2, 0));
+		SwingUtil.removeButtonDecorations(hideBtn);
+		hideBtn.addActionListener(e -> {
+			if (onHideTask != null)
+			{
+				onHideTask.accept(task);
+			}
+		});
+		buttons.add(hideBtn);
+
 		container.add(buttons, BorderLayout.EAST);
 
 		// --- Wire it all together (tasks-tracker pattern) ---
@@ -201,6 +218,11 @@ public class TaskRowPanel extends JPanel
 	public void setOnMarkCompleted(Consumer<TaskData> callback)
 	{
 		this.onMarkCompleted = callback;
+	}
+
+	public void setOnHideTask(Consumer<TaskData> callback)
+	{
+		this.onHideTask = callback;
 	}
 
 	@Override

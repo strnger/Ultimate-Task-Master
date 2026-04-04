@@ -14,6 +14,7 @@ import com.ultimatetaskmaster.data.PlanItem;
 import com.ultimatetaskmaster.data.PlanService;
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
+import net.runelite.api.Point;
 import net.runelite.api.Scene;
 import net.runelite.api.WorldView;
 import net.runelite.api.coords.LocalPoint;
@@ -22,6 +23,7 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayPriority;
+import net.runelite.client.ui.overlay.OverlayUtil;
 
 /**
  * Renders colored tile highlights at nearby task locations in the 3D game world.
@@ -33,7 +35,6 @@ import net.runelite.client.ui.overlay.OverlayPriority;
  *
  * Only renders tiles within the loaded scene (~128 tile radius from player).
  *
- * TODO: Add task name text above tile (OverlayUtil.renderTextLocation).
  * TODO: Add directional arrows for tasks outside visible range (Quest Helper pattern).
  */
 public class NearbyTaskWorldOverlay extends Overlay
@@ -85,7 +86,7 @@ public class NearbyTaskWorldOverlay extends Overlay
 				if (item.getPinnedX() != null && item.getPinnedY() != null)
 				{
 					WorldPoint planPoint = new WorldPoint(item.getPinnedX(), item.getPinnedY(), 0);
-					renderPlanTile(graphics, planPoint);
+					renderPlanTile(graphics, planPoint, item.getTaskName());
 				}
 			}
 		}
@@ -93,7 +94,7 @@ public class NearbyTaskWorldOverlay extends Overlay
 		return null;
 	}
 
-	private void renderPlanTile(Graphics2D graphics, WorldPoint point)
+	private void renderPlanTile(Graphics2D graphics, WorldPoint point, String label)
 	{
 		WorldView worldView = client.getTopLevelWorldView();
 		for (WorldPoint wp : WorldPoint.toLocalInstance(worldView.getScene(), point))
@@ -121,6 +122,16 @@ public class NearbyTaskWorldOverlay extends Overlay
 			graphics.draw(poly);
 			graphics.setColor(new Color(255, 140, 0, FILL_ALPHA));
 			graphics.fill(poly);
+
+			// Render plan item name above tile
+			if (label != null)
+			{
+				Point canvasTextLocation = Perspective.getCanvasTextLocation(client, graphics, lp, label, 0);
+				if (canvasTextLocation != null)
+				{
+					OverlayUtil.renderTextLocation(graphics, canvasTextLocation, label, planColor);
+				}
+			}
 		}
 	}
 
@@ -166,6 +177,13 @@ public class NearbyTaskWorldOverlay extends Overlay
 			graphics.setColor(new Color(
 				tileColor.getRed(), tileColor.getGreen(), tileColor.getBlue(), FILL_ALPHA));
 			graphics.fill(poly);
+
+			// Render task name above tile
+			Point canvasTextLocation = Perspective.getCanvasTextLocation(client, graphics, lp, nearbyTask.getTask().getName(), 0);
+			if (canvasTextLocation != null)
+			{
+				OverlayUtil.renderTextLocation(graphics, canvasTextLocation, nearbyTask.getTask().getName(), tileColor);
+			}
 		}
 	}
 }

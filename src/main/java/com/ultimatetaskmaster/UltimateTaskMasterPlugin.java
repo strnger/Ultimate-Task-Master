@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.KeyCode;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.coords.WorldPoint;
@@ -260,6 +261,43 @@ public class UltimateTaskMasterPlugin extends Plugin
 			panel.setSyncStatus(pending + " pending", new Color(255, 200, 100));
 		});
 
+		// Load hidden task names
+		String hiddenJson = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
+		if (hiddenJson != null && !hiddenJson.isEmpty())
+		{
+			try
+			{
+				java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
+				java.util.List<String> names = new com.google.gson.Gson().fromJson(hiddenJson, type);
+				if (names != null)
+				{
+					panel.setHiddenTaskNames(new java.util.HashSet<>(names));
+				}
+			}
+			catch (Exception e)
+			{
+				log.warn("Failed to load hidden task names", e);
+			}
+		}
+
+		panel.setOnHideTask(taskName -> {
+			String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
+			java.util.Set<String> hidden = new java.util.HashSet<>();
+			if (json != null && !json.isEmpty())
+			{
+				try
+				{
+					java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
+					java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
+					if (names != null) hidden.addAll(names);
+				}
+				catch (Exception e) { /* ignore */ }
+			}
+			hidden.add(taskName);
+			configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
+				new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
+		});
+
 		panel.setOnSync(() -> {
 			// Run sync on a background thread — never block EDT
 			new Thread(() -> {
@@ -437,6 +475,59 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Subscribe
 	public void onMenuEntryAdded(MenuEntryAdded event)
 	{
+		// Shift-right-click on game world: "Add to Plan" for nearby tasks
+		if (client.isKeyPressed(net.runelite.api.KeyCode.KC_SHIFT)
+			&& event.getType() == MenuAction.WALK.getId()
+			&& nearbyTasks != null && !nearbyTasks.isEmpty())
+		{
+			// Get the tile the player is hovering
+			if (client.getSelectedSceneTile() != null)
+			{
+				WorldPoint hoveredTile = client.getSelectedSceneTile().getWorldLocation();
+				if (hoveredTile != null)
+				{
+					for (NearbyTask nearbyTask : nearbyTasks)
+					{
+						WorldPoint taskPoint = nearbyTask.getResolvedLocation();
+						if (taskPoint != null && hoveredTile.distanceTo(taskPoint) <= 1)
+						{
+							TaskData task = nearbyTask.getTask();
+							// Check if already in plan
+							boolean inPlan = planService.getItems().stream()
+								.anyMatch(item -> item.getTaskName().equals(task.getName()));
+
+							if (!inPlan)
+							{
+								client.createMenuEntry(-1)
+									.setOption("Add to Plan")
+									.setTarget(ColorUtil.wrapWithColorTag(task.getName(), task.getTier().getColor()))
+									.setType(MenuAction.RUNELITE)
+									.onClick(e -> {
+										addTaskToPlan(task);
+									});
+							}
+							else
+							{
+								client.createMenuEntry(-1)
+									.setOption("Remove from Plan")
+									.setTarget(ColorUtil.wrapWithColorTag(task.getName(), task.getTier().getColor()))
+									.setType(MenuAction.RUNELITE)
+									.onClick(e -> {
+										planService.removeTask(task.getName());
+										SwingUtilities.invokeLater(() -> {
+											panel.rebuildAllTasksList();
+											panel.rebuildNearbyList();
+											panel.rebuildPlanList();
+										});
+									});
+							}
+							break; // Only add one menu entry per hover
+						}
+					}
+				}
+			}
+		}
+
 		// Only add menu entries when we have shown location points on the map
 		if (shownLocationPoints.isEmpty())
 		{

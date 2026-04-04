@@ -1,10 +1,5 @@
 You may use up to 30 parallel puppies to complete the following:
 
-add a "hide" option to tasks in the "All tasks" tab as well as a "show hidden" button
-
-the "sync" button turns to "syncing" and doesn't turn back when done
-
-Let's make the "near me" tab work. When "find nearby tasks" is clicked, it should highlight the tile with the task name in game. shift-right-clicking the tile should bring up the option to add the task to my plan (you can reference C:\Users\Strnger\Documents\Repos\examples\tile-packs for this)
 
 STOP HERE -------------------------------------------------
 
