@@ -513,7 +513,42 @@ public class UltimateTaskMasterPlugin extends Plugin
 										});
 									});
 							}
-							break; // Only add one menu entry per hover
+							// Always offer "Hide Task" option
+							client.createMenuEntry(-2)
+								.setOption("Hide Task")
+								.setTarget(ColorUtil.wrapWithColorTag(task.getName(), Color.GRAY))
+								.setType(MenuAction.RUNELITE)
+								.onClick(e -> {
+									// Add to hidden set and persist
+									String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
+									java.util.Set<String> hidden = new java.util.HashSet<>();
+									if (json != null && !json.isEmpty())
+									{
+										try
+										{
+											java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
+											java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
+											if (names != null) hidden.addAll(names);
+										}
+										catch (Exception ex) { /* ignore */ }
+									}
+									hidden.add(task.getName());
+									configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
+										new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
+									
+									// Remove from current nearby results and refresh
+									nearbyTasks = nearbyTasks.stream()
+										.filter(nt -> !nt.getTask().getName().equals(task.getName()))
+										.collect(java.util.stream.Collectors.toList());
+									
+									SwingUtilities.invokeLater(() -> {
+										panel.setHiddenTaskNames(hidden);
+										panel.rebuildAllTasksList();
+										panel.rebuildNearbyList();
+									});
+								});
+
+							break;
 						}
 					}
 				}
