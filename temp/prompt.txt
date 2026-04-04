@@ -4,7 +4,7 @@ if a task is hidden, and we're in the "show hidden" section, the button should b
 
 hiding a task in the plugin panel does not hide it from the in-game overlay ("find nearby tasks")
 
-
+record what we've done in the relevant .md files
 
 STOP HERE -------------------------------------------------
 

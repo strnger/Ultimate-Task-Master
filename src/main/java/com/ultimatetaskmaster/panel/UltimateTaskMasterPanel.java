@@ -683,7 +683,8 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				TaskData t = filtered.get(i);
 				boolean done = completedTaskNames.contains(t.getName());
 				boolean inPlan = planNames.contains(t.getName());
-				TaskRowPanel row = new TaskRowPanel(t, done, null, i % 2 == 0, inPlan);
+				boolean isHidden = hiddenTaskNames.contains(t.getName());
+				TaskRowPanel row = new TaskRowPanel(t, done, null, i % 2 == 0, inPlan, isHidden);
 				row.setOnAddToPlan(onAddToPlanCallback);
 				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 				row.setOnMarkCompleted(onMarkCompletedCallback);
@@ -693,6 +694,14 @@ public class UltimateTaskMasterPanel extends PluginPanel
 						onHideTaskCallback.accept(td.getName());
 					}
 					hiddenTaskNames.add(td.getName());
+					rebuildAllTasksList();
+				});
+				row.setOnUnhideTask(td -> {
+					hiddenTaskNames.remove(td.getName());
+					if (onUnhideTaskCallback != null)
+					{
+						onUnhideTaskCallback.accept(td.getName());
+					}
 					rebuildAllTasksList();
 				});
 				allTaskListContainer.add(row);
@@ -748,7 +757,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				boolean done = completedTaskNames.contains(nt.getTask().getName());
 				boolean inPlan = planNames.contains(nt.getTask().getName());
 				TaskRowPanel nearbyRow = new TaskRowPanel(
-					nt.getTask(), done, nt.getDistance(), i % 2 == 0, inPlan);
+					nt.getTask(), done, nt.getDistance(), i % 2 == 0, inPlan, false);
 				nearbyRow.setOnAddToPlan(onAddToPlanCallback);
 				nearbyRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 				nearbyRow.setOnMarkCompleted(onMarkCompletedCallback);
@@ -810,7 +819,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					itemWrapper.setAlignmentX(LEFT_ALIGNMENT);
 					
 					// Task row (same as All Tasks, but isInPlan=true always)
-					TaskRowPanel taskRow = new TaskRowPanel(taskData, done, null, i % 2 == 0, true);
+					TaskRowPanel taskRow = new TaskRowPanel(taskData, done, null, i % 2 == 0, true, false);
 					taskRow.setOnAddToPlan(onAddToPlanCallback);
 					taskRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 					taskRow.setOnMarkCompleted(onMarkCompletedCallback);

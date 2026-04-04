@@ -304,6 +304,24 @@ public class UltimateTaskMasterPlugin extends Plugin
 				new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
 		});
 
+		panel.setOnUnhideTask(taskName -> {
+			String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
+			java.util.Set<String> hidden = new java.util.HashSet<>();
+			if (json != null && !json.isEmpty())
+			{
+				try
+				{
+					java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
+					java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
+					if (names != null) hidden.addAll(names);
+				}
+				catch (Exception e) { /* ignore */ }
+			}
+			hidden.remove(taskName);
+			configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
+				new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
+		});
+
 		panel.setOnSync(() -> {
 			performSync(true);
 		});
@@ -708,6 +726,15 @@ public class UltimateTaskMasterPlugin extends Plugin
 			locationService
 		);
 
+		// Filter out hidden tasks
+		java.util.Set<String> hiddenNames = getHiddenTaskNames();
+		if (!hiddenNames.isEmpty())
+		{
+			nearbyTasks = nearbyTasks.stream()
+				.filter(nt -> !hiddenNames.contains(nt.getTask().getName()))
+				.collect(java.util.stream.Collectors.toList());
+		}
+
 		SwingUtilities.invokeLater(() -> panel.updateResults(nearbyTasks));
 		updateWorldMapMarkers();
 	}
@@ -716,6 +743,25 @@ public class UltimateTaskMasterPlugin extends Plugin
 	{
 		// TODO: Load from ConfigManager when persistence is implemented
 		return Collections.emptySet();
+	}
+
+	private java.util.Set<String> getHiddenTaskNames()
+	{
+		String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
+		if (json == null || json.isEmpty())
+		{
+			return Collections.emptySet();
+		}
+		try
+		{
+			java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
+			java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
+			return names != null ? new java.util.HashSet<>(names) : Collections.emptySet();
+		}
+		catch (Exception e)
+		{
+			return Collections.emptySet();
+		}
 	}
 
 	private void updateWorldMapMarkers()

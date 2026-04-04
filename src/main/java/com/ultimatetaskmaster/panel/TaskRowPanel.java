@@ -47,18 +47,20 @@ public class TaskRowPanel extends JPanel
 	private final boolean completed;
 	private final Integer distance;
 	private boolean isInPlan;
+	private final boolean isHidden;
 
 	private Consumer<TaskData> onAddToPlan;
 	private Consumer<TaskData> onRemoveFromPlan;
 	private Consumer<TaskData> onMarkCompleted;
 	private Consumer<TaskData> onHideTask;
+	private Consumer<TaskData> onUnhideTask;
 
 	private final JPanel container;
 	private final JPanel body;
 	private final JPanel buttons;
 	private Color baseBackground;
 
-	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow, boolean isInPlan)
+	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow, boolean isInPlan, boolean isHidden)
 	{
 		super(new BorderLayout());
 		setAlignmentX(LEFT_ALIGNMENT);
@@ -66,6 +68,7 @@ public class TaskRowPanel extends JPanel
 		this.completed = completed;
 		this.distance = distance;
 		this.isInPlan = isInPlan;
+		this.isHidden = isHidden;
 
 		setLayout(new BorderLayout());
 		setBorder(new EmptyBorder(0, 0, 7, 0));
@@ -157,21 +160,43 @@ public class TaskRowPanel extends JPanel
 			buttons.add(markDoneBtn);
 		}
 
-		// Hide button - small x to hide this task from the list
-		JToggleButton hideBtn = new JToggleButton("\u2715");
-		hideBtn.setFont(FontManager.getRunescapeSmallFont());
-		hideBtn.setForeground(Color.GRAY);
-		hideBtn.setPreferredSize(new Dimension(16, 16));
-		hideBtn.setToolTipText("Hide this task");
-		hideBtn.setBorder(new EmptyBorder(2, 0, 2, 0));
-		SwingUtil.removeButtonDecorations(hideBtn);
-		hideBtn.addActionListener(e -> {
-			if (onHideTask != null)
-			{
-				onHideTask.accept(task);
-			}
-		});
-		buttons.add(hideBtn);
+		// Hide/Show button
+		if (isHidden)
+		{
+			// Task is hidden — show "unhide" button
+			JToggleButton showBtn = new JToggleButton("\u25CB");
+			showBtn.setFont(FontManager.getRunescapeSmallFont());
+			showBtn.setForeground(new Color(100, 200, 100));
+			showBtn.setPreferredSize(new Dimension(16, 16));
+			showBtn.setToolTipText("Unhide this task");
+			showBtn.setBorder(new EmptyBorder(2, 0, 2, 0));
+			SwingUtil.removeButtonDecorations(showBtn);
+			showBtn.addActionListener(e -> {
+				if (onUnhideTask != null)
+				{
+					onUnhideTask.accept(task);
+				}
+			});
+			buttons.add(showBtn);
+		}
+		else
+		{
+			// Normal — show "hide" button
+			JToggleButton hideBtn = new JToggleButton("\u2715");
+			hideBtn.setFont(FontManager.getRunescapeSmallFont());
+			hideBtn.setForeground(Color.GRAY);
+			hideBtn.setPreferredSize(new Dimension(16, 16));
+			hideBtn.setToolTipText("Hide this task");
+			hideBtn.setBorder(new EmptyBorder(2, 0, 2, 0));
+			SwingUtil.removeButtonDecorations(hideBtn);
+			hideBtn.addActionListener(e -> {
+				if (onHideTask != null)
+				{
+					onHideTask.accept(task);
+				}
+			});
+			buttons.add(hideBtn);
+		}
 
 		container.add(buttons, BorderLayout.EAST);
 
@@ -223,6 +248,11 @@ public class TaskRowPanel extends JPanel
 	public void setOnHideTask(Consumer<TaskData> callback)
 	{
 		this.onHideTask = callback;
+	}
+
+	public void setOnUnhideTask(Consumer<TaskData> callback)
+	{
+		this.onUnhideTask = callback;
 	}
 
 	@Override

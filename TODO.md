@@ -1,6 +1,6 @@
 # Ultimate Task Master - TODO
 
-Status: Active development on feature/scraper-integration
+Status: Active development on master
 Last Updated: Post-Current Plan feature completion
 
 ---
@@ -17,6 +17,18 @@ Last Updated: Post-Current Plan feature completion
 - [x] Right-click "Pin location" on world map
 - [x] Mouse-to-worldpoint calculation (WorldMap API)
 - [x] Maven compilation verified via CLI
+- [x] Crowdsourcing server (Express + SQLite + clustering)
+- [x] Web admin dashboard with column sorting
+- [x] Mark as Completed button + CrowdsourcingService
+- [x] Beta password lock
+- [x] Local-first completions (no freeze)
+- [x] Sync button + auto-sync on login/logout
+- [x] Near Me tile overlays with task names
+- [x] Shift-right-click "Add to Plan" on tiles
+- [x] Crowdsourced data feeds into Near Me
+- [x] Server-side spatial clustering + 10% threshold
+- [x] Multi-cluster display (all valid locations shown)
+- [x] Hide/unhide tasks with overlay filtering
 
 ---
 
