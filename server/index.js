@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3847;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 const db = initDatabase();
 
@@ -172,6 +173,43 @@ app.post('/api/admin/blacklist', (req, res) => {
     res.json({ success: true, revoked: submissions.length });
   } catch (err) {
     console.error('POST /api/admin/blacklist error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+/**
+ * GET /api/submissions
+ * Returns all IP submissions (for admin dashboard).
+ */
+app.get('/api/submissions', (req, res) => {
+  try {
+    const rows = db.prepare(`
+      SELECT ip_hash, struct_id, x, y, plane, submitted_at
+      FROM ip_submissions
+      ORDER BY submitted_at DESC
+      LIMIT 1000
+    `).all();
+    res.json(rows);
+  } catch (err) {
+    console.error('GET /api/submissions error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+/**
+ * GET /api/blacklist
+ * Returns all blacklisted IPs (for admin dashboard).
+ */
+app.get('/api/blacklist', (req, res) => {
+  try {
+    const rows = db.prepare(`
+      SELECT ip_hash, reason, blacklisted_at
+      FROM ip_blacklist
+      ORDER BY blacklisted_at DESC
+    `).all();
+    res.json(rows);
+  } catch (err) {
+    console.error('GET /api/blacklist error:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

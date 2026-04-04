@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTM Crowdsource Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; padding: 20px; }
+  h1 { color: #ff8c00; margin-bottom: 4px; }
+  .subtitle { color: #888; font-size: 14px; margin-bottom: 20px; }
+  
+  /* Stats cards */
+  .stats { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .stat-card {
+    background: #16213e; border: 1px solid #0f3460; border-radius: 8px;
+    padding: 16px 24px; min-width: 150px; text-align: center;
+  }
+  .stat-card .value { font-size: 32px; font-weight: bold; color: #ff8c00; }
+  .stat-card .label { font-size: 12px; color: #888; margin-top: 4px; }
+  
+  /* Tabs */
+  .tabs { display: flex; gap: 0; margin-bottom: 0; }
+  .tab {
+    padding: 10px 20px; cursor: pointer; background: #16213e;
+    border: 1px solid #0f3460; border-bottom: none; border-radius: 8px 8px 0 0;
+    color: #888; font-size: 14px; transition: all 0.2s;
+  }
+  .tab.active { background: #0f3460; color: #ff8c00; font-weight: bold; }
+  .tab:hover { color: #ff8c00; }
+  
+  /* Tab content */
+  .tab-content { display: none; background: #16213e; border: 1px solid #0f3460; border-radius: 0 8px 8px 8px; padding: 16px; }
+  .tab-content.active { display: block; }
+  
+  /* Controls */
+  .controls { display: flex; gap: 12px; margin-bottom: 12px; align-items: center; flex-wrap: wrap; }
+  input[type="text"], input[type="number"], select {
+    background: #1a1a2e; border: 1px solid #0f3460; color: #e0e0e0;
+    padding: 6px 12px; border-radius: 4px; font-size: 13px;
+  }
+  input:focus, select:focus { outline: none; border-color: #ff8c00; }
+  button {
+    background: #ff8c00; color: #1a1a2e; border: none; padding: 6px 16px;
+    border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;
+  }
+  button:hover { background: #ffaa33; }
+  button.danger { background: #e74c3c; color: white; }
+  button.danger:hover { background: #c0392b; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #0f3460; color: #ff8c00; padding: 10px 12px; text-align: left; cursor: pointer; user-select: none; position: sticky; top: 0; }
+  th:hover { background: #1a4a8a; }
+  td { padding: 8px 12px; border-bottom: 1px solid #1a1a2e; }
+  tr:hover td { background: #1a2a4e; }
+  .table-wrap { max-height: 500px; overflow-y: auto; border-radius: 4px; }
+  
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 20px; right: 20px; padding: 12px 20px;
+    border-radius: 6px; font-size: 14px; opacity: 0; transition: opacity 0.3s;
+    z-index: 1000;
+  }
+  .toast.show { opacity: 1; }
+  .toast.success { background: #27ae60; color: white; }
+  .toast.error { background: #e74c3c; color: white; }
+  
+  /* Empty state */
+  .empty { text-align: center; padding: 40px; color: #555; }
+  .empty .icon { font-size: 48px; margin-bottom: 8px; }
+  
+  .badge { background: #ff8c00; color: #1a1a2e; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: bold; }
+  .mono { font-family: 'Consolas', monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<h1>🐱 UTM Crowdsource Dashboard</h1>
+<p class="subtitle">Ultimate Task Master — Local Development Server</p>
+
+<div class="stats" id="stats">
+  <div class="stat-card"><div class="value" id="stat-locations">-</div><div class="label">Locations</div></div>
+  <div class="stat-card"><div class="value" id="stat-submissions">-</div><div class="label">Submissions</div></div>
+  <div class="stat-card"><div class="value" id="stat-tasks">-</div><div class="label">Unique Tasks</div></div>
+  <div class="stat-card"><div class="value" id="stat-blacklisted">-</div><div class="label">Blacklisted IPs</div></div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('locations')">📍 Locations</div>
+  <div class="tab" onclick="switchTab('submissions')">📋 Submissions</div>
+  <div class="tab" onclick="switchTab('blacklist')">🚫 Blacklist</div>
+  <div class="tab" onclick="switchTab('test')">🧪 Test Submit</div>
+</div>
+
+<!-- Locations Tab -->
+<div class="tab-content active" id="tab-locations">
+  <div class="controls">
+    <input type="text" id="loc-search" placeholder="Search task name..." oninput="renderLocations()">
+    <select id="loc-sort" onchange="renderLocations()">
+      <option value="hits-desc">Hits (High→Low)</option>
+      <option value="hits-asc">Hits (Low→High)</option>
+      <option value="name-asc">Name (A→Z)</option>
+      <option value="task-asc">Struct ID</option>
+      <option value="recent">Most Recent</option>
+    </select>
+    <button onclick="loadLocations()">↻ Refresh</button>
+    <span id="loc-count" style="color:#888; font-size:12px;"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th onclick="sortBy('task_name')">Task Name</th>
+          <th onclick="sortBy('struct_id')">Struct ID</th>
+          <th onclick="sortBy('x')">X</th>
+          <th onclick="sortBy('y')">Y</th>
+          <th onclick="sortBy('plane')">Plane</th>
+          <th onclick="sortBy('hits')">Hits</th>
+          <th onclick="sortBy('last_seen')">Last Seen</th>
+        </tr>
+      </thead>
+      <tbody id="loc-body"></tbody>
+    </table>
+  </div>
+  <div class="empty" id="loc-empty" style="display:none;">
+    <div class="icon">📍</div>
+    <div>No location data yet. Start the plugin and mark some tasks!</div>
+  </div>
+</div>
+
+<!-- Submissions Tab -->
+<div class="tab-content" id="tab-submissions">
+  <div class="controls">
+    <input type="text" id="sub-search" placeholder="Search by IP hash..." oninput="renderSubmissions()">
+    <button onclick="loadSubmissions()">↻ Refresh</button>
+    <span id="sub-count" style="color:#888; font-size:12px;"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>IP Hash</th>
+          <th>Struct ID</th>
+          <th>X</th>
+          <th>Y</th>
+          <th>Plane</th>
+          <th>Submitted At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="sub-body"></tbody>
+    </table>
+  </div>
+  <div class="empty" id="sub-empty" style="display:none;">
+    <div class="icon">📋</div>
+    <div>No submissions yet.</div>
+  </div>
+</div>
+
+<!-- Blacklist Tab -->
+<div class="tab-content" id="tab-blacklist">
+  <div class="controls">
+    <input type="text" id="bl-ip" placeholder="IP hash to blacklist">
+    <input type="text" id="bl-reason" placeholder="Reason">
+    <button class="danger" onclick="blacklistIp()">🚫 Blacklist IP</button>
+    <button onclick="loadBlacklist()">↻ Refresh</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>IP Hash</th><th>Reason</th><th>Blacklisted At</th></tr></thead>
+      <tbody id="bl-body"></tbody>
+    </table>
+  </div>
+  <div class="empty" id="bl-empty" style="display:none;">
+    <div class="icon">✅</div>
+    <div>No blacklisted IPs. All clear!</div>
+  </div>
+</div>
+
+<!-- Test Submit Tab -->
+<div class="tab-content" id="tab-test">
+  <p style="color:#888; margin-bottom:12px;">Submit a test task completion to verify the server is working.</p>
+  <div class="controls" style="flex-direction:column; align-items:flex-start; gap:8px;">
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <input type="text" id="test-name" placeholder="Task name" value="Cook Shrimp" style="width:200px;">
+      <input type="number" id="test-struct" placeholder="Struct ID" value="1234" style="width:100px;">
+    </div>
+    <div style="display:flex; gap:8px;">
+      <input type="number" id="test-x" placeholder="X" value="3233" style="width:80px;">
+      <input type="number" id="test-y" placeholder="Y" value="3166" style="width:80px;">
+      <input type="number" id="test-plane" placeholder="Plane" value="0" style="width:60px;">
+    </div>
+    <button onclick="testSubmit()">🚀 Submit Test Completion</button>
+  </div>
+  <pre id="test-result" style="margin-top:12px; background:#1a1a2e; padding:12px; border-radius:4px; font-size:13px; color:#27ae60; display:none;"></pre>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = '';  // Same origin
+let locations = [];
+let submissions = [];
+let blacklist = [];
+
+// --- Init ---
+async function init() {
+  await Promise.all([loadStats(), loadLocations(), loadSubmissions(), loadBlacklist()]);
+}
+
+// --- Stats ---
+async function loadStats() {
+  try {
+    const res = await fetch(`${API}/api/stats`);
+    const data = await res.json();
+    document.getElementById('stat-locations').textContent = data.totalLocations;
+    document.getElementById('stat-submissions').textContent = data.totalSubmissions;
+    document.getElementById('stat-tasks').textContent = data.uniqueTasks;
+    document.getElementById('stat-blacklisted').textContent = data.blacklistedIps;
+  } catch(e) { console.error('Stats failed:', e); }
+}
+
+// --- Locations ---
+async function loadLocations() {
+  try {
+    const res = await fetch(`${API}/api/locations`);
+    locations = await res.json();
+    renderLocations();
+  } catch(e) { console.error('Load locations failed:', e); }
+}
+
+function renderLocations() {
+  const search = document.getElementById('loc-search').value.toLowerCase();
+  const sort = document.getElementById('loc-sort').value;
+  
+  let filtered = locations.filter(l => l.task_name.toLowerCase().includes(search));
+  
+  switch(sort) {
+    case 'hits-desc': filtered.sort((a,b) => b.hits - a.hits); break;
+    case 'hits-asc': filtered.sort((a,b) => a.hits - b.hits); break;
+    case 'name-asc': filtered.sort((a,b) => a.task_name.localeCompare(b.task_name)); break;
+    case 'task-asc': filtered.sort((a,b) => a.struct_id - b.struct_id); break;
+    case 'recent': filtered.sort((a,b) => (b.last_seen||'').localeCompare(a.last_seen||'')); break;
+  }
+  
+  const body = document.getElementById('loc-body');
+  const empty = document.getElementById('loc-empty');
+  document.getElementById('loc-count').textContent = `${filtered.length} of ${locations.length} locations`;
+  
+  if (filtered.length === 0) {
+    body.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  
+  body.innerHTML = filtered.map(l => `
+    <tr>
+      <td>${esc(l.task_name)}</td>
+      <td class="mono">${l.struct_id}</td>
+      <td class="mono">${l.x}</td>
+      <td class="mono">${l.y}</td>
+      <td class="mono">${l.plane}</td>
+      <td><span class="badge">${l.hits}</span></td>
+      <td style="color:#888; font-size:12px;">${l.last_seen || '-'}</td>
+    </tr>
+  `).join('');
+}
+
+// --- Submissions ---
+async function loadSubmissions() {
+  try {
+    const res = await fetch(`${API}/api/submissions`);
+    submissions = await res.json();
+    renderSubmissions();
+  } catch(e) { 
+    // endpoint might not exist yet
+    submissions = [];
+    renderSubmissions();
+  }
+}
+
+function renderSubmissions() {
+  const search = document.getElementById('sub-search').value.toLowerCase();
+  let filtered = submissions.filter(s => s.ip_hash.toLowerCase().includes(search));
+  
+  const body = document.getElementById('sub-body');
+  const empty = document.getElementById('sub-empty');
+  document.getElementById('sub-count').textContent = `${filtered.length} submissions`;
+  
+  if (filtered.length === 0) {
+    body.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  
+  body.innerHTML = filtered.map(s => `
+    <tr>
+      <td class="mono" style="font-size:11px;">${esc(s.ip_hash)}</td>
+      <td class="mono">${s.struct_id}</td>
+      <td class="mono">${s.x}</td>
+      <td class="mono">${s.y}</td>
+      <td class="mono">${s.plane}</td>
+      <td style="color:#888; font-size:12px;">${s.submitted_at || '-'}</td>
+      <td><button class="danger" style="font-size:11px; padding:2px 8px;" onclick="blacklistFromSub('${esc(s.ip_hash)}')">Ban</button></td>
+    </tr>
+  `).join('');
+}
+
+// --- Blacklist ---
+async function loadBlacklist() {
+  try {
+    const res = await fetch(`${API}/api/blacklist`);
+    blacklist = await res.json();
+    renderBlacklist();
+  } catch(e) { 
+    blacklist = [];
+    renderBlacklist();
+  }
+}
+
+function renderBlacklist() {
+  const body = document.getElementById('bl-body');
+  const empty = document.getElementById('bl-empty');
+  
+  if (blacklist.length === 0) {
+    body.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  
+  body.innerHTML = blacklist.map(b => `
+    <tr>
+      <td class="mono" style="font-size:11px;">${esc(b.ip_hash)}</td>
+      <td>${esc(b.reason || '-')}</td>
+      <td style="color:#888; font-size:12px;">${b.blacklisted_at || '-'}</td>
+    </tr>
+  `).join('');
+}
+
+async function blacklistIp() {
+  const ip_hash = document.getElementById('bl-ip').value.trim();
+  const reason = document.getElementById('bl-reason').value.trim();
+  if (!ip_hash) { toast('Enter an IP hash', 'error'); return; }
+  
+  try {
+    const res = await fetch(`${API}/api/admin/blacklist`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ ip_hash, reason })
+    });
+    const data = await res.json();
+    toast(`Blacklisted! Revoked ${data.revoked} contributions`, 'success');
+    document.getElementById('bl-ip').value = '';
+    document.getElementById('bl-reason').value = '';
+    await Promise.all([loadBlacklist(), loadLocations(), loadStats()]);
+  } catch(e) { toast('Blacklist failed: ' + e.message, 'error'); }
+}
+
+function blacklistFromSub(ipHash) {
+  document.getElementById('bl-ip').value = ipHash;
+  document.getElementById('bl-reason').value = 'Flagged from submissions viewer';
+  switchTab('blacklist');
+}
+
+// --- Test Submit ---
+async function testSubmit() {
+  const payload = {
+    task_name: document.getElementById('test-name').value,
+    struct_id: parseInt(document.getElementById('test-struct').value),
+    x: parseInt(document.getElementById('test-x').value),
+    y: parseInt(document.getElementById('test-y').value),
+    plane: parseInt(document.getElementById('test-plane').value)
+  };
+  
+  try {
+    const res = await fetch(`${API}/api/submit`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    const pre = document.getElementById('test-result');
+    pre.style.display = 'block';
+    pre.textContent = 'Request:\n' + JSON.stringify(payload, null, 2) + '\n\nResponse:\n' + JSON.stringify(data, null, 2);
+    pre.style.color = res.ok ? '#27ae60' : '#e74c3c';
+    toast('Test submission sent!', 'success');
+    await Promise.all([loadLocations(), loadStats()]);
+  } catch(e) {
+    toast('Submit failed: ' + e.message, 'error');
+  }
+}
+
+// --- Tab switching ---
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.tab-content#tab-${name}`).classList.add('active');
+  // Find tab by matching text content
+  const tabs = document.querySelectorAll('.tab');
+  const tabMap = {locations: 0, submissions: 1, blacklist: 2, test: 3};
+  tabs[tabMap[name]].classList.add('active');
+}
+
+// --- Helpers ---
+function esc(str) { const d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
+
+function toast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+// Auto-refresh every 10 seconds
+setInterval(() => { loadStats(); loadLocations(); }, 10000);
+
+init();
+</script>
+</body>
+</html>

@@ -1,9 +1,10 @@
 You may use up to 30 parallel puppies to complete the following:
-How do I access the database for myself?
-Whe I send the "mark as completed" the client locks up. We need to be saving the location locally when the task completes, then sending any saved data on logging in/out or...
-Speaking of logging in/out, let's add a manual sync button which will pull the latest location data from the server, and also push any local data to the server.
 
+add a "hide" option to tasks in the "All tasks" tab as well as a "show hidden" button
 
+the "sync" button turns to "syncing" and doesn't turn back when done
+
+Let's make the "near me" tab work. When "find nearby tasks" is clicked, it should highlight the tile with the task name in game. shift-right-clicking the tile should bring up the option to add the task to my plan (you can reference C:\Users\Strnger\Documents\Repos\examples\tile-packs for this)
 
 STOP HERE -------------------------------------------------
 
@@ -12,9 +13,8 @@ STOP HERE -------------------------------------------------
 
 Keith notes:
 
-Let's make the "near me" tab work. When "find nearby tasks" is clicked, it should highlight the tile with the task name in game. shift-click 
 
-the algorithm tree for completing nearby tasks should look for nearby tasks (including via teleport, shortest path will be helpful here), then it will look for tasks close to that one, etc, and note all requirements/items for that task
+the algorithm tree for completing nearby tasks should look for nearby tasks (including via teleport, C:\Users\Strnger\Documents\Repos\examples\shortest-path will be helpful here), then it will look for tasks close to that one, etc, and note all requirements/items for that task
 
 
 
