@@ -1,0 +1,3 @@
+@echo off
+echo Running UTM Clear Completed Tasks...
+powershell -ExecutionPolicy Bypass -File "%~dp0clear_completed_tasks.ps1"

@@ -364,17 +364,21 @@ async function blacklistIp() {
 }
 
 async function deleteSubmission(id) {
-  if (!confirm('Delete this submission? This will also decrement the location hit count.')) return;
+  console.log('Deleting submission:', id);
   try {
     const res = await fetch(`${API}/api/submissions/${id}`, { method: 'DELETE' });
     const data = await res.json();
+    console.log('Delete response:', data);
     if (res.ok) {
       toast('Submission deleted', 'success');
       await Promise.all([loadSubmissions(), loadLocations(), loadStats()]);
     } else {
-      toast('Delete failed: ' + data.error, 'error');
+      toast('Delete failed: ' + (data.error || 'Unknown error'), 'error');
     }
-  } catch(e) { toast('Delete failed: ' + e.message, 'error'); }
+  } catch(e) { 
+    console.error('Delete error:', e);
+    toast('Delete failed: ' + e.message, 'error'); 
+  }
 }
 
 function blacklistFromSub(ipHash) {
