@@ -34,8 +34,15 @@ import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
+import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.task.Schedule;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.plugins.banktags.BankTagsPlugin;
+import net.runelite.client.plugins.banktags.BankTagsService;
+import net.runelite.client.plugins.banktags.TagManager;
+import net.runelite.client.game.ItemManager;
+import net.runelite.api.events.WidgetLoaded;
+import net.runelite.api.widgets.InterfaceID;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
@@ -55,6 +62,7 @@ import com.ultimatetaskmaster.data.TaskDataProvider;
 import com.ultimatetaskmaster.data.TaskItemService;
 import com.ultimatetaskmaster.data.TaskLocationService;
 
+import com.ultimatetaskmaster.data.TaskItemRequirement;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
 import com.ultimatetaskmaster.overlay.BankItemOverlay;
@@ -88,6 +96,7 @@ import com.ultimatetaskmaster.worldmap.TaskWorldMapPoint;
 	description = "Find nearby tasks, manage task lists, and plan efficient routes",
 	tags = {"tasks", "goals", "tracker", "leagues", "near me"}
 )
+@PluginDependency(BankTagsPlugin.class)
 public class UltimateTaskMasterPlugin extends Plugin
 {
 	static final String CONFIG_GROUP = "ultimate-task-master";
@@ -134,6 +143,15 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	@Inject
 	private CrowdsourcingService crowdsourcingService;
+
+	@Inject
+	private BankTagsService bankTagsService;
+
+	@Inject
+	private TagManager tagManager;
+
+	@Inject
+	private ItemManager itemManager;
 
 	@Inject
 	private LocalCompletionStore localCompletionStore;
@@ -965,7 +983,89 @@ public class UltimateTaskMasterPlugin extends Plugin
 				panel.rebuildPlanList();
 				updateWorldMapMarkers();
 			});
+			refreshPlanBankTag();
 		}
+	}
+
+	@Subscribe
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		if (event.getGroupId() == InterfaceID.BANK)
+		{
+			refreshPlanBankTag();
+		}
+	}
+
+	/**
+	 * Rebuild the UTM Plan bank tag with items from planned tasks.
+	 */
+	private void refreshPlanBankTag()
+	{
+		if (tagManager == null || taskItemService == null)
+		{
+			return;
+		}
+
+		String tagName = "utm-plan";
+		java.util.Set<Integer> taggedIds = new java.util.LinkedHashSet<>();
+
+		for (PlanItem planItem : planService.getItems())
+		{
+			TaskData task = null;
+			for (TaskData t : enrichedTasks)
+			{
+				if (t.getName().equals(planItem.getTaskName()))
+				{
+					task = t;
+					break;
+				}
+			}
+			if (task == null) continue;
+
+			for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
+			{
+				int itemId = item.getItemId();
+				if (itemId <= 0)
+				{
+					itemId = lookupItemId(item.getName());
+				}
+				if (itemId > 0 && !taggedIds.contains(itemId))
+				{
+					tagManager.addTag(itemId, tagName, false);
+					taggedIds.add(itemId);
+				}
+			}
+		}
+
+		log.debug("Tagged {} items for UTM Plan bank tag", taggedIds.size());
+	}
+
+	private int lookupItemId(String itemName)
+	{
+		if (itemName == null || itemName.isEmpty() || itemManager == null)
+		{
+			return -1;
+		}
+		try
+		{
+			java.util.List<net.runelite.http.api.item.ItemPrice> results = itemManager.search(itemName);
+			if (results != null && !results.isEmpty())
+			{
+				for (net.runelite.http.api.item.ItemPrice r : results)
+				{
+					if (r.getName().equalsIgnoreCase(itemName))
+					{
+						return r.getId();
+					}
+				}
+				return results.get(0).getId();
+			}
+		}
+		catch (Exception e)
+		{
+			log.debug("Item lookup failed for: {}", itemName);
+		}
+		return -1;
 	}
 
 	/**
