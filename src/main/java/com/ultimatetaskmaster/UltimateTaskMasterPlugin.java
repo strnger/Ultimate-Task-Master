@@ -30,7 +30,6 @@ import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.util.ColorUtil;
-import com.ultimatetaskmaster.data.TaskItemRequirement;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -57,6 +56,7 @@ import com.ultimatetaskmaster.data.TaskItemService;
 import com.ultimatetaskmaster.data.TaskLocationService;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
+import com.ultimatetaskmaster.overlay.BankItemOverlay;
 import com.ultimatetaskmaster.overlay.NearbyTaskMinimapOverlay;
 import com.ultimatetaskmaster.overlay.NearbyTaskWorldOverlay;
 import com.ultimatetaskmaster.panel.UltimateTaskMasterPanel;
@@ -143,6 +143,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Inject
 	private NearbyTaskMinimapOverlay minimapOverlay;
 
+	@Inject
+	private BankItemOverlay bankItemOverlay;
+
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
 
@@ -164,6 +167,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 	 * Cached enriched task list with location data populated from TaskLocationService.
 	 * Used by refreshNearbyQuery() and panel so that SpatialTaskQuery can find nearby tasks.
 	 */
+	@Getter
 	private List<TaskData> enrichedTasks = Collections.emptyList();
 
 	@Override
@@ -355,52 +359,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 			performSync(true);
 		});
 
-		panel.setOnBankSearch(() -> {
-			// Build list of items needed for planned tasks
-			java.util.Set<String> itemNames = new java.util.LinkedHashSet<>();
-			for (PlanItem planItem : planService.getItems())
-			{
-				TaskData task = null;
-				for (TaskData t : enrichedTasks)
-				{
-					if (t.getName().equals(planItem.getTaskName()))
-					{
-						task = t;
-						break;
-					}
-				}
-				if (task != null && taskItemService != null)
-				{
-					for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
-					{
-						String display = item.getName();
-						if (item.getQuantity() > 1)
-						{
-							display += " x" + item.getQuantity();
-						}
-						itemNames.add(display);
-					}
-				}
-			}
-
-			if (itemNames.isEmpty())
-			{
-				clientThread.invokeLater(() ->
-					client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-						"No item requirements found for planned tasks.", CHAT_SENDER));
-				return;
-			}
-
-			// Display items in chat
-			String itemList = String.join(", ", itemNames);
-			clientThread.invokeLater(() -> {
-				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-					"Items needed for plan:", CHAT_SENDER);
-				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-					itemList, CHAT_SENDER);
-			});
-		});
-
 		panel.setOnToggleShowLocations((taskName, show) -> {
 			if (show) {
 				// Find the task data
@@ -474,6 +432,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		// 3. Register overlays
 		overlayManager.add(worldOverlay);
 		overlayManager.add(minimapOverlay);
+		overlayManager.add(bankItemOverlay);
 
 		// 4. Wire up completion detection
 		completionListener.register();
@@ -488,6 +447,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		clientToolbar.removeNavigation(navButton);
 		overlayManager.remove(worldOverlay);
 		overlayManager.remove(minimapOverlay);
+		overlayManager.remove(bankItemOverlay);
 		clearWorldMapMarkers();
 		nearbyTasks = Collections.emptyList();
 

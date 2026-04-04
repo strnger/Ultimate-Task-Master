@@ -89,7 +89,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private Runnable onBetaUnlocked;
 
 	private Runnable onFindNearby;
-	private Runnable onBankSearchCallback;
+
 	private Runnable onSyncCallback;
 	private JLabel syncStatusLabel;
 	private JButton syncButton;
@@ -482,23 +482,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		planStatusLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		planStatusLabel.setText("Add tasks from the All Tasks tab");
 		controls.add(planStatusLabel);
-		controls.add(Box.createVerticalStrut(4));
 
-		JButton bankSearchBtn = new JButton("\uD83D\uDD0D Bank");
-		bankSearchBtn.setFont(FontManager.getRunescapeSmallFont());
-		bankSearchBtn.setForeground(Color.WHITE);
-		bankSearchBtn.setBackground(new Color(60, 60, 60));
-		bankSearchBtn.setPreferredSize(new Dimension(80, 20));
-		bankSearchBtn.setBorder(new EmptyBorder(2, 6, 2, 6));
-		bankSearchBtn.setFocusPainted(false);
-		bankSearchBtn.setToolTipText("Search bank for items needed by planned tasks");
-		bankSearchBtn.addActionListener(e -> {
-			if (onBankSearchCallback != null)
-			{
-				onBankSearchCallback.run();
-			}
-		});
-		controls.add(bankSearchBtn);
 
 		card.add(controls, BorderLayout.NORTH);
 		card.add(buildScrollableList(planListContainer), BorderLayout.CENTER);
@@ -555,11 +539,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	public void setOnFindNearby(Runnable callback)
 	{
 		this.onFindNearby = callback;
-	}
-
-	public void setOnBankSearch(Runnable callback)
-	{
-		this.onBankSearchCallback = callback;
 	}
 
 	public SpatialTaskQuery.SortCriteria getSelectedSort()
