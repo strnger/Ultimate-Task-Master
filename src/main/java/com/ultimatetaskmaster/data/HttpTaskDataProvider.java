@@ -262,6 +262,24 @@ public class HttpTaskDataProvider implements TaskDataProvider
 			reqs = Collections.emptyList();
 		}
 
+		// Map item requirements
+		List<TaskItemRequirement> itemReqs;
+		if (def.getItems() != null && !def.getItems().isEmpty())
+		{
+			itemReqs = def.getItems().stream()
+				.map(i -> TaskItemRequirement.builder()
+					.name(i.getName())
+					.quantity(i.getQuantity())
+					.itemId(i.getItemId())
+					.alternateIds(i.getAlternateIds() != null ? i.getAlternateIds() : Collections.emptyList())
+					.build())
+				.collect(Collectors.toList());
+		}
+		else
+		{
+			itemReqs = Collections.emptyList();
+		}
+
 		TaskTier tier = TaskTier.fromInt(def.getTier());
 
 		return TaskData.builder()
@@ -277,6 +295,7 @@ public class HttpTaskDataProvider implements TaskDataProvider
 			.completionPct(def.getCompletionPercent())
 			.location(null)
 			.requirements(reqs)
+			.itemRequirements(itemReqs)
 			.build();
 	}
 

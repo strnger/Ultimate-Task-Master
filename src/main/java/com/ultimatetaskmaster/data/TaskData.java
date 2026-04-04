@@ -1,5 +1,6 @@
 package com.ultimatetaskmaster.data;
 
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 import lombok.Builder;
@@ -54,4 +55,8 @@ public class TaskData
 
 	/** Skill requirements. May be empty, never null after build. */
 	List<TaskSkillRequirement> requirements;
+
+	/** Item requirements for this task. May be empty, never null after build. */
+	@Builder.Default
+	List<TaskItemRequirement> itemRequirements = Collections.emptyList();
 }

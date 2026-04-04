@@ -15,6 +15,7 @@ import javax.swing.JToolTip;
 import javax.swing.ToolTipManager;
 import javax.swing.border.EmptyBorder;
 import com.ultimatetaskmaster.data.TaskData;
+import com.ultimatetaskmaster.data.TaskItemRequirement;
 import com.ultimatetaskmaster.data.TaskSkillRequirement;
 import lombok.Getter;
 import net.runelite.client.ui.ColorScheme;
@@ -48,6 +49,7 @@ public class TaskRowPanel extends JPanel
 	private final Integer distance;
 	private boolean isInPlan;
 	private final boolean isHidden;
+	private java.util.List<TaskItemRequirement> itemRequirements = java.util.Collections.emptyList();
 
 	private Consumer<TaskData> onAddToPlan;
 	private Consumer<TaskData> onRemoveFromPlan;
@@ -255,6 +257,11 @@ public class TaskRowPanel extends JPanel
 		this.onUnhideTask = callback;
 	}
 
+	public void setItemRequirements(java.util.List<TaskItemRequirement> items)
+	{
+		this.itemRequirements = items != null ? items : java.util.Collections.emptyList();
+	}
+
 	@Override
 	public String getToolTipText(MouseEvent e)
 	{
@@ -349,6 +356,20 @@ public class TaskRowPanel extends JPanel
 			{
 				sb.append("\u2022 ").append(req.getLevel()).append(" ")
 					.append(req.getSkill()).append("<br>");
+			}
+		}
+
+		if (!itemRequirements.isEmpty())
+		{
+			sb.append("<br><b>Items Needed:</b><br>");
+			for (TaskItemRequirement item : itemRequirements)
+			{
+				sb.append("\u2022 ").append(item.getName());
+				if (item.getQuantity() > 1)
+				{
+					sb.append(" x").append(item.getQuantity());
+				}
+				sb.append("<br>");
 			}
 		}
 

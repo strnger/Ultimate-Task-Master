@@ -89,11 +89,13 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private Runnable onBetaUnlocked;
 
 	private Runnable onFindNearby;
+	private Runnable onBankSearchCallback;
 	private Runnable onSyncCallback;
 	private JLabel syncStatusLabel;
 	private JButton syncButton;
 	private PlanService planService;
 	private TaskLocationService locationService;
+	private com.ultimatetaskmaster.data.TaskItemService taskItemService;
 	private java.util.function.BiConsumer<String, LocationCluster> onPinCallback;
 	private java.util.function.Consumer<String> onRemoveFromPlanCallback;
 	private java.util.function.Consumer<TaskData> onAddToPlanCallback;
@@ -480,6 +482,23 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		planStatusLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		planStatusLabel.setText("Add tasks from the All Tasks tab");
 		controls.add(planStatusLabel);
+		controls.add(Box.createVerticalStrut(4));
+
+		JButton bankSearchBtn = new JButton("\uD83D\uDD0D Bank");
+		bankSearchBtn.setFont(FontManager.getRunescapeSmallFont());
+		bankSearchBtn.setForeground(Color.WHITE);
+		bankSearchBtn.setBackground(new Color(60, 60, 60));
+		bankSearchBtn.setPreferredSize(new Dimension(80, 20));
+		bankSearchBtn.setBorder(new EmptyBorder(2, 6, 2, 6));
+		bankSearchBtn.setFocusPainted(false);
+		bankSearchBtn.setToolTipText("Search bank for items needed by planned tasks");
+		bankSearchBtn.addActionListener(e -> {
+			if (onBankSearchCallback != null)
+			{
+				onBankSearchCallback.run();
+			}
+		});
+		controls.add(bankSearchBtn);
 
 		card.add(controls, BorderLayout.NORTH);
 		card.add(buildScrollableList(planListContainer), BorderLayout.CENTER);
@@ -538,6 +557,11 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.onFindNearby = callback;
 	}
 
+	public void setOnBankSearch(Runnable callback)
+	{
+		this.onBankSearchCallback = callback;
+	}
+
 	public SpatialTaskQuery.SortCriteria getSelectedSort()
 	{
 		return (SpatialTaskQuery.SortCriteria) sortDropdown.getSelectedItem();
@@ -590,6 +614,11 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	public void setLocationService(TaskLocationService locationService)
 	{
 		this.locationService = locationService;
+	}
+
+	public void setTaskItemService(com.ultimatetaskmaster.data.TaskItemService service)
+	{
+		this.taskItemService = service;
 	}
 
 	public void setOnPinCallback(java.util.function.BiConsumer<String, LocationCluster> callback)
@@ -704,6 +733,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					}
 					rebuildAllTasksList();
 				});
+				if (taskItemService != null)
+				{
+					row.setItemRequirements(taskItemService.getItemRequirements(t));
+				}
 				allTaskListContainer.add(row);
 			}
 		}
@@ -770,6 +803,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					hiddenTaskNames.add(td.getName());
 					rebuildNearbyList();
 				});
+				if (taskItemService != null)
+				{
+					nearbyRow.setItemRequirements(taskItemService.getItemRequirements(nt.getTask()));
+				}
 				nearbyTaskListContainer.add(nearbyRow);
 			}
 		}
@@ -832,6 +869,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					taskRow.setOnAddToPlan(onAddToPlanCallback);
 					taskRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 					taskRow.setOnMarkCompleted(onMarkCompletedCallback);
+					if (taskItemService != null)
+					{
+						taskRow.setItemRequirements(taskItemService.getItemRequirements(taskData));
+					}
 					itemWrapper.add(taskRow);
 					
 					// Location buttons panel (the extra piece for Plan tab)

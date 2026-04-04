@@ -44,6 +44,7 @@ class JsonTaskDefinition
 	private String tierName;
 	private Float completionPercent;
 	private List<JsonSkillReq> skills;
+	private List<JsonItemReq> items;
 	private String wikiNotes;
 
 	/**
@@ -55,5 +56,18 @@ class JsonTaskDefinition
 	{
 		private String skill;
 		private int level;
+	}
+
+	/**
+	 * A single item requirement entry.
+	 * Used when scraper provides structured item data.
+	 */
+	@Data
+	static class JsonItemReq
+	{
+		private String name;
+		private int quantity = 1;
+		private int itemId = -1;
+		private List<Integer> alternateIds;
 	}
 }
