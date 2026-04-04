@@ -736,6 +736,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				|| nt.getTask().getName().toLowerCase().contains(searchText))
 			.filter(nt -> !hideCompleted
 				|| !completedTaskNames.contains(nt.getTask().getName()))
+			.filter(nt -> !hiddenTaskNames.contains(nt.getTask().getName()))
 			.sorted(getNearbyComparator())
 			.collect(Collectors.toList());
 
