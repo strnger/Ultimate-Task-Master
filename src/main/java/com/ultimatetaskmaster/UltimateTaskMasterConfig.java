@@ -60,6 +60,18 @@ public interface UltimateTaskMasterConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+		position = 3,
+		keyName = "filterBySkillLevel",
+		name = "Filter by Level",
+		description = "Hide nearby tasks you don't have the skill levels for",
+		section = nearMeSettings
+	)
+	default boolean filterBySkillLevel()
+	{
+		return true;
+	}
+
 	// --- Beta Settings ---
 
 	@ConfigSection(

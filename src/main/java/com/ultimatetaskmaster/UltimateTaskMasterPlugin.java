@@ -21,6 +21,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.KeyCode;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
+import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.events.GameStateChanged;
@@ -49,6 +50,7 @@ import com.ultimatetaskmaster.data.SpatialTaskQuery;
 import com.ultimatetaskmaster.data.HttpTaskDataProvider;
 import com.ultimatetaskmaster.data.StaticTaskDataProvider;
 import com.ultimatetaskmaster.data.TaskData;
+import com.ultimatetaskmaster.data.TaskSkillRequirement;
 import com.ultimatetaskmaster.data.TaskDataProvider;
 import com.ultimatetaskmaster.data.TaskLocationService;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
@@ -142,6 +144,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
 
 	private volatile WorldPoint cachedPlayerPosition;
+	private volatile int[] cachedPlayerSkills;
 
 	private Set<String> completedTaskNames = Collections.emptySet();
 
@@ -445,6 +448,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		if (client.getLocalPlayer() != null)
 		{
 			cachedPlayerPosition = client.getLocalPlayer().getWorldLocation();
+			cachedPlayerSkills = client.getRealSkillLevels();
 		}
 	}
 
@@ -754,6 +758,42 @@ public class UltimateTaskMasterPlugin extends Plugin
 	}
 
 	/**
+	 * Check if the player meets all skill requirements for a task.
+	 * Returns true if requirements are met or if no requirements/skills data available.
+	 */
+	private boolean meetsSkillRequirements(TaskData task)
+	{
+		if (cachedPlayerSkills == null)
+		{
+			return true; // Can't check, show the task
+		}
+
+		List<TaskSkillRequirement> reqs = task.getRequirements();
+		if (reqs == null || reqs.isEmpty())
+		{
+			return true;
+		}
+
+		for (TaskSkillRequirement req : reqs)
+		{
+			try
+			{
+				Skill skill = Skill.valueOf(req.getSkill().toUpperCase());
+				if (cachedPlayerSkills[skill.ordinal()] < req.getLevel())
+				{
+					return false;
+				}
+			}
+			catch (IllegalArgumentException e)
+			{
+				// Unknown skill name (e.g. OVERALL) - skip this requirement
+				log.debug("Unknown skill in requirement: {}", req.getSkill());
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Triggered by the "Find Nearby Tasks" button in the panel.
 	 */
 	private void onFindNearbyTasks()
@@ -798,6 +838,14 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			nearbyTasks = nearbyTasks.stream()
 				.filter(nt -> !completedTaskNames.contains(nt.getTask().getName()))
+				.collect(java.util.stream.Collectors.toList());
+		}
+
+		// Filter out tasks the player doesn't have the levels for
+		if (config.filterBySkillLevel())
+		{
+			nearbyTasks = nearbyTasks.stream()
+				.filter(nt -> meetsSkillRequirements(nt.getTask()))
 				.collect(java.util.stream.Collectors.toList());
 		}
 

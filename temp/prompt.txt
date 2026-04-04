@@ -1,14 +1,15 @@
 You may use up to 30 parallel puppies to complete the following:
 
-Implement a level requirement filtering. each task has a "skills" section. These should map perfectly to ingame skills. For the "find nearby" button, we need to filter out any task we lack the level requirement for. There's probably a plugin that checks levels in C:\Users\Strnger\Documents\Repos\examples, but you might be able to find a quicker example in 
+Implement a level requirement filtering. each task has a "skills" section. These should map perfectly to ingame skills. For the "find nearby" button, we need to filter out any task we lack the level requirement for. There's probably a plugin that checks levels in C:\Users\Strnger\Documents\Repos\examples, but you might be able to find a quicker example in C:\Users\Strnger\Documents\Repos\runelite-wiki (assuming you don't already know how to do this)
 
 STOP HERE -------------------------------------------------
 
 
-
+Next big feature, item requirements! Honestly... no idea how to do this. Don't start implementing, but take a look at how 
 
 
 Keith notes:
+
 
 
 the algorithm tree for completing nearby tasks should look for nearby tasks (including via teleport, C:\Users\Strnger\Documents\Repos\examples\shortest-path will be helpful here), then it will look for tasks close to that one, etc, and note all requirements/items for that task
