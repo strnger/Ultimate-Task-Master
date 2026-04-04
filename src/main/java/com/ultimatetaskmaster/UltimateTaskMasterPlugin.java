@@ -270,6 +270,16 @@ public class UltimateTaskMasterPlugin extends Plugin
 			// Update sync status to show pending count
 			int pending = localCompletionStore.getPendingCount();
 			panel.setSyncStatus(pending + " pending", new Color(255, 200, 100));
+
+			// Remove from nearby results and refresh overlay immediately
+			nearbyTasks = nearbyTasks.stream()
+				.filter(nt -> !nt.getTask().getName().equals(task.getName()))
+				.collect(java.util.stream.Collectors.toList());
+			updateWorldMapMarkers();
+
+			// Refresh panel lists to show completed state
+			panel.setCompletedTaskNames(completedTaskNames);
+			panel.rebuildNearbyList();
 		});
 
 		// Load hidden task names

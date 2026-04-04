@@ -10,7 +10,6 @@ STOP HERE -------------------------------------------------
 
 
 
-when I use the manual "complete a task" button, it submits the data to the server, 
 
 
 Keith notes:
