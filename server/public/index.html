@@ -53,6 +53,8 @@
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th { background: #0f3460; color: #ff8c00; padding: 10px 12px; text-align: left; cursor: pointer; user-select: none; position: sticky; top: 0; }
   th:hover { background: #1a4a8a; }
+  th .sort-arrow { font-size: 10px; margin-left: 4px; opacity: 0.5; }
+  th.sorted .sort-arrow { opacity: 1; color: #ffaa33; }
   td { padding: 8px 12px; border-bottom: 1px solid #1a1a2e; }
   tr:hover td { background: #1a2a4e; }
   .table-wrap { max-height: 500px; overflow-y: auto; border-radius: 4px; }
@@ -112,13 +114,13 @@
     <table>
       <thead>
         <tr>
-          <th onclick="sortBy('task_name')">Task Name</th>
-          <th onclick="sortBy('struct_id')">Struct ID</th>
-          <th onclick="sortBy('x')">X</th>
-          <th onclick="sortBy('y')">Y</th>
-          <th onclick="sortBy('plane')">Plane</th>
-          <th onclick="sortBy('hits')">Hits</th>
-          <th onclick="sortBy('last_seen')">Last Seen</th>
+          <th onclick="colSort('loc','task_name')">Task Name <span class="sort-arrow" id="loc-sort-task_name"></span></th>
+          <th onclick="colSort('loc','struct_id')">Struct ID <span class="sort-arrow" id="loc-sort-struct_id"></span></th>
+          <th onclick="colSort('loc','x')">X <span class="sort-arrow" id="loc-sort-x"></span></th>
+          <th onclick="colSort('loc','y')">Y <span class="sort-arrow" id="loc-sort-y"></span></th>
+          <th onclick="colSort('loc','plane')">Plane <span class="sort-arrow" id="loc-sort-plane"></span></th>
+          <th onclick="colSort('loc','hits')">Hits <span class="sort-arrow" id="loc-sort-hits"></span></th>
+          <th onclick="colSort('loc','last_seen')">Last Seen <span class="sort-arrow" id="loc-sort-last_seen"></span></th>
         </tr>
       </thead>
       <tbody id="loc-body"></tbody>
@@ -141,12 +143,12 @@
     <table>
       <thead>
         <tr>
-          <th>IP Hash</th>
-          <th>Struct ID</th>
-          <th>X</th>
-          <th>Y</th>
-          <th>Plane</th>
-          <th>Submitted At</th>
+          <th onclick="colSort('sub','ip_hash')">IP Hash <span class="sort-arrow" id="sub-sort-ip_hash"></span></th>
+          <th onclick="colSort('sub','struct_id')">Struct ID <span class="sort-arrow" id="sub-sort-struct_id"></span></th>
+          <th onclick="colSort('sub','x')">X <span class="sort-arrow" id="sub-sort-x"></span></th>
+          <th onclick="colSort('sub','y')">Y <span class="sort-arrow" id="sub-sort-y"></span></th>
+          <th onclick="colSort('sub','plane')">Plane <span class="sort-arrow" id="sub-sort-plane"></span></th>
+          <th onclick="colSort('sub','submitted_at')">Submitted At <span class="sort-arrow" id="sub-sort-submitted_at"></span></th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -169,7 +171,11 @@
   </div>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>IP Hash</th><th>Reason</th><th>Blacklisted At</th></tr></thead>
+      <thead><tr>
+        <th onclick="colSort('bl','ip_hash')">IP Hash <span class="sort-arrow" id="bl-sort-ip_hash"></span></th>
+        <th onclick="colSort('bl','reason')">Reason <span class="sort-arrow" id="bl-sort-reason"></span></th>
+        <th onclick="colSort('bl','blacklisted_at')">Blacklisted At <span class="sort-arrow" id="bl-sort-blacklisted_at"></span></th>
+      </tr></thead>
       <tbody id="bl-body"></tbody>
     </table>
   </div>
@@ -205,6 +211,62 @@ let locations = [];
 let submissions = [];
 let blacklist = [];
 
+// Column sort state per table: { column, direction }
+const sortState = {
+  loc: { column: 'hits', direction: 'desc' },
+  sub: { column: 'submitted_at', direction: 'desc' },
+  bl: { column: 'blacklisted_at', direction: 'desc' }
+};
+
+function colSort(table, column) {
+  const state = sortState[table];
+  if (state.column === column) {
+    state.direction = state.direction === 'asc' ? 'desc' : 'asc';
+  } else {
+    state.column = column;
+    state.direction = 'asc';
+  }
+  // Update arrow indicators
+  updateSortArrows(table);
+  // Re-render the appropriate table
+  if (table === 'loc') renderLocations();
+  else if (table === 'sub') renderSubmissions();
+  else if (table === 'bl') renderBlacklist();
+}
+
+function updateSortArrows(table) {
+  // Clear all arrows for this table
+  document.querySelectorAll(`[id^="${table}-sort-"]`).forEach(el => {
+    el.textContent = '';
+    el.parentElement.classList.remove('sorted');
+  });
+  // Set active arrow
+  const state = sortState[table];
+  const arrowEl = document.getElementById(`${table}-sort-${state.column}`);
+  if (arrowEl) {
+    arrowEl.textContent = state.direction === 'asc' ? '▲' : '▼';
+    arrowEl.parentElement.classList.add('sorted');
+  }
+}
+
+function applySortToArray(arr, table) {
+  const { column, direction } = sortState[table];
+  return arr.sort((a, b) => {
+    let valA = a[column];
+    let valB = b[column];
+    // Handle nulls
+    if (valA == null) valA = '';
+    if (valB == null) valB = '';
+    // Numeric comparison for number fields
+    if (typeof valA === 'number' && typeof valB === 'number') {
+      return direction === 'asc' ? valA - valB : valB - valA;
+    }
+    // String comparison
+    const cmp = String(valA).localeCompare(String(valB));
+    return direction === 'asc' ? cmp : -cmp;
+  });
+}
+
 // --- Init ---
 async function init() {
   await Promise.all([loadStats(), loadLocations(), loadSubmissions(), loadBlacklist()]);
@@ -237,13 +299,16 @@ function renderLocations() {
   
   let filtered = locations.filter(l => l.task_name.toLowerCase().includes(search));
   
+  // Apply dropdown sort OR column sort
   switch(sort) {
-    case 'hits-desc': filtered.sort((a,b) => b.hits - a.hits); break;
-    case 'hits-asc': filtered.sort((a,b) => a.hits - b.hits); break;
-    case 'name-asc': filtered.sort((a,b) => a.task_name.localeCompare(b.task_name)); break;
-    case 'task-asc': filtered.sort((a,b) => a.struct_id - b.struct_id); break;
-    case 'recent': filtered.sort((a,b) => (b.last_seen||'').localeCompare(a.last_seen||'')); break;
+    case 'hits-desc': sortState.loc = {column:'hits', direction:'desc'}; break;
+    case 'hits-asc': sortState.loc = {column:'hits', direction:'asc'}; break;
+    case 'name-asc': sortState.loc = {column:'task_name', direction:'asc'}; break;
+    case 'task-asc': sortState.loc = {column:'struct_id', direction:'asc'}; break;
+    case 'recent': sortState.loc = {column:'last_seen', direction:'desc'}; break;
   }
+  filtered = applySortToArray(filtered, 'loc');
+  updateSortArrows('loc');
   
   const body = document.getElementById('loc-body');
   const empty = document.getElementById('loc-empty');
@@ -285,6 +350,8 @@ async function loadSubmissions() {
 function renderSubmissions() {
   const search = document.getElementById('sub-search').value.toLowerCase();
   let filtered = submissions.filter(s => s.ip_hash.toLowerCase().includes(search));
+  filtered = applySortToArray(filtered, 'sub');
+  updateSortArrows('sub');
   
   const body = document.getElementById('sub-body');
   const empty = document.getElementById('sub-empty');
@@ -335,8 +402,10 @@ function renderBlacklist() {
     return;
   }
   empty.style.display = 'none';
+  let sorted = applySortToArray([...blacklist], 'bl');
+  updateSortArrows('bl');
   
-  body.innerHTML = blacklist.map(b => `
+  body.innerHTML = sorted.map(b => `
     <tr>
       <td class="mono" style="font-size:11px;">${esc(b.ip_hash)}</td>
       <td>${esc(b.reason || '-')}</td>
