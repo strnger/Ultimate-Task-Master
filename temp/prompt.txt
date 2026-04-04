@@ -1,11 +1,12 @@
 You may use up to 30 parallel puppies to complete the following:
 
 
+2026-04-04 12:19:24 CDT [main] ERROR n.r.client.plugins.PluginManager - Error instantiating plugin!
+net.runelite.client.plugins.PluginInstantiationException: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
 1) No implementation for net.runelite.client.plugins.banktags.BankTagsService was bound.
   while locating net.runelite.client.plugins.banktags.BankTagsService
-    for field at com.ultimatetaskmaster.data.BankTagIntegration.bankTagsService(Unknown Source)
-  while locating com.ultimatetaskmaster.data.BankTagIntegration
-    for field at com.ultimatetaskmaster.UltimateTaskMasterPlugin.bankTagIntegration(Unknown Source)
+    for field at com.ultimatetaskmaster.UltimateTaskMasterPlugin.bankTagsService(Unknown Source)
   at net.runelite.client.plugins.PluginManager.lambda$instantiate$6(PluginManager.java:595)
 
 1 error
@@ -19,9 +20,7 @@ Caused by: com.google.inject.CreationException: Unable to create injector, see t
 
 1) No implementation for net.runelite.client.plugins.banktags.BankTagsService was bound.
   while locating net.runelite.client.plugins.banktags.BankTagsService
-    for field at com.ultimatetaskmaster.data.BankTagIntegration.bankTagsService(Unknown Source)
-  while locating com.ultimatetaskmaster.data.BankTagIntegration
-    for field at com.ultimatetaskmaster.UltimateTaskMasterPlugin.bankTagIntegration(Unknown Source)
+    for field at com.ultimatetaskmaster.UltimateTaskMasterPlugin.bankTagsService(Unknown Source)
   at net.runelite.client.plugins.PluginManager.lambda$instantiate$6(PluginManager.java:595)
 
 1 error
