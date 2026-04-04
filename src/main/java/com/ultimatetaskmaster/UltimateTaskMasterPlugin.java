@@ -56,7 +56,7 @@ import com.ultimatetaskmaster.data.TaskItemService;
 import com.ultimatetaskmaster.data.TaskLocationService;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
-import com.ultimatetaskmaster.data.BankTagIntegration;
+import com.ultimatetaskmaster.overlay.BankItemOverlay;
 import com.ultimatetaskmaster.overlay.NearbyTaskMinimapOverlay;
 import com.ultimatetaskmaster.overlay.NearbyTaskWorldOverlay;
 import com.ultimatetaskmaster.panel.UltimateTaskMasterPanel;
@@ -144,7 +144,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private NearbyTaskMinimapOverlay minimapOverlay;
 
 	@Inject
-	private BankTagIntegration bankTagIntegration;
+	private BankItemOverlay bankItemOverlay;
 
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
@@ -229,7 +229,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 		panel.setOnRemoveFromPlanCallback(taskName -> {
 			planService.removeTask(taskName);
-			bankTagIntegration.refreshPlanItems(enrichedTasks);
 			// Also hide locations from map if shown
 			java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(taskName);
 			if (points != null) {
@@ -249,7 +248,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 		panel.setOnRemoveFromPlan(task -> {
 			if (task != null && planService != null) {
 				planService.removeTask(task.getName());
-				bankTagIntegration.refreshPlanItems(enrichedTasks);
 				// Also hide locations from map if shown
 				java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(task.getName());
 				if (points != null) {
@@ -434,9 +432,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 		// 3. Register overlays
 		overlayManager.add(worldOverlay);
 		overlayManager.add(minimapOverlay);
-		// Register bank tag for plan items
-		bankTagIntegration.register();
-		bankTagIntegration.refreshPlanItems(enrichedTasks);
+		// Register bank item overlay for plan items
+		overlayManager.add(bankItemOverlay);
 
 		// 4. Wire up completion detection
 		completionListener.register();
@@ -451,7 +448,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		clientToolbar.removeNavigation(navButton);
 		overlayManager.remove(worldOverlay);
 		overlayManager.remove(minimapOverlay);
-		bankTagIntegration.unregister();
+		overlayManager.remove(bankItemOverlay);
 		clearWorldMapMarkers();
 		nearbyTasks = Collections.emptyList();
 
@@ -549,8 +546,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 									.setType(MenuAction.RUNELITE)
 									.onClick(e -> {
 										planService.removeTask(task.getName());
-										bankTagIntegration.refreshPlanItems(enrichedTasks);
-										SwingUtilities.invokeLater(() -> {
+											SwingUtilities.invokeLater(() -> {
 											panel.rebuildAllTasksList();
 											panel.rebuildNearbyList();
 											panel.rebuildPlanList();
@@ -963,7 +959,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 	{
 		if (task != null && planService.addTask(task.getName(), task.getStructId()))
 		{
-			bankTagIntegration.refreshPlanItems(enrichedTasks);
 			SwingUtilities.invokeLater(() -> {
 				panel.rebuildPlanList();
 				updateWorldMapMarkers();

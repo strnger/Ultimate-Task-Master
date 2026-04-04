@@ -1,6 +1,38 @@
 You may use up to 30 parallel puppies to complete the following:
 
 
+1) No implementation for net.runelite.client.plugins.banktags.BankTagsService was bound.
+  while locating net.runelite.client.plugins.banktags.BankTagsService
+    for field at com.ultimatetaskmaster.data.BankTagIntegration.bankTagsService(Unknown Source)
+  while locating com.ultimatetaskmaster.data.BankTagIntegration
+    for field at com.ultimatetaskmaster.UltimateTaskMasterPlugin.bankTagIntegration(Unknown Source)
+  at net.runelite.client.plugins.PluginManager.lambda$instantiate$6(PluginManager.java:595)
+
+1 error
+	at net.runelite.client.plugins.PluginManager.instantiate(PluginManager.java:603)
+	at net.runelite.client.plugins.PluginManager.loadPlugins(PluginManager.java:383)
+	at net.runelite.client.externalplugins.ExternalPluginManager.loadExternalPlugins(ExternalPluginManager.java:126)
+	at net.runelite.client.RuneLite.start(RuneLite.java:326)
+	at net.runelite.client.RuneLite.main(RuneLite.java:274)
+	at com.ultimatetaskmaster.UltimateTaskMasterPluginTest.main(UltimateTaskMasterPluginTest.java:11)
+Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
+
+1) No implementation for net.runelite.client.plugins.banktags.BankTagsService was bound.
+  while locating net.runelite.client.plugins.banktags.BankTagsService
+    for field at com.ultimatetaskmaster.data.BankTagIntegration.bankTagsService(Unknown Source)
+  while locating com.ultimatetaskmaster.data.BankTagIntegration
+    for field at com.ultimatetaskmaster.UltimateTaskMasterPlugin.bankTagIntegration(Unknown Source)
+  at net.runelite.client.plugins.PluginManager.lambda$instantiate$6(PluginManager.java:595)
+
+1 error
+	at com.google.inject.internal.Errors.throwCreationExceptionIfErrorsExist(Errors.java:470)
+	at com.google.inject.internal.InternalInjectorCreator.initializeStatically(InternalInjectorCreator.java:155)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:107)
+	at com.google.inject.internal.InjectorImpl.createChildInjector(InjectorImpl.java:232)
+	at com.google.inject.internal.InjectorImpl.createChildInjector(InjectorImpl.java:236)
+	at net.runelite.client.plugins.PluginManager.instantiate(PluginManager.java:598)
+	... 5 common frames omitted
+
 STOP HERE -------------------------------------------------
 
 
