@@ -1,6 +1,7 @@
 package com.ultimatetaskmaster.data;
 
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * A cluster of nearby world coordinates where a task can be completed.
@@ -8,11 +9,15 @@ import lombok.Value;
  *
  * The x,y coordinates are OSRS world tile coordinates.
  * Count indicates how many raw data points were clustered into this centroid.
+ * structId links back to the task's game cache struct ID (used by crowdsourced data;
+ * defaults to 0 for static task_locations.json where structId is the map key).
  */
-@Value
+@Data
+@NoArgsConstructor
 public class LocationCluster
 {
-	int x;
-	int y;
-	int count;
+	private int x;
+	private int y;
+	private int count;
+	private int structId;
 }

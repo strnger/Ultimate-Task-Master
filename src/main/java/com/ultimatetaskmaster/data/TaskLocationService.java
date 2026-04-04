@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,7 @@ public class TaskLocationService
 {
 	private static final String LOCATIONS_RESOURCE = "/com/ultimatetaskmaster/task_locations.json";
 
-	private final Map<Integer, List<LocationCluster>> locationsByStructId;
+	private Map<Integer, List<LocationCluster>> locationsByStructId;
 
 	@Inject
 	public TaskLocationService(Gson gson)
@@ -65,6 +66,67 @@ public class TaskLocationService
 	public int getTaskCount()
 	{
 		return locationsByStructId.size();
+	}
+
+	/**
+	 * Merge crowdsourced location data from the server into the existing locations.
+	 * Server locations are added alongside static data. Duplicates (within 10 tiles)
+	 * are merged by keeping the higher count.
+	 *
+	 * @param serverLocations list of locations from the crowdsourcing server
+	 */
+	public void mergeServerLocations(List<LocationCluster> serverLocations)
+	{
+		if (serverLocations == null || serverLocations.isEmpty())
+		{
+			return;
+		}
+
+		// Make a mutable copy
+		Map<Integer, List<LocationCluster>> merged = new HashMap<>(locationsByStructId);
+
+		for (LocationCluster serverLoc : serverLocations)
+		{
+			int structId = serverLoc.getStructId();
+			List<LocationCluster> existing = merged.get(structId);
+
+			if (existing == null)
+			{
+				// New task — add it
+				List<LocationCluster> newList = new ArrayList<>();
+				newList.add(serverLoc);
+				merged.put(structId, newList);
+			}
+			else
+			{
+				// Check if we already have a cluster near this location
+				boolean found = false;
+				List<LocationCluster> mutableExisting = new ArrayList<>(existing);
+				for (int i = 0; i < mutableExisting.size(); i++)
+				{
+					LocationCluster ex = mutableExisting.get(i);
+					if (Math.abs(ex.getX() - serverLoc.getX()) < 10
+						&& Math.abs(ex.getY() - serverLoc.getY()) < 10)
+					{
+						// Merge: keep the one with higher count
+						if (serverLoc.getCount() > ex.getCount())
+						{
+							mutableExisting.set(i, serverLoc);
+						}
+						found = true;
+						break;
+					}
+				}
+				if (!found)
+				{
+					mutableExisting.add(serverLoc);
+				}
+				merged.put(structId, mutableExisting);
+			}
+		}
+
+		locationsByStructId = merged;
+		log.info("Merged {} server locations. Total tasks with locations: {}", serverLocations.size(), merged.size());
 	}
 
 	private static Map<Integer, List<LocationCluster>> loadLocations(Gson gson)

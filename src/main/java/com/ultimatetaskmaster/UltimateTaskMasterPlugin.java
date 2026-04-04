@@ -622,6 +622,25 @@ public class UltimateTaskMasterPlugin extends Plugin
 				}
 				java.util.List<CrowdsourcingService.ServerLocation> serverLocations = crowdsourcingService.pullLocations();
 
+				// Merge server locations into TaskLocationService
+				if (!serverLocations.isEmpty())
+				{
+					java.util.List<LocationCluster> clusters = new java.util.ArrayList<>();
+					for (CrowdsourcingService.ServerLocation sl : serverLocations)
+					{
+						LocationCluster lc = new LocationCluster();
+						lc.setStructId(sl.getStruct_id());
+						lc.setX(sl.getX());
+						lc.setY(sl.getY());
+						lc.setCount(sl.getHits());
+						clusters.add(lc);
+					}
+					locationService.mergeServerLocations(clusters);
+
+					// Re-enrich tasks with merged location data
+					enrichedTasks = enrichTasksWithLocations(taskDataProvider.getTasks());
+				}
+
 				final int finalPushed = pushed;
 				final int pulled = serverLocations.size();
 				int remaining = localCompletionStore.getPendingCount();

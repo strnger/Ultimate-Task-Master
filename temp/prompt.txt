@@ -1,10 +1,10 @@
 You may use up to 30 parallel puppies to complete the following:
 
-The sync appears to fire on log in, but not log out. Honestly, that's fine for now (unless you have a quick fix or wanna throw an investigative puppy or two at it).
+if a task is hidden, and we're in the "show hidden" section, the button should be "show" instead
 
-When I tried the delete on the web UI, it prompted me to confirm (which was annoying), but then it seemed to work. however, since then, the delete button seems completely obselete. No network traffic, no console log or crash, nothing. Please look into that. feel free to create random test data and delete it to verify the server is working. I really don't care about any data currently on there.
+hiding a task in the plugin panel does not hide it from the in-game overlay ("find nearby tasks")
 
-Please write me a script I can run from this C:\Users\Strnger\Documents\Repos\Ultimate-Task-Master\temp folder  that will clear any tasks my character has done locally (BE CAREFUL NOT TO DELETE ANY OTHER LOCAL DATA). I want to be able to see the submissions pop up from the server.
+
 
 STOP HERE -------------------------------------------------
 
