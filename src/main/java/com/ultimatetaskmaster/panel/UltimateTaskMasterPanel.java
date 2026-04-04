@@ -761,6 +761,14 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				nearbyRow.setOnAddToPlan(onAddToPlanCallback);
 				nearbyRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 				nearbyRow.setOnMarkCompleted(onMarkCompletedCallback);
+				nearbyRow.setOnHideTask(td -> {
+					if (onHideTaskCallback != null)
+					{
+						onHideTaskCallback.accept(td.getName());
+					}
+					hiddenTaskNames.add(td.getName());
+					rebuildNearbyList();
+				});
 				nearbyTaskListContainer.add(nearbyRow);
 			}
 		}
