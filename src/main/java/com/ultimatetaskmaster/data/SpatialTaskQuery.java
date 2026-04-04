@@ -35,10 +35,9 @@ public final class SpatialTaskQuery
 
 		for (TaskData task : allTasks)
 		{
-			// Check all location clusters for this task
-			WorldPoint bestLocation = null;
-			int bestDistance = Integer.MAX_VALUE;
+			boolean addedAny = false;
 
+			// Add ALL location clusters within radius (not just the closest)
 			if (locationService != null)
 			{
 				List<LocationCluster> clusters = locationService.getLocationsForTask(task.getStructId());
@@ -48,29 +47,23 @@ public final class SpatialTaskQuery
 					{
 						WorldPoint clusterPoint = new WorldPoint(cluster.getX(), cluster.getY(), 0);
 						int dist = distance2D(origin, clusterPoint);
-						if (dist <= radius && dist < bestDistance)
+						if (dist <= radius)
 						{
-							bestDistance = dist;
-							bestLocation = clusterPoint;
+							results.add(new NearbyTask(task, clusterPoint, dist));
+							addedAny = true;
 						}
 					}
 				}
 			}
 
-			// Fall back to TaskData.location if no cluster matches
-			if (bestLocation == null && task.getLocation() != null)
+			// Fall back to TaskData.location if no cluster was added
+			if (!addedAny && task.getLocation() != null)
 			{
 				int dist = distance2D(origin, task.getLocation());
 				if (dist <= radius)
 				{
-					bestDistance = dist;
-					bestLocation = task.getLocation();
+					results.add(new NearbyTask(task, task.getLocation(), dist));
 				}
-			}
-
-			if (bestLocation != null)
-			{
-				results.add(new NearbyTask(task, bestLocation, bestDistance));
 			}
 		}
 
