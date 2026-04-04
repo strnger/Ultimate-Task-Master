@@ -68,6 +68,11 @@ import com.ultimatetaskmaster.worldmap.TaskWorldMapPoint;
  *   ChatMessage -> TaskCompletionListener -> TaskCompletionEvent -> Plugin.onTaskCompletionEvent()
  *     -> auto-refresh nearby query -> overlays + panel update immediately
  *
+ * TODO: Add varp/varbit-based detection for bulk reading all completed league tasks
+ *       from game memory. This would be the most reliable method — knows ALL completed
+ *       tasks, not just ones completed while the plugin was active. Needs research into
+ *       the correct varps for Raging Echoes league.
+ *
  * Lifecycle follows the standard RuneLite pattern (see docs/plugin-api/lifecycle.md):
  * - startUp():  register overlays, panel, load data, wire detection
  * - shutDown(): unregister EVERYTHING registered in startUp()
@@ -461,6 +466,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 	{
 		completedTaskNames = new java.util.HashSet<>(completedTaskNames);
 		completedTaskNames.add(event.getTaskName());
+
+		// Persist so it survives restart
+		localCompletionStore.addCompletedName(event.getTaskName());
 
 		client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
 			"Task completed: " + event.getTaskName(), CHAT_SENDER);
