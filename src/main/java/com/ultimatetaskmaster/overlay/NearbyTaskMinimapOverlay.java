@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import com.ultimatetaskmaster.UltimateTaskMasterConfig;
 import com.ultimatetaskmaster.UltimateTaskMasterPlugin;
 import com.ultimatetaskmaster.data.NearbyTask;
+import com.ultimatetaskmaster.data.PlanItem;
+import com.ultimatetaskmaster.data.PlanService;
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
@@ -48,6 +50,9 @@ public class NearbyTaskMinimapOverlay extends Overlay
 	private final UltimateTaskMasterConfig config;
 
 	@Inject
+	private PlanService planService;
+
+	@Inject
 	private NearbyTaskMinimapOverlay(
 		Client client,
 		UltimateTaskMasterPlugin plugin,
@@ -69,12 +74,6 @@ public class NearbyTaskMinimapOverlay extends Overlay
 			return null;
 		}
 
-		List<NearbyTask> nearbyTasks = plugin.getNearbyTasks();
-		if (nearbyTasks == null || nearbyTasks.isEmpty())
-		{
-			return null;
-		}
-
 		Shape minimapClip = getMinimapClipArea();
 		if (minimapClip == null)
 		{
@@ -84,12 +83,56 @@ public class NearbyTaskMinimapOverlay extends Overlay
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 		graphics.setClip(minimapClip);
 
-		for (NearbyTask nearbyTask : nearbyTasks)
+		List<NearbyTask> nearbyTasks = plugin.getNearbyTasks();
+		if (nearbyTasks != null)
 		{
-			drawTaskDot(graphics, nearbyTask);
+			for (NearbyTask nearbyTask : nearbyTasks)
+			{
+				drawTaskDot(graphics, nearbyTask);
+			}
+		}
+
+		// Render pinned plan locations (orange color)
+		if (planService != null)
+		{
+			List<PlanItem> pinned = planService.getPinnedItems();
+			for (PlanItem item : pinned)
+			{
+				if (item.getPinnedX() != null && item.getPinnedY() != null)
+				{
+					WorldPoint planPoint = new WorldPoint(item.getPinnedX(), item.getPinnedY(), 0);
+					drawPlanDot(graphics, planPoint);
+				}
+			}
 		}
 
 		return null;
+	}
+
+	private void drawPlanDot(Graphics2D graphics, WorldPoint point)
+	{
+		WorldView worldView = client.getTopLevelWorldView();
+		for (WorldPoint wp : WorldPoint.toLocalInstance(worldView.getScene(), point))
+		{
+			if (wp.getPlane() != worldView.getPlane())
+			{
+				continue;
+			}
+
+			LocalPoint lp = LocalPoint.fromWorld(worldView, wp);
+			if (lp == null)
+			{
+				continue;
+			}
+
+			Point posOnMinimap = Perspective.localToMinimap(client, lp);
+			if (posOnMinimap == null)
+			{
+				continue;
+			}
+
+			renderMinimapRect(graphics, posOnMinimap, new Color(255, 140, 0));
+		}
 	}
 
 	private void drawTaskDot(Graphics2D graphics, NearbyTask nearbyTask)

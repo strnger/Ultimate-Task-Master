@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "server",
+  "dolt_database": "Ultimate_Task_Master",
+  "project_id": "6b922601-4b27-4118-821a-596a2168845e"
+}

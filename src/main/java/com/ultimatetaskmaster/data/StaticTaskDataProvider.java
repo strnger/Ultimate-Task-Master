@@ -9,38 +9,18 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Loads all 1,589 tasks from the bundled JSON resource (scraped from OSRS wiki).
+ * Loads tasks from the bundled JSON resource. Serves as offline fallback.
  *
- * <h3>Bundled Data (MVP)</h3>
- * Task definitions are baked into the JAR as {@code tasks.json}. This is the
- * simplest approach — no server dependency, works offline, zero startup latency.
- *
- * <h3>Future: HTTP Task Provider (WikiSync Manifest Pattern)</h3>
- * Replace with {@code HttpTaskDataProvider} that follows the WikiSync manifest flow:
- * <ol>
- *   <li>On startup: {@code GET /api/v1/tasks/version} — check if cached data is stale</li>
- *   <li>If version differs: {@code GET /api/v1/tasks} — download full task list</li>
- *   <li>Cache response in ConfigManager (or local file) for offline fallback</li>
- *   <li>Use ETag/If-None-Match headers for efficient caching</li>
- * </ol>
- *
- * <p>This mirrors WikiSync's manifest check exactly:
- * {@code WikiSyncPlugin.checkManifest()} fetches the manifest periodically
- * (every 1200 seconds) and the plugin auto-adapts to server-side changes.
- * Reference: {@code examples/WikiSync/WikiSyncPlugin.java} — see
- * {@code checkManifest()} and {@code MANIFEST_URL}.</p>
- *
- * <p>Task locations are NOT part of the definition — they come from crowdsourced
- * completion data via {@link com.ultimatetaskmaster.crowdsource.TaskLocationResolver}.
- * All tasks have location=null here; the spatial query resolves locations at query time.</p>
+ * Task definitions are baked into the JAR as {@code tasks.json}.
+ * No server dependency, works offline, zero startup latency.
  *
  * @see TaskDataProvider
+ * @see HttpTaskDataProvider
  */
 @Singleton
 @Slf4j
@@ -86,9 +66,9 @@ public class StaticTaskDataProvider implements TaskDataProvider
 			}
 
 			List<TaskData> result = new ArrayList<>(defs.size());
-			for (int i = 0; i < defs.size(); i++)
+			for (JsonTaskDefinition def : defs)
 			{
-				result.add(toTaskData(defs.get(i), i + 1));
+				result.add(HttpTaskDataProvider.toTaskData(def));
 			}
 			return result;
 		}
@@ -99,30 +79,5 @@ public class StaticTaskDataProvider implements TaskDataProvider
 		}
 	}
 
-	private static TaskData toTaskData(JsonTaskDefinition def, int id)
-	{
-		List<TaskSkillRequirement> reqs;
-		if (def.getRequirements() != null && !def.getRequirements().isEmpty())
-		{
-			reqs = def.getRequirements().stream()
-				.map(r -> new TaskSkillRequirement(r.getSkill(), r.getLevel()))
-				.collect(Collectors.toList());
-		}
-		else
-		{
-			reqs = Collections.emptyList();
-		}
-
-		return TaskData.builder()
-			.id(id)
-			.name(def.getName())
-			.description(def.getDescription() != null ? def.getDescription() : "")
-			.area(TaskArea.fromString(def.getArea()))
-			.tier(TaskTier.fromString(def.getTier()))
-			.points(def.getPoints())
-			.completionPct(def.getCompletion_pct())
-			.location(null) // Locations come from crowdsourced data, not static definitions
-			.requirements(reqs)
-			.build();
-	}
+	// Conversion logic shared with HttpTaskDataProvider — see HttpTaskDataProvider.toTaskData()
 }

@@ -6,8 +6,7 @@ import net.runelite.api.coords.WorldPoint;
 /**
  * A task that was found within the spatial search radius, with its resolved location.
  *
- * The "resolved location" comes from crowdsourced completion data (via TaskLocationResolver),
- * NOT from TaskData.location (which is always null in the crowdsource model).
+ * The resolved location comes from TaskData.location, populated by scraper coordinate data.
  *
  * Overlays and world map markers should use {@link #getResolvedLocation()} for rendering.
  */

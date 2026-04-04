@@ -1,0 +1,15 @@
+You may use up to 30 parallel puppies to complete the following:
+
+
+STOP HERE -------------------------------------------------
+
+
+
+
+Keith notes:
+
+
+the algorithm tree for completing nearby tasks should look for nearby tasks (including via teleport, C:\Users\Strnger\Documents\Repos\examples\shortest-path will be helpful here), then it will look for tasks close to that one, etc, and note all requirements/items for that task
+
+
+

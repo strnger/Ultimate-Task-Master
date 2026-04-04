@@ -14,3 +14,20 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Server
+server/node_modules/
+server/*.db
+server/*.db-wal
+server/*.db-shm
+  
+# Pack Leader memory file  
+.pack-leader.md 
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+PACK_LEADER_SESSION.md  
+"server/"  
+"*.py"  

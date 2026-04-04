@@ -6,16 +6,7 @@ import net.runelite.api.coords.WorldPoint;
 
 /**
  * Fired on RuneLite's EventBus when a task completion is detected.
- *
- * This is the ONLY contract between detection and the rest of the plugin.
- * Any detection method (chat messages, varbits, widgets) can fire this event.
- * The plugin subscribes to it and doesn't care how the completion was detected.
- *
- * To add a new detection method:
- * 1. Create a new class (like VarbitCompletionDetector)
- * 2. Inject EventBus and call eventBus.post(new TaskCompletionEvent(...))
- * 3. Register it in the plugin's startUp(), unregister in shutDown()
- * That's it. No other code changes needed.
+ * Any detection method can fire this event.
  *
  * @see TaskCompletionListener
  */

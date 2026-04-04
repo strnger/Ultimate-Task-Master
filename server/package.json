@@ -1,0 +1,15 @@
+{
+  "name": "utm-crowdsource-server",
+  "version": "1.0.0",
+  "description": "Ultimate Task Master crowdsourcing server (local dev)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "better-sqlite3": "^11.0.0",
+    "cors": "^2.8.5"
+  }
+}

@@ -5,11 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 import javax.swing.JToolTip;
-import javax.swing.SwingConstants;
 import javax.swing.ToolTipManager;
 import javax.swing.border.EmptyBorder;
 import com.ultimatetaskmaster.data.TaskData;
@@ -18,128 +20,172 @@ import lombok.Getter;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
+import net.runelite.client.util.SwingUtil;
 
 /**
  * A single task row in the task list panel.
- *
- * Visual pattern copied from tasks-tracker's TaskPanel:
- * - BorderLayout container with tier icon/bar on WEST, body in CENTER, metadata on EAST
- * - Background color encodes state: normal, completed (green tint), unqualified (red tint)
- * - RunescapeSmallFont for consistency with other RuneLite panels
- * - Hover highlight for interactivity feedback
- * - Rich tooltip on hover with full task details
+ * Layout follows tasks-tracker's TaskPanel pattern exactly.
  *
  * Layout:
- *   [tier bar 4px] [name     ] [points]
- *                  [description] [area ]
+ *   [tier bar] [name          ] [+/- btn]
+ *              [category · pts]
  */
 public class TaskRowPanel extends JPanel
 {
-	/** Background for completed tasks — green tint, matches tasks-tracker. */
 	static final Color COMPLETED_BG = new Color(0, 50, 0);
-	/** Background for odd rows to create visual banding. */
-	private static final Color ODD_ROW_BG = new Color(44, 44, 44);
+
+	private static final javax.swing.ImageIcon PLUS_ICON = new javax.swing.ImageIcon(
+		net.runelite.client.util.ImageUtil.loadImageResource(
+			com.ultimatetaskmaster.UltimateTaskMasterPlugin.class, "plus.png"));
+	private static final javax.swing.ImageIcon MINUS_ICON = new javax.swing.ImageIcon(
+		net.runelite.client.util.ImageUtil.loadImageResource(
+			com.ultimatetaskmaster.UltimateTaskMasterPlugin.class, "minus.png"));
 
 	@Getter
 	private final TaskData task;
 	@Getter
 	private final boolean completed;
 	private final Integer distance;
+	private boolean isInPlan;
+
+	private Consumer<TaskData> onAddToPlan;
+	private Consumer<TaskData> onRemoveFromPlan;
+	private Consumer<TaskData> onMarkCompleted;
+	private Consumer<TaskData> onHideTask;
 
 	private final JPanel container;
 	private final JPanel body;
+	private final JPanel buttons;
 	private Color baseBackground;
 
-	/**
-	 * @param task      the task to display
-	 * @param completed whether this task has been completed by the player
-	 * @param distance  tiles from player (null if no location / not in "nearby" mode)
-	 * @param isOddRow  for alternating row backgrounds
-	 */
-	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow)
+	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow, boolean isInPlan)
 	{
 		super(new BorderLayout());
+		setAlignmentX(LEFT_ALIGNMENT);
 		this.task = task;
 		this.completed = completed;
 		this.distance = distance;
+		this.isInPlan = isInPlan;
 
-		setBorder(new EmptyBorder(0, 0, 1, 0));
+		setLayout(new BorderLayout());
+		setBorder(new EmptyBorder(0, 0, 7, 0));
 
-		// --- Container with padding ---
+		// --- Highlight wrapper (tasks-tracker pattern) ---
+		JPanel highlightContainer = new JPanel(new BorderLayout());
+
+		// --- Main container ---
 		container = new JPanel(new BorderLayout());
-		container.setBorder(new EmptyBorder(4, 0, 3, 0));
+		container.setBorder(new EmptyBorder(7, 7, 6, 0));
 
-		// --- Tier color bar (WEST) ---
-		JPanel tierBar = new JPanel();
+		// --- Tier color bar (WEST) - as a JLabel for consistency ---
+		JLabel tierBar = new JLabel();
+		tierBar.setMinimumSize(new Dimension(4, 0));
 		tierBar.setPreferredSize(new Dimension(4, 0));
+		tierBar.setOpaque(true);
 		tierBar.setBackground(task.getTier().getColor());
 		container.add(tierBar, BorderLayout.WEST);
 
-		// --- Body: name + description (CENTER) ---
-		body = new JPanel();
-		body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
-		body.setOpaque(false);
-		body.setBorder(new EmptyBorder(0, 6, 0, 4));
+		// --- Body (CENTER) - using BorderLayout like tasks-tracker ---
+		body = new JPanel(new BorderLayout());
+		body.setBorder(new EmptyBorder(0, 6, 0, 0));
 
+		// Name (NORTH of body)
 		JLabel nameLabel = new JLabel(task.getName());
 		nameLabel.setFont(FontManager.getRunescapeSmallFont());
 		nameLabel.setForeground(Color.WHITE);
-		body.add(nameLabel);
+		body.add(nameLabel, BorderLayout.NORTH);
 
-		String descText = truncate(task.getDescription(), 45);
-		if (!descText.isEmpty())
-		{
-			JLabel descLabel = new JLabel(descText);
-			descLabel.setFont(FontManager.getRunescapeSmallFont());
-			descLabel.setForeground(Color.GRAY);
-			body.add(descLabel);
-		}
+		// Subtitle: category + points + area (CENTER of body)
+		String subtitle = buildSubtitle(task, distance);
+		JLabel subtitleLabel = new JLabel(subtitle);
+		subtitleLabel.setFont(FontManager.getRunescapeSmallFont());
+		subtitleLabel.setForeground(Color.GRAY);
+		body.add(subtitleLabel, BorderLayout.CENTER);
 
 		container.add(body, BorderLayout.CENTER);
 
-		// --- Right side: points + area/distance (EAST) ---
-		JPanel rightSide = new JPanel();
-		rightSide.setLayout(new BoxLayout(rightSide, BoxLayout.Y_AXIS));
-		rightSide.setOpaque(false);
-		rightSide.setBorder(new EmptyBorder(0, 4, 0, 7));
+		// --- Buttons (EAST) - following tasks-tracker pattern ---
+		buttons = new JPanel();
+		buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
+		buttons.setBorder(new EmptyBorder(0, 0, 0, 7));
 
-		JLabel pointsLabel = new JLabel(task.getPoints() + " pts");
-		pointsLabel.setFont(FontManager.getRunescapeSmallFont());
-		pointsLabel.setForeground(task.getTier().getColor());
-		pointsLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		pointsLabel.setAlignmentX(RIGHT_ALIGNMENT);
-		rightSide.add(pointsLabel);
+		// Create toggle button (icons are static constants - loaded once, shared by all rows)
+		JToggleButton planBtn = new JToggleButton();
+		planBtn.setIcon(PLUS_ICON);
+		planBtn.setSelectedIcon(MINUS_ICON);
+		planBtn.setSelected(isInPlan);
+		planBtn.setPreferredSize(new Dimension(16, 16));
+		planBtn.setToolTipText(isInPlan ? "Remove from plan" : "Add to plan");
+		planBtn.setBorder(new EmptyBorder(5, 0, 5, 0));
+		planBtn.addActionListener(e -> {
+			boolean nowSelected = planBtn.isSelected();
+			if (nowSelected && onAddToPlan != null)
+			{
+				onAddToPlan.accept(task);
+				planBtn.setToolTipText("Remove from plan");
+			}
+			else if (!nowSelected && onRemoveFromPlan != null)
+			{
+				onRemoveFromPlan.accept(task);
+				planBtn.setToolTipText("Add to plan");
+			}
+		});
+		SwingUtil.removeButtonDecorations(planBtn);
+		buttons.add(planBtn);
 
-		if (distance != null)
+		// "Mark as Completed" button — sends completion to crowdsourcing server
+		if (!completed)
 		{
-			JLabel distLabel = new JLabel(distance + " tiles");
-			distLabel.setFont(FontManager.getRunescapeSmallFont());
-			distLabel.setForeground(getDistanceColor(distance));
-			distLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-			distLabel.setAlignmentX(RIGHT_ALIGNMENT);
-			rightSide.add(distLabel);
-		}
-		else
-		{
-			JLabel areaLabel = new JLabel(task.getArea().getDisplayName());
-			areaLabel.setFont(FontManager.getRunescapeSmallFont());
-			areaLabel.setForeground(Color.GRAY);
-			areaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-			areaLabel.setAlignmentX(RIGHT_ALIGNMENT);
-			rightSide.add(areaLabel);
+			JToggleButton markDoneBtn = new JToggleButton();
+			// Use a checkmark Unicode character as a simple icon
+			markDoneBtn.setText("\u2713");
+			markDoneBtn.setFont(FontManager.getRunescapeSmallFont());
+			markDoneBtn.setForeground(new Color(100, 255, 100));
+			markDoneBtn.setPreferredSize(new Dimension(16, 16));
+			markDoneBtn.setToolTipText("Mark as Completed (submit to crowdsourcing)");
+			markDoneBtn.setBorder(new EmptyBorder(2, 0, 2, 0));
+			SwingUtil.removeButtonDecorations(markDoneBtn);
+			markDoneBtn.addActionListener(e -> {
+				if (onMarkCompleted != null)
+				{
+					onMarkCompleted.accept(task);
+					markDoneBtn.setEnabled(false);
+					markDoneBtn.setForeground(Color.GRAY);
+					markDoneBtn.setToolTipText("Submitted!");
+				}
+			});
+			buttons.add(markDoneBtn);
 		}
 
-		container.add(rightSide, BorderLayout.EAST);
+		// Hide button - small x to hide this task from the list
+		JToggleButton hideBtn = new JToggleButton("\u2715");
+		hideBtn.setFont(FontManager.getRunescapeSmallFont());
+		hideBtn.setForeground(Color.GRAY);
+		hideBtn.setPreferredSize(new Dimension(16, 16));
+		hideBtn.setToolTipText("Hide this task");
+		hideBtn.setBorder(new EmptyBorder(2, 0, 2, 0));
+		SwingUtil.removeButtonDecorations(hideBtn);
+		hideBtn.addActionListener(e -> {
+			if (onHideTask != null)
+			{
+				onHideTask.accept(task);
+			}
+		});
+		buttons.add(hideBtn);
 
-		// --- Background color ---
+		container.add(buttons, BorderLayout.EAST);
+
+		// --- Wire it all together (tasks-tracker pattern) ---
+		highlightContainer.add(container, BorderLayout.NORTH);
+		add(highlightContainer, BorderLayout.NORTH);
+
+		// --- Background ---
 		baseBackground = completed ? COMPLETED_BG
-			: isOddRow ? ODD_ROW_BG
+			: isOddRow ? new Color(44, 44, 44)
 			: ColorScheme.DARKER_GRAY_COLOR;
 		setBackgroundColor(baseBackground);
 
-		add(container, BorderLayout.CENTER);
-
-		// --- Hover effect (tasks-tracker pattern) ---
+		// --- Hover ---
 		addMouseListener(new MouseAdapter()
 		{
 			@Override
@@ -157,6 +203,26 @@ public class TaskRowPanel extends JPanel
 
 		// --- Tooltip ---
 		ToolTipManager.sharedInstance().registerComponent(this);
+	}
+
+	public void setOnAddToPlan(Consumer<TaskData> callback)
+	{
+		this.onAddToPlan = callback;
+	}
+
+	public void setOnRemoveFromPlan(Consumer<TaskData> callback)
+	{
+		this.onRemoveFromPlan = callback;
+	}
+
+	public void setOnMarkCompleted(Consumer<TaskData> callback)
+	{
+		this.onMarkCompleted = callback;
+	}
+
+	public void setOnHideTask(Consumer<TaskData> callback)
+	{
+		this.onHideTask = callback;
 	}
 
 	@Override
@@ -183,6 +249,34 @@ public class TaskRowPanel extends JPanel
 	{
 		container.setBackground(color);
 		body.setBackground(color);
+		buttons.setBackground(color);
+	}
+
+	private static String buildSubtitle(TaskData task, Integer distance)
+	{
+		StringBuilder sb = new StringBuilder();
+
+		// Category
+		if (task.getCategory() != null && !task.getCategory().isEmpty())
+		{
+			sb.append(task.getCategory());
+		}
+
+		// Points
+		sb.append(sb.length() > 0 ? " \u00b7 " : "");
+		sb.append(task.getPoints()).append(" pts");
+
+		// Area or distance
+		if (distance != null)
+		{
+			sb.append(" \u00b7 ").append(distance).append(" tiles");
+		}
+		else
+		{
+			sb.append(" \u00b7 ").append(task.getArea().getDisplayName());
+		}
+
+		return sb.toString();
 	}
 
 	private String buildTooltip()
@@ -191,6 +285,14 @@ public class TaskRowPanel extends JPanel
 		sb.append("<b>").append(task.getName()).append("</b><br>");
 		sb.append(task.getDescription()).append("<br><br>");
 		sb.append("Area: ").append(task.getArea().getDisplayName()).append("<br>");
+		if (task.getCategory() != null)
+		{
+			sb.append("Category: ").append(task.getCategory()).append("<br>");
+		}
+		if (task.getSkill() != null)
+		{
+			sb.append("Skill: ").append(task.getSkill()).append("<br>");
+		}
 		sb.append("Tier: ").append(task.getTier().getDisplayName())
 			.append(" (").append(task.getPoints()).append(" pts)").append("<br>");
 
@@ -201,7 +303,7 @@ public class TaskRowPanel extends JPanel
 
 		if (completed)
 		{
-			sb.append("<br><b style='color:#22b14d'>✔ Completed</b><br>");
+			sb.append("<br><b style='color:#22b14d'>\u2714 Completed</b><br>");
 		}
 
 		if (task.getCompletionPct() != null)
@@ -215,34 +317,13 @@ public class TaskRowPanel extends JPanel
 			sb.append("<br>Requirements:<br>");
 			for (TaskSkillRequirement req : task.getRequirements())
 			{
-				sb.append("&bull; ").append(req.getLevel()).append(" ")
+				sb.append("\u2022 ").append(req.getLevel()).append(" ")
 					.append(req.getSkill()).append("<br>");
 			}
 		}
 
+		sb.append("<br><span style='color:gray;font-size:9px'>Struct ID: ").append(task.getStructId()).append("</span><br>");
 		sb.append("</body></html>");
 		return sb.toString();
-	}
-
-	private static Color getDistanceColor(int distance)
-	{
-		if (distance <= 10)
-		{
-			return new Color(34, 177, 77);
-		}
-		if (distance <= 50)
-		{
-			return new Color(210, 193, 53);
-		}
-		return Color.WHITE;
-	}
-
-	private static String truncate(String text, int maxLen)
-	{
-		if (text == null || text.isEmpty())
-		{
-			return "";
-		}
-		return text.length() > maxLen ? text.substring(0, maxLen - 3) + "..." : text;
 	}
 }

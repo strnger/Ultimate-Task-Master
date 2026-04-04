@@ -1,10 +1,15 @@
 package com.ultimatetaskmaster.data;
 
+import java.util.HashMap;
+import java.util.Map;
 import lombok.Getter;
 
 /**
  * Game areas/regions for task categorization.
  * Matches OSRS Leagues region system.
+ *
+ * Supports lookup by display name and scraper aliases
+ * (e.g. "Global", "Fremennik Province", "Kharidian Desert", "Kourend & Kebos").
  */
 @Getter
 public enum TaskArea
@@ -22,6 +27,23 @@ public enum TaskArea
 	KOUREND("Kourend"),
 	VARLAMORE("Varlamore");
 
+	private static final Map<String, TaskArea> LOOKUP = new HashMap<>();
+
+	static
+	{
+		// Register each enum value by its display name (lower-cased)
+		for (TaskArea area : values())
+		{
+			LOOKUP.put(area.displayName.toLowerCase(), area);
+		}
+
+		// Scraper aliases for backward compatibility
+		LOOKUP.put("global", GENERAL);
+		LOOKUP.put("fremennik province", FREMENNIK);
+		LOOKUP.put("kharidian desert", DESERT);
+		LOOKUP.put("kourend & kebos", KOUREND);
+	}
+
 	private final String displayName;
 
 	TaskArea(String displayName)
@@ -31,13 +53,10 @@ public enum TaskArea
 
 	public static TaskArea fromString(String name)
 	{
-		for (TaskArea area : values())
+		if (name == null)
 		{
-			if (area.displayName.equalsIgnoreCase(name))
-			{
-				return area;
-			}
+			return GENERAL;
 		}
-		return GENERAL;
+		return LOOKUP.getOrDefault(name.toLowerCase(), GENERAL);
 	}
 }
