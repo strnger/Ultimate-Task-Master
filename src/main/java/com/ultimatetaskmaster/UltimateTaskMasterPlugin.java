@@ -302,6 +302,11 @@ public class UltimateTaskMasterPlugin extends Plugin
 			hidden.add(taskName);
 			configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
 				new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
+			// Remove from current nearby results and refresh overlay immediately
+			nearbyTasks = nearbyTasks.stream()
+				.filter(nt -> !nt.getTask().getName().equals(taskName))
+				.collect(java.util.stream.Collectors.toList());
+			updateWorldMapMarkers();
 		});
 
 		panel.setOnUnhideTask(taskName -> {
