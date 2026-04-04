@@ -34,10 +34,8 @@ import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
-import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.task.Schedule;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.banktags.BankTagsPlugin;
 import net.runelite.client.plugins.banktags.BankTagsService;
 import net.runelite.client.plugins.banktags.TagManager;
 import net.runelite.client.game.ItemManager;
@@ -96,7 +94,6 @@ import com.ultimatetaskmaster.worldmap.TaskWorldMapPoint;
 	description = "Find nearby tasks, manage task lists, and plan efficient routes",
 	tags = {"tasks", "goals", "tracker", "leagues", "near me"}
 )
-@PluginDependency(BankTagsPlugin.class)
 public class UltimateTaskMasterPlugin extends Plugin
 {
 	static final String CONFIG_GROUP = "ultimate-task-master";
@@ -145,12 +142,11 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private CrowdsourcingService crowdsourcingService;
 
 	@Inject
+	private com.google.inject.Injector injector;
+
+	// Resolved at runtime — nullable if bank tags not available
 	private BankTagsService bankTagsService;
-
-	@Inject
 	private TagManager tagManager;
-
-	@Inject
 	private ItemManager itemManager;
 
 	@Inject
@@ -204,6 +200,22 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
+		// Try to resolve bank tag services (optional — not available in test runner)
+		try
+		{
+			bankTagsService = injector.getInstance(BankTagsService.class);
+			tagManager = injector.getInstance(TagManager.class);
+			itemManager = injector.getInstance(ItemManager.class);
+			log.info("Bank tag integration available");
+		}
+		catch (Exception e)
+		{
+			bankTagsService = null;
+			tagManager = null;
+			itemManager = null;
+			log.info("Bank tag integration not available (bank tags plugin not loaded)");
+		}
+
 		// 1. Build the side panel and populate with all tasks
 		panel = new UltimateTaskMasterPanel();
 		panel.setOnFindNearby(this::onFindNearbyTasks);
@@ -990,7 +1002,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
-		if (event.getGroupId() == InterfaceID.BANK)
+		if (event.getGroupId() == InterfaceID.BANK && tagManager != null)
 		{
 			refreshPlanBankTag();
 		}
