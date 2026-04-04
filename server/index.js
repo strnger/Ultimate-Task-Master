@@ -133,6 +133,107 @@ app.get('/api/locations', (req, res) => {
 });
 
 /**
+ * GET /api/locations/clustered
+ * Returns spatially-clustered task locations with weighted centroids.
+ * 
+ * Algorithm:
+ * 1. Group all completions by struct_id
+ * 2. For each task, cluster nearby points (within CLUSTER_RADIUS tiles)
+ * 3. Compute weighted centroid for each cluster (weighted by hits)
+ * 4. Filter: only return clusters with >= MIN_CLUSTER_PCT of total task hits
+ * 
+ * Query params:
+ *   ?radius=10      Cluster radius in tiles (default 10)
+ *   ?threshold=0.10 Minimum % of total task hits (default 0.10 = 10%)
+ */
+app.get('/api/locations/clustered', (req, res) => {
+  try {
+    const CLUSTER_RADIUS = parseInt(req.query.radius) || 10;
+    const MIN_CLUSTER_PCT = parseFloat(req.query.threshold) || 0.10;
+
+    // Get all raw locations grouped by task
+    const allLocations = db.prepare(`
+      SELECT task_name, struct_id, x, y, plane, hits
+      FROM task_completions
+      ORDER BY struct_id, hits DESC
+    `).all();
+
+    // Group by struct_id
+    const byTask = {};
+    for (const loc of allLocations) {
+      if (!byTask[loc.struct_id]) {
+        byTask[loc.struct_id] = { task_name: loc.task_name, locations: [] };
+      }
+      byTask[loc.struct_id].locations.push(loc);
+    }
+
+    const results = [];
+
+    for (const [structId, task] of Object.entries(byTask)) {
+      const locations = task.locations;
+      const totalHits = locations.reduce((sum, l) => sum + l.hits, 0);
+
+      // Greedy clustering: assign each point to nearest existing cluster or create new
+      const clusters = [];
+      for (const loc of locations) {
+        let assigned = false;
+        for (const cluster of clusters) {
+          // Check if this point is within radius of the cluster centroid
+          const dx = Math.abs(loc.x - cluster.centroidX);
+          const dy = Math.abs(loc.y - cluster.centroidY);
+          if (dx <= CLUSTER_RADIUS && dy <= CLUSTER_RADIUS) {
+            // Add to cluster, recompute weighted centroid
+            const oldWeight = cluster.hits;
+            const newWeight = oldWeight + loc.hits;
+            cluster.centroidX = Math.round((cluster.centroidX * oldWeight + loc.x * loc.hits) / newWeight);
+            cluster.centroidY = Math.round((cluster.centroidY * oldWeight + loc.y * loc.hits) / newWeight);
+            cluster.hits = newWeight;
+            cluster.points.push(loc);
+            assigned = true;
+            break;
+          }
+        }
+        if (!assigned) {
+          clusters.push({
+            centroidX: loc.x,
+            centroidY: loc.y,
+            hits: loc.hits,
+            plane: loc.plane,
+            points: [loc]
+          });
+        }
+      }
+
+      // Apply threshold filter and build results
+      for (const cluster of clusters) {
+        const pct = cluster.hits / totalHits;
+        if (pct >= MIN_CLUSTER_PCT) {
+          results.push({
+            task_name: task.task_name,
+            struct_id: parseInt(structId),
+            x: cluster.centroidX,
+            y: cluster.centroidY,
+            plane: cluster.plane,
+            hits: cluster.hits,
+            total_hits: totalHits,
+            percentage: Math.round(pct * 100),
+            point_count: cluster.points.length
+          });
+        }
+      }
+    }
+
+    // Sort by struct_id, then by hits descending
+    results.sort((a, b) => a.struct_id - b.struct_id || b.hits - a.hits);
+
+    res.json(results);
+  } catch (err) {
+    console.error('GET /api/locations/clustered error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+/**
  * GET /api/locations/:structId
  * Returns locations for a specific task.
  */
@@ -283,6 +384,7 @@ app.listen(PORT, () => {
   console.log(`  POST /api/submit          - Submit task completion`);
   console.log(`  GET  /api/locations        - Get all locations`);
   console.log(`  GET  /api/locations/:id    - Get locations for task`);
+  console.log(`  GET  /api/locations/clustered - Clustered locations (heatmap)`);
   console.log(`  GET  /api/stats            - Server statistics`);
   console.log(`  POST /api/admin/blacklist  - Blacklist IP (admin)`);
 });

@@ -1,0 +1,1 @@
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :3847 ^| findstr LISTENING') do taskkill /PID %%a /F

@@ -37,7 +37,7 @@ public class CrowdsourcingService
 	// Local dev server — change to production URL when deployed
 	private static final String SERVER_BASE_URL = "http://localhost:3847";
 	private static final String SUBMIT_URL = SERVER_BASE_URL + "/api/submit";
-	private static final String LOCATIONS_URL = SERVER_BASE_URL + "/api/locations";
+	private static final String LOCATIONS_URL = SERVER_BASE_URL + "/api/locations/clustered";
 	private static final MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
 
 	private final OkHttpClient okHttpClient;
@@ -57,7 +57,7 @@ public class CrowdsourcingService
 	}
 
 	/**
-	 * Location data returned from the server.
+	 * Location data returned from the server's clustered endpoint.
 	 */
 	@Data
 	public static class ServerLocation
@@ -68,6 +68,9 @@ public class CrowdsourcingService
 		private int y;
 		private int plane;
 		private int hits;
+		private int total_hits;
+		private int percentage;
+		private int point_count;
 	}
 
 	@Inject
