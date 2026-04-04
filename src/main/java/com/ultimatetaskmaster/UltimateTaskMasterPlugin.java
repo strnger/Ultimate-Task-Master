@@ -52,8 +52,14 @@ import com.ultimatetaskmaster.data.StaticTaskDataProvider;
 import com.ultimatetaskmaster.data.TaskData;
 import com.ultimatetaskmaster.data.TaskSkillRequirement;
 import com.ultimatetaskmaster.data.TaskDataProvider;
+import com.ultimatetaskmaster.data.TaskItemRequirement;
 import com.ultimatetaskmaster.data.TaskItemService;
 import com.ultimatetaskmaster.data.TaskLocationService;
+import net.runelite.client.plugins.banktags.BankTagsService;
+import net.runelite.client.plugins.banktags.TagManager;
+import net.runelite.client.game.ItemManager;
+import net.runelite.api.events.WidgetLoaded;
+import net.runelite.api.widgets.InterfaceID;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
 import com.ultimatetaskmaster.overlay.BankItemOverlay;
@@ -145,6 +151,15 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	@Inject
 	private BankItemOverlay bankItemOverlay;
+
+	@Inject
+	private BankTagsService bankTagsService;
+
+	@Inject
+	private TagManager tagManager;
+
+	@Inject
+	private ItemManager itemManager;
 
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
@@ -955,10 +970,105 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 	}
 
+	/**
+	 * Rebuild the UTM Plan bank tag with items from planned tasks.
+	 * Tags each required item ID so BankTagsService can filter the bank.
+	 */
+	private void refreshPlanBankTag()
+	{
+		if (tagManager == null || taskItemService == null)
+		{
+			return;
+		}
+
+		String tagName = "utm-plan";
+
+		// Clear existing tag items (remove old tags)
+		// TagManager stores tags per item, so we just add new ones
+
+		java.util.Set<Integer> taggedIds = new java.util.LinkedHashSet<>();
+
+		for (PlanItem planItem : planService.getItems())
+		{
+			TaskData task = null;
+			for (TaskData t : enrichedTasks)
+			{
+				if (t.getName().equals(planItem.getTaskName()))
+				{
+					task = t;
+					break;
+				}
+			}
+			if (task == null) continue;
+
+			for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
+			{
+				int itemId = item.getItemId();
+
+				// If no ID, try to look it up by name
+				if (itemId <= 0)
+				{
+					itemId = lookupItemId(item.getName());
+				}
+
+				if (itemId > 0 && !taggedIds.contains(itemId))
+				{
+					tagManager.addTag(itemId, tagName, false);
+					taggedIds.add(itemId);
+				}
+			}
+		}
+
+		log.debug("Tagged {} items for UTM Plan bank tag", taggedIds.size());
+	}
+
+	/**
+	 * Look up an item ID by name using ItemManager.
+	 */
+	private int lookupItemId(String itemName)
+	{
+		if (itemName == null || itemName.isEmpty() || itemManager == null)
+		{
+			return -1;
+		}
+		try
+		{
+			List<net.runelite.http.api.item.ItemPrice> results = itemManager.search(itemName);
+			if (results != null && !results.isEmpty())
+			{
+				// Prefer exact name match
+				for (net.runelite.http.api.item.ItemPrice r : results)
+				{
+					if (r.getName().equalsIgnoreCase(itemName))
+					{
+						return r.getId();
+					}
+				}
+				return results.get(0).getId();
+			}
+		}
+		catch (Exception e)
+		{
+			log.debug("Item lookup failed for: {}", itemName);
+		}
+		return -1;
+	}
+
+	@Subscribe
+	public void onWidgetLoaded(WidgetLoaded event)
+	{
+		if (event.getGroupId() == InterfaceID.BANK)
+		{
+			// Refresh tags when bank opens
+			refreshPlanBankTag();
+		}
+	}
+
 	public void addTaskToPlan(TaskData task)
 	{
 		if (task != null && planService.addTask(task.getName(), task.getStructId()))
 		{
+			refreshPlanBankTag();
 			SwingUtilities.invokeLater(() -> {
 				panel.rebuildPlanList();
 				updateWorldMapMarkers();
