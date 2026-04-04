@@ -28,6 +28,7 @@ import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.ScriptEvent;
+import net.runelite.api.SoundEffectID;
 import net.runelite.api.SpriteID;
 import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.JavaScriptCallback;
@@ -168,6 +169,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
 	private Widget utmBankButton;
+
+	private boolean bankOverlayActive = true;
 
 	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
 
@@ -1056,8 +1059,66 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	private void onUtmBankButtonClicked()
 	{
-		client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-			"UTM Plan Items button clicked!", CHAT_SENDER);
+		bankOverlayActive = !bankOverlayActive;
+		
+		if (bankOverlayActive)
+		{
+			overlayManager.add(bankItemOverlay);
+			if (utmBankButton != null)
+			{
+				utmBankButton.setSpriteId(SpriteID.TAB_INVENTORY);
+				utmBankButton.revalidate();
+			}
+			
+			// List items needed in chat
+			java.util.Set<String> itemNames = new java.util.LinkedHashSet<>();
+			for (PlanItem planItem : planService.getItems())
+			{
+				TaskData task = null;
+				for (TaskData t : enrichedTasks)
+				{
+					if (t.getName().equals(planItem.getTaskName()))
+					{
+						task = t;
+						break;
+					}
+				}
+				if (task != null && taskItemService != null)
+				{
+					for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
+					{
+						String display = item.getName();
+						if (item.getQuantity() > 1)
+						{
+							display += " x" + item.getQuantity();
+						}
+						itemNames.add(display);
+					}
+				}
+			}
+			
+			if (!itemNames.isEmpty())
+			{
+				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
+					"Plan items: " + String.join(", ", itemNames), CHAT_SENDER);
+			}
+			else
+			{
+				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
+					"No item data for planned tasks.", CHAT_SENDER);
+			}
+		}
+		else
+		{
+			overlayManager.remove(bankItemOverlay);
+			if (utmBankButton != null)
+			{
+				utmBankButton.setSpriteId(SpriteID.BANK_TAB_EMPTY);
+				utmBankButton.revalidate();
+			}
+		}
+		
+		client.playSoundEffect(SoundEffectID.UI_BOOP);
 	}
 
 	/**
