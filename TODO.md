@@ -29,6 +29,22 @@ Last Updated: Post-Current Plan feature completion
 - [x] Server-side spatial clustering + 10% threshold
 - [x] Multi-cluster display (all valid locations shown)
 - [x] Hide/unhide tasks with overlay filtering
+- [x] Hide/unhide toggle with overlay filtering
+- [x] Hide from shift-right-click overlay menu
+- [x] Mark Completed instant overlay removal
+- [x] Skill level requirement filtering
+- [x] Auto-persist chat-detected completions
+
+---
+
+## 🚧 In Progress
+
+### Item Requirements Display + Bank Search
+- [ ] TaskItemRequirement data model
+- [ ] Load strategy.json as seed data (198 tasks)
+- [ ] Show items in task tooltip
+- [ ] Bank search button for planned tasks
+- [ ] Scraper enhancement for full coverage (future, separate repo)
 
 ---
 
