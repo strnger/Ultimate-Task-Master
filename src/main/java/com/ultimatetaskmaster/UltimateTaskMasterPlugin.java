@@ -18,16 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
-import net.runelite.api.KeyCode;
 import net.runelite.api.MenuAction;
-import net.runelite.api.MenuEntry;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
-import net.runelite.api.ScriptEvent;
 import net.runelite.api.SoundEffectID;
 import net.runelite.api.SpriteID;
 import net.runelite.api.widgets.ComponentID;
@@ -41,9 +38,6 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.task.Schedule;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.banktags.BankTagsService;
-import net.runelite.client.plugins.banktags.TagManager;
-import net.runelite.client.game.ItemManager;
 import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.widgets.InterfaceID;
 import net.runelite.client.ui.ClientToolbar;
@@ -148,14 +142,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private CrowdsourcingService crowdsourcingService;
 
 	@Inject
-	private com.google.inject.Injector injector;
-
-	// Resolved at runtime — nullable if bank tags not available
-	private BankTagsService bankTagsService;
-	private TagManager tagManager;
-	private ItemManager itemManager;
-
-	@Inject
 	private LocalCompletionStore localCompletionStore;
 
 	@Inject
@@ -212,22 +198,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
-		// Try to resolve bank tag services (optional — not available in test runner)
-		try
-		{
-			bankTagsService = injector.getInstance(BankTagsService.class);
-			tagManager = injector.getInstance(TagManager.class);
-			itemManager = injector.getInstance(ItemManager.class);
-			log.info("Bank tag integration available");
-		}
-		catch (Exception e)
-		{
-			bankTagsService = null;
-			tagManager = null;
-			itemManager = null;
-			log.info("Bank tag integration not available (bank tags plugin not loaded)");
-		}
-
 		// 1. Build the side panel and populate with all tasks
 		panel = new UltimateTaskMasterPanel();
 		panel.setOnFindNearby(this::onFindNearbyTasks);
@@ -475,7 +445,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		SwingUtilities.invokeLater(() ->
 		{
 			panel.setAllTasks(allTasks);
-			panel.setCompletedTaskNames(loadCompletedNames());
+			panel.setCompletedTaskNames(completedTaskNames);
 			panel.rebuildPlanList();
 		});
 
@@ -950,12 +920,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 		updateWorldMapMarkers();
 	}
 
-	private Set<String> loadCompletedNames()
-	{
-		// TODO: Load from ConfigManager when persistence is implemented
-		return Collections.emptySet();
-	}
-
 	private java.util.Set<String> getHiddenTaskNames()
 	{
 		String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
@@ -1075,7 +1039,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 			enrichedTasks = enrichedHttpTasks;
 			SwingUtilities.invokeLater(() -> {
 				panel.setAllTasks(enrichedHttpTasks);
-				panel.setCompletedTaskNames(loadCompletedNames());
+				panel.setCompletedTaskNames(completedTaskNames);
 				panel.rebuildPlanList();
 			});
 		}
@@ -1090,7 +1054,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 				panel.rebuildPlanList();
 				updateWorldMapMarkers();
 			});
-			refreshPlanBankTag();
 		}
 	}
 
@@ -1101,12 +1064,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			// Create the UTM button on the bank interface
 			clientThread.invokeLater(this::createBankButton);
-
-			// Also refresh bank tag if available
-			if (tagManager != null)
-			{
-				refreshPlanBankTag();
-			}
 		}
 	}
 
@@ -1138,83 +1095,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 		log.info("UTM bank button created");
 	}
 
-	private void onUtmBankButtonClicked()
+	private java.util.Set<String> getPlanItemNames()
 	{
-		bankOverlayActive = !bankOverlayActive;
-		
-		if (bankOverlayActive)
-		{
-			overlayManager.add(bankItemOverlay);
-			if (utmBankButton != null)
-			{
-				utmBankButton.setSpriteId(SpriteID.TAB_INVENTORY);
-				utmBankButton.revalidate();
-			}
-			
-			// List items needed in chat
-			java.util.Set<String> itemNames = new java.util.LinkedHashSet<>();
-			for (PlanItem planItem : planService.getItems())
-			{
-				TaskData task = null;
-				for (TaskData t : enrichedTasks)
-				{
-					if (t.getName().equals(planItem.getTaskName()))
-					{
-						task = t;
-						break;
-					}
-				}
-				if (task != null && taskItemService != null)
-				{
-					for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
-					{
-						String display = item.getName();
-						if (item.getQuantity() > 1)
-						{
-							display += " x" + item.getQuantity();
-						}
-						itemNames.add(display);
-					}
-				}
-			}
-			
-			if (!itemNames.isEmpty())
-			{
-				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-					"Plan items: " + String.join(", ", itemNames), CHAT_SENDER);
-			}
-			else
-			{
-				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-					"No item data for planned tasks.", CHAT_SENDER);
-			}
-		}
-		else
-		{
-			overlayManager.remove(bankItemOverlay);
-			if (utmBankButton != null)
-			{
-				utmBankButton.setSpriteId(SpriteID.BANK_TAB_EMPTY);
-				utmBankButton.revalidate();
-			}
-		}
-		
-		client.playSoundEffect(SoundEffectID.UI_BOOP);
-	}
-
-	/**
-	 * Rebuild the UTM Plan bank tag with items from planned tasks.
-	 */
-	private void refreshPlanBankTag()
-	{
-		if (tagManager == null || taskItemService == null)
-		{
-			return;
-		}
-
-		String tagName = "utm-plan";
-		java.util.Set<Integer> taggedIds = new java.util.LinkedHashSet<>();
-
+		java.util.Set<String> names = new java.util.LinkedHashSet<>();
 		for (PlanItem planItem : planService.getItems())
 		{
 			TaskData task = null;
@@ -1226,52 +1109,109 @@ public class UltimateTaskMasterPlugin extends Plugin
 					break;
 				}
 			}
-			if (task == null) continue;
-
-			for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
+			if (task != null && taskItemService != null)
 			{
-				int itemId = item.getItemId();
-				if (itemId <= 0)
+				for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
 				{
-					itemId = lookupItemId(item.getName());
-				}
-				if (itemId > 0 && !taggedIds.contains(itemId))
-				{
-					tagManager.addTag(itemId, tagName, false);
-					taggedIds.add(itemId);
+					names.add(item.getName().toLowerCase());
 				}
 			}
 		}
-
-		log.debug("Tagged {} items for UTM Plan bank tag", taggedIds.size());
+		return names;
 	}
 
-	private int lookupItemId(String itemName)
+	private void onUtmBankButtonClicked()
 	{
-		if (itemName == null || itemName.isEmpty() || itemManager == null)
+		bankOverlayActive = !bankOverlayActive;
+
+		if (bankOverlayActive)
 		{
-			return -1;
-		}
-		try
-		{
-			java.util.List<net.runelite.http.api.item.ItemPrice> results = itemManager.search(itemName);
-			if (results != null && !results.isEmpty())
+			overlayManager.add(bankItemOverlay);
+			if (utmBankButton != null)
 			{
-				for (net.runelite.http.api.item.ItemPrice r : results)
-				{
-					if (r.getName().equalsIgnoreCase(itemName))
-					{
-						return r.getId();
-					}
-				}
-				return results.get(0).getId();
+				utmBankButton.setSpriteId(SpriteID.TAB_INVENTORY);
+				utmBankButton.revalidate();
+			}
+
+			java.util.Set<String> planItems = getPlanItemNames();
+			if (!planItems.isEmpty())
+			{
+				highlightBankItems(planItems);
+				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
+					"Highlighting plan items in bank", CHAT_SENDER);
+			}
+			else
+			{
+				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
+					"No item data for planned tasks.", CHAT_SENDER);
 			}
 		}
-		catch (Exception e)
+		else
 		{
-			log.debug("Item lookup failed for: {}", itemName);
+			overlayManager.remove(bankItemOverlay);
+			unhighlightBankItems();
+			if (utmBankButton != null)
+			{
+				utmBankButton.setSpriteId(SpriteID.BANK_TAB_EMPTY);
+				utmBankButton.revalidate();
+			}
 		}
-		return -1;
+
+		client.playSoundEffect(SoundEffectID.UI_BOOP);
+	}
+
+	private void highlightBankItems(java.util.Set<String> planItemNames)
+	{
+		Widget bankItemContainer = client.getWidget(ComponentID.BANK_ITEM_CONTAINER);
+		if (bankItemContainer == null)
+		{
+			return;
+		}
+
+		Widget[] children = bankItemContainer.getDynamicChildren();
+		if (children == null)
+		{
+			return;
+		}
+
+		for (Widget item : children)
+		{
+			if (item.getItemId() <= 0)
+			{
+				continue;
+			}
+
+			net.runelite.api.ItemComposition def = client.getItemDefinition(item.getItemId());
+			String itemName = def != null ? def.getName() : null;
+			if (itemName != null && planItemNames.contains(itemName.toLowerCase()))
+			{
+				item.setOpacity(0);
+			}
+			else
+			{
+				item.setOpacity(200);
+			}
+		}
+	}
+
+	private void unhighlightBankItems()
+	{
+		Widget bankItemContainer = client.getWidget(ComponentID.BANK_ITEM_CONTAINER);
+		if (bankItemContainer == null)
+		{
+			return;
+		}
+
+		Widget[] children = bankItemContainer.getDynamicChildren();
+		if (children == null)
+		{
+			return;
+		}
+
+		for (Widget item : children)
+		{
+			item.setOpacity(0);
+		}
 	}
 
 	/**
