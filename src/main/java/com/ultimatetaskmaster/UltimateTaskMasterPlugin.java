@@ -1,5 +1,7 @@
 package com.ultimatetaskmaster;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.google.inject.Binder;
 import com.google.inject.Provides;
 import java.time.temporal.ChronoUnit;
@@ -8,9 +10,15 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.Getter;
@@ -18,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.KeyCode;
 import net.runelite.api.MenuAction;
 import net.runelite.api.Skill;
 import net.runelite.api.coords.WorldPoint;
@@ -62,7 +71,6 @@ import com.ultimatetaskmaster.data.TaskLocationService;
 
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
-import com.ultimatetaskmaster.overlay.BankItemOverlay;
 import com.ultimatetaskmaster.overlay.UtmBankTab;
 import com.ultimatetaskmaster.overlay.NearbyTaskMinimapOverlay;
 import com.ultimatetaskmaster.overlay.NearbyTaskWorldOverlay;
@@ -151,24 +159,20 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private NearbyTaskMinimapOverlay minimapOverlay;
 
 	@Inject
-	private BankItemOverlay bankItemOverlay;
-
-	@Inject
 	private UtmBankTab utmBankTab;
 
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
 	private Widget utmBankButton;
 
-	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
+	private final Map<String, List<TaskWorldMapPoint>> shownLocationPoints = new HashMap<>();
 
 	private volatile WorldPoint cachedPlayerPosition;
 	private volatile int[] cachedPlayerSkills;
 
 	private Set<String> completedTaskNames = Collections.emptySet();
 
-	private java.util.List<TaskWorldMapPoint> routeMapPoints = new java.util.ArrayList<>();
-	private java.util.List<RouteGenerator.RouteStep> currentRouteSteps = java.util.Collections.emptyList();
+	private List<TaskWorldMapPoint> routeMapPoints = new ArrayList<>();
 
 	/**
 	 * The current "near me" results. Shared with overlays via getter.
@@ -233,49 +237,11 @@ public class UltimateTaskMasterPlugin extends Plugin
 		panel.setLocationService(locationService);
 		panel.setTaskItemService(taskItemService);
 
-		panel.setOnPinCallback((taskName, cluster) -> {
-			planService.pinLocation(taskName, cluster.getX(), cluster.getY());
-			SwingUtilities.invokeLater(() -> {
-				panel.rebuildPlanList();
-				updateWorldMapMarkers();
-			});
-		});
-
-		panel.setOnRemoveFromPlanCallback(taskName -> {
-			planService.removeTask(taskName);
-			// Also hide locations from map if shown
-			java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(taskName);
-			if (points != null) {
-				for (TaskWorldMapPoint p : points) {
-					worldMapPointManager.remove(p);
-				}
-			}
-			panel.setTaskLocationsShown(taskName, false);
-			SwingUtilities.invokeLater(() -> {
-				panel.rebuildPlanList();
-				panel.rebuildAllTasksList();
-				panel.rebuildNearbyList();
-				updateWorldMapMarkers();
-			});
-		});
-
 		panel.setOnRemoveFromPlan(task -> {
 			if (task != null && planService != null) {
 				planService.removeTask(task.getName());
-				// Also hide locations from map if shown
-				java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(task.getName());
-				if (points != null) {
-					for (TaskWorldMapPoint p : points) {
-						worldMapPointManager.remove(p);
-					}
-				}
-				panel.setTaskLocationsShown(task.getName(), false);
-				SwingUtilities.invokeLater(() -> {
-					panel.rebuildPlanList();
-					panel.rebuildAllTasksList();
-					panel.rebuildNearbyList();
-					updateWorldMapMarkers();
-				});
+				removeShownLocationPoints(task.getName());
+				refreshAllPanelViews();
 			}
 		});
 
@@ -291,7 +257,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 			localCompletionStore.addPending(task.getName(), task.getStructId(), x, y, plane);
 
 			// Update in-memory completed set
-			completedTaskNames = new java.util.HashSet<>(completedTaskNames);
+			completedTaskNames = new HashSet<>(completedTaskNames);
 			completedTaskNames.add(task.getName());
 
 			// Update sync status to show pending count
@@ -299,9 +265,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 			panel.setSyncStatus(pending + " pending", new Color(255, 200, 100));
 
 			// Remove from nearby results and refresh overlay immediately
-			nearbyTasks = nearbyTasks.stream()
-				.filter(nt -> !nt.getTask().getName().equals(task.getName()))
-				.collect(java.util.stream.Collectors.toList());
+			removeFromNearbyTasks(task.getName());
 			updateWorldMapMarkers();
 
 			// Refresh panel lists to show completed state
@@ -315,11 +279,11 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			try
 			{
-				java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
-				java.util.List<String> names = new com.google.gson.Gson().fromJson(hiddenJson, type);
+				Type type = new TypeToken<List<String>>(){}.getType();
+				List<String> names = new Gson().fromJson(hiddenJson, type);
 				if (names != null)
 				{
-					panel.setHiddenTaskNames(new java.util.HashSet<>(names));
+					panel.setHiddenTaskNames(new HashSet<>(names));
 				}
 			}
 			catch (Exception e)
@@ -330,43 +294,39 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 		panel.setOnHideTask(taskName -> {
 			String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
-			java.util.Set<String> hidden = new java.util.HashSet<>();
+			Set<String> hidden = new HashSet<>();
 			if (json != null && !json.isEmpty())
 			{
 				try
 				{
-					java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
-					java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
+					Type type = new TypeToken<List<String>>(){}.getType();
+					List<String> names = new Gson().fromJson(json, type);
 					if (names != null) hidden.addAll(names);
 				}
 				catch (Exception e) { /* ignore */ }
 			}
 			hidden.add(taskName);
-			configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
-				new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
+			saveHiddenTaskNames(hidden);
 			// Remove from current nearby results and refresh overlay immediately
-			nearbyTasks = nearbyTasks.stream()
-				.filter(nt -> !nt.getTask().getName().equals(taskName))
-				.collect(java.util.stream.Collectors.toList());
+			removeFromNearbyTasks(taskName);
 			updateWorldMapMarkers();
 		});
 
 		panel.setOnUnhideTask(taskName -> {
 			String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
-			java.util.Set<String> hidden = new java.util.HashSet<>();
+			Set<String> hidden = new HashSet<>();
 			if (json != null && !json.isEmpty())
 			{
 				try
 				{
-					java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
-					java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
+					Type type = new TypeToken<List<String>>(){}.getType();
+					List<String> names = new Gson().fromJson(json, type);
 					if (names != null) hidden.addAll(names);
 				}
 				catch (Exception e) { /* ignore */ }
 			}
 			hidden.remove(taskName);
-			configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
-				new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
+			saveHiddenTaskNames(hidden);
 		});
 
 		panel.setOnSync(() -> {
@@ -384,9 +344,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 					}
 				}
 				if (task != null && locationService != null) {
-					java.util.List<LocationCluster> locations = locationService.getLocationsForTask(task.getStructId());
+					List<LocationCluster> locations = locationService.getLocationsForTask(task.getStructId());
 					if (locations != null) {
-						java.util.List<TaskWorldMapPoint> points = new java.util.ArrayList<>();
+						List<TaskWorldMapPoint> points = new ArrayList<>();
 						for (LocationCluster loc : locations) {
 							WorldPoint wp = new WorldPoint(loc.getX(), loc.getY(), 0);
 							TaskWorldMapPoint point = new TaskWorldMapPoint(wp, task, new Color(255, 140, 0), 14);
@@ -396,16 +356,10 @@ public class UltimateTaskMasterPlugin extends Plugin
 						shownLocationPoints.put(taskName, points);
 					}
 				}
+				panel.setTaskLocationsShown(taskName, true);
 			} else {
-				// Remove shown points for this task
-				java.util.List<TaskWorldMapPoint> points = shownLocationPoints.remove(taskName);
-				if (points != null) {
-					for (TaskWorldMapPoint p : points) {
-						worldMapPointManager.remove(p);
-					}
-				}
+				removeShownLocationPoints(taskName);
 			}
-			panel.setTaskLocationsShown(taskName, show);
 		});
 
 		panel.setOnGenerateRoute(() -> {
@@ -421,7 +375,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 					return;
 				}
 
-				java.util.Set<String> hidden = getHiddenTaskNames();
+				Set<String> hidden = getHiddenTaskNames();
 
 				List<RouteGenerator.RouteStep> route = RouteGenerator.generateRoute(
 					enrichedTasks,
@@ -494,13 +448,11 @@ public class UltimateTaskMasterPlugin extends Plugin
 		clientToolbar.removeNavigation(navButton);
 		overlayManager.remove(worldOverlay);
 		overlayManager.remove(minimapOverlay);
-		overlayManager.remove(bankItemOverlay);
 		if (utmBankTab.isActive())
 		{
 			utmBankTab.deactivate();
 		}
 		clearRouteMarkers();
-		currentRouteSteps = Collections.emptyList();
 		clearWorldMapMarkers();
 		nearbyTasks = Collections.emptyList();
 
@@ -559,7 +511,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Subscribe
 	public void onTaskCompletionEvent(TaskCompletionEvent event)
 	{
-		completedTaskNames = new java.util.HashSet<>(completedTaskNames);
+		completedTaskNames = new HashSet<>(completedTaskNames);
 		completedTaskNames.add(event.getTaskName());
 
 		// Persist so it survives restart
@@ -576,7 +528,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 	public void onMenuEntryAdded(MenuEntryAdded event)
 	{
 		// Shift-right-click on game world: "Add to Plan" for nearby tasks
-		if (client.isKeyPressed(net.runelite.api.KeyCode.KC_SHIFT)
+		if (client.isKeyPressed(KeyCode.KC_SHIFT)
 			&& event.getType() == MenuAction.WALK.getId()
 			&& nearbyTasks != null && !nearbyTasks.isEmpty())
 		{
@@ -614,11 +566,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 									.setType(MenuAction.RUNELITE)
 									.onClick(e -> {
 										planService.removeTask(task.getName());
-											SwingUtilities.invokeLater(() -> {
-											panel.rebuildAllTasksList();
-											panel.rebuildNearbyList();
-											panel.rebuildPlanList();
-										});
+										refreshAllPanelViews();
 									});
 							}
 							// Always offer "Hide Task" option
@@ -629,25 +577,22 @@ public class UltimateTaskMasterPlugin extends Plugin
 								.onClick(e -> {
 									// Add to hidden set and persist
 									String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
-									java.util.Set<String> hidden = new java.util.HashSet<>();
+									Set<String> hidden = new HashSet<>();
 									if (json != null && !json.isEmpty())
 									{
 										try
 										{
-											java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
-											java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
+											Type type = new TypeToken<List<String>>(){}.getType();
+											List<String> names = new Gson().fromJson(json, type);
 											if (names != null) hidden.addAll(names);
 										}
 										catch (Exception ex) { /* ignore */ }
 									}
 									hidden.add(task.getName());
-									configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
-										new com.google.gson.Gson().toJson(new java.util.ArrayList<>(hidden)));
+									saveHiddenTaskNames(hidden);
 									
 									// Remove from current nearby results and refresh
-									nearbyTasks = nearbyTasks.stream()
-										.filter(nt -> !nt.getTask().getName().equals(task.getName()))
-										.collect(java.util.stream.Collectors.toList());
+									removeFromNearbyTasks(task.getName());
 									
 									SwingUtilities.invokeLater(() -> {
 										panel.setHiddenTaskNames(hidden);
@@ -690,7 +635,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 
 		// Check if mouse is near any of our shown location dots
-		for (java.util.Map.Entry<String, java.util.List<TaskWorldMapPoint>> entry : shownLocationPoints.entrySet())
+		for (Map.Entry<String, List<TaskWorldMapPoint>> entry : shownLocationPoints.entrySet())
 		{
 			String taskName = entry.getKey();
 			for (TaskWorldMapPoint point : entry.getValue())
@@ -761,7 +706,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		new Thread(() -> {
 			try
 			{
-				java.util.List<LocalCompletionStore.PendingCompletion> pending = localCompletionStore.getPending();
+				List<LocalCompletionStore.PendingCompletion> pending = localCompletionStore.getPending();
 				int pushed = 0;
 
 				if (!pending.isEmpty())
@@ -781,12 +726,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 				{
 					SwingUtilities.invokeLater(() -> panel.setSyncStatus("Pulling locations...", Color.YELLOW));
 				}
-				java.util.List<CrowdsourcingService.ServerLocation> serverLocations = crowdsourcingService.pullLocations();
+				List<CrowdsourcingService.ServerLocation> serverLocations = crowdsourcingService.pullLocations();
 
 				// Merge server locations into TaskLocationService
 				if (!serverLocations.isEmpty())
 				{
-					java.util.List<LocationCluster> clusters = new java.util.ArrayList<>();
+					List<LocationCluster> clusters = new ArrayList<>();
 					for (CrowdsourcingService.ServerLocation sl : serverLocations)
 					{
 						LocationCluster lc = new LocationCluster();
@@ -816,10 +761,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 						}
 						panel.setSyncStatus(status, new Color(100, 255, 100));
 						panel.setSyncEnabled(true);
-						panel.rebuildAllTasksList();
-						panel.rebuildNearbyList();
-						panel.rebuildPlanList();
 					});
+					refreshAllPanelViews();
 				}
 
 				log.debug("Sync complete: pushed {}, pulled {} locations, {} remaining", finalPushed, pulled, remaining);
@@ -906,12 +849,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 		);
 
 		// Filter out hidden tasks
-		java.util.Set<String> hiddenNames = getHiddenTaskNames();
+		Set<String> hiddenNames = getHiddenTaskNames();
 		if (!hiddenNames.isEmpty())
 		{
 			nearbyTasks = nearbyTasks.stream()
 				.filter(nt -> !hiddenNames.contains(nt.getTask().getName()))
-				.collect(java.util.stream.Collectors.toList());
+				.collect(Collectors.toList());
 		}
 
 		// Filter out completed tasks
@@ -919,7 +862,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			nearbyTasks = nearbyTasks.stream()
 				.filter(nt -> !completedTaskNames.contains(nt.getTask().getName()))
-				.collect(java.util.stream.Collectors.toList());
+				.collect(Collectors.toList());
 		}
 
 		// Filter out tasks the player doesn't have the levels for
@@ -927,14 +870,14 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			nearbyTasks = nearbyTasks.stream()
 				.filter(nt -> meetsSkillRequirements(nt.getTask()))
-				.collect(java.util.stream.Collectors.toList());
+				.collect(Collectors.toList());
 		}
 
 		SwingUtilities.invokeLater(() -> panel.updateResults(nearbyTasks));
 		updateWorldMapMarkers();
 	}
 
-	private java.util.Set<String> getHiddenTaskNames()
+	private Set<String> getHiddenTaskNames()
 	{
 		String json = configManager.getConfiguration(CONFIG_GROUP, "hiddenTaskNames");
 		if (json == null || json.isEmpty())
@@ -943,9 +886,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 		try
 		{
-			java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<java.util.List<String>>(){}.getType();
-			java.util.List<String> names = new com.google.gson.Gson().fromJson(json, type);
-			return names != null ? new java.util.HashSet<>(names) : Collections.emptySet();
+			Type type = new TypeToken<List<String>>(){}.getType();
+			List<String> names = new Gson().fromJson(json, type);
+			return names != null ? new HashSet<>(names) : Collections.emptySet();
 		}
 		catch (Exception e)
 		{
@@ -960,11 +903,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 		if (route == null || route.isEmpty())
 		{
-			currentRouteSteps = Collections.emptyList();
 			return;
 		}
-
-		currentRouteSteps = route;
 
 		// Add world map markers for each step
 		for (RouteGenerator.RouteStep step : route)
@@ -976,7 +916,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 
 		// Also add route steps to nearbyTasks so the tile overlay renders them
-		java.util.List<NearbyTask> routeNearby = new java.util.ArrayList<>();
+		List<NearbyTask> routeNearby = new ArrayList<>();
 		for (RouteGenerator.RouteStep step : route)
 		{
 			routeNearby.add(new NearbyTask(step.getTask(), step.getLocation(), step.getDistanceFromPrevious()));
@@ -1071,6 +1011,42 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 	}
 
+	private void saveHiddenTaskNames(Set<String> hidden)
+	{
+		configManager.setConfiguration(CONFIG_GROUP, "hiddenTaskNames",
+			new Gson().toJson(new ArrayList<>(hidden)));
+	}
+
+	private void removeShownLocationPoints(String taskName)
+	{
+		List<TaskWorldMapPoint> points = shownLocationPoints.remove(taskName);
+		if (points != null)
+		{
+			for (TaskWorldMapPoint p : points)
+			{
+				worldMapPointManager.remove(p);
+			}
+		}
+		panel.setTaskLocationsShown(taskName, false);
+	}
+
+	private void removeFromNearbyTasks(String taskName)
+	{
+		nearbyTasks = nearbyTasks.stream()
+			.filter(nt -> !nt.getTask().getName().equals(taskName))
+			.collect(Collectors.toList());
+	}
+
+	private void refreshAllPanelViews()
+	{
+		SwingUtilities.invokeLater(() -> {
+			panel.rebuildAllTasksList();
+			panel.rebuildNearbyList();
+			panel.rebuildPlanList();
+		});
+		updateWorldMapMarkers();
+	}
+
 	@Subscribe
 	public void onWidgetLoaded(WidgetLoaded event)
 	{
@@ -1135,7 +1111,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 			return tasks;
 		}
 
-		List<TaskData> enriched = new java.util.ArrayList<>(tasks.size());
+		List<TaskData> enriched = new ArrayList<>(tasks.size());
 		int located = 0;
 
 		for (TaskData task : tasks)

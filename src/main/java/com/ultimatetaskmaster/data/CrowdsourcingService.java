@@ -6,8 +6,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -78,56 +76,6 @@ public class CrowdsourcingService
 	{
 		this.okHttpClient = okHttpClient;
 		this.gson = gson;
-	}
-
-	/**
-	 * Submit a task completion to the crowdsourcing server.
-	 * Non-blocking — fires and forgets via OkHttp async callback.
-	 *
-	 * @param taskName  display name of the task
-	 * @param structId  unique task struct ID
-	 * @param x         player world X coordinate
-	 * @param y         player world Y coordinate
-	 * @param plane     player world plane (0 = surface)
-	 */
-	public void submitCompletion(String taskName, int structId, int x, int y, int plane)
-	{
-		CompletionPayload payload = new CompletionPayload(taskName, structId, x, y, plane);
-		String json = gson.toJson(payload);
-
-		Request request = new Request.Builder()
-			.url(SUBMIT_URL)
-			.post(RequestBody.create(JSON_TYPE, json))
-			.build();
-
-		okHttpClient.newCall(request).enqueue(new Callback()
-		{
-			@Override
-			public void onFailure(Call call, IOException e)
-			{
-				log.debug("Failed to submit task completion to crowdsourcing server: {}", e.getMessage());
-			}
-
-			@Override
-			public void onResponse(Call call, Response response)
-			{
-				try
-				{
-					if (response.isSuccessful())
-					{
-						log.debug("Task completion submitted: {} at ({}, {}, {})", taskName, x, y, plane);
-					}
-					else
-					{
-						log.debug("Crowdsourcing server returned {}: {}", response.code(), response.message());
-					}
-				}
-				finally
-				{
-					response.close();
-				}
-			}
-		});
 	}
 
 	/**
@@ -202,25 +150,4 @@ public class CrowdsourcingService
 		return Collections.emptyList();
 	}
 
-	/**
-	 * Check if the server is reachable (for UI status indicator).
-	 * Synchronous — call from background thread only.
-	 */
-	public boolean isServerReachable()
-	{
-		try
-		{
-			Request request = new Request.Builder()
-				.url(SERVER_BASE_URL + "/api/stats")
-				.build();
-			try (Response response = okHttpClient.newCall(request).execute())
-			{
-				return response.isSuccessful();
-			}
-		}
-		catch (IOException e)
-		{
-			return false;
-		}
-	}
 }

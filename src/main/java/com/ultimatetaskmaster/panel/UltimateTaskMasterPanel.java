@@ -90,7 +90,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final JPanel cardPanel = new JPanel(cardLayout);
 
 	// --- Beta lock ---
-	private boolean betaUnlocked = false;
 	private JPanel lockPanel;
 	private Runnable onBetaUnlocked;
 
@@ -102,8 +101,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private PlanService planService;
 	private TaskLocationService locationService;
 	private com.ultimatetaskmaster.data.TaskItemService taskItemService;
-	private java.util.function.BiConsumer<String, LocationCluster> onPinCallback;
-	private java.util.function.Consumer<String> onRemoveFromPlanCallback;
 	private java.util.function.Consumer<TaskData> onAddToPlanCallback;
 	private java.util.function.Consumer<TaskData> onRemoveFromPlanTaskCallback;
 	private java.util.function.BiConsumer<String, Boolean> onToggleShowLocationsCallback;
@@ -238,7 +235,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 	public void setBetaUnlocked(boolean unlocked)
 	{
-		this.betaUnlocked = unlocked;
 		if (unlocked && lockPanel != null)
 		{
 			remove(lockPanel);
@@ -619,16 +615,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.taskItemService = service;
 	}
 
-	public void setOnPinCallback(java.util.function.BiConsumer<String, LocationCluster> callback)
-	{
-		this.onPinCallback = callback;
-	}
-
-	public void setOnRemoveFromPlanCallback(java.util.function.Consumer<String> callback)
-	{
-		this.onRemoveFromPlanCallback = callback;
-	}
-
 	public void setOnAddToPlan(java.util.function.Consumer<TaskData> callback)
 	{
 		this.onAddToPlanCallback = callback;
@@ -718,11 +704,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 		nearbyTaskListContainer.revalidate();
 		nearbyTaskListContainer.repaint();
-	}
-
-	public void setOnAddRouteToPlan(java.util.function.Consumer<java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep>> callback)
-	{
-		// Could add an "Add All to Plan" button later
 	}
 
 	public void setOnHideTask(java.util.function.Consumer<String> callback)
