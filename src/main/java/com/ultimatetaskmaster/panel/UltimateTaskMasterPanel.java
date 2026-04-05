@@ -40,9 +40,10 @@ import net.runelite.client.ui.components.IconTextField;
 /**
  * Main side panel for Ultimate Task Master.
  *
- * Two tabs (tasks-tracker toggle-button pattern):
+ * Three tabs (tasks-tracker toggle-button pattern):
  * 1. "All Tasks" — browse/search/filter all 1,589 tasks
- * 2. "Near Me"   — find tasks near the player's position using scraper location data
+ * 2. "Explore"   — find tasks near the player's position + generate route
+ * 3. "Plan"      — user-curated task list
  *
  * Shared state: allTasks, completedTaskNames, sort criteria.
  * Each tab has its own scrollable task list and status label.
@@ -52,13 +53,11 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private static final String CARD_ALL = "ALL";
 	private static final String CARD_NEARBY = "NEARBY";
 	private static final String CARD_PLAN = "PLAN";
-	private static final String CARD_ROUTE = "ROUTE";
 
 	// --- Shared controls ---
 	private final JToggleButton allTasksTab = new JToggleButton("All Tasks");
-	private final JToggleButton nearbyTab = new JToggleButton("Near Me");
+	private final JToggleButton nearbyTab = new JToggleButton("Explore");
 	private final JToggleButton planTab = new JToggleButton("Plan");
-	private final JToggleButton routeTab = new JToggleButton("Route");
 
 	// --- "All Tasks" tab ---
 	private final IconTextField allSearchField = new IconTextField();
@@ -68,7 +67,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final JPanel allTaskListContainer = new JPanel();
 
 	// --- "Near Me" tab ---
-	private final JButton findNearbyButton = new JButton("Find Nearby Tasks");
+	private final JButton findNearbyButton = new JButton("Find Nearby");
 	private final IconTextField nearbySearchField = new IconTextField();
 	private final JToggleButton nearbyHideCompletedToggle = new JToggleButton("Hide Done");
 	@Getter
@@ -80,10 +79,8 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final JLabel planStatusLabel = new JLabel();
 	private final JPanel planListContainer = new JPanel();
 
-	// --- "Route" tab ---
-	private final JButton generateRouteButton = new JButton("Generate Route");
-	private final JLabel routeStatusLabel = new JLabel();
-	private final JPanel routeListContainer = new JPanel();
+	// --- Route generation (merged into Explore tab) ---
+	private final JButton generateRouteButton = new JButton("Gen Route");
 	private Runnable onGenerateRouteCallback;
 	private java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> currentRoute = java.util.Collections.emptyList();
 
@@ -155,17 +152,14 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		styleTabButton(allTasksTab);
 		styleTabButton(nearbyTab);
 		styleTabButton(planTab);
-		styleTabButton(routeTab);
 		tabGroup.add(allTasksTab);
 		tabGroup.add(nearbyTab);
 		tabGroup.add(planTab);
-		tabGroup.add(routeTab);
 
 		allTasksTab.setSelected(true);
 		allTasksTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_ALL));
 		nearbyTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_NEARBY));
 		planTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_PLAN));
-		routeTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_ROUTE));
 
 		tabRow.add(Box.createHorizontalGlue());
 		tabRow.add(allTasksTab);
@@ -173,8 +167,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		tabRow.add(nearbyTab);
 		tabRow.add(Box.createHorizontalGlue());
 		tabRow.add(planTab);
-		tabRow.add(Box.createHorizontalGlue());
-		tabRow.add(routeTab);
 		tabRow.add(Box.createHorizontalGlue());
 		header.add(tabRow);
 		header.add(Box.createVerticalStrut(4));
@@ -229,7 +221,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		cardPanel.add(buildAllTasksCard(), CARD_ALL);
 		cardPanel.add(buildNearbyCard(), CARD_NEARBY);
 		cardPanel.add(buildPlanCard(), CARD_PLAN);
-		cardPanel.add(buildRouteCard(), CARD_ROUTE);
 		cardLayout.show(cardPanel, CARD_ALL);
 
 		// Build lock panel (shown until beta key entered)
@@ -425,17 +416,30 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		controls.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		controls.setBorder(new EmptyBorder(6, 10, 4, 10));
 
+		// Button row: Find Nearby + Generate Route
+		JPanel buttonRow = new JPanel(new java.awt.GridLayout(1, 2, 6, 0));
+		buttonRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		buttonRow.setAlignmentX(Component.LEFT_ALIGNMENT);
+		buttonRow.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
+
 		findNearbyButton.setFont(FontManager.getRunescapeSmallFont());
-		findNearbyButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-		findNearbyButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
-		findNearbyButton.addActionListener(e ->
-		{
-			if (onFindNearby != null)
+		findNearbyButton.addActionListener(e -> {
+			if (onFindNearby != null) onFindNearby.run();
+		});
+		buttonRow.add(findNearbyButton);
+
+		generateRouteButton.setFont(FontManager.getRunescapeSmallFont());
+		generateRouteButton.addActionListener(e -> {
+			if (onGenerateRouteCallback != null)
 			{
-				onFindNearby.run();
+				generateRouteButton.setEnabled(false);
+				generateRouteButton.setText("Generating...");
+				onGenerateRouteCallback.run();
 			}
 		});
-		controls.add(findNearbyButton);
+		buttonRow.add(generateRouteButton);
+
+		controls.add(buttonRow);
 		controls.add(Box.createVerticalStrut(4));
 
 		nearbySearchField.setIcon(IconTextField.Icon.SEARCH);
@@ -501,54 +505,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 		card.add(controls, BorderLayout.NORTH);
 		card.add(buildScrollableList(planListContainer), BorderLayout.CENTER);
-		return card;
-	}
-
-	// ========== "Route" card ==========
-
-	private JPanel buildRouteCard()
-	{
-		JPanel card = new JPanel(new BorderLayout());
-		card.setBackground(ColorScheme.DARK_GRAY_COLOR);
-
-		// Controls
-		JPanel controls = new JPanel();
-		controls.setLayout(new BoxLayout(controls, BoxLayout.Y_AXIS));
-		controls.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		controls.setBorder(new EmptyBorder(8, 10, 4, 10));
-
-		generateRouteButton.setFont(FontManager.getRunescapeSmallFont());
-		generateRouteButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-		generateRouteButton.addActionListener(e -> {
-			if (onGenerateRouteCallback != null)
-			{
-				generateRouteButton.setEnabled(false);
-				generateRouteButton.setText("Generating...");
-				onGenerateRouteCallback.run();
-			}
-		});
-		controls.add(generateRouteButton);
-		controls.add(Box.createVerticalStrut(4));
-
-		routeStatusLabel.setFont(FontManager.getRunescapeSmallFont());
-		routeStatusLabel.setForeground(Color.GRAY);
-		routeStatusLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		controls.add(routeStatusLabel);
-
-		card.add(controls, BorderLayout.NORTH);
-
-		// Route list
-		routeListContainer.setLayout(new BoxLayout(routeListContainer, BoxLayout.Y_AXIS));
-		routeListContainer.setBackground(ColorScheme.DARK_GRAY_COLOR);
-
-		JScrollPane scroll = new JScrollPane(routeListContainer);
-		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scroll.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		scroll.getVerticalScrollBar().setPreferredSize(new Dimension(12, 0));
-
-		card.add(scroll, BorderLayout.CENTER);
-
 		return card;
 	}
 
@@ -713,20 +669,20 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	public void displayRoute(java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> route)
 	{
 		this.currentRoute = route;
-		routeListContainer.removeAll();
+		nearbyTaskListContainer.removeAll();
 
 		generateRouteButton.setEnabled(true);
-		generateRouteButton.setText("Generate Route");
+		generateRouteButton.setText("Gen Route");
 
 		if (route == null || route.isEmpty())
 		{
-			routeStatusLabel.setText("No route generated");
-			addMessageLabel(routeListContainer, "Click 'Generate Route' to plan\na task completion path.");
+			nearbyStatusLabel.setText("No route generated");
+			addMessageLabel(nearbyTaskListContainer, "Click 'Gen Route' to plan\na task completion path.");
 		}
 		else
 		{
 			int totalDist = route.get(route.size() - 1).getCumulativeDistance();
-			routeStatusLabel.setText(route.size() + " tasks \u00b7 ~" + totalDist + " tiles");
+			nearbyStatusLabel.setText(route.size() + " tasks \u00b7 ~" + totalDist + " tiles (route)");
 
 			Set<String> planNames = getPlanTaskNames();
 			for (int i = 0; i < route.size(); i++)
@@ -756,12 +712,12 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				{
 					row.setItemRequirements(taskItemService.getItemRequirements(step.getTask()));
 				}
-				routeListContainer.add(row);
+				nearbyTaskListContainer.add(row);
 			}
 		}
 
-		routeListContainer.revalidate();
-		routeListContainer.repaint();
+		nearbyTaskListContainer.revalidate();
+		nearbyTaskListContainer.repaint();
 	}
 
 	public void setOnAddRouteToPlan(java.util.function.Consumer<java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep>> callback)
