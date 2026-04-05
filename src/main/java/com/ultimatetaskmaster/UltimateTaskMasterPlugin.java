@@ -60,7 +60,6 @@ import com.ultimatetaskmaster.data.TaskItemService;
 import com.ultimatetaskmaster.data.RouteGenerator;
 import com.ultimatetaskmaster.data.TaskLocationService;
 
-import com.ultimatetaskmaster.data.TaskItemRequirement;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
 import com.ultimatetaskmaster.overlay.BankItemOverlay;
@@ -1095,31 +1094,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 		log.info("UTM bank button created");
 	}
 
-	private java.util.Set<String> getPlanItemNames()
-	{
-		java.util.Set<String> names = new java.util.LinkedHashSet<>();
-		for (PlanItem planItem : planService.getItems())
-		{
-			TaskData task = null;
-			for (TaskData t : enrichedTasks)
-			{
-				if (t.getName().equals(planItem.getTaskName()))
-				{
-					task = t;
-					break;
-				}
-			}
-			if (task != null && taskItemService != null)
-			{
-				for (TaskItemRequirement item : taskItemService.getItemRequirements(task))
-				{
-					names.add(item.getName().toLowerCase());
-				}
-			}
-		}
-		return names;
-	}
-
 	private void onUtmBankButtonClicked()
 	{
 		bankOverlayActive = !bankOverlayActive;
@@ -1132,24 +1106,10 @@ public class UltimateTaskMasterPlugin extends Plugin
 				utmBankButton.setSpriteId(SpriteID.TAB_INVENTORY);
 				utmBankButton.revalidate();
 			}
-
-			java.util.Set<String> planItems = getPlanItemNames();
-			if (!planItems.isEmpty())
-			{
-				highlightBankItems(planItems);
-				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-					"Highlighting plan items in bank", CHAT_SENDER);
-			}
-			else
-			{
-				client.addChatMessage(ChatMessageType.CONSOLE, CHAT_SENDER,
-					"No item data for planned tasks.", CHAT_SENDER);
-			}
 		}
 		else
 		{
 			overlayManager.remove(bankItemOverlay);
-			unhighlightBankItems();
 			if (utmBankButton != null)
 			{
 				utmBankButton.setSpriteId(SpriteID.BANK_TAB_EMPTY);
@@ -1158,60 +1118,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 
 		client.playSoundEffect(SoundEffectID.UI_BOOP);
-	}
-
-	private void highlightBankItems(java.util.Set<String> planItemNames)
-	{
-		Widget bankItemContainer = client.getWidget(ComponentID.BANK_ITEM_CONTAINER);
-		if (bankItemContainer == null)
-		{
-			return;
-		}
-
-		Widget[] children = bankItemContainer.getDynamicChildren();
-		if (children == null)
-		{
-			return;
-		}
-
-		for (Widget item : children)
-		{
-			if (item.getItemId() <= 0)
-			{
-				continue;
-			}
-
-			net.runelite.api.ItemComposition def = client.getItemDefinition(item.getItemId());
-			String itemName = def != null ? def.getName() : null;
-			if (itemName != null && planItemNames.contains(itemName.toLowerCase()))
-			{
-				item.setOpacity(0);
-			}
-			else
-			{
-				item.setOpacity(200);
-			}
-		}
-	}
-
-	private void unhighlightBankItems()
-	{
-		Widget bankItemContainer = client.getWidget(ComponentID.BANK_ITEM_CONTAINER);
-		if (bankItemContainer == null)
-		{
-			return;
-		}
-
-		Widget[] children = bankItemContainer.getDynamicChildren();
-		if (children == null)
-		{
-			return;
-		}
-
-		for (Widget item : children)
-		{
-			item.setOpacity(0);
-		}
 	}
 
 	/**
