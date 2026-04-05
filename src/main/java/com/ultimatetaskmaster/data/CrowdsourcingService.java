@@ -35,7 +35,7 @@ import java.util.List;
 public class CrowdsourcingService
 {
 	// Local dev server — change to production URL when deployed
-	private static final String SERVER_BASE_URL = "http://localhost:3847";
+	private static final String SERVER_BASE_URL = "https://utm.altair.dev";
 	private static final String SUBMIT_URL = SERVER_BASE_URL + "/api/submit";
 	private static final String LOCATIONS_URL = SERVER_BASE_URL + "/api/locations/clustered";
 	private static final MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
