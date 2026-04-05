@@ -5,7 +5,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 import com.ultimatetaskmaster.UltimateTaskMasterConfig;
 import com.ultimatetaskmaster.UltimateTaskMasterPlugin;
@@ -69,11 +73,12 @@ public class NearbyTaskWorldOverlay extends Overlay
 		}
 
 		List<NearbyTask> nearbyTasks = plugin.getNearbyTasks();
-		if (nearbyTasks != null)
+		if (nearbyTasks != null && !nearbyTasks.isEmpty())
 		{
-			for (NearbyTask nearbyTask : nearbyTasks)
+			java.util.List<ResolvedTask> resolved = resolveCollisions(nearbyTasks);
+			for (ResolvedTask rt : resolved)
 			{
-				renderTaskTile(graphics, nearbyTask);
+				renderTaskTileAt(graphics, rt.task, rt.displayLocation);
 			}
 		}
 
@@ -135,10 +140,100 @@ public class NearbyTaskWorldOverlay extends Overlay
 		}
 	}
 
-	private void renderTaskTile(Graphics2D graphics, NearbyTask nearbyTask)
+	/**
+	 * Resolves tile collisions by spreading overlapping tasks to adjacent tiles.
+	 *
+	 * When multiple tasks share the same tile:
+	 * 1. Sort by completion percentage (desc), then alphabetical
+	 * 2. First task keeps the original tile
+	 * 3. Others shift to N, NE, E, SE, S, SW, W, NW (in order)
+	 * 4. Shifted tiles are checked for existing occupants
+	 */
+	private java.util.List<ResolvedTask> resolveCollisions(java.util.List<NearbyTask> tasks)
 	{
-		WorldPoint taskPoint = nearbyTask.getResolvedLocation();
-		if (taskPoint == null)
+		if (tasks == null || tasks.isEmpty())
+		{
+			return java.util.Collections.emptyList();
+		}
+
+		// Direction offsets: N, NE, E, SE, S, SW, W, NW
+		int[][] offsets = {
+			{0, 1}, {1, 1}, {1, 0}, {1, -1},
+			{0, -1}, {-1, -1}, {-1, 0}, {-1, 1}
+		};
+
+		// Group tasks by their tile coordinate
+		Map<String, java.util.List<NearbyTask>> byTile = new HashMap<>();
+		for (NearbyTask nt : tasks)
+		{
+			WorldPoint wp = nt.getResolvedLocation();
+			if (wp == null) continue;
+			String key = wp.getX() + "," + wp.getY();
+			byTile.computeIfAbsent(key, k -> new ArrayList<>()).add(nt);
+		}
+
+		// Track all occupied tiles
+		java.util.Set<String> occupied = new java.util.HashSet<>(byTile.keySet());
+
+		java.util.List<ResolvedTask> result = new ArrayList<>();
+
+		for (Map.Entry<String, java.util.List<NearbyTask>> entry : byTile.entrySet())
+		{
+			java.util.List<NearbyTask> group = entry.getValue();
+
+			// Sort: higher completion % first, then alphabetical
+			group.sort(Comparator
+				.comparing((NearbyTask nt) -> nt.getTask().getCompletionPct() != null
+					? nt.getTask().getCompletionPct() : 0f)
+				.reversed()
+				.thenComparing(nt -> nt.getTask().getName()));
+
+			// First task keeps original tile
+			result.add(new ResolvedTask(group.get(0), group.get(0).getResolvedLocation()));
+
+			// Remaining tasks get shifted to adjacent tiles
+			int offsetIdx = 0;
+			for (int i = 1; i < group.size(); i++)
+			{
+				NearbyTask nt = group.get(i);
+				WorldPoint original = nt.getResolvedLocation();
+				WorldPoint shifted = null;
+
+				// Find an unoccupied adjacent tile
+				while (offsetIdx < offsets.length)
+				{
+					int nx = original.getX() + offsets[offsetIdx][0];
+					int ny = original.getY() + offsets[offsetIdx][1];
+					String newKey = nx + "," + ny;
+					if (!occupied.contains(newKey))
+					{
+						shifted = new WorldPoint(nx, ny, original.getPlane());
+						occupied.add(newKey);
+						offsetIdx++;
+						break;
+					}
+					offsetIdx++;
+				}
+
+				if (shifted == null)
+				{
+					// All 8 adjacent tiles occupied — just offset by index
+					shifted = new WorldPoint(
+						original.getX() + i,
+						original.getY() + i,
+						original.getPlane());
+				}
+
+				result.add(new ResolvedTask(nt, shifted));
+			}
+		}
+
+		return result;
+	}
+
+	private void renderTaskTileAt(Graphics2D graphics, NearbyTask nearbyTask, WorldPoint renderPoint)
+	{
+		if (renderPoint == null)
 		{
 			return;
 		}
@@ -146,10 +241,9 @@ public class NearbyTaskWorldOverlay extends Overlay
 		WorldView worldView = client.getTopLevelWorldView();
 		Scene scene = worldView.getScene();
 
-		// Handle instanced areas (e.g., POH, minigames)
-		for (WorldPoint point : WorldPoint.toLocalInstance(scene, taskPoint))
+		for (WorldPoint point : WorldPoint.toLocalInstance(scene, renderPoint))
 		{
-			if (point.getPlane() != client.getTopLevelWorldView().getPlane())
+			if (point.getPlane() != worldView.getPlane())
 			{
 				continue;
 			}
@@ -168,22 +262,34 @@ public class NearbyTaskWorldOverlay extends Overlay
 
 			Color tileColor = nearbyTask.getTask().getTier().getColor();
 
-			// Outline
 			graphics.setColor(tileColor);
 			graphics.setStroke(new BasicStroke(STROKE_WIDTH));
 			graphics.draw(poly);
 
-			// Semi-transparent fill
 			graphics.setColor(new Color(
 				tileColor.getRed(), tileColor.getGreen(), tileColor.getBlue(), FILL_ALPHA));
 			graphics.fill(poly);
 
-			// Render task name above tile
-			Point canvasTextLocation = Perspective.getCanvasTextLocation(client, graphics, lp, nearbyTask.getTask().getName(), 0);
+			Point canvasTextLocation = Perspective.getCanvasTextLocation(
+				client, graphics, lp, nearbyTask.getTask().getName(), 0);
 			if (canvasTextLocation != null)
 			{
-				OverlayUtil.renderTextLocation(graphics, canvasTextLocation, nearbyTask.getTask().getName(), tileColor);
+				OverlayUtil.renderTextLocation(graphics, canvasTextLocation,
+					nearbyTask.getTask().getName(), tileColor);
 			}
+		}
+	}
+
+	/** A task with its resolved (possibly shifted) display location */
+	private static class ResolvedTask
+	{
+		final NearbyTask task;
+		final WorldPoint displayLocation;
+
+		ResolvedTask(NearbyTask task, WorldPoint displayLocation)
+		{
+			this.task = task;
+			this.displayLocation = displayLocation;
 		}
 	}
 }

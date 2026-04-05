@@ -80,7 +80,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final JPanel planListContainer = new JPanel();
 
 	// --- Route generation (merged into Explore tab) ---
-	private final JButton generateRouteButton = new JButton("Gen Route");
+	private final JButton generateRouteButton = new JButton("Create Route");
 	private Runnable onGenerateRouteCallback;
 	private java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> currentRoute = java.util.Collections.emptyList();
 
@@ -672,12 +672,12 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		nearbyTaskListContainer.removeAll();
 
 		generateRouteButton.setEnabled(true);
-		generateRouteButton.setText("Gen Route");
+		generateRouteButton.setText("Create Route");
 
 		if (route == null || route.isEmpty())
 		{
 			nearbyStatusLabel.setText("No route generated");
-			addMessageLabel(nearbyTaskListContainer, "Click 'Gen Route' to plan\na task completion path.");
+			addMessageLabel(nearbyTaskListContainer, "Click 'Create Route' to plan\na task completion path.");
 		}
 		else
 		{
