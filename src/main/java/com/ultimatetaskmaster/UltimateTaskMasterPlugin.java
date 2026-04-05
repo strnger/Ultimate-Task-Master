@@ -156,7 +156,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private NavigationButton navButton;
 	private Widget utmBankButton;
 
-	private boolean bankOverlayActive = true;
+	private boolean bankOverlayActive = false;
 
 	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
 
@@ -477,8 +477,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		// 3. Register overlays
 		overlayManager.add(worldOverlay);
 		overlayManager.add(minimapOverlay);
-		// Register bank item overlay for plan items
-		overlayManager.add(bankItemOverlay);
+		// Bank item overlay is toggled on/off by the UTM bank button — not added at startup
 
 		// 4. Wire up completion detection
 		completionListener.register();
@@ -1097,24 +1096,15 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private void onUtmBankButtonClicked()
 	{
 		bankOverlayActive = !bankOverlayActive;
+		log.info("UTM bank button clicked, active={}", bankOverlayActive);
 
 		if (bankOverlayActive)
 		{
 			overlayManager.add(bankItemOverlay);
-			if (utmBankButton != null)
-			{
-				utmBankButton.setSpriteId(SpriteID.TAB_INVENTORY);
-				utmBankButton.revalidate();
-			}
 		}
 		else
 		{
 			overlayManager.remove(bankItemOverlay);
-			if (utmBankButton != null)
-			{
-				utmBankButton.setSpriteId(SpriteID.BANK_TAB_EMPTY);
-				utmBankButton.revalidate();
-			}
 		}
 
 		client.playSoundEffect(SoundEffectID.UI_BOOP);
