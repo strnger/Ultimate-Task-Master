@@ -376,7 +376,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		allHideCompletedToggle.addActionListener(e -> rebuildAllTasksList());
 		toggleRow.add(allHideCompletedToggle);
 
-		JToggleButton showHiddenToggle = new JToggleButton("Show Hidden");
+		JToggleButton showHiddenToggle = new JToggleButton("Only Hidden");
 		showHiddenToggle.setFont(FontManager.getRunescapeSmallFont());
 		showHiddenToggle.setPreferredSize(new Dimension(85, 22));
 		showHiddenToggle.addActionListener(e -> {
@@ -738,6 +738,20 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				row.setOnAddToPlan(onAddToPlanCallback);
 				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 				row.setOnMarkCompleted(onMarkCompletedCallback);
+				row.setOnHideTask(td -> {
+					if (onHideTaskCallback != null)
+					{
+						onHideTaskCallback.accept(td.getName());
+					}
+					hiddenTaskNames.add(td.getName());
+					// Re-display route with hidden task filtered out
+					java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> filtered = 
+						currentRoute.stream()
+							.filter(s -> !hiddenTaskNames.contains(s.getTask().getName()))
+							.collect(java.util.stream.Collectors.toList());
+					currentRoute = filtered;
+					displayRoute(filtered);
+				});
 				if (taskItemService != null)
 				{
 					row.setItemRequirements(taskItemService.getItemRequirements(step.getTask()));
@@ -782,7 +796,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		List<TaskData> filtered = allTasks.stream()
 			.filter(t -> searchText.isEmpty() || t.getName().toLowerCase().contains(searchText))
 			.filter(t -> !hideCompleted || !completedTaskNames.contains(t.getName()))
-			.filter(t -> showHidden || !hiddenTaskNames.contains(t.getName()))
+			.filter(t -> showHidden ? hiddenTaskNames.contains(t.getName()) : !hiddenTaskNames.contains(t.getName()))
 			.sorted(getTaskComparator(allSortDropdown))
 			.collect(Collectors.toList());
 
@@ -961,6 +975,14 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					taskRow.setOnAddToPlan(onAddToPlanCallback);
 					taskRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
 					taskRow.setOnMarkCompleted(onMarkCompletedCallback);
+					taskRow.setOnHideTask(td -> {
+						if (onHideTaskCallback != null)
+						{
+							onHideTaskCallback.accept(td.getName());
+						}
+						hiddenTaskNames.add(td.getName());
+						rebuildPlanList();
+					});
 					if (taskItemService != null)
 					{
 						taskRow.setItemRequirements(taskItemService.getItemRequirements(taskData));
