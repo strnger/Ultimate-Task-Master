@@ -180,6 +180,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	private Set<String> completedTaskNames = Collections.emptySet();
 
+	private java.util.List<TaskWorldMapPoint> routeMapPoints = new java.util.ArrayList<>();
+	private java.util.List<RouteGenerator.RouteStep> currentRouteSteps = java.util.Collections.emptyList();
+
 	/**
 	 * The current "near me" results. Shared with overlays via getter.
 	 * Empty list (never null) when no query has been run.
@@ -440,7 +443,10 @@ public class UltimateTaskMasterPlugin extends Plugin
 				WorldPoint playerPos = cachedPlayerPosition;
 				if (playerPos == null)
 				{
-					SwingUtilities.invokeLater(() -> panel.displayRoute(Collections.emptyList()));
+					SwingUtilities.invokeLater(() -> {
+						panel.displayRoute(Collections.emptyList());
+						showRouteOnMap(Collections.emptyList());
+					});
 					return;
 				}
 
@@ -457,7 +463,10 @@ public class UltimateTaskMasterPlugin extends Plugin
 					50  // max 50 tasks in route
 				);
 
-				SwingUtilities.invokeLater(() -> panel.displayRoute(route));
+				SwingUtilities.invokeLater(() -> {
+					panel.displayRoute(route);
+					showRouteOnMap(route);
+				});
 			}, "utm-route-gen").start();
 		});
 
@@ -516,6 +525,8 @@ public class UltimateTaskMasterPlugin extends Plugin
 		overlayManager.remove(worldOverlay);
 		overlayManager.remove(minimapOverlay);
 		overlayManager.remove(bankItemOverlay);
+		clearRouteMarkers();
+		currentRouteSteps = Collections.emptyList();
 		clearWorldMapMarkers();
 		nearbyTasks = Collections.emptyList();
 
@@ -962,6 +973,48 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			return Collections.emptySet();
 		}
+	}
+
+	private void showRouteOnMap(List<RouteGenerator.RouteStep> route)
+	{
+		// Clear previous route markers
+		clearRouteMarkers();
+
+		if (route == null || route.isEmpty())
+		{
+			currentRouteSteps = Collections.emptyList();
+			return;
+		}
+
+		currentRouteSteps = route;
+
+		// Add world map markers for each step
+		for (RouteGenerator.RouteStep step : route)
+		{
+			TaskWorldMapPoint point = new TaskWorldMapPoint(
+				step.getLocation(), step.getTask(), new Color(0, 200, 255), 14);
+			worldMapPointManager.add(point);
+			routeMapPoints.add(point);
+		}
+
+		// Also add route steps to nearbyTasks so the tile overlay renders them
+		java.util.List<NearbyTask> routeNearby = new java.util.ArrayList<>();
+		for (RouteGenerator.RouteStep step : route)
+		{
+			routeNearby.add(new NearbyTask(step.getTask(), step.getLocation(), step.getDistanceFromPrevious()));
+		}
+		nearbyTasks = routeNearby;
+
+		log.debug("Showing {} route steps on map", route.size());
+	}
+
+	private void clearRouteMarkers()
+	{
+		for (TaskWorldMapPoint point : routeMapPoints)
+		{
+			worldMapPointManager.remove(point);
+		}
+		routeMapPoints.clear();
 	}
 
 	private void updateWorldMapMarkers()
