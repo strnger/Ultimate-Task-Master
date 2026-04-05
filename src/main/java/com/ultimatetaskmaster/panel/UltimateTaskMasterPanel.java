@@ -954,6 +954,12 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			for (int i = 0; i < items.size(); i++)
 			{
 				PlanItem planItem = items.get(i);
+
+				// Skip hidden tasks
+				if (hiddenTaskNames.contains(planItem.getTaskName()))
+				{
+					continue;
+				}
 				
 				// Find TaskData for this plan item
 				TaskData taskData = allTasks.stream()
