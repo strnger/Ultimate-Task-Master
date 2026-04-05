@@ -63,6 +63,7 @@ import com.ultimatetaskmaster.data.TaskLocationService;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
 import com.ultimatetaskmaster.overlay.BankItemOverlay;
+import com.ultimatetaskmaster.overlay.UtmBankTab;
 import com.ultimatetaskmaster.overlay.NearbyTaskMinimapOverlay;
 import com.ultimatetaskmaster.overlay.NearbyTaskWorldOverlay;
 import com.ultimatetaskmaster.panel.UltimateTaskMasterPanel;
@@ -152,11 +153,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 	@Inject
 	private BankItemOverlay bankItemOverlay;
 
+	@Inject
+	private UtmBankTab utmBankTab;
+
 	private UltimateTaskMasterPanel panel;
 	private NavigationButton navButton;
 	private Widget utmBankButton;
-
-	private boolean bankOverlayActive = false;
 
 	private final java.util.Map<String, java.util.List<TaskWorldMapPoint>> shownLocationPoints = new java.util.HashMap<>();
 
@@ -493,6 +495,10 @@ public class UltimateTaskMasterPlugin extends Plugin
 		overlayManager.remove(worldOverlay);
 		overlayManager.remove(minimapOverlay);
 		overlayManager.remove(bankItemOverlay);
+		if (utmBankTab.isActive())
+		{
+			utmBankTab.deactivate();
+		}
 		clearRouteMarkers();
 		currentRouteSteps = Collections.emptyList();
 		clearWorldMapMarkers();
@@ -514,6 +520,16 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			cachedPlayerPosition = client.getLocalPlayer().getWorldLocation();
 			cachedPlayerSkills = client.getRealSkillLevels();
+		}
+
+		// Deactivate UTM bank tab if bank was closed
+		if (utmBankTab.isActive())
+		{
+			Widget bankWidget = client.getWidget(ComponentID.BANK_CONTAINER);
+			if (bankWidget == null || bankWidget.isHidden())
+			{
+				utmBankTab.deactivate();
+			}
 		}
 	}
 
@@ -1095,16 +1111,13 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	private void onUtmBankButtonClicked()
 	{
-		bankOverlayActive = !bankOverlayActive;
-		log.info("UTM bank button clicked, active={}", bankOverlayActive);
-
-		if (bankOverlayActive)
+		if (utmBankTab.isActive())
 		{
-			overlayManager.add(bankItemOverlay);
+			utmBankTab.deactivate();
 		}
 		else
 		{
-			overlayManager.remove(bankItemOverlay);
+			utmBankTab.activate();
 		}
 
 		client.playSoundEffect(SoundEffectID.UI_BOOP);
