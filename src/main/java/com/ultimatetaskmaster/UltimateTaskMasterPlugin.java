@@ -63,6 +63,7 @@ import com.ultimatetaskmaster.data.TaskData;
 import com.ultimatetaskmaster.data.TaskSkillRequirement;
 import com.ultimatetaskmaster.data.TaskDataProvider;
 import com.ultimatetaskmaster.data.TaskItemService;
+import com.ultimatetaskmaster.data.RouteGenerator;
 import com.ultimatetaskmaster.data.TaskLocationService;
 
 import com.ultimatetaskmaster.data.TaskItemRequirement;
@@ -431,6 +432,33 @@ public class UltimateTaskMasterPlugin extends Plugin
 				}
 			}
 			panel.setTaskLocationsShown(taskName, show);
+		});
+
+		panel.setOnGenerateRoute(() -> {
+			// Run on background thread to avoid blocking EDT
+			new Thread(() -> {
+				WorldPoint playerPos = cachedPlayerPosition;
+				if (playerPos == null)
+				{
+					SwingUtilities.invokeLater(() -> panel.displayRoute(Collections.emptyList()));
+					return;
+				}
+
+				java.util.Set<String> hidden = getHiddenTaskNames();
+
+				List<RouteGenerator.RouteStep> route = RouteGenerator.generateRoute(
+					enrichedTasks,
+					locationService,
+					playerPos,
+					completedTaskNames,
+					hidden,
+					cachedPlayerSkills,
+					0,  // no max radius (find all reachable tasks)
+					50  // max 50 tasks in route
+				);
+
+				SwingUtilities.invokeLater(() -> panel.displayRoute(route));
+			}, "utm-route-gen").start();
 		});
 
 		List<TaskData> allTasks = enrichTasksWithLocations(taskDataProvider.getTasks());

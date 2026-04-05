@@ -52,11 +52,13 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private static final String CARD_ALL = "ALL";
 	private static final String CARD_NEARBY = "NEARBY";
 	private static final String CARD_PLAN = "PLAN";
+	private static final String CARD_ROUTE = "ROUTE";
 
 	// --- Shared controls ---
 	private final JToggleButton allTasksTab = new JToggleButton("All Tasks");
 	private final JToggleButton nearbyTab = new JToggleButton("Near Me");
 	private final JToggleButton planTab = new JToggleButton("Plan");
+	private final JToggleButton routeTab = new JToggleButton("Route");
 
 	// --- "All Tasks" tab ---
 	private final IconTextField allSearchField = new IconTextField();
@@ -77,6 +79,13 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	// --- "Current Plan" tab ---
 	private final JLabel planStatusLabel = new JLabel();
 	private final JPanel planListContainer = new JPanel();
+
+	// --- "Route" tab ---
+	private final JButton generateRouteButton = new JButton("Generate Route");
+	private final JLabel routeStatusLabel = new JLabel();
+	private final JPanel routeListContainer = new JPanel();
+	private Runnable onGenerateRouteCallback;
+	private java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> currentRoute = java.util.Collections.emptyList();
 
 	private final JLabel leagueInfoLabel = new JLabel();
 
@@ -146,14 +155,17 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		styleTabButton(allTasksTab);
 		styleTabButton(nearbyTab);
 		styleTabButton(planTab);
+		styleTabButton(routeTab);
 		tabGroup.add(allTasksTab);
 		tabGroup.add(nearbyTab);
 		tabGroup.add(planTab);
+		tabGroup.add(routeTab);
 
 		allTasksTab.setSelected(true);
 		allTasksTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_ALL));
 		nearbyTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_NEARBY));
 		planTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_PLAN));
+		routeTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_ROUTE));
 
 		tabRow.add(Box.createHorizontalGlue());
 		tabRow.add(allTasksTab);
@@ -161,6 +173,8 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		tabRow.add(nearbyTab);
 		tabRow.add(Box.createHorizontalGlue());
 		tabRow.add(planTab);
+		tabRow.add(Box.createHorizontalGlue());
+		tabRow.add(routeTab);
 		tabRow.add(Box.createHorizontalGlue());
 		header.add(tabRow);
 		header.add(Box.createVerticalStrut(4));
@@ -215,6 +229,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		cardPanel.add(buildAllTasksCard(), CARD_ALL);
 		cardPanel.add(buildNearbyCard(), CARD_NEARBY);
 		cardPanel.add(buildPlanCard(), CARD_PLAN);
+		cardPanel.add(buildRouteCard(), CARD_ROUTE);
 		cardLayout.show(cardPanel, CARD_ALL);
 
 		// Build lock panel (shown until beta key entered)
@@ -489,6 +504,54 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		return card;
 	}
 
+	// ========== "Route" card ==========
+
+	private JPanel buildRouteCard()
+	{
+		JPanel card = new JPanel(new BorderLayout());
+		card.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
+		// Controls
+		JPanel controls = new JPanel();
+		controls.setLayout(new BoxLayout(controls, BoxLayout.Y_AXIS));
+		controls.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		controls.setBorder(new EmptyBorder(8, 10, 4, 10));
+
+		generateRouteButton.setFont(FontManager.getRunescapeSmallFont());
+		generateRouteButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+		generateRouteButton.addActionListener(e -> {
+			if (onGenerateRouteCallback != null)
+			{
+				generateRouteButton.setEnabled(false);
+				generateRouteButton.setText("Generating...");
+				onGenerateRouteCallback.run();
+			}
+		});
+		controls.add(generateRouteButton);
+		controls.add(Box.createVerticalStrut(4));
+
+		routeStatusLabel.setFont(FontManager.getRunescapeSmallFont());
+		routeStatusLabel.setForeground(Color.GRAY);
+		routeStatusLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		controls.add(routeStatusLabel);
+
+		card.add(controls, BorderLayout.NORTH);
+
+		// Route list
+		routeListContainer.setLayout(new BoxLayout(routeListContainer, BoxLayout.Y_AXIS));
+		routeListContainer.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
+		JScrollPane scroll = new JScrollPane(routeListContainer);
+		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scroll.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		scroll.getVerticalScrollBar().setPreferredSize(new Dimension(12, 0));
+
+		card.add(scroll, BorderLayout.CENTER);
+
+		return card;
+	}
+
 	// ========== Shared scroll pane builder ==========
 
 	private JScrollPane buildScrollableList(JPanel listContainer)
@@ -640,6 +703,56 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		{
 			shownLocationTasks.remove(taskName);
 		}
+	}
+
+	public void setOnGenerateRoute(Runnable callback)
+	{
+		this.onGenerateRouteCallback = callback;
+	}
+
+	public void displayRoute(java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> route)
+	{
+		this.currentRoute = route;
+		routeListContainer.removeAll();
+
+		generateRouteButton.setEnabled(true);
+		generateRouteButton.setText("Generate Route");
+
+		if (route == null || route.isEmpty())
+		{
+			routeStatusLabel.setText("No route generated");
+			addMessageLabel(routeListContainer, "Click 'Generate Route' to plan\na task completion path.");
+		}
+		else
+		{
+			int totalDist = route.get(route.size() - 1).getCumulativeDistance();
+			routeStatusLabel.setText(route.size() + " tasks \u00b7 ~" + totalDist + " tiles");
+
+			Set<String> planNames = getPlanTaskNames();
+			for (int i = 0; i < route.size(); i++)
+			{
+				com.ultimatetaskmaster.data.RouteGenerator.RouteStep step = route.get(i);
+				boolean done = completedTaskNames.contains(step.getTask().getName());
+				boolean inPlan = planNames.contains(step.getTask().getName());
+				TaskRowPanel row = new TaskRowPanel(step.getTask(), done, step.getDistanceFromPrevious(), i % 2 == 0, inPlan, false);
+				row.setOnAddToPlan(onAddToPlanCallback);
+				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
+				row.setOnMarkCompleted(onMarkCompletedCallback);
+				if (taskItemService != null)
+				{
+					row.setItemRequirements(taskItemService.getItemRequirements(step.getTask()));
+				}
+				routeListContainer.add(row);
+			}
+		}
+
+		routeListContainer.revalidate();
+		routeListContainer.repaint();
+	}
+
+	public void setOnAddRouteToPlan(java.util.function.Consumer<java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep>> callback)
+	{
+		// Could add an "Add All to Plan" button later
 	}
 
 	public void setOnHideTask(java.util.function.Consumer<String> callback)
