@@ -1,0 +1,1589 @@
+1 Alchemical Hydra Kill: Combat gear,Antidote++(4),Prayer potion(4),Food
+1 Amoxliatl Kill: Combat gear,Food
+1 Araxxor Kill: Combat gear,Food
+1 Chambers of Xeric: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+1 Easy Clue Scroll: Clue scroll (easy)
+1 Elite Clue Scroll: Clue scroll (elite)
+1 Hard Clue Scroll: Clue scroll (hard)
+1 Hueycoatl Kill: Combat gear,Food
+1 Master Clue Scroll: Clue scroll (master)
+1 Medium Clue Scroll: Clue scroll (medium)
+1 Mimic Kill: Combat gear,Food
+1 Sarachnis Kill: Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+1 Skotizo Kill: Dark totem,Combat gear,Food
+1 Tempoross Kill: Harpoon,Hammer,Rope,Bucket of water
+1 Wintertodt Kill: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+10 Skotizo Kills: Dark totem,Combat gear,Food
+10 Tempoross Kills: Harpoon,Hammer,Rope,Bucket of water
+10 Wintertodt Kills: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+100 Chambers of Xeric: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+100 Collection log slots: 
+100 Combat Achievements: Combat gear,Food
+100 Superior Slayer Encounters: Slayer equipment
+15 Collection log slots: 
+150 Alchemical Hydra Kills: Combat gear,Antidote++(4),Prayer potion(4),Food
+150 Amoxliatl Kills: Combat gear,Food
+150 Araxxor Kills: Combat gear,Food
+150 Combat Achievements: Combat gear,Food
+150 Hueycoatl Kills: Combat gear,Food
+150 Lizardmen Shaman Kills: Combat gear,Food
+150 Sarachnis Kills: Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+200 Collection log slots: 
+200 Combat Achievements: Combat gear,Food
+25 Chambers of Xeric: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+25 Easy Clue Scrolls: Clue scroll (easy)
+25 Elite Clue Scrolls: Clue scroll (elite)
+25 Hard Clue Scrolls: Clue scroll (hard)
+25 Master Clue Scrolls: Clue scroll (master)
+25 Medium Clue Scrolls: Clue scroll (medium)
+25 Superior Slayer Encounters: Slayer equipment
+25 Tempoross Kills: Harpoon,Hammer,Rope,Bucket of water
+25 Wintertodt Kills: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+250 Combat Achievements: Combat gear,Food
+30 Collection log slots: 
+300 Alchemical Hydra Kills: Combat gear,Antidote++(4),Prayer potion(4),Food
+300 Araxxor Kills: Combat gear,Food
+300 Lizardmen Shaman Kills: Combat gear,Food
+300 Sarachnis Kills: Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+350 Collection log slots: 
+5 Collection log slots: 
+5 Mimic Kills: Combat gear,Food
+50 Alchemical Hydra Kills: Combat gear,Antidote++(4),Prayer potion(4),Food
+50 Amoxliatl Kills: Combat gear,Food
+50 Araxxor Kills: Combat gear,Food
+50 Chambers of Xeric: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+50 Collection log slots: 
+50 Combat Achievements: Combat gear,Food
+50 Hueycoatl Kills: Combat gear,Food
+50 Lizardmen Shaman Kills: Combat gear,Food
+50 Sarachnis Kills: Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+50 Wintertodt Kills: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+500 Collection log slots: 
+75 Easy Clue Scrolls: Clue scroll (easy)
+75 Elite Clue Scrolls: Clue scroll (elite)
+75 Hard Clue Scrolls: Clue scroll (hard)
+75 Master Clue Scrolls: Clue scroll (master)
+75 Medium Clue Scrolls: Clue scroll (medium)
+75 Superior Slayer Encounters: Slayer equipment
+750 Collection log slots: 
+Abyssal Sire Combat Achievements: Combat gear,Efaritay's aid,Prayer potion(4),Food
+Achieve 100% Shades of Mort'Ton Sanctity: 
+Achieve Your First Level 10: 
+Achieve Your First Level 20: 
+Achieve Your First Level 30: 
+Achieve Your First Level 40: 
+Achieve Your First Level 5: 
+Achieve Your First Level 50: 
+Achieve Your First Level 60: 
+Achieve Your First Level 70: 
+Achieve Your First Level 80: 
+Achieve Your First Level 90: 
+Achieve Your First Level 95: 
+Achieve Your First Level Up: 
+Activate an Arcane or Dexterous Prayer Scroll: 
+Activate an Imbued Heart: 
+Activate the Statue of Ates: 
+Add a Jar to a Display Case: Check the associated bosses,
+Alchemical Hydra Combat Achievements: Combat gear,Antidote++(4),Prayer potion(4),Food
+Amoxliatl Combat Achievements: Combat gear,Food
+Araxxor Combat Achievements: Combat gear,Food
+Ask for a Quest from Bob: Bob
+Assemble a Slayer Helm: 58 Slayer,
+Attach a Holy ornament kit to the Scythe of Vitur: Theatre of Blood/Hard Mode
+Attach a Sanguine ornament kit to the Scythe: Theatre of Blood/Hard Mode
+Balance 5 barrels on your head: Jimmy (Warriors' Guild)
+Bank at Land's End: 
+Bank at Mount Quidamortem: 
+Barehand catch a Shark: 
+Beat Jacky Jester: 
+Blast Furnace 100 Mithril Bars: Ore,Coal
+Blast Furnace 100 Runite Bars: Ore,Coal
+Blow 100 Light Orbs: Glassblowing pipe,Molten glass
+Brimstail Rune Essence Mine teleport: Brimstail
+Brutally murder Conrad King: Conrad King
+Build a Bank on Fossil Island: Saw,Hammer,Planks
+Build a Demonic Throne: Saw,Hammer,Planks
+Build a Gilded Altar: Saw,Hammer,Planks
+Build a Mahogany Portal: Saw,Hammer,Planks
+Build a Quetzal Landing Site: Saw,Hammer,Planks
+Build a Room in Your Player Owned House: Saw,Hammer,Planks
+Build a Spirit tree & fairy ring: Saw,Hammer,Planks
+Build a Waka Canoe: Saw,Hammer,Planks
+Build an Oak Larder: Saw,Hammer,Planks
+Burn 100 Willow Logs: Willow logs,Tinderbox
+Burn 100 Yew Logs: Yew logs,Tinderbox
+Burn 20 Blisterwood Logs: Logs,Tinderbox
+Burn 20 Pyre Logs: Logs,Tinderbox
+Burn 200 Redwood Logs: Redwood logs,Tinderbox
+Burn 25 Maple Logs: Maple logs,Tinderbox
+Burn Some Coloured Logs: Logs,Tinderbox
+Burn Some Food: Raw food
+Burn Some Magic Logs: Magic logs,Tinderbox
+Burn Some Normal Logs: Logs,Tinderbox
+Burn Some Oak Logs: Oak logs,Tinderbox
+Bury Some Bones: Bones
+Bury Some Lava Dragon Bones: Bones
+Bury Some Wyvern or Dragon Bones: Bones
+Buy Something From Trader Crewmembers: Trader crewmember
+Buy a Snapdragon From Pirate Jackie the Fruit: Coins
+Buy a candle in Lumbridge: Coins
+Capture 10 sandworms: 
+Cast Claws of Guthix: Air rune,Fire rune,Blood rune,Guthix staff
+Cast Degrime Spell Full Clean: Astral rune,Nature rune
+Cast Flames of Zamorak: Air rune,Fire rune,Blood rune,Staff of zamorak
+Cast High Level Alchemy: Nature rune,Fire rune
+Cast Home Teleport: 
+Cast Ice Barrage: Blood rune,Death rune,Water rune
+Cast Ice Blitz: Blood rune,Death rune,Water rune
+Cast Ice Burst: Chaos rune,Death rune,Water rune
+Cast Ice Rush: Chaos rune,Death rune,Water rune
+Cast Kourend Castle Teleport: Law rune,Fire rune,Water rune,Soul rune
+Cast Moonclan Teleport: Law rune,Earth rune,Astral rune
+Cast Saradomin Strike: Air rune,Fire rune,Blood rune,Staff of saradomin
+Cast Spellbook Swap: Cosmic rune,Astral rune,Law rune
+Cast a Blast Spell: Death rune,Fire rune
+Cast a Surge Spell: Wrath rune,Fire rune
+Cast a Wave Spell: Blood rune,Fire rune
+Catch 10 Pike: Fishing rod,Fishing bait
+Catch 100 Dark Crabs: Dark fishing bait,Lobster pot
+Catch 100 Lobsters: Lobster pot
+Catch 100 Shark: Harpoon
+Catch 100 Tecu salamanders: Tecu salamander
+Catch 150 Anglerfish: Fishing rod,Sandworms
+Catch 150 Red Chinchompas in Kandarin: Box trap
+Catch 25 Sardines: Fishing rod,Fishing bait
+Catch 25 Sunlight Antelopes: 
+Catch 30 Orange Salamanders: Rope,Small fishing net
+Catch 300 Red Chinchompas in Tirannwn: Box trap
+Catch 50 Grey Chinchompas: Box trap
+Catch 50 Implings in Puro-Puro: Butterfly net,Impling jar
+Catch 50 Karambwan: Karambwan vessel,Raw karambwanji
+Catch 50 Moonlight Antelopes: Moonlight Antelope
+Catch 50 Salmon: Fly fishing rod,Feather
+Catch 50 Swordfish: Harpoon
+Catch 500 Chinchompas: Box trap
+Catch a Baby Impling: Butterfly net,Impling jar
+Catch a Black Chinchompa: Box trap
+Catch a Black Salamander: Rope,Small fishing net
+Catch a Cerulean Twitch: Cerulean twitch,Bird snare
+Catch a Crimson Swift in the Feldip Hills: Crimson swift,Bird snare
+Catch a Crystal Impling: Butterfly net,Impling jar
+Catch a Dragon Impling: Butterfly net,Impling jar
+Catch a Grey Chinchompa: Box trap
+Catch a Herbiboar 150 Times: 80 Hunter,
+Catch a Herbiboar 50 Times: 80 Hunter,
+Catch a Herring: Fishing rod,Fishing bait,Fishing spot (small net, bait)
+Catch a Karambwanji: Small fishing net,Fishing spot (karambwanji)
+Catch a Lucky Impling Bare-Handed: Butterfly net,Impling jar
+Catch a Monkfish: Small fishing net
+Catch a Polar Kebbit: Noose wand
+Catch a Red Salamander: Rope,Small fishing net
+Catch a Sabre-toothed Kebbit: Deadfall trap
+Catch a Salmon: 
+Catch a Salmon on Karamja: Fly fishing rod,Feather
+Catch a Sapphire Glacialis: Butterfly net,Butterfly jar
+Catch a Shrimp: Small fishing net,Fishing spot (small net, bait)
+Catch a Snowy Knight: Butterfly net,Butterfly jar
+Catch a Swamp Lizard in Morytania: Rope,Small fishing net
+Catch a Swamp Lizard or Salamander: Rope,Small fishing net
+Catch a wild kebbit: Wild kebbit
+Catch an Anchovy: Small fishing net,Fishing spot (small net, bait)
+Chambers of Xeric Combat Achievements: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Charge an Amulet of Glory in the Heroes' Guild: 
+Charter a Ship From Prifddinas to Port Tyras: Coins
+Charter a Ship From Sunset Coast to Civitas: Reinn (Sunset Coast)
+Check Your Slayer Task: Enchanted gem
+Check a grown Calquat Tree: 
+Check a grown Crystal Tree: 
+Check a grown Dragonfruit Tree in Catherby: 
+Check a grown Fruit Tree: 
+Check a grown Magic Tree in Lumbridge: 
+Check a grown Papaya Tree in Lletya: 
+Check a grown Papaya Tree in the Gnome Stronghold: 
+Check a grown Potato Cactus: 
+Check a grown Redwood Tree: 
+Check the health of 5 Crystal Trees: 
+Check the health of Mahogany Tree in Marcellus's Patch: 
+Chop 100 Blisterwood Logs: Any axe,Blisterwood logs
+Chop 100 Maples in Tirannwn: Any axe,Maple logs
+Chop 100 Teak Logs in Prifddinas: Any axe,Teak logs
+Chop 100 Willow Logs: Any axe,Willow logs
+Chop 100 Yew Logs: Any axe,Yew logs
+Chop 15 Yew Logs in Shayzien: Any axe,Yew logs
+Chop 20 Magic Logs in Varlamore: Any axe,Magic logs
+Chop 200 Redwood Logs: Any axe,Redwood logs
+Chop 25 Juniper Logs: Any axe,Juniper logs
+Chop 50 Magic Logs in Tirannwn: Any axe,Magic logs
+Chop 500 Redwood logs: Any axe,Redwood logs
+Chop 75 Magic Logs: Any axe,Magic logs
+Chop Some Logs: Bronze axe
+Chop Some Logs With a Rune Axe: Rune Axe,Logs
+Chop Some Logs With a Steel Axe: Steel axe
+Chop a Sulliuscep Cap: Any axe,Sulliuscep cap
+Chop a log from a potato tree: Axe
+Chop down an arctic pine tree: Arctic pine tree,Bronze axe
+Chop some Rising Roots: Any axe
+Churn some butter: Bucket of milk,Pot of cream
+Clean 100 Grimy Avantoe: Grimy avantoe
+Clean 15 Grimy Tarromin: Grimy tarromin
+Clean 25 Grimy Guam Leafs: Grimy guam leaf
+Clean 50 Grimy Cadantine: Grimy cadantine
+Clean 50 Grimy Lantadyme: Grimy lantadyme
+Clean 50 Grimy Ranarr Weed: Grimy ranarr weed
+Clean a Grimy Avantoe: Grimy avantoe
+Clean a Grimy Guam: Grimy guam leaf
+Collect Miscellania Resources at Full Approval: Throne of Miscellania
+Colosseum Combat Achievements: Combat gear,Prayer potion(4),Super restore(4),Food
+Combat Achievements Easy Tier: 
+Combat Achievements Elite Tier: 
+Combat Achievements Hard Tier: 
+Combat Achievements Medium Tier: 
+Commune a Pharoah's Sceptre to the Necropolis: Pharaoh's sceptre
+Complete 1 Farming Contract: Guildmaster Jane
+Complete 1 Slayer Task: 
+Complete 1 Speed Task: 
+Complete 10 Farming Contracts: Seed dibber,Rake,Spade
+Complete 10 Hunter Rumours: 
+Complete 10 Laps of the Draynor Agility Course: 
+Complete 10 Laps of the Varrock Agility Course: 
+Complete 10 Mahogany homes contracts: 
+Complete 10 Speed Tasks: 
+Complete 10 laps of the Varlamore Agility Course: 
+Complete 20 Speed Tasks: 
+Complete 25 Hunter Rumours: 
+Complete 25 Mahogany homes contracts: 
+Complete 25 laps of the Rellekka Agility Course: 
+Complete 30 Speed Tasks: 
+Complete 5 Speed Tasks: 
+Complete 50 Farming Contracts: Seed dibber,Rake,Spade
+Complete 50 Hunter Rumours: 
+Complete 50 Laps of a Rooftop Agility Course: 
+Complete 50 Mahogany homes contracts: 
+Complete 50 laps of the Prifddinas Agility Course: 
+Complete A Porcine of Interest: 
+Complete Beneath Cursed Sands: Beneath Cursed Sands
+Complete Death on the Isle: 
+Complete Demon Slayer: Demon Slayer
+Complete Elemental Workshop II: Elemental Workshop II
+Complete Fishing Contest: Fishing Contest
+Complete Haunted Mine: Haunted Mine
+Complete Meat and Greet: Meat and Greet
+Complete Monk's Friend: Monk's Friend
+Complete Path of Glouphrie: Path of Glouphrie
+Complete Perilous Moons: Perilous Moons
+Complete Royal Trouble: Royal Trouble
+Complete Sea Slug: Sea Slug
+Complete Shadow of the Storm: Shadow of the Storm
+Complete Sheep Shearer: Sheep Shearer
+Complete Sins of the Father: Sins of the Father
+Complete Sleeping Giants: Sleeping Giants
+Complete Spirits of the Elid: Spirits of the Elid
+Complete The Golem: 
+Complete Throne of Miscellania: Throne of Miscellania
+Complete Tombs of Amascut: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Complete Tombs of Amascut 100 times: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Complete Tombs of Amascut 25 times: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Complete Tombs of Amascut 50 times: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Complete Tower of Life: Tower of Life
+Complete Tzhaar-Ket-Rak's Special challenge: 
+Complete Tzhaar-Ket-Rak's fifth challenge: 
+Complete Tzhaar-Ket-Rak's first challenge: 
+Complete Tzhaar-Ket-Rak's fourth challenge: 
+Complete Tzhaar-Ket-Rak's second challenge: 
+Complete Tzhaar-Ket-Rak's sixth challenge: 
+Complete Tzhaar-Ket-Rak's third challenge: 
+Complete Vampyre Slayer: Vampyre Slayer
+Complete Wave 1 of Fortis Colosseum: Combat gear,Prayer potion(4),Super restore(4),Food
+Complete Wave 12 of Fortis Colosseum: Combat gear,Prayer potion(4),Super restore(4),Food
+Complete Wave 6 of Fortis Colosseum: Combat gear,Prayer potion(4),Super restore(4),Food
+Complete a Fishing Trawler Game: 
+Complete a Game of Intermediate Pest Control: 
+Complete a Game of Novice Pest Control: 
+Complete a Game of Veteran Pest Control: 
+Complete a Hard Temple Trek: 
+Complete a Hunter Rumour: 
+Complete a Mahogany homes adept contract: 
+Complete a Mahogany homes beginner contract: 
+Complete a Mahogany homes expert contract: 
+Complete a Mahogany homes novice contract: 
+Complete a Medium Temple Trek: 
+Complete a Ribbiting Tale: 
+Complete a Volcanic Mine Game: Any pickaxe
+Complete an Easy Temple Trek: 
+Complete the Al Kharid Agility Course: Ellis
+Complete the Ardougne Agility Course: 
+Complete the Barbarian Outpost Agility Course: 
+Complete the Canifis Agility Course: 
+Complete the Corrupted Gauntlet: 
+Complete the Corrupted Gauntlet 150 Times: 
+Complete the Corrupted Gauntlet 50 Times: 
+Complete the Draynor Agility Course: 
+Complete the Easy Ardougne Diary: 
+Complete the Easy Desert Diary: 
+Complete the Easy Falador Diary: 
+Complete the Easy Fremennik Diary: 
+Complete the Easy Kandarin Diary: 
+Complete the Easy Karamja Diary: 
+Complete the Easy Lumbridge & Draynor Diary: 
+Complete the Easy Morytania Diary: 
+Complete the Easy Varrock Diary: 
+Complete the Easy Western Provinces Diary: 
+Complete the Easy Wilderness Diary: 
+Complete the Elite Ardougne Diary: 
+Complete the Elite Desert Diary: 
+Complete the Elite Falador Diary: 
+Complete the Elite Fremennik Diary: 
+Complete the Elite Kandarin Diary: 
+Complete the Elite Karamja Diary: 
+Complete the Elite Lumbridge & Draynor Diary: 
+Complete the Elite Morytania Diary: 
+Complete the Elite Varrock Diary: 
+Complete the Elite Western Provinces Diary: 
+Complete the Elite Wilderness Diary: 
+Complete the Evil Bob random event: 
+Complete the Falador Agility Course: 
+Complete the Fight Caves 10 Times: 
+Complete the Fight Caves 5 Times: 
+Complete the Flowering Bush event: 
+Complete the Garden of Death: 
+Complete the Gauntlet: 
+Complete the Gnome Stronghold Agility Course: 
+Complete the Hallowed Sepulchre in 6:30: 
+Complete the Hard Ardougne Diary: 
+Complete the Hard Desert Diary: 
+Complete the Hard Falador Diary: 
+Complete the Hard Fremennik Diary: 
+Complete the Hard Kandarin Diary: 
+Complete the Hard Karamja Diary: 
+Complete the Hard Lumbridge & Draynor Diary: 
+Complete the Hard Morytania Diary: 
+Complete the Hard Varrock Diary: 
+Complete the Hard Western Provinces Diary: 
+Complete the Hard Wilderness Diary: 
+Complete the Inferno 10 Times: 
+Complete the Inferno 15 Times: 
+Complete the Inferno 5 Times: 
+Complete the Leagues Tutorial: 
+Complete the Maze random event: 
+Complete the Medium Ardougne Diary: 
+Complete the Medium Desert Diary: 
+Complete the Medium Falador Diary: 
+Complete the Medium Fremennik Diary: 
+Complete the Medium Kandarin Diary: 
+Complete the Medium Karamja Diary: 
+Complete the Medium Lumbridge & Draynor Diary: 
+Complete the Medium Morytania Diary: 
+Complete the Medium Varrock Diary: 
+Complete the Medium Western Provinces Diary: 
+Complete the Medium Wilderness Diary: 
+Complete the Natural History Quiz: 
+Complete the Observatory Quest: 
+Complete the Penguin Agility Course: 
+Complete the Pheasant Forestry Event: 
+Complete the Pillory random event: 
+Complete the Pinball random event: 
+Complete the Postie Pete random event: 
+Complete the Prifddinas Agility Course: 
+Complete the Prifddinas Agility Course in 1:10: 
+Complete the Prison Pete random event: 
+Complete the Rellekka Agility Course: 
+Complete the Ritual Forestry Event: 
+Complete the Seers' Village Agility Course: 
+Complete the Shayzien Advanced Agility Course: 
+Complete the Shayzien Basic Agility Course: 
+Complete the Struggling Sapling event: 
+Complete the Surprise Exam random event: 
+Complete the Theatre of Blood 100 Times: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Complete the Theatre of Blood 25 Times: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Complete the Theatre of Blood 50 Times: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Complete the Varrock Agility Course: 
+Complete the Werewolf Agility Course: 
+Complete the Wilderness Agility Course: 
+Consume a Saradomin's Light: 
+Cook 10 Sardines: Raw food
+Cook 100 Anglerfish: Raw anglerfish
+Cook 100 Karambwans: Raw karambwan
+Cook 100 Lobsters: Raw lobster
+Cook 100 Moonlight Antelopes: Raw food
+Cook 100 Sharks: Raw shark
+Cook 100 pies: Pie dish,Pastry dough
+Cook 20 Karambwans in a row: Raw karambwan
+Cook 20 Pike: Raw food
+Cook 20 Redberry Pies: Pie dish,Pastry dough
+Cook 20 Sharks in Darkmeyer: Raw shark
+Cook Shrimp: Raw shrimp
+Cook a Dark Crab: Raw dark crab
+Cook a Rabbit in Tirannwn: Raw rabbit
+Craft 100 Blood runes: Dense essence block,Chisel
+Craft 100 Soul runes: Dense essence block
+Craft 100 Unpowered Orbs: Crafting materials
+Craft 1000 Sunfire Runes: Rune essence,Fire talisman
+Craft 200 Essence Into Runes: Crafting materials
+Craft 2500 Essence Into Runes: Crafting materials
+Craft 30 Blue Dragonhide Bodies: Dragon leather,Needle,Thread
+Craft 4 Runes With 1 Essence: Crafting materials
+Craft 50 Astral Runes: Crafting materials
+Craft 50 Cosmic Runes: Pure essence,Cosmic talisman
+Craft 50 Death Runes: Pure essence,Death talisman
+Craft 50 Law Runes: Pure essence,Law talisman
+Craft 50 Nature Runes: Pure essence,Nature talisman
+Craft 50 Water Runes: Rune essence,Water talisman
+Craft Any Combination Rune: Crafting materials
+Craft a Body Rune: Rune essence,Body talisman
+Craft a Dragonstone Amulet: Gold bar,Dragonstone,Amulet mould
+Craft a Fire Rune: 
+Craft a Ghorrock Teleport Tablet: Crafting materials
+Craft a Lava Rune at the Fire Altar: Crafting materials
+Craft a Leather Body: Leather,Needle,Thread
+Craft a Piece of Crystal Armour: Crafting materials
+Craft a Ruby Amulet: Gold bar,Ruby,Amulet mould
+Craft a Rune Using Daeyalt Essence: Crafting materials
+Craft a Snelm: Crafting materials
+Craft a Toxic Blowpipe: Crafting materials
+Craft a Toxic Trident: Crafting materials
+Craft an Air Battlestaff in the Wilderness: Crafting materials
+Craft an Air Rune: 
+Craft an Emerald Ring: Gold bar,Emerald,Ring mould
+Craft an Eternal Teleport Crystal: Crafting materials
+Craft an Onyx Amulet: Gold bar,Onyx,Amulet mould
+Craft some Pottery In Sophanem: Soft clay
+Create 10 Dynamite: 
+Create 100 Divine Ranging Potions: Dwarf weed,Wine of zamorak,Vial of water
+Create 100 Divine Super Combat Potions: Crystal dust,Potion
+Create 100 Jugs of Blessed Sunfire Wine: 
+Create 100 Juniper Charcoal: 
+Create 25 Divine Super Attack Potions: Irit leaf,Eye of newt,Vial of water
+Create 25 Divine Super Strength Potions: Kwuarm,Limpwurt root,Vial of water
+Create a Catherby Teleport Tablet: 
+Create a Compost Potion: Volcanic ash,Harralander,Grimy harralander,Vial,Vial of water,Harralander potion (unf)
+Create a Guthix Rest Tea: 
+Create a Mithril Grapple: 
+Create a Quetzal Whistle: 
+Create a black d'hide shield: 
+Create a green d'hide shield: 
+Create an Amulet of Blood Fury: 
+Create an Antipoison: Unicorn horn dust,Unicorn horn,Pestle and mortar,Marrentill,Grimy marrentill,Vial,Vial of water,Marrentill potion (unf)
+Create the Colossal Rune Pouch: 
+Create the Divine Rune pouch: Crystal dust,Potion
+Create the Saturated Heart: 
+Create the long rope shortcut in Darkmeyer: 
+Cross a Trap in Isafdar: 
+Cross the Chaos Temple Stone Shortcut: 
+Cry in a wheat field: Wheat
+Cut 50 Maple Logs: Chisel
+Cut a Sapphire: Uncut sapphire,Chisel
+Cut the Swaying Tree: Swaying tree,Bronze axe
+Dagannoth Kings Combat Achievements: Combat gear,Prayer potion(4),Food
+Dance in a graveyard: 
+Defeat 10 Superior Slayer Creatures: Slayer equipment,Combat gear,Food
+Defeat 150 Demonic Gorillas: Combat gear,Food
+Defeat 150 Tormented Demons: Combat gear,Food
+Defeat 20 Superior Slayer Creatures: Slayer equipment,Combat gear,Food
+Defeat 300 Demonic Gorillas: Combat gear,Food
+Defeat 300 Tormented Demons: Combat gear,Food
+Defeat 50 Superior Slayer Creatures: Slayer equipment,Combat gear,Food
+Defeat 50 Tormented Demons: Combat gear,Food
+Defeat 500 Demonic Gorillas: Combat gear,Food
+Defeat Any God Wars Dungeon Boss 100 Times: Combat gear,Food
+Defeat Any God Wars Dungeon Boss 250 Times: Combat gear,Food
+Defeat Any God Wars Dungeon Boss 500 Times: Combat gear,Food
+Defeat Awakened Duke Sucellus: Combat gear,Prayer potion(4),Food
+Defeat Awakened Leviathan: Combat gear,Food
+Defeat Awakened Vardorvis: Combat gear,Prayer potion(4),Food
+Defeat Awakened Whisperer: Combat gear,Food
+Defeat Bryophyta: Mossy key,Combat gear,Food
+Defeat Callisto: Combat gear,Food
+Defeat Callisto 150 times: Combat gear,Food
+Defeat Callisto 300 times: Combat gear,Food
+Defeat Callisto 50 times: Combat gear,Food
+Defeat Cerberus: Combat gear,Spectral spirit shield,Prayer potion(4),Food
+Defeat Cerberus 150 times: Combat gear,Spectral spirit shield,Prayer potion(4),Food
+Defeat Cerberus 300 times: Combat gear,Spectral spirit shield,Prayer potion(4),Food
+Defeat Cerberus 50 times: Combat gear,Spectral spirit shield,Prayer potion(4),Food
+Defeat Commander Zilyana: Combat gear,Food
+Defeat Duke Sucellus: Combat gear,Prayer potion(4),Food
+Defeat Duke Sucellus 150 times: Combat gear,Prayer potion(4),Food
+Defeat Duke Sucellus 300 times: Combat gear,Prayer potion(4),Food
+Defeat Duke Sucellus 50 times: Combat gear,Prayer potion(4),Food
+Defeat Each Dagannoth King 150 Times: Combat gear,Prayer potion(4),Food
+Defeat Each Dagannoth King 300 Times: Combat gear,Prayer potion(4),Food
+Defeat Each Dagannoth King 50 Times: Combat gear,Prayer potion(4),Food
+Defeat General Graardor: Combat gear,Food
+Defeat K'ril Tsutsaroth: Combat gear,Food
+Defeat Kree'arra: Combat gear,Food
+Defeat Leviathan: Combat gear,Food
+Defeat Leviathan 150 times: Combat gear,Food
+Defeat Leviathan 300 times: Combat gear,Food
+Defeat Leviathan 50 times: Combat gear,Food
+Defeat Nex: Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+Defeat Nex 150 Times: Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+Defeat Nex 300 Times: Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+Defeat Nex 50 Times: Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+Defeat Obor: Giant key,Combat gear,Food
+Defeat Phantom Muspah: Combat gear,Prayer potion(4),Food
+Defeat Phantom Muspah 150 times: Combat gear,Prayer potion(4),Food
+Defeat Phantom Muspah 300 times: Combat gear,Prayer potion(4),Food
+Defeat Phantom Muspah 50 times: Combat gear,Prayer potion(4),Food
+Defeat Phosani's Nightmare: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Defeat Scorpia: Combat gear,Antipoison(4),Food
+Defeat Scurrius: Combat gear,Food
+Defeat Scurrius 10 times: Combat gear,Food
+Defeat Scurrius 25 times: Combat gear,Food
+Defeat Sol Heredit 10 times: Combat gear,Food
+Defeat Sol Heredit 5 times: Combat gear,Food
+Defeat The Nightmare: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Defeat The Nightmare 150 times: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Defeat The Nightmare 25 times: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Defeat The Nightmare 50 times: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Defeat Vardorvis: Combat gear,Prayer potion(4),Food
+Defeat Vardorvis 150 times: Combat gear,Prayer potion(4),Food
+Defeat Vardorvis 300 times: Combat gear,Prayer potion(4),Food
+Defeat Vardorvis 50 times: Combat gear,Prayer potion(4),Food
+Defeat Venenatis: Combat gear,Antipoison(4),Food
+Defeat Venenatis 150 times: Combat gear,Antipoison(4),Food
+Defeat Venenatis 300 times: Combat gear,Antipoison(4),Food
+Defeat Venenatis 50 times: Combat gear,Antipoison(4),Food
+Defeat Vet'ion: Combat gear,Food
+Defeat Vet'ion 150 times: Combat gear,Food
+Defeat Vet'ion 300 times: Combat gear,Food
+Defeat Vet'ion 50 times: Combat gear,Food
+Defeat Vorkath: Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+Defeat Vorkath 15 Times Without Leaving: Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+Defeat Vorkath 150 Times: Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+Defeat Vorkath 300 Times: Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+Defeat Vorkath 5 Times Without Special Damage: Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+Defeat Vorkath 50 Times: Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+Defeat Whisperer: Combat gear,Food
+Defeat Whisperer 150 times: Combat gear,Food
+Defeat Whisperer 300 times: Combat gear,Food
+Defeat Whisperer 50 times: Combat gear,Food
+Defeat Zalcano: Pickaxe,Combat gear,Food
+Defeat Zalcano 100 Times: Pickaxe,Combat gear,Food
+Defeat Zalcano 50 Times: Pickaxe,Combat gear,Food
+Defeat Zulrah: Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+Defeat Zulrah 150 Times: Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+Defeat Zulrah 300 Times: Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+Defeat Zulrah 50 Times: Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+Defeat a Basilisk Knight: Combat gear,Food
+Defeat a Black Demon in Asgarnia: Combat gear,Food
+Defeat a Bloodveld in Kandarin: Combat gear,Food
+Defeat a Bloodveld in Tirannwn: Combat gear,Food
+Defeat a Blue Dragon in Asgarnia: Combat gear,Food
+Defeat a Cave Kraken: Combat gear,Trident of the seas,Prayer potion(4),Food
+Defeat a Chaos Dwarf in the Wilderness: Combat gear,Food
+Defeat a Cockatrice in the Fremennik Province: Mirror shield,Combat gear,Food
+Defeat a Crocodile: Combat gear,Food
+Defeat a Dagannoth in the Fremennik Province: Combat gear,Prayer potion(4),Food
+Defeat a Dark Beast in Tirannwn: Combat gear,Food
+Defeat a Demonic Gorilla: Combat gear,Food
+Defeat a Drake: Combat gear,Food
+Defeat a Fire Giant in Kandarin: Combat gear,Food
+Defeat a Fire Giant in the Wilderness: Combat gear,Food
+Defeat a Fiyr Shade: Combat gear,Food
+Defeat a Fossil Island Wyvern: Combat gear,Food
+Defeat a Gang Boss: Combat gear,Food
+Defeat a Gargoyle in Morytania: Combat gear,Food
+Defeat a Goblin: Combat gear,Food
+Defeat a Greater Demon on Karamja: Combat gear,Food
+Defeat a Green Dragon in the Wilderness: Combat gear,Food
+Defeat a Guard: Combat gear,Food
+Defeat a Jelly in the Fremennik Province: Combat gear,Food
+Defeat a Kalphite Guardian: Combat gear,Food
+Defeat a Kurask in Tirannwn: Combat gear,Food
+Defeat a Kurask in the Fremennik Province: Combat gear,Food
+Defeat a Lava Dragon in the Wilderness: Combat gear,Food
+Defeat a Lesser Demon: Combat gear,Food
+Defeat a Mithril Dragon: Combat gear,Food
+Defeat a Moss Giant: Combat gear,Food
+Defeat a Moss Giant in Tirannwn: Combat gear,Food
+Defeat a Nechryael in Tirannwn: Combat gear,Food
+Defeat a Pyrefiend in the Fremennik Province: Combat gear,Food
+Defeat a Rock Crab in the Fremennik Province: Combat gear,Food
+Defeat a Rune Dragon: Combat gear,Food
+Defeat a Skeletal Wyvern: Combat gear,Food
+Defeat a Smoke Devil: Combat gear,Food
+Defeat a Steel Dragon on Karamja: Combat gear,Food
+Defeat a Superior Slayer Creature: Slayer equipment,Combat gear,Food
+Defeat a Tormented Demon: Combat gear,Food
+Defeat a Tortoise With Riders in Kandarin: Combat gear,Food
+Defeat a Troll in Asgarnia: Combat gear,Food
+Defeat a Troll in the Fremennik Province: Combat gear,Food
+Defeat a Turoth in the Fremennik Province: Combat gear,Food
+Defeat a TzHaar: Combat gear,Food
+Defeat a Vyrewatch Sentinel: Combat gear,Food
+Defeat a Waterfiend in Tirannwn: Combat gear,Food
+Defeat a Werewolf in Morytania: Combat gear,Food
+Defeat an Abyssal Demon in Morytania: Combat gear,Food
+Defeat an Elf in Tirannwn: Combat gear,Food
+Defeat the Abyssal Sire: Combat gear,Efaritay's aid,Prayer potion(4),Food
+Defeat the Abyssal Sire 150 Times: Combat gear,Efaritay's aid,Prayer potion(4),Food
+Defeat the Abyssal Sire 300 Times: Combat gear,Efaritay's aid,Prayer potion(4),Food
+Defeat the Abyssal Sire 50 Times: Combat gear,Efaritay's aid,Prayer potion(4),Food
+Defeat the Chaos Elemental: Combat gear,Food
+Defeat the Chaos Fanatic: Combat gear,Food
+Defeat the Corporeal Beast: Combat gear,Spirit shield,Prayer potion(4),Food
+Defeat the Corporeal Beast 150 Times: Combat gear,Spirit shield,Prayer potion(4),Food
+Defeat the Corporeal Beast 250 Times: Combat gear,Spirit shield,Prayer potion(4),Food
+Defeat the Corporeal Beast 50 Times: Combat gear,Spirit shield,Prayer potion(4),Food
+Defeat the Crazy Archaeologist: Combat gear,Food
+Defeat the Dagannoth Kings Without Leaving: Combat gear,Prayer potion(4),Food
+Defeat the Evil chicken: Combat gear,Food
+Defeat the Giant Mole: Spade,Falador shield,Combat gear,Prayer potion(4),Food
+Defeat the Giant Mole 150 Times: Spade,Falador shield,Combat gear,Prayer potion(4),Food
+Defeat the Giant Mole 300 Times: Spade,Falador shield,Combat gear,Prayer potion(4),Food
+Defeat the Giant Mole 50 Times: Spade,Falador shield,Combat gear,Prayer potion(4),Food
+Defeat the Grotesque Guardians: Brittle key,Combat gear,Prayer potion(4),Food
+Defeat the Grotesque Guardians 150 Times: Brittle key,Combat gear,Prayer potion(4),Food
+Defeat the Grotesque Guardians 50 Times: Brittle key,Combat gear,Prayer potion(4),Food
+Defeat the Kalphite Queen: Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food
+Defeat the Kalphite Queen 150 Times: Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food
+Defeat the Kalphite Queen 50 Times: Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food
+Defeat the King Black Dragon: Combat gear,Anti-dragon shield,Antifire potion(4),Prayer potion(4),Food
+Defeat the Kraken Boss 150 Times: Combat gear,Trident of the seas,Prayer potion(4),Food
+Defeat the Kraken Boss 300 Times: Combat gear,Trident of the seas,Prayer potion(4),Food
+Defeat the Kraken Boss 50 Times: Combat gear,Trident of the seas,Prayer potion(4),Food
+Defeat the Lesser Demon in the Wizards' Tower: Combat gear,Food
+Defeat the Penance Queen: Combat gear,Food
+Defeat the Thermonuclear Smoke Devil: Combat gear,Facemask,Prayer potion(4),Food
+Deposit an Item Using Peer the Seer: 
+Destroy the one ring to rule them all: Gold ring
+Dig 25 Saltpetre: Spade
+Dismantle 20 Filled Bird Houses: 
+Dismantle a Zulrah scale unique: Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+Dissect 250 Sacred Eels: 87 Fishing,
+Dissect 50 Sacred Eels: 87 Fishing,
+Drink From the Tears of Guthix: From the Tears of Guthix
+Drink a LizardKicker: Lizardkicker
+Drink a Poison Chalice: Poison Chalice
+Drink a Strength Potion: Limpwurt,Limpwurt seed,Grimy tarromin,Tarromin,Vial,Vial of water,Tarromin potion (unf)
+Drink a beer in the Longhall: beer
+Drink from a bird bath: 
+Drink some of Ali's tea: Ali the Tea Seller
+Duke Sucellus Combat Achievements: Combat gear,Prayer potion(4),Food
+Dye a cape orange: Black cape,Blue cape,Green cape,Pink cape,Purple cape,Red cape,Yellow cape,Orange cape,Orange dye,Red dye,Yellow dye
+Eat Eel sushi: Eel sushi
+Eat a Banana: Banana
+Eat a Field Ration: Field ration
+Eat a magic cabbage: Cabbage (Draynor Manor)
+Eat an Onion: Onion
+Eat some Purple Sweets: Purple Sweets
+Enhance a Trident of the Seas: 
+Enter Puro Puro from Gielinor: Crop circle
+Enter Zanaris: 
+Enter the Brimhaven Dungeon: 
+Enter the Cooks' Guild: 
+Enter the Crafting Guild: 
+Enter the Deep Wilderness Dungeon: 
+Enter the Farming Guild's High Tier: 
+Enter the Farming Guild's Mid Tier: 
+Enter the Fishing Guild: 
+Enter the Kalphite Lair: Rope
+Enter the Ranging Guild: 
+Enter the Tai Bwo Wannai Hardwood Grove: 
+Enter the Taverley Dungeon: 
+Enter the Warriors' Guild: 
+Enter the Wilderness God Wars Dungeon: 
+Enter the Wilderness Resource Area: 
+Enter the Wizards' Guild: 
+Enter the Woodcutting Guild: 
+Enter your Player Owned House: Portal (Player-owned house)
+Equip 100 Black Chinchompas: 100 Black Chinchompas
+Equip 250 Black Chinchompas: 250 Black Chinchompas
+Equip 500 Black Chinchompas: 500 Black Chinchompas
+Equip All Zenyte Jewelry: All Zenyte Jewelry
+Equip Amy's Saw: Amy's Saw
+Equip Aranea Boots: Aranea Boots
+Equip Blessed Dizana's Quiver: Blessed Dizana's Quiver
+Equip Boots of Brimstone: Boots of Brimstone
+Equip Bryophyta's Staff: Mossy key,Combat gear,Food
+Equip Burning claws: Burning claws
+Equip Craw's Bow: Craw's Bow
+Equip Dinh's Bulwark: Dinh's Bulwark
+Equip Echo Boots: Echo Boots
+Equip Every Completed God Book: Every Completed God Book
+Equip Every Dagannoth King Ring: Combat gear,Prayer potion(4),Food
+Equip Every Godsword: Every Godsword
+Equip Ferocious Gloves: Ferocious Gloves
+Equip Full Ahrims Armour Set: Ahrims Armour Set
+Equip Full Dharoks Armour Set: Dharoks Armour Set
+Equip Full Guthans Armour Set: Guthans Armour Set
+Equip Full Karils Armour Set: Karils Armour Set
+Equip Full Torags Armour Set: Torags Armour Set
+Equip Full Veracs Armour Set: Veracs Armour Set
+Equip Glacial Temotli: Glacial Temotli
+Equip Osmumten's Fang: Osmumten's Fang
+Equip Osmumten's Fang (or): Osmumten's Fang (or)
+Equip Pendant of Ates: Pendant of Ates
+Equip Some Dragon Platelegs or a Dragon Plateskirt: Dragon platelegs,Dragon plateskirt
+Equip Some Fancy Boots or Fighting Boots: Fancy Boots or Fighting Boots
+Equip Some Primordial, Pegasian or Eternal Boots: Primordial, Pegasian or Eternal Boots
+Equip Some Ranger Boots: Ranger Boots
+Equip Some Zenyte Jewelry: Zenyte Jewelry
+Equip Tier 5 Shayzien Armour: Tier 5 Shayzien Armour
+Equip Tonalztics of Ralos: Tonalztics of Ralos
+Equip Viggora's Chainmace: Viggora's Chainmace
+Equip Xeric's Talisman: Xeric's Talisman
+Equip a Berserker Ring: Berserker Ring
+Equip a Blessed Spirit Shield: Blessed Spirit Shield
+Equip a Bonecrusher necklace: Bonecrusher necklace
+Equip a Bracelet of Ethereum: Bracelet of Ethereum
+Equip a Brimstone Ring: Brimstone Ring
+Equip a Brine Sabre: Brine Sabre
+Equip a Combination Battlestaff or Mystic Staff: Lava battlestaff,Mud battlestaff,Steam battlestaff,Smoke battlestaff,Mystic lava staff
+Equip a Completed God Book: Completed God Book
+Equip a Corrupted Weapon: Corrupted Weapon
+Equip a Crystal Bow: Crystal Bow
+Equip a Crystal Crown: Crystal Crown
+Equip a Crystal Grail: Crystal Grail
+Equip a Crystal Shield: Crystal Shield
+Equip a Crystal Tool: Crystal Tool
+Equip a Damaged God book: Damaged God book
+Equip a Dark Bow in Tirannwn: Dark bow
+Equip a Defender: Defender
+Equip a Dorgeshuun Crossbow: Dorgeshuun Crossbow
+Equip a Dragon 2-Handed Sword: Dragon 2-Handed Sword
+Equip a Dragon 2-Handed Sword in the Wilderness: Dragon 2h sword
+Equip a Dragon Chainbody in the Kharidian Desert: Dragon chainbody
+Equip a Dragon Crossbow: Dragon Crossbow
+Equip a Dragon Defender: Dragon Defender
+Equip a Dragon Full Helm: Dragon Full Helm
+Equip a Dragon Hunter Crossbow: Dragon Hunter Crossbow
+Equip a Dragon Hunter Lance: Dragon Hunter Lance
+Equip a Dragon Pickaxe: Dragon Pickaxe
+Equip a Dragon Platebody or Dragon Kiteshield: Dragon platebody,Dragon kiteshield
+Equip a Dragon Scimitar: Dragon Scimitar
+Equip a Dragon Warhammer: Dragon Warhammer
+Equip a Dragon Weapon: Dragon Weapon
+Equip a Dragonbone Necklace: Dragonbone Necklace
+Equip a Dragonfire Shield: Dragonfire Shield
+Equip a Dragonfire Ward: Dragonfire Ward
+Equip a Dust Battlestaff: Dust Battlestaff
+Equip a Fedora: Fedora
+Equip a Fighter Torso: Fighter Torso
+Equip a Fire Cape: Fire Cape
+Equip a Fish Sack: Fish Sack
+Equip a Full Adamant Set: Full Adamant Set
+Equip a Full Angler's Outfit: Full Angler's Outfit
+Equip a Full Armadyl Armour Set: Full Armadyl Armour Set
+Equip a Full Bandos Armour Set: Full Bandos Armour Set
+Equip a Full Black Dragonhide Set: Full Black Dragonhide Set
+Equip a Full Blue Dragonhide Set: Full Blue Dragonhide Set
+Equip a Full Crystal Armour Set: Full Crystal Armour Set
+Equip a Full Dagon'Hai Set: Full Dagon'Hai Set
+Equip a Full Dragon Set: Full Dragon Set
+Equip a Full God Dragonhide Set: Full God Dragonhide Set
+Equip a Full God Rune Set: Full God Rune Set
+Equip a Full Graceful Outfit: Full Graceful Outfit
+Equip a Full Green Dragonhide Set: Full Green Dragonhide Set
+Equip a Full Infinity Robe Set: Full Infinity Robe Set
+Equip a Full Inquisitor's Set: Full Inquisitor's Set
+Equip a Full Justiciar Set: Full Justiciar Set
+Equip a Full Mithril Set: Full Mithril Set
+Equip a Full Obsidian Armour Set: Full Obsidian Armour Set
+Equip a Full Prospector Outfit: Full Prospector Outfit
+Equip a Full Red Dragonhide Set: Full Red Dragonhide Set
+Equip a Full Rockshell Armour Set: Full Rockshell Armour Set
+Equip a Full Rogue Outfit: Full Rogue Outfit
+Equip a Full Rune Set: Full Rune Set
+Equip a Full Set of Torva Armour: Full Set of Torva Armour
+Equip a Full Set of Zealot's Robes: Full Set of Zealot's Robes
+Equip a Full Skeletal Armour Set: Full Skeletal Armour Set
+Equip a Full Spined Armour Set: Full Spined Armour Set
+Equip a Full Vestment Set: Full Vestment Set
+Equip a Full Void Knight Set: Full Void Knight Set
+Equip a Full set of Golden Prospector: Full set of Golden Prospector
+Equip a Ghrazi Rapier: Ghrazi Rapier
+Equip a Gilded or Trimmed Wizard Item: Gilded or Trimmed Wizard Item
+Equip a God Cape: God Cape
+Equip a Godsword: Godsword
+Equip a Golden Tench: Golden Tench
+Equip a Granite Hammer or Granite Ring: Granite Hammer or Granite Ring
+Equip a Granite Shield: Granite Shield
+Equip a Heavy Ballista: Heavy Ballista
+Equip a Helm of Neitiznot: Helm of Neitiznot
+Equip a Hill Giant Club: Hill Giant Club
+Equip a Karamja Monkey Backpack: Karamja Monkey Backpack
+Equip a Kodai Wand: Kodai Wand
+Equip a Lava Battlestaff: Lava Battlestaff
+Equip a Leaf-Bladed Battleaxe: Leaf-Bladed Battleaxe
+Equip a Leaf-Bladed Sword: Leaf-Bladed Sword
+Equip a Light Ballista: Light Ballista
+Equip a Magic Shortbow: Magic Shortbow
+Equip a Malediction Ward: Malediction Ward
+Equip a Maniacal Monkey Backpack: Maniacal Monkey Backpack
+Equip a Maple Shortbow: Maple Shortbow
+Equip a Marksman Chompy Hat: Marksman Chompy Hat
+Equip a Mist Battlestaff: Mist Battlestaff
+Equip a Mithril Weapon: Mithril Weapon
+Equip a Monkey Backpack: Monkey Backpack
+Equip a Mud Battlestaff: Mud Battlestaff
+Equip a Neitiznot Faceguard: Neitiznot Faceguard
+Equip a Nightmare Staff: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Equip a Nightmare Staff With an Orb: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Equip a Pair of Dragon Boots: Pair of Dragon Boots
+Equip a Piece of Masori Armour: Piece of Masori Armour
+Equip a Piece of Torva Armour: Piece of Torva Armour
+Equip a Piece of Zealot's Robes: Piece of Zealot's Robes
+Equip a Piece of a Mystic Set: Piece of a Mystic Set
+Equip a Piece of any Barrows Armour Set: Spade,Combat gear,Prayer potion(4),Food
+Equip a Piece of the Armadyl Armour Set: Piece of the Armadyl Armour Set
+Equip a Piece of the Bandos Armour Set: Piece of the Bandos Armour Set
+Equip a Piece of the Dagon'Hai Set: Piece of the Dagon'Hai Set
+Equip a Piece of the Dragonstone Armour Set: Piece of the Dragonstone Armour Set
+Equip a Piece of the Golden Prospector set: Piece of the Golden Prospector set
+Equip a Piece of the Infinity Robe Set: Piece of the Infinity Robe Set
+Equip a Piece of the Inquisitor's Set: Piece of the Inquisitor's Set
+Equip a Piece of the Justiciar Set: Piece of the Justiciar Set
+Equip a Pirate Hook: Pirate Hook
+Equip a Protest Banner: Protest Banners
+Equip a Rat Bone Weapon: Rat Bone Weapon
+Equip a Red Topaz Machete: Red Topaz Machete
+Equip a Ring of Endurance: Ring of Endurance
+Equip a Ring of the Gods: Ring of the Gods
+Equip a Rune Crossbow: Rune Crossbow
+Equip a Rune Weapon: Rune Weapon
+Equip a Salve Amulet (e): Salve Amulet (e)
+Equip a Sanguinesti Staff: Sanguinesti Staff
+Equip a Sarachnis Cudgel: Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+Equip a Saradomin Sword: Saradomin Sword
+Equip a Scythe of Vitur: Scythe of Vitur
+Equip a Seer's Ring: Seer's Ring
+Equip a Seercull: Seercull
+Equip a Serpentine Helm: Serpentine Helm
+Equip a Spectral or Arcane Spirit Shield: Spectral or Arcane Spirit Shield
+Equip a Spiny Helmet: Spiny helmet
+Equip a Spottier Cape: Spottier Cape
+Equip a Staff of the Dead: Staff of the Dead
+Equip a Studded Body and Chaps: Studded body,Studded chaps
+Equip a Tecu Salamander: Tecu Salamander
+Equip a Thammaron's Sceptre: Thammaron's Sceptre
+Equip a Toktz-Ket-Xil: Toktz-Ket-Xil
+Equip a Toktz-Xil-Ak: Toktz-Xil-Ak
+Equip a Toktz-Xil-Ek: Toktz-Xil-Ek
+Equip a Tormented Weapon: Tormented Weapon
+Equip a Treasonous Ring: Treasonous Ring
+Equip a Trident of the Seas: Trident of the Seas
+Equip a Trimmed Amulet: Trimmed Amulet
+Equip a Twisted Bow: Twisted Bow
+Equip a Twisted Buckler: Twisted Buckler
+Equip a Tyrannical Ring: Tyrannical Ring
+Equip a Warped Sceptre: Warped Sceptre
+Equip a Warrior Ring: Warrior Ring
+Equip a Willow Shield: Willow Shield
+Equip a Wizard Robe and Hat: Wizard Robe and Hat
+Equip a Yew Shortbow: Yew Shortbow
+Equip a Zamorakian Spear: Zamorakian Spear
+Equip a Zaryte Crossbow: Zaryte Crossbow
+Equip a Zombie Axe: Zombie Axe
+Equip a frog mask: frog mask
+Equip a full set of Ancestral: full set of Ancestral
+Equip a full set of Masori: full set of Masori
+Equip a full set of Raiment of the eye: full set of Raiment of the eye
+Equip a full set of Vyre Noble: full set of Vyre Noble
+Equip a full set of Yakhide Armour: full set of Yakhide Armour
+Equip a full set of the Carpenters Outfit: full set of the Carpenters Outfit
+Equip a full set of the Smith's outfit: full set of the Smith's outfit
+Equip a pair of Dragon Claws: pair of Dragon Claws
+Equip a piece of Alchemists outfit: piece of Alchemists outfit
+Equip a piece of Beekeeper's Outfit: piece of Beekeeper's Outfit
+Equip a piece of Blood Moon armour: piece of Blood Moon armour
+Equip a piece of Blue Moon armour: piece of Blue Moon armour
+Equip a piece of Camouflage outfit: piece of Camouflage outfit
+Equip a piece of Eclipse Moon armour: piece of Eclipse Moon armour
+Equip a piece of Hueycoatl armour: piece of Hueycoatl armour
+Equip a piece of Mime Outfit: piece of Mime Outfit
+Equip a piece of Sunfire Fanatic: piece of Sunfire Fanatic
+Equip a piece of Virtus: piece of Virtus
+Equip a piece of Zombie Outfit: piece of Zombie Outfit
+Equip a team cape: Team-cape
+Equip a two-handed Axe: two-handed Axe
+Equip an Abyssal Bludgeon: Abyssal Bludgeon
+Equip an Abyssal Dagger: Abyssal Dagger
+Equip an Abyssal Tentacle: Abyssal Tentacle
+Equip an Abyssal Whip: Abyssal Whip
+Equip an Adamant Weapon: Adamant Weapon
+Equip an Ancient Wyvern Shield: Ancient Wyvern Shield
+Equip an Archer's Ring: Archer's Ring
+Equip an Armadyl Crossbow: Armadyl Crossbow
+Equip an Ava's Assembler: Ava's Assembler
+Equip an Avernic Defender: Avernic Defender
+Equip an Elder Maul: Elder Maul
+Equip an Elemental Battlestaff or Mystic Staff: Air battlestaff,Water battlestaff,Earth battlestaff,Fire battlestaff,Mystic air staff
+Equip an Elemental Staff: Staff of air,Staff of water,Staff of earth,Staff of fire
+Equip an Elven Signet: Elven Signet
+Equip an Elysian Spirit Shield: Elysian Spirit Shield
+Equip an Enchanted Slayer Staff: Enchanted Slayer Staff
+Equip an Enhanced Crystal Weapon: Enhanced Crystal Weapon
+Equip an Eternal Slayer Ring: Eternal Slayer Ring
+Equip an Imcando Hammer: Imcando Hammer
+Equip an Infernal Cape: Infernal Cape
+Equip an Infernal Tool: Infernal Tool
+Equip an Inquisitor's Mace: Inquisitor's Mace
+Equip an Iron dagger: Iron dagger
+Equip an Obsidian Cape: Obsidian Cape
+Equip an Occult Necklace: Occult Necklace
+Equip an Odium Ward: Odium Ward
+Equip an Ogre Expert Chompy Hat: Ogre Expert Chompy Hat
+Equip an Ogre Forester Chompy Hat: Ogre Forester Chompy Hat
+Equip an Ornament Kit Item: Ornament Kit Item
+Equip any Ancestral piece: any Ancestral piece
+Equip any Full Barrows Armour Set: Spade,Combat gear,Prayer potion(4),Food
+Equip any piece of Crystal Armour: any piece of Crystal Armour
+Equip full Alchemists outfit: Alchemists outfit
+Equip full Blood Moon armour: Blood Moon armour
+Equip full Blue Moon armour: Blue Moon armour
+Equip full Eclipse Moon armour: Eclipse Moon armour
+Equip full Elder chaos robe: Elder chaos robe
+Equip full Graahk, Larupia or Kyatt: Graahk, Larupia or Kyatt
+Equip full Guild Hunter Outfit: Guild Hunter Outfit
+Equip full Hueycoatl armour: Hueycoatl armour
+Equip full Sunfire Fanatic: Sunfire Fanatic
+Equip full Virtus: Virtus
+Equip one unique Echo Item: one unique Echo Item
+Equip some Black armour: Black armour
+Equip some Steel armour: Steel armour
+Equip some Zaryte Vambraces: Zaryte Vambraces
+Equip the Abyssal Lantern: Abyssal Lantern
+Equip the Accursed Sceptre: Accursed Sceptre
+Equip the Amulet of Rancour: Amulet of Rancour
+Equip the Ancient Sceptre: Ancient Sceptre
+Equip the Bellator Ring: Bellator Ring
+Equip the Colossal Blade: Colossal Blade
+Equip the Cursed Amulet of Magic: Cursed Amulet of Magic
+Equip the Elidinis Ward: Elidinis Ward
+Equip the Forestry Basket: Forestry Basket
+Equip the Lightbearer: Lightbearer
+Equip the Magus Ring: Magus Ring
+Equip the Moonlight Fanatic Helmet: Moonlight Fanatic Helmet
+Equip the Noxious Halberd: Noxious Halberd
+Equip the Pyromancer's Garb: Pyromancer's Garb
+Equip the Soulreaper Axe: Soulreaper Axe
+Equip the Tome of Water: Tome of Water
+Equip the Tumeken's Shadow: Tumeken's Shadow
+Equip the Ultor Ring: Ultor Ring
+Equip the Ursine Chainmace: Ursine Chainmace
+Equip the Venator Bow: Venator Bow
+Equip the Venator Ring: Venator Ring
+Equip the Voidwaker: Voidwaker
+Equip the Webweaver: Webweaver
+Equip three unique Echo Items: three unique Echo Items
+Equip two unique Echo Items: two unique Echo Items
+Feed Longramble: 
+Feed a ghast some sweets: 
+Ferment 100 Jugs of Wine: Jug of water,Grapes
+Fill 10 Beginner Clue Collection Log Slots: 
+Fill 10 Elite Clue Collection Log Slots: 
+Fill 15 Hard Clue Collection Log Slots: 
+Fill 20 Easy Clue Collection Log Slots: 
+Fill 20 Medium Clue Collection Log Slots: 
+Fill 25 Elite Clue Collection Log Slots: 
+Fill 25 Master Clue Collection Log Slots: 
+Fill 3 Elite Clue Collection Log Slots: 
+Fill 3 Hard Clue Collection Log Slots: 
+Fill 30 Hard Clue Collection Log Slots: 
+Fill 40 Medium Clue Collection Log Slots: 
+Fill 5 Beginner Clue Collection Log Slots: 
+Fill 5 Easy Clue Collection Log Slots: 
+Fill 5 Master Clue Collection Log Slots: 
+Fill 5 Medium Clue Collection Log Slots: 
+Fill 50 Easy Clue Collection Log Slots: 
+Fill Every Beginner Clue Collection Log Slot: 
+Fill a Bucket With Supercompost: 
+Fill a Crate With Bananas: Crate (Pirate's Treasure),Banana
+Fill a Giant Pouch: 
+Fill a Grape Barrel for the Foreman: 
+Fill a Hard STASH Unit: 
+Fill a Large Pouch: 
+Fill a Medium STASH Unit: 
+Fill up 20 buckets of sand in Rellekka: 
+Find Every Memoriam Crystal: 
+Find a Gout Tuber: 
+Find the Needle: 
+Fish a House Key: Fishing rod
+Fletch 100 Dragon Javelins: Javelin shaft
+Fletch 100 Maple Longbow (u) in Kandarin: Knife,Maple logs
+Fletch 1000 arrow shafts: Knife,Logs
+Fletch 150 Iron Arrows: Iron arrowheads,Headless arrow
+Fletch 200 Dragon Darts: Dart tips,Feather
+Fletch 200 Magic Longbow (u): Knife,Magic logs
+Fletch 25 Oak Stocks: Knife
+Fletch Some Arrow Shafts: Knife,Logs
+Fletch a Magic Shield: Knife
+Fletch a Redwood Shield: Knife,Redwood logs
+Fletch a Rune Crossbow: Knife
+Fletch a Willow Shortbow (u): Knife,Willow logs
+Fletch an Oak Shortbow: Oak shortbow (u),Oak logs,Knife,Bowstring,Flax,Spinning wheel
+Fletch some Broad Arrows or Bolts: Broad arrowheads,Headless arrow
+Floor 1 of the Hallowed Sepulchre: 
+Floor 2 of the Hallowed Sepulchre: 
+Floor 3 of the Hallowed Sepulchre: 
+Floor 4 of the Hallowed Sepulchre: 
+Floor 5 of the Hallowed Sepulchre: 
+Fully Unlock the Mycelium Transportation System: 
+Gain 10 Unique Items From Beginner Clues: 
+Gain 10 Unique Items From Easy Clues: 
+Gain 10 Unique Items From Elite Clues: 
+Gain 10 Unique Items From Master Clues: 
+Gain 10 Unique Items From Medium Clues: 
+Gain 20 Unique Items From Hard Clues: 
+Gain 25 Unique Items From Elite Clues: 
+Gain 25 Unique Items From Master Clues: 
+Gain 25 Unique Items From Medium Clues: 
+Gain 35 Unique Items From Beginner Clues: 
+Gain 35 Unique Items From Easy Clues: 
+Gain 5 Unique Items From Hard Clues: 
+Gain 50 Unique Items From Hard Clues: 
+Gain a Unique Item From a Beginner Clue: 
+Gain a Unique Item From a Hard Clue: 
+Gain a Unique Item From a Master Clue: 
+Gain a Unique Item From a Medium Clue: 
+Gain a Unique Item From an Easy Clue: 
+Gain a Unique Item From an Elite Clue: 
+Gauntlet Combat Achievements: Combat gear,Food
+Get 1000 Target points: 
+Get 250 Target points: 
+Get 750 Target points: 
+Get Stung By Bees: Beehive
+Get a Gem from a Gorak: 
+Get a chair to follow you: Chair (Draynor Manor)
+Get a haircut: 
+Get your revenge against a Dark Wizard: Hairdresser,Emma,Sonalo
+Giants' Foundry 10 handins: Metal bars,Hammer
+Giants' Foundry 100 quality sword: Metal bars,Hammer
+Giants' Foundry 150 quality sword: Metal bars,Hammer
+Giants' Foundry 25 handins: Metal bars,Hammer
+Giants' Foundry 50 handins: Metal bars,Hammer
+Giants' Foundry 50 quality sword: Metal bars,Hammer
+Give Oli some Stew: Oli
+Give Thurgo a redberry pie: Thurgo
+Give a Dwarf Redberry Antelope: 
+Godwars Dungeon Combat Achievements: Combat gear,Food
+Grotesque Guardians Combat Achievements: Brittle key,Combat gear,Prayer potion(4),Food
+Guardians of the Rift 1 Rift closed: Chisel,Any pickaxe
+Guardians of the Rift 10 Rifts closed: Chisel,Any pickaxe
+Guardians of the Rift 25 Rifts closed: Chisel,Any pickaxe
+Hang a Painting of a Watermill: Painting
+Harvest 25 Zamorak's Grapes: Seed dibber,Seeds,Spade
+Harvest Any Herb at the Troll Stronghold: Seed dibber,Seeds,Spade
+Harvest Some Sweetcorn in Prifddinas: Seed dibber,Seeds,Spade
+Harvest a Snapdragon in Weiss: Seed dibber,Seeds,Spade
+Harvest an Irit Leaf: Seed dibber,Seeds,Spade
+Have Drew create 500 buckets: Bucket
+Have Elsie tell you a story: Elsie,Cup of tea
+Have Ned make you some rope: Ned,Ball of wool
+Have the Taxidermist stuff something for you: Big bass,Crawling hand,Cockatrice head,Basilisk head
+Hit 150 with the Keris Partisan: Keris partisan,Combat gear,Food
+Hueycoatl Combat Achievements: Combat gear,Food
+Imbue a God Cape: 
+Inferior Demonbane Demon Kill: 44 Magic Cannot be an imp.
+Insult Aggie the Witch: Aggie
+Investigate Meztlan: 
+Keep the Veteran Void Knight Above 150 Hitpoints: 100 Combat level
+Kill 1 unique Echo Boss: Combat gear,Food
+Kill 10 Frost Crabs: Combat gear,Food
+Kill 10 Locusts: Combat gear,Food
+Kill 2 unique Echo Bosses: Combat gear,Food
+Kill 25 Echo Bosses: Combat gear,Food
+Kill 3 unique Echo Bosses: Combat gear,Food
+Kill 30 Bandits: Combat gear,Food
+Kill 5 Bunnies: Combat gear,Food
+Kill 5 Sand Crabs: Combat gear,Food
+Kill 5 Spinners: Combat gear,Food
+Kill 50 Elves in Tirannwn: Combat gear,Food
+Kill 75 Echo Bosses: Combat gear,Food
+Kill 8 penguins within 5 seconds: Combat gear,Food
+Kill Salarin the Twisted: Combat gear,Food
+Kill a Barbarian in Kourend: Combat gear,Food
+Kill a Barbarian in the Barbarian Village: Combat gear,Food
+Kill a Billy Goat: Combat gear,Food
+Kill a Black Dragon in Tirannwn: Combat gear,Food
+Kill a Brine Rat: Combat gear,Food
+Kill a Buffalo: Combat gear,Food
+Kill a Chicken with your fists: Combat gear,Food
+Kill a Cow in one hit: Combat gear,Food
+Kill a Dire Wolf: Combat gear,Food
+Kill a Duck with a fire spell: Fire rune,Air rune,Mind rune
+Kill a Frog: Combat gear,Food
+Kill a Frogeel: Combat gear,Food
+Kill a Goblin holding a spear: Combat gear,Food
+Kill a Guard in Varlamore underground: Combat gear,Food
+Kill a Jubster: Combat gear,Food
+Kill a Kalphite with the Keris Partisan: Combat gear,Food
+Kill a King Sand Crab: Combat gear,Food
+Kill a Moss, Fire & Hill Giant in Kourend: Combat gear,Food
+Kill a Mugger: Combat gear,Food
+Kill a Necromancer: Combat gear,Food
+Kill a Newtroost: Combat gear,Food
+Kill a Ram: Combat gear,Food
+Kill a Rat: Combat gear,Food
+Kill a Rock Lobster: Combat gear,Food
+Kill a Rooster: Combat gear,Food
+Kill a Snake in Karamja: Combat gear,Food
+Kill a Spider by kicking it: Combat gear,Food
+Kill a Suqah: Combat gear,Food
+Kill a Swordchick: Combat gear,Food
+Kill a Wallasalki: Combat gear,Food
+Kill a Yak: Combat gear,Food
+Kill a port sarim prisoner: Combat gear,Food
+Kill an Icefiend in Varlamore: Combat gear,Food
+Kill an Imp with an earth spell: Earth rune,Air rune,Mind rune
+Kill three chickens in 6 seconds: Combat gear,Food
+Kourend and Kebos Easy Diary Tasks: Kourend & Kebos Diary#Easy
+Kourend and Kebos Elite Diary Tasks: Kourend & Kebos Diary#Elite
+Kourend and Kebos Hard Diary Tasks: Kourend & Kebos Diary#Hard
+Kourend and Kebos Medium Diary Tasks: Kourend & Kebos Diary#Medium
+Land a hoop on a stick: 
+Light a Bullseye Lantern: Tinderbox
+Light a Pyre Ship: Tinderbox
+Light a Torch: Unlit torch,Tinderbox
+Load a blowpipe with Dragon Darts: Glassblowing pipe,Molten glass
+Load a blowpipe with Rune Darts: Glassblowing pipe,Molten glass
+Locate a Runecrafting Altar With a Talisman: Air talisman,Water talisman,Earth talisman,Fire talisman,Body talisman,Mind talisman,Cosmic talisman,Chaos talisman,Nature talisman,Law talisman,Death talisman,Blood talisman,Wrath talisman,Elemental talisman,Catalytic talisman
+Loot a Barrows Chest: Spade,Combat gear,Prayer potion(4),Food
+Loot a Lyre: 
+Loot a dragonstone from the Rogues Castle: 
+Make 100 Prayer Regeneration Potions: 
+Make 20 Magic Potions: Lantadyme,Potato cactus,Vial of water
+Make 20 Ranging Potions: Dwarf weed,Wine of zamorak,Vial of water
+Make 20 Stamina Potions: Super energy,Amylase crystal
+Make 30 Prayer Potions: Ranarr weed,Snape grass,Vial of water
+Make 50 Ancient Brews: 
+Make 50 Forgotten Brews: 
+Make 50 Goading Potions: 
+Make 50 Menaphite Remedies: 
+Make 50 Oak Planks in Kourend: Logs,Coins
+Make 50 Teak Planks in Prifddinas: Logs,Coins
+Make a 4 dose potion: 
+Make a Combat Potion: 
+Make a Pineapple Pizza: 
+Make a Saradomin Brew: Toadflax,Crushed nest,Vial of water
+Make a Super Combat Potion: 
+Make a pie for Romily: 
+Make an Attack Potion: Eye of newt,Grimy guam leaf,Guam leaf,Vial,Vial of water,Guam potion (unf)
+Make an Extended Antifire Potion: Antifire potion,Lava scale shard
+Make some Flour: 
+Milk a Buffalo: Dairy Buffalo
+Milk a cow: Bucket,Dairy cow
+Mine 15 Granite in the Necropolis: Any pickaxe
+Mine 15 coal: Any pickaxe,Coal
+Mine 20 Mithril Ore in the Stonecutter Outpost: Avinia 
+Mine 200 Runite Ore in Tirannwn: Any pickaxe,Runite ore
+Mine 200 Soft Clay in Tirannwn: Any pickaxe
+Mine 25 Pure Essence: Any pickaxe,Rune essence
+Mine 25 gold rocks in Tirannwn: Any pickaxe,Gold ore
+Mine 250 Blessed Bone Shards: Calcified rocks
+Mine 30 Chunks of Granite: Any pickaxe
+Mine 5 Tin Ore: Bronze pickaxe,Tin rocks
+Mine 50 Adamantite Ore: Any pickaxe,Adamantite ore
+Mine 50 Iron Ore: Any pickaxe,Iron ore
+Mine 50 Mithril Ore: Any pickaxe,Mithril ore
+Mine 50 Volcanic Sulphur: Any pickaxe,Volcanic mine
+Mine Some Runite Ore in the Wilderness: Any pickaxe,Runite ore
+Mine a Calcified Deposit: Calcified rocks
+Mine a Runite Ore Fragment: Any pickaxe,Runite ore
+Mine a shooting star: Any pickaxe,Tin ore
+Mine some Copper Ore: Bronze pickaxe,Copper rocks
+Mine some Ore With a Rune Pickaxe: Rune Pickaxe
+Mine some Ore With a Steel Pickaxe: Steel pickaxe
+Mine some essence: Bronze pickaxe,Rune essence(rock)
+Move Your House to Prifddinas: 
+Move Your House to Yanille: 
+Obtain 20 Golden Nuggets: 
+Obtain 20,000 Glory: 
+Obtain 25 Million Agility XP: 
+Obtain 25 Million Construction XP: 
+Obtain 25 Million Cooking XP: 
+Obtain 25 Million Crafting XP: 
+Obtain 25 Million Farming XP: 
+Obtain 25 Million Firemaking XP: 
+Obtain 25 Million Fishing XP: 
+Obtain 25 Million Fletching XP: 
+Obtain 25 Million Herblore XP: 
+Obtain 25 Million Hunter XP: 
+Obtain 25 Million Mining XP: 
+Obtain 25 Million Prayer XP: 
+Obtain 25 Million Runecraft XP: 
+Obtain 25 Million Slayer XP: 
+Obtain 25 Million Smithing XP: 
+Obtain 25 Million Thieving XP: 
+Obtain 25 Million Woodcutting XP: 
+Obtain 35 Million Agility XP: 
+Obtain 35 Million Construction XP: 
+Obtain 35 Million Cooking XP: 
+Obtain 35 Million Crafting XP: 
+Obtain 35 Million Farming XP: 
+Obtain 35 Million Firemaking XP: 
+Obtain 35 Million Fishing XP: 
+Obtain 35 Million Fletching XP: 
+Obtain 35 Million Herblore XP: 
+Obtain 35 Million Hunter XP: 
+Obtain 35 Million Mining XP: 
+Obtain 35 Million Prayer XP: 
+Obtain 35 Million Runecraft XP: 
+Obtain 35 Million Slayer XP: 
+Obtain 35 Million Smithing XP: 
+Obtain 35 Million Thieving XP: 
+Obtain 35 Million Woodcutting XP: 
+Obtain 40,000 Glory: 
+Obtain 50 Million Agility XP: 
+Obtain 50 Million Attack XP: 
+Obtain 50 Million Construction XP: 
+Obtain 50 Million Cooking XP: 
+Obtain 50 Million Crafting XP: 
+Obtain 50 Million Defence XP: 
+Obtain 50 Million Farming XP: 
+Obtain 50 Million Firemaking XP: 
+Obtain 50 Million Fishing XP: 
+Obtain 50 Million Fletching XP: 
+Obtain 50 Million Herblore XP: 
+Obtain 50 Million Hitpoints XP: 
+Obtain 50 Million Hunter XP: 
+Obtain 50 Million Magic XP: 
+Obtain 50 Million Mining XP: 
+Obtain 50 Million Prayer XP: 
+Obtain 50 Million Ranged XP: 
+Obtain 50 Million Runecraft XP: 
+Obtain 50 Million Slayer XP: 
+Obtain 50 Million Smithing XP: 
+Obtain 50 Million Strength XP: 
+Obtain 50 Million Thieving XP: 
+Obtain 50 Million Woodcutting XP: 
+Obtain 58,000 Glory: 
+Obtain 800 Coins From Coin Pouches At Once: 
+Obtain Every Hallowed Tool: 
+Obtain Every Revenant Weapon: 
+Obtain Jack's legendary rod: Grandpa Jack
+Obtain Runite Ore at the Blast Mine: 
+Obtain a Bird Nest: Bird Nest
+Obtain a Boss Pet: Boss Pet
+Obtain a Cake from a Nest: Cake
+Obtain a Casket from Fishing: Casket
+Obtain a Clue Geode While Mining: Clue Geode
+Obtain a Frozen Cache from a Cache: Frozen Cache
+Obtain a Gem While Mining: Gem
+Obtain a Kebab from the Certer Brothers: Kebab
+Obtain a Magic seed from a birds nest: Magic seed
+Obtain a Mark of Grace: Mark of Grace
+Obtain a Skilling Pet: Skilling Pet
+Obtain a Zalcano Shard: Pickaxe
+Obtain an Ecumenical Key: Ecumenical Key
+Obtain the Big Harpoonfish: Big Harpoonfish
+Obtain the Fish Barrel: Fish Barrel
+Obtain the Huntsman's Kit: Huntsman's Kit
+Obtain the Plank Sack: Plank Sack
+Offer an Unsired to the Font of Consumption: Unsired
+Offer an egg to a shrine: egg
+Open 1 Grubby Chest: Grubby chest,Grubby key
+Open 1 Muddy Chest: Muddy key
+Open 1 Zombie Pirate Locker: 
+Open 10 Muddy Chests: Muddy key
+Open 15 Larran's Chests: Larran's key
+Open 15 Zombie Pirate Lockers: 
+Open 28 Coin Pouches At Once: 
+Open 50 Larran's Chests: Larran's key
+Open 50 Zombie Pirate Lockers: 
+Open One of Larran's Chests: Larran's key
+Open a Black Chest: 
+Open a Bronze Chest: 
+Open a Frozen Cache: 
+Open a Gold Chest: 
+Open a Looting Bag: 
+Open a Master Hunter's Loot Sack: 
+Open an Adept Hunter's Loot Sack: 
+Open an Ornate Lockbox: 
+Open the Crystal Chest: Crystal key
+Open the Dark Chest: 
+Open the Enhanced Crystal Chest: Crystal key
+Open the Leagues Menu: 
+Open the Mystery Box: 
+Open the Varlamore Moon Chest: 
+Order a Drink at The Old Nite: Coins
+Pan for an Uncut Jade: Panning point,Panning tray
+Pay Saniboch for Permanent Access: 1,000,000 coins
+Pay an Urchin for Information: Urchin
+Perform a Special Attack: 
+Perilous Moons Combat Achievements: Combat gear,Food
+Pet Frank: 
+Pet Renu: Renu
+Pet Xolo in Civitas: Xolo
+Pet a Stray Dog in Varrock: Stray dog
+Pet the Museum Camp dog: Dog (Museum Camp)
+Phantom Muspah Combat Achievements: Combat gear,Prayer potion(4),Food
+Phosani's Nightmare Combat Achievements: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+Pick Wheat in Catherby: Wheat
+Pick a Autumn Sq'irk: 
+Pick a Cabbage in Varrock: Cabbage (scenery)
+Pick a Pineapple on Karamja: Pineapple Plant (wild)
+Pick a Spring Sq'irk: 
+Pick a Summer Sq'irk: 
+Pick a Winter Sq'irk: Apprentice
+Pick some Sweetcorn from a Field: Sweetcorn (scenery)
+Pick up 10 Whiteberries in Tirannwn: 
+Pick up Snapegrass: Snape grass
+Pickpocket a Bandit in the Bandit Camp: 
+Pickpocket a Bullseye Lantern From a Cave Goblin: 
+Pickpocket a Citizen: Citizen
+Pickpocket a HAM Member: 
+Pickpocket a Hero: 
+Pickpocket a King Worm: 
+Pickpocket a Knight of Ardougne 50 Times: 
+Pickpocket a Master Farmer: 
+Pickpocket a Menaphite Thug 50 Times: 
+Pickpocket a Varrock Guard: 
+Pickpocket a Vyre 50 Times: 
+Pickpocket an Elf 50 Times: 
+Plant 100 Bologano Seeds: Seed dibber,Seeds,Spade
+Plant 100 Golovanova Seeds: Seed dibber,Seeds,Spade
+Plant 100 Logavano Seeds: Seed dibber,Seeds,Spade
+Plant Seeds in an Allotment Patch: Allotment Patch
+Plant an Anima Seed: Seed dibber,Seeds,Spade
+Pray at an Altar in Lumbridge: 
+Pray at the Elidinis Statuette: 
+Protect Your Crops: 
+Provide Terry a buckle: 
+Purchase a Celestial ring: Coins
+Purchase a Player Owned House: Estate agent
+Purchase a Reward From the Hallowed Sepulchre: Coins
+Purchase a Seed Box: Coins
+Purchase an Onyx in Mor Ul Rek: Coins
+Purchase the Chugging Barrel: Coins
+Purchase the Reagents Pouch: Coins
+Rake a Farming Patch: 
+Reach Base Level 10: 
+Reach Base Level 20: 
+Reach Base Level 30: 
+Reach Base Level 40: 
+Reach Base Level 5: 
+Reach Base Level 50: 
+Reach Base Level 60: 
+Reach Base Level 70: 
+Reach Base Level 80: 
+Reach Base Level 90: 
+Reach Base Level 95: 
+Reach Combat Level 10: 
+Reach Combat Level 100: 
+Reach Combat Level 110: 
+Reach Combat Level 120: 
+Reach Combat Level 126: 
+Reach Combat Level 25: 
+Reach Combat Level 50: 
+Reach Combat Level 75: 
+Reach Level 5 in Any Barbarian Assault Role: 
+Reach Level 99 Agility: 
+Reach Level 99 Attack: 
+Reach Level 99 Construction: 
+Reach Level 99 Cooking: 
+Reach Level 99 Crafting: 
+Reach Level 99 Defence: 
+Reach Level 99 Farming: 
+Reach Level 99 Firemaking: 
+Reach Level 99 Fishing: 
+Reach Level 99 Fletching: 
+Reach Level 99 Herblore: 
+Reach Level 99 Hitpoints: 
+Reach Level 99 Hunter: 
+Reach Level 99 Magic: 
+Reach Level 99 Mining: 
+Reach Level 99 Prayer: 
+Reach Level 99 Ranged: 
+Reach Level 99 Runecraft: 
+Reach Level 99 Slayer: 
+Reach Level 99 Smithing: 
+Reach Level 99 Strength: 
+Reach Level 99 Thieving: 
+Reach Level 99 Woodcutting: 
+Reach Total Level 100: 
+Reach Total Level 1000: 
+Reach Total Level 1250: 
+Reach Total Level 1500: 
+Reach Total Level 1750: 
+Reach Total Level 2000: 
+Reach Total Level 2100: 
+Reach Total Level 2200: 
+Reach Total Level 2277: 
+Reach Total Level 250: 
+Reach Total Level 500: 
+Reach Total Level 750: 
+Reach a Prayer Bonus of 15: 
+Reach a Prayer Bonus of 30: 
+Read a prayer book near a lectern: Holy book,Unholy book,Book of balance,Book of war,Book of law,Book of darkness
+Receive 30 Agility Arena Tickets With No Mistakes: 
+Receive a Dragonstone Amulet from an Impling: 
+Receive a gift from Arnold: Arnold Lydspor
+Receive an Agility Arena Ticket: Cap'n Izzy No-Beard
+Recolour a piece of the Ancestral Robes: Chambers of Xeric/Challenge Mode
+Redeem 50 Wilderness Agility Tickets: 
+Repair a Fishing Crane: Fishing Crane
+Restore 14 Prayer points in Hosidius: 
+Restore 5 Prayer Points at an Altar: Altar (Varlamore)
+Restore 75 Prayer Points at an Altar: 
+Ring all of the Prifddinas bells: 
+Room 1 of Pyramid Plunder: An anonymous looking door
+Room 2 of Pyramid Plunder: An anonymous looking door
+Room 3 of Pyramid Plunder: An anonymous looking door
+Room 4 of Pyramid Plunder: An anonymous looking door
+Room 5 of Pyramid Plunder: An anonymous looking door
+Room 6 of Pyramid Plunder: An anonymous looking door
+Room 7 of Pyramid Plunder: An anonymous looking door
+Room 8 of Pyramid Plunder: An anonymous looking door
+Room 8 of Pyramid Plunder 25 Times: An anonymous looking door
+Sacrifice Some Bones at the Chaos Temple: Bones
+Sacrifice Some Dragon Bones at the Chaos Temple: Dragon Bones
+Sacrifice a Fire Cape to Access the Inferno: Fire Cape
+Scatter some Ashes: Fiendish ashes,Vile ashes,Malicious ashes,Abyssal ashes,Infernal ashes
+Score a Goal in Gnomeball: 
+Scrape some blue dragonhide: 
+Scurrius Combat Achievements: Combat gear,Food
+Sell 20 Iron Sheets: 
+Set Up a Dwarf Cannon: 
+Set a mummy ablaze: Mummy (Ancient Pyramid)
+Set up a Magic Bird House: 
+Shear an Alpaca: Alpaca
+Slash a web in varrock sewers: 
+Slay 250 Creatures: Combat gear,Food
+Slay an Abyssal Demon: Combat gear,Food
+Sleep in Paramaya Inn: 
+Smelt a Bronze Bar: Copper ore,Tin ore,Bronze pickaxe,Copper rock,Tin rock,Furnace
+Smelt a Runite Bar: Ore
+Smelt a Steel Bar: Iron ore,Coal
+Smelt a Steel Bar in Port Phasmatys: Iron ore,Coal
+Smelt a mithril bar in a volcanic fissure: Mithril ore,Coal
+Smelt an Iron Bar: Iron ore,Bronze pickaxe,Iron rock,Furnace
+Smith 1,000 Adamant Dart Tips: Adamantite bar,Hammer
+Smith 1,000 Rune Dart Tips: Runite bar,Hammer
+Smith 10 Steel bolts (unf): Steel bar,Hammer
+Smith 150 Iron Arrowtips: Iron bar,Hammer
+Smith 250 Mithril bolts (unf): Mithril bar,Hammer
+Smith 500 Runite bolts (unf) in Prifddinas: Metal bar,Hammer
+Smith Shayzien (1): Metal bar,Hammer
+Smith Shayzien (5): Metal bar,Hammer
+Smith Steel in Kourend Castle: Steel bar,Hammer
+Smith a Bronze full helm: Bronze bar,Hammer,Anvil
+Smith a Bronze plateskirt: Bronze bar,Hammer,Anvil
+Smith a Dragonfire Shield: Metal bar,Hammer
+Smith a Rune Item: Runite bar,Hammer
+Smith a Steel Platebody: Steel bar,Hammer
+Smuggle some Rum: Karamjan rum
+Snare a Bird: Bird snare,Crimson swift
+Spin a Ball of Wool: Spinning wheel
+Steal 1 Artefact: 
+Steal 100 Valuables: 
+Steal 15 Artefacts: 
+Steal 15 House Keys: Wealthy citizen
+Steal 25 Valuables: 
+Steal From a Gem Stall: 
+Steal From the Varrock Tea Stall: 
+Steal Some Silk: Silk stall
+Steal a Blessed Bone Statuette: 
+Steal a Chisel: 
+Steal a Chocolate Slice: Bakery stall
+Steal a Cow bell in Rellekka: 
+Steal a Fish: 
+Steal a Golovanova Fruit Top: 
+Steal a House Key: Wealthy citizen
+Steal a Wooden Stock: 
+Steal from a Fur Stall: 
+Steal from a Silver Stall: 
+Steal from a Spice Stall: 
+Steal from the Fortis Spice Stall: Spice Stall
+Stroke your cat: Gertrude
+Stun a monster: 30 Defence,
+Subdue the Moons of Peril: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+Subdue the Moons of Peril 10 times: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+Subdue the Moons of Peril 25 times: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+Subdue the Moons of Peril 50 times: Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+Successfully Cook 5 Pieces of Food: 
+Successfully Cut a Red Topaz: Uncut red topaz
+Successfully hop over the Tripwire in Tirannwn: 
+Superhuman Strength and Improved Reflexes: 
+Survive a Hit From TzTok-Jad Without Prayer: 
+Switch to the Lunar Spellbook: Astral altar
+Take a Canoe to Champions Guild: Bronze axe,Canoe Station
+Take a Carpet Ride from Pollnivneach to Sophanem: 
+Take a Shortcut Across the Shilo Village River: 
+Talk to Hans: Hans
+Talk to Ilfeen in Tirannwn: 
+Talk to the Voice of Yama: 
+Telegrab a Bloody bracer: Law rune,Air rune
+Teleport Using Law Runes: 
+Teleport to Cam Torum using a Calcified Moth: 
+Teleport to Civitas illa Fortis: 
+Teleport to Xeric's Honour: 
+Teleport to the Fortis Colosseum: Combat gear,Prayer potion(4),Super restore(4),Food
+The Fight Caves Combat Achievements: Combat gear,Food
+The Inferno Combat Achievements: Combat gear,Food
+The Leviathan Combat Achievements: Combat gear,Prayer potion(4),Food
+The Nightmare Combat Achievements: Combat gear,Prayer potion(4),Sanfew serum(4),Food
+The Whisperer Combat Achievements: Combat gear,Prayer potion(4),Food
+Theatre of Blood Combat Achievements: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Thieve a Diamond from a Gem Stall in Tirannwn: 
+Thieve a tiara from a Silver Stall in Tirannwn: 
+Throw a Shot Put 12 yards: 99 Attack or,if undusted).
+Tombs of Amascut Combat Achievements: Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+Trade a herb with Jekyll: Coins
+Trade in 1000 Minnows: Coins
+Trade in a cat for death runes: Coins
+Trade with Bardur: Coins
+Trap a Sabre-toothed Kyatt: 
+Trap a Spined Larupia in the Feldip Hills: 
+Travel Between Your Spirit Trees: 
+Travel to Fossil Island: 
+Travel to Molch Island: Boaty
+Travel using the Quetzal Transport System: 
+Turn any Logs Into a Plank: sawmill
+Turn in 1 Library Book: 
+Turn in 10 Library Books: 
+Turn in 10 Spring Sq'irkjuices to Osman: 
+Turn in 100 Mole Claws to Wyson the Gardener: 
+Turn in 25 Autumn Sq'irkjuices to Osman: 
+Turn in 50 Summer Sq'irkjuices to Osman: 
+Turn in a Pyramid Top to Simon Templeton: 
+Turn in a Winter Sq'irkjuice to Osman: Osman
+TzHaar-Ket-Rak's Combat Achievements: Combat gear,Food
+Unlock Free Use of the Blast Furnace: 
+Unlock a Gate in Taverley Dungeon: 
+Unlock permanent boat travel with Andras: 
+Upset the homeless: 
+Use Broken Handz's telescope: 
+Use Enriched Bones on the Strange Machine: Enriched Bones
+Use Some Icy Basalt to Teleport to Weiss: 
+Use Your Portal Nexus to Teleport to Weiss: Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+Use a Digsite Pendant to Teleport to Fossil Island: 
+Use a Fairy Ring: 
+Use a Hat Stand: 
+Use a Herring on a mighty tree: Herring
+Use a Lever to Teleport to Edgeville: 
+Use a prayer altar to restore 90 prayer in Prifddinas: 
+Use a teleport anchoring scroll: 
+Use an Elven Teleport Crystal: 
+Use the Abyss: 
+Use the Bank Chest inside Fortis Colosseum: Combat gear,Prayer potion(4),Super restore(4),Food
+Use the Bank at the Mage Arena: 
+Use the Bank in Lletya: 
+Use the Bank in Nardah: 
+Use the Bank on Jatizso: 
+Use the Bank on Lunar Isle: 
+Use the Bank on Neitiznot: 
+Use the Chivalry Prayer: 
+Use the Falador Party room: Party pete
+Use the Fortis Salute emote: 
+Use the Mine cart transportation System: 
+Use the Northern Staircase in Lumbridge: 
+Use the Piety Prayer: 
+Use the Protect from Melee Prayer: 
+Use the Range in Lumbridge Castle: 
+Use the Special Attack of a Dragon Axe: 
+Vardorvis Combat Achievements: Combat gear,Prayer potion(4),Food
+Visit Death's Domain: Death's Office
+Visit Ferox Enclave: 
+Visit Harmony Island: 
+Visit Mos Le'Harmless: 
+Visit Port Phasmatys: 
+Visit the Rune Essence Mine: Aubury,Archmage Sedridor, Wizard Distentor, Wizard Cromperty, Brimstail
+Visit the Tree Gnome Stronghold: 
+Visit the Tree Gnome Village: Elkoy
+Vorkath Combat Achievements: Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+Win a Game of Castle Wars: 
+Win a Game of Soul Wars: 
+Worship the Ectofuntus: Bucket of slime,Bones
+Zulrah Combat Achievements: Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food

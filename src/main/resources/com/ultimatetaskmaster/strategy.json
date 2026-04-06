@@ -138,7 +138,7 @@
   },
   "1802": {
     "taskName": "Fletch an Oak Shortbow",
-    "search": "Oak shortbow (u),Oak logs,Knife,Bowstring,Flax,Spinning wheel"
+    "search": "Knife,Oak logs,Bowstring"
   },
   "1811": {
     "taskName": "Check Your Slayer Task",
@@ -396,7 +396,8 @@
   },
   "2282": {
     "taskName": "Craft an Air Rune",
-    "points": "2984,3293"
+    "points": "2984,3293",
+    "search": "Rune essence,Air talisman"
   },
   "2294": {
     "taskName": "Defeat a Troll in Asgarnia",
@@ -432,7 +433,8 @@
   },
   "2362": {
     "taskName": "Craft a Fire Rune",
-    "points": "3309,3264"
+    "points": "3309,3264",
+    "search": "Rune essence,Fire talisman"
   },
   "2398": {
     "taskName": "Use the Bank in Nardah",
@@ -445,7 +447,7 @@
   },
   "2422": {
     "taskName": "Craft a Snelm",
-    "search": "Crafting materials"
+    "search": "Chisel,Blamish snail shell"
   },
   "5192": {
     "taskName": "Defeat a Werewolf in Morytania",
@@ -695,7 +697,7 @@
   },
   "2166": {
     "taskName": "Balance 5 barrels on your head",
-    "search": "Jimmy (Warriors' Guild)"
+    "search": ""
   },
   "2171": {
     "taskName": "Kill a Spider by kicking it",
@@ -719,7 +721,7 @@
   },
   "2196": {
     "taskName": "Ask for a Quest from Bob",
-    "search": "Bob"
+    "search": ""
   },
   "2197": {
     "taskName": "Kill a Ram",
@@ -1231,7 +1233,7 @@
   },
   "1792": {
     "taskName": "Make a Pineapple Pizza",
-    "search": ""
+    "search": "Pizza base,Tomato,Cheese,Pineapple ring"
   },
   "1796": {
     "taskName": "Obtain a Gem While Mining",
@@ -1319,15 +1321,15 @@
   },
   "1860": {
     "taskName": "Craft 200 Essence Into Runes",
-    "search": "Crafting materials"
+    "search": "Rune essence,Tiara"
   },
   "1861": {
     "taskName": "Craft 4 Runes With 1 Essence",
-    "search": "Crafting materials"
+    "search": "Pure essence,Tiara"
   },
   "1862": {
     "taskName": "Craft Any Combination Rune",
-    "search": "Crafting materials"
+    "search": "Rune essence,Talisman"
   },
   "1867": {
     "taskName": "Burn 100 Willow Logs",
@@ -1571,7 +1573,7 @@
   },
   "2075": {
     "taskName": "Craft 50 Astral Runes",
-    "search": "Crafting materials"
+    "search": "Pure essence"
   },
   "2076": {
     "taskName": "Complete the Penguin Agility Course",
@@ -1935,7 +1937,7 @@
   },
   "2363": {
     "taskName": "Craft a Lava Rune at the Fire Altar",
-    "search": "Crafting materials"
+    "search": "Rune essence,Earth rune,Fire talisman"
   },
   "2367": {
     "taskName": "Catch 30 Orange Salamanders",
@@ -2007,11 +2009,11 @@
   },
   "2424": {
     "taskName": "Craft a Rune Using Daeyalt Essence",
-    "search": "Crafting materials"
+    "search": "Daeyalt essence,Tiara"
   },
   "2426": {
     "taskName": "Assemble a Slayer Helm",
-    "search": "58 Slayer,"
+    "search": "Black mask,Nosepeg,Facemask,Earmuffs,Spiny helmet,Enchanted gem"
   },
   "2427": {
     "taskName": "Defeat a Gargoyle in Morytania",
@@ -2031,7 +2033,7 @@
   },
   "2438": {
     "taskName": "Equip a Piece of any Barrows Armour Set",
-    "search": "Spade,Combat gear,Prayer potion(4),Food"
+    "search": "Barrows equipment"
   },
   "2441": {
     "taskName": "Loot a Barrows Chest",
@@ -2243,7 +2245,7 @@
   },
   "3900": {
     "taskName": "Make some Flour",
-    "search": ""
+    "search": "Pot,Grain"
   },
   "3901": {
     "taskName": "Complete Fishing Contest",
@@ -2423,7 +2425,7 @@
   },
   "5103": {
     "taskName": "Fletch 25 Oak Stocks",
-    "search": "Knife"
+    "search": "Knife,Oak logs"
   },
   "5104": {
     "taskName": "Fletch 1000 arrow shafts",
@@ -3331,7 +3333,7 @@
   },
   "1808": {
     "taskName": "Fletch a Rune Crossbow",
-    "search": "Knife"
+    "search": "Yew stock,Runite limbs,Hammer"
   },
   "1819": {
     "taskName": "Defeat 10 Superior Slayer Creatures",
@@ -3343,7 +3345,7 @@
   },
   "1827": {
     "taskName": "Craft 100 Unpowered Orbs",
-    "search": "Crafting materials"
+    "search": "Molten glass,Glassblowing pipe"
   },
   "1830": {
     "taskName": "Craft a Dragonstone Amulet",
@@ -3351,7 +3353,7 @@
   },
   "1831": {
     "taskName": "Craft 30 Blue Dragonhide Bodies",
-    "search": "Dragon leather,Needle,Thread"
+    "search": "Blue dragon leather,Needle,Thread"
   },
   "1839": {
     "taskName": "Catch 100 Shark",
@@ -3371,7 +3373,7 @@
   },
   "1863": {
     "taskName": "Craft 2500 Essence Into Runes",
-    "search": "Crafting materials"
+    "search": "Pure essence,Tiara"
   },
   "1870": {
     "taskName": "Burn 100 Yew Logs",
@@ -3455,7 +3457,7 @@
   },
   "1971": {
     "taskName": "Equip Bryophyta's Staff",
-    "search": "Mossy key,Combat gear,Food"
+    "search": "Bryophyta's staff"
   },
   "1974": {
     "taskName": "Defeat the Abyssal Sire",
@@ -3495,7 +3497,7 @@
   },
   "2024": {
     "taskName": "Craft a Piece of Crystal Armour",
-    "search": "Crafting materials"
+    "search": "Crystal shard,Crystal armour seed"
   },
   "2028": {
     "taskName": "Complete the Gauntlet",
@@ -3543,7 +3545,7 @@
   },
   "2060": {
     "taskName": "Craft an Eternal Teleport Crystal",
-    "search": "Crafting materials"
+    "search": "Crystal shard,Enhanced crystal teleport seed"
   },
   "2063": {
     "taskName": "Find Every Memoriam Crystal",
@@ -3943,11 +3945,11 @@
   },
   "2439": {
     "taskName": "Equip any Full Barrows Armour Set",
-    "search": "Spade,Combat gear,Prayer potion(4),Food"
+    "search": "Barrows equipment"
   },
   "2446": {
     "taskName": "Equip a Nightmare Staff",
-    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
+    "search": "Nightmare staff"
   },
   "2448": {
     "taskName": "Create an Amulet of Blood Fury",
@@ -3999,7 +4001,7 @@
   },
   "2495": {
     "taskName": "Craft an Air Battlestaff in the Wilderness",
-    "search": "Crafting materials"
+    "search": "Battlestaff,Air orb"
   },
   "2498": {
     "taskName": "Fill a Giant Pouch",
@@ -4067,11 +4069,11 @@
   },
   "3784": {
     "taskName": "Activate an Arcane or Dexterous Prayer Scroll",
-    "search": ""
+    "search": "Arcane prayer scroll,Dexterous prayer scroll"
   },
   "5215": {
     "taskName": "Equip a Sarachnis Cudgel",
-    "search": "Knife,Slash weapon,Combat gear,Prayer potion(4),Food"
+    "search": "Sarachnis cudgel"
   },
   "5221": {
     "taskName": "Defeat Phosani's Nightmare",
@@ -4319,7 +4321,7 @@
   },
   "5107": {
     "taskName": "Fletch a Magic Shield",
-    "search": "Knife"
+    "search": "Knife,Magic logs"
   },
   "5108": {
     "taskName": "Fletch a Redwood Shield",
@@ -4771,7 +4773,7 @@
   },
   "1851": {
     "taskName": "Blast Furnace 100 Mithril Bars",
-    "search": "Ore,Coal"
+    "search": "Mithril ore,Coal"
   },
   "1889": {
     "taskName": "Complete 25 laps of the Rellekka Agility Course",
@@ -4779,7 +4781,7 @@
   },
   "1933": {
     "taskName": "Load a blowpipe with Rune Darts",
-    "search": "Glassblowing pipe,Molten glass"
+    "search": "Toxic blowpipe,Rune dart"
   },
   "1935": {
     "taskName": "Complete Death on the Isle",
@@ -4835,7 +4837,7 @@
   },
   "5605": {
     "taskName": "Activate an Imbued Heart",
-    "search": ""
+    "search": "Imbued heart"
   },
   "5607": {
     "taskName": "Equip a Dragon Hunter Lance",
@@ -5079,7 +5081,7 @@
   },
   "1892": {
     "taskName": "Make a Super Combat Potion",
-    "search": ""
+    "search": "Super attack(4),Super strength(4),Super defence(4),Torstol"
   },
   "1893": {
     "taskName": "Obtain a Boss Pet",
@@ -5095,7 +5097,7 @@
   },
   "1904": {
     "taskName": "Add a Jar to a Display Case",
-    "search": "Check the associated bosses,"
+    "search": "Jar"
   },
   "1909": {
     "taskName": "Equip an Abyssal Whip",
@@ -5167,11 +5169,11 @@
   },
   "2037": {
     "taskName": "Craft a Toxic Blowpipe",
-    "search": "Crafting materials"
+    "search": "Tanzanite fang,Chisel"
   },
   "2039": {
     "taskName": "Craft a Toxic Trident",
-    "search": "Crafting materials"
+    "search": "Magic fang,Trident of the seas (full)"
   },
   "4864": {
     "taskName": "Complete the Corrupted Gauntlet 50 Times",
@@ -5203,7 +5205,7 @@
   },
   "2102": {
     "taskName": "Equip Every Dagannoth King Ring",
-    "search": "Combat gear,Prayer potion(4),Food"
+    "search": "Berserker ring,Warrior ring,Seers ring,Archers ring"
   },
   "2105": {
     "taskName": "Equip a Neitiznot Faceguard",
@@ -5523,7 +5525,7 @@
   },
   "2557": {
     "taskName": "Craft a Ghorrock Teleport Tablet",
-    "search": "Crafting materials"
+    "search": "Dark essence block,Chisel"
   },
   "2565": {
     "taskName": "Complete the Elite Varrock Diary",
@@ -5607,11 +5609,11 @@
   },
   "5278": {
     "taskName": "Attach a Sanguine ornament kit to the Scythe",
-    "search": "Theatre of Blood/Hard Mode"
+    "search": "Sanguine ornament kit,Scythe of vitur"
   },
   "3876": {
     "taskName": "Attach a Holy ornament kit to the Scythe of Vitur",
-    "search": "Theatre of Blood/Hard Mode"
+    "search": "Holy ornament kit,Scythe of vitur"
   },
   "3881": {
     "taskName": "Equip a Full set of Golden Prospector",
@@ -5767,11 +5769,11 @@
   },
   "5110": {
     "taskName": "Fletch 100 Dragon Javelins",
-    "search": "Javelin shaft"
+    "search": "Dragon javelin heads,Javelin shaft"
   },
   "5111": {
     "taskName": "Fletch 200 Dragon Darts",
-    "search": "Dart tips,Feather"
+    "search": "Dragon dart tip,Feather"
   },
   "5122": {
     "taskName": "Chop 500 Redwood logs",
@@ -6067,7 +6069,7 @@
   },
   "5833": {
     "taskName": "Load a blowpipe with Dragon Darts",
-    "search": "Glassblowing pipe,Molten glass"
+    "search": "Toxic blowpipe,Dragon dart"
   },
   "2136": {
     "taskName": "Get 1000 Target points",
@@ -6167,7 +6169,7 @@
   },
   "1878": {
     "taskName": "Blast Furnace 100 Runite Bars",
-    "search": "Ore,Coal"
+    "search": "Runite ore,Coal"
   },
   "1936": {
     "taskName": "Check the health of 5 Crystal Trees",
@@ -6243,7 +6245,7 @@
   },
   "2447": {
     "taskName": "Equip a Nightmare Staff With an Orb",
-    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
+    "search": "Nightmare staff,Harmonised orb"
   },
   "2451": {
     "taskName": "Equip a Scythe of Vitur",
