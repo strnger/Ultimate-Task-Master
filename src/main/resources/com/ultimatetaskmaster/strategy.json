@@ -1,19 +1,19 @@
 {
   "2631": {
     "taskName": "Defeat a Moss Giant",
-    "search": "Moss giant"
+    "search": "Moss giant,Combat gear,Food"
   },
   "2633": {
     "taskName": "Defeat a Goblin",
-    "search": "Goblin"
+    "search": "Goblin,Combat gear,Food"
   },
   "2634": {
     "taskName": "Defeat a Guard",
-    "search": "Guard"
+    "search": "Guard,Combat gear,Food"
   },
   "5456": {
     "taskName": "1 Wintertodt Kill",
-    "search": "Doors of Dinh"
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "5468": {
     "taskName": "Complete 1 Farming Contract",
@@ -33,7 +33,7 @@
   },
   "5546": {
     "taskName": "1 Sarachnis Kill",
-    "search": "Sarachnis"
+    "search": "Knife,Slash weapon,Combat gear,Prayer potion(4),Food"
   },
   "2642": {
     "taskName": "Visit Ferox Enclave",
@@ -158,7 +158,7 @@
   },
   "1826": {
     "taskName": "Craft a Leather Body",
-    "search": "Leather,Needle,Thread,Cowhide,Ellis,Tanner,Leatherworker,Sbott,Eodan,Mary,Chouani"
+    "search": "Leather,Needle,Thread"
   },
   "1833": {
     "taskName": "Catch a Shrimp",
@@ -299,11 +299,11 @@
   },
   "2022": {
     "taskName": "Defeat a Waterfiend in Tirannwn",
-    "search": "Waterfiend"
+    "search": "Waterfiend,Combat gear,Food"
   },
   "2026": {
     "taskName": "Defeat a Moss Giant in Tirannwn",
-    "search": "Moss Giant"
+    "search": "Moss Giant,Combat gear,Food"
   },
   "2058": {
     "taskName": "Use the Bank in Lletya",
@@ -323,15 +323,15 @@
   },
   "2085": {
     "taskName": "Defeat a Rock Crab in the Fremennik Province",
-    "search": "Rock crab"
+    "search": "Rock crab,Combat gear,Food"
   },
   "2090": {
     "taskName": "Defeat a Cockatrice in the Fremennik Province",
-    "search": "Cockatrice,Mirror shield"
+    "search": "Cockatrice,Mirror shield,Combat gear,Food"
   },
   "2094": {
     "taskName": "Defeat a Pyrefiend in the Fremennik Province",
-    "search": "Pyrefiend"
+    "search": "Pyrefiend,Combat gear,Food"
   },
   "2137": {
     "taskName": "Use the Bank on Jatizso",
@@ -375,11 +375,11 @@
   },
   "2229": {
     "taskName": "Defeat a Bloodveld in Kandarin",
-    "search": "Bloodveld"
+    "search": "Bloodveld,Combat gear,Food"
   },
   "751": {
     "taskName": "Defeat a Fire Giant in Kandarin",
-    "search": "Fire giant"
+    "search": "Fire giant,Combat gear,Food"
   },
   "2242": {
     "taskName": "Visit the Tree Gnome Village",
@@ -399,7 +399,7 @@
   },
   "2294": {
     "taskName": "Defeat a Troll in Asgarnia",
-    "search": "Troll"
+    "search": "Troll,Combat gear,Food"
   },
   "5160": {
     "taskName": "Enter the Taverley Dungeon",
@@ -448,7 +448,7 @@
   },
   "5192": {
     "taskName": "Defeat a Werewolf in Morytania",
-    "search": "Werewolf"
+    "search": "Werewolf,Combat gear,Food"
   },
   "2469": {
     "taskName": "Complete an Easy Temple Trek",
@@ -468,11 +468,11 @@
   },
   "2504": {
     "taskName": "Defeat a Fire Giant in the Wilderness",
-    "search": "Fire Giant"
+    "search": "Fire Giant,Combat gear,Food"
   },
   "2508": {
     "taskName": "Defeat a Chaos Dwarf in the Wilderness",
-    "search": "Chaos Dwarf"
+    "search": "Chaos Dwarf,Combat gear,Food"
   },
   "2546": {
     "taskName": "Use a Lever to Teleport to Edgeville",
@@ -508,7 +508,7 @@
   },
   "3816": {
     "taskName": "1 Tempoross Kill",
-    "search": "Captain Pudi"
+    "search": "Harpoon,Hammer,Rope,Bucket of water"
   },
   "3870": {
     "taskName": "Open a Bronze Chest",
@@ -540,11 +540,11 @@
   },
   "5016": {
     "taskName": "Kill Salarin the Twisted",
-    "search": "Salarin the Twisted"
+    "search": "Salarin the Twisted,Combat gear,Food"
   },
   "5021": {
     "taskName": "Kill a Necromancer",
-    "search": "Necromancer"
+    "search": "Necromancer,Combat gear,Food"
   },
   "5022": {
     "taskName": "Drink a LizardKicker",
@@ -568,7 +568,7 @@
   },
   "5035": {
     "taskName": "Kill a Yak",
-    "search": "Yak"
+    "search": "Yak,Combat gear,Food"
   },
   "5037": {
     "taskName": "Chop down an arctic pine tree",
@@ -696,19 +696,19 @@
   },
   "2171": {
     "taskName": "Kill a Spider by kicking it",
-    "search": "Spider"
+    "search": "Spider,Combat gear,Food"
   },
   "2174": {
     "taskName": "Kill a Cow in one hit",
-    "search": "Cow"
+    "search": "Cow,Combat gear,Food"
   },
   "2177": {
     "taskName": "Kill a Rat",
-    "search": "Rat"
+    "search": "Rat,Combat gear,Food"
   },
   "2185": {
     "taskName": "Kill a Mugger",
-    "search": "Mugger"
+    "search": "Mugger,Combat gear,Food"
   },
   "2192": {
     "taskName": "Talk to Hans",
@@ -720,11 +720,11 @@
   },
   "2197": {
     "taskName": "Kill a Ram",
-    "search": "Ram"
+    "search": "Ram,Combat gear,Food"
   },
   "2200": {
     "taskName": "Kill a Chicken with your fists",
-    "search": "Chicken"
+    "search": "Chicken,Combat gear,Food"
   },
   "2208": {
     "taskName": "Equip an Iron dagger",
@@ -748,11 +748,11 @@
   },
   "2237": {
     "taskName": "Kill a Frog",
-    "search": "Frog,Giant frog"
+    "search": "Frog,Giant frog,Combat gear,Food"
   },
   "2238": {
     "taskName": "Kill a Goblin holding a spear",
-    "search": "Goblin"
+    "search": "Goblin,Combat gear,Food"
   },
   "2241": {
     "taskName": "Drink some of Ali's tea",
@@ -760,7 +760,7 @@
   },
   "2266": {
     "taskName": "Kill a Billy Goat",
-    "search": "Billy Goat"
+    "search": "Billy Goat,Combat gear,Food"
   },
   "2340": {
     "taskName": "Cut the Swaying Tree",
@@ -768,7 +768,7 @@
   },
   "2358": {
     "taskName": "Kill a Barbarian in Kourend",
-    "search": "Barbarian"
+    "search": "Barbarian,Combat gear,Food"
   },
   "2407": {
     "taskName": "Use the Mine cart transportation System",
@@ -810,7 +810,7 @@
   },
   "5905": {
     "taskName": "Kill a Buffalo",
-    "search": "Buffalo"
+    "search": "Buffalo,Combat gear,Food"
   },
   "5906": {
     "taskName": "Milk a Buffalo",
@@ -818,7 +818,7 @@
   },
   "5907": {
     "taskName": "Kill an Icefiend in Varlamore",
-    "search": "Icefiend"
+    "search": "Icefiend,Combat gear,Food"
   },
   "1191": {
     "taskName": "Give Oli some Stew",
@@ -854,7 +854,7 @@
   },
   "1218": {
     "taskName": "Kill a Barbarian in the Barbarian Village",
-    "search": "Barbarian"
+    "search": "Barbarian,Combat gear,Food"
   },
   "1220": {
     "taskName": "Scatter some Ashes",
@@ -870,7 +870,7 @@
   },
   "1776": {
     "taskName": "Kill a Snake in Karamja",
-    "search": "Snake"
+    "search": "Snake,Combat gear,Food"
   },
   "1777": {
     "taskName": "Take a Canoe to Champions Guild",
@@ -895,7 +895,7 @@
   },
   "2046": {
     "taskName": "Kill a Rooster",
-    "search": "Rooster"
+    "search": "Rooster,Combat gear,Food"
   },
   "2053": {
     "taskName": "Pick up Snapegrass",
@@ -991,15 +991,15 @@
   },
   "2632": {
     "taskName": "Defeat a Lesser Demon",
-    "search": "Lesser Demon"
+    "search": "Lesser Demon,Combat gear,Food"
   },
   "5956": {
     "taskName": "10 Wintertodt Kills",
-    "search": "wintertodt,Knife,Tinderbox,Axe,Hammer"
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "5957": {
     "taskName": "25 Wintertodt Kills",
-    "search": "wintertodt,Knife,Tinderbox,Axe,Hammer"
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "5958": {
     "taskName": "Complete 10 Farming Contracts",
@@ -1043,15 +1043,15 @@
   },
   "5959": {
     "taskName": "50 Lizardmen Shaman Kills",
-    "search": "lizardmen shaman"
+    "search": "lizardmen shaman,Combat gear,Food"
   },
   "5960": {
     "taskName": "150 Lizardmen Shaman Kills",
-    "search": "lizardmen shaman"
+    "search": "lizardmen shaman,Combat gear,Food"
   },
   "5547": {
     "taskName": "50 Sarachnis Kills",
-    "search": "sarachnis,Knife"
+    "search": "Knife,Slash weapon,Combat gear,Prayer potion(4),Food"
   },
   "5599": {
     "taskName": "Teleport to Xeric's Honour",
@@ -1263,15 +1263,15 @@
   },
   "1815": {
     "taskName": "Defeat a Superior Slayer Creature",
-    "search": "Slayer equipment"
+    "search": "Slayer equipment,Combat gear,Food"
   },
   "1828": {
     "taskName": "Craft an Emerald Ring",
-    "search": "Uncut emerald,Chisel"
+    "search": "Gold bar,Emerald,Ring mould"
   },
   "1829": {
     "taskName": "Craft a Ruby Amulet",
-    "search": "Uncut ruby,Chisel"
+    "search": "Gold bar,Ruby,Amulet mould"
   },
   "1836": {
     "taskName": "Catch 100 Lobsters",
@@ -1479,15 +1479,15 @@
   },
   "1961": {
     "taskName": "Defeat a Fossil Island Wyvern",
-    "search": "Fossil Island Wyvern"
+    "search": "Fossil Island Wyvern,Combat gear,Food"
   },
   "1966": {
     "taskName": "Defeat Obor",
-    "search": "Obor,Giant key"
+    "search": "Giant key,Combat gear,Food"
   },
   "1970": {
     "taskName": "Defeat Bryophyta",
-    "search": "Bryophyta,Mossy key"
+    "search": "Mossy key,Combat gear,Food"
   },
   "4846": {
     "taskName": "Equip a Dorgeshuun Crossbow",
@@ -1551,15 +1551,15 @@
   },
   "2023": {
     "taskName": "Defeat an Elf in Tirannwn",
-    "search": "Elf"
+    "search": "Elf,Combat gear,Food"
   },
   "2027": {
     "taskName": "Defeat a Bloodveld in Tirannwn",
-    "search": "Bloodveld"
+    "search": "Bloodveld,Combat gear,Food"
   },
   "2031": {
     "taskName": "Defeat a Kurask in Tirannwn",
-    "search": "Kurask"
+    "search": "Kurask,Combat gear,Food"
   },
   "2059": {
     "taskName": "Use an Elven Teleport Crystal",
@@ -1587,7 +1587,7 @@
   },
   "2091": {
     "taskName": "Defeat a Kurask in the Fremennik Province",
-    "search": "Kurask"
+    "search": "Kurask,Combat gear,Food"
   },
   "2095": {
     "taskName": "Equip a Granite Shield",
@@ -1595,11 +1595,11 @@
   },
   "2099": {
     "taskName": "Defeat a Troll in the Fremennik Province",
-    "search": "Troll"
+    "search": "Troll,Combat gear,Food"
   },
   "2103": {
     "taskName": "Defeat a Dagannoth in the Fremennik Province",
-    "search": "Dagannoth"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "2108": {
     "taskName": "Equip a Helm of Neitiznot",
@@ -1607,11 +1607,11 @@
   },
   "2111": {
     "taskName": "Defeat a Turoth in the Fremennik Province",
-    "search": "Turoth"
+    "search": "Turoth,Combat gear,Food"
   },
   "2116": {
     "taskName": "Defeat a Jelly in the Fremennik Province",
-    "search": "Jelly"
+    "search": "Jelly,Combat gear,Food"
   },
   "2117": {
     "taskName": "Use the Special Attack of a Dragon Axe",
@@ -1663,7 +1663,7 @@
   },
   "2155": {
     "taskName": "Defeat a TzHaar",
-    "search": "TzHaar"
+    "search": "TzHaar,Combat gear,Food"
   },
   "2156": {
     "taskName": "Equip an Obsidian Cape",
@@ -1675,7 +1675,7 @@
   },
   "2165": {
     "taskName": "Defeat a Greater Demon on Karamja",
-    "search": "Greater Demon on Karamja"
+    "search": "Greater Demon on Karamja,Combat gear,Food"
   },
   "4900": {
     "taskName": "Equip a Toktz-Xil-Ak",
@@ -1687,7 +1687,7 @@
   },
   "2178": {
     "taskName": "Defeat a Steel Dragon on Karamja",
-    "search": "Steel Dragon on Karamja"
+    "search": "Steel Dragon on Karamja,Combat gear,Food"
   },
   "2179": {
     "taskName": "Complete the Easy Karamja Diary",
@@ -1743,7 +1743,7 @@
   },
   "2216": {
     "taskName": "Defeat a Tortoise With Riders in Kandarin",
-    "search": "Tortoise With Riders"
+    "search": "Tortoise With Riders,Combat gear,Food"
   },
   "2217": {
     "taskName": "Equip a Dragon Scimitar",
@@ -1763,7 +1763,7 @@
   },
   "2227": {
     "taskName": "Defeat the Thermonuclear Smoke Devil",
-    "search": "Thermonuclear Smoke Devil"
+    "search": "Combat gear,Facemask,Prayer potion(4),Food"
   },
   "2246": {
     "taskName": "Win a Game of Castle Wars",
@@ -1839,15 +1839,15 @@
   },
   "2290": {
     "taskName": "Defeat the Giant Mole",
-    "search": "Giant Mole,Spade,Light source"
+    "search": "Spade,Falador shield,Combat gear,Prayer potion(4),Food"
   },
   "2295": {
     "taskName": "Defeat a Skeletal Wyvern",
-    "search": "Skeletal Wyvern"
+    "search": "Skeletal Wyvern,Combat gear,Food"
   },
   "2311": {
     "taskName": "Defeat a Blue Dragon in Asgarnia",
-    "search": "Blue Dragon"
+    "search": "Blue Dragon,Combat gear,Food"
   },
   "5155": {
     "taskName": "Charge an Amulet of Glory in the Heroes' Guild",
@@ -1855,15 +1855,15 @@
   },
   "2313": {
     "taskName": "Defeat a Black Demon in Asgarnia",
-    "search": "Black Demon"
+    "search": "Black Demon,Combat gear,Food"
   },
   "5156": {
     "taskName": "Defeat the Giant Mole 50 Times",
-    "search": "Giant Mole 50 Times,Spade,Light source"
+    "search": "Spade,Falador shield,Combat gear,Prayer potion(4),Food"
   },
   "5157": {
     "taskName": "Defeat the Giant Mole 150 Times",
-    "search": "Giant Mole 150 Times,Spade,Light source"
+    "search": "Spade,Falador shield,Combat gear,Prayer potion(4),Food"
   },
   "2323": {
     "taskName": "Complete the Easy Falador Diary",
@@ -1943,7 +1943,7 @@
   },
   "2373": {
     "taskName": "Defeat a Kalphite Guardian",
-    "search": "Kalphite Guardian"
+    "search": "Kalphite Guardian,Combat gear,Food"
   },
   "2376": {
     "taskName": "Cast Ice Rush",
@@ -2011,27 +2011,27 @@
   },
   "2427": {
     "taskName": "Defeat a Gargoyle in Morytania",
-    "search": "Gargoyle"
+    "search": "Gargoyle,Combat gear,Food"
   },
   "2430": {
     "taskName": "Defeat a Fiyr Shade",
-    "search": "Fiyr Shade"
+    "search": "Fiyr Shade,Combat gear,Food"
   },
   "2434": {
     "taskName": "Defeat a Vyrewatch Sentinel",
-    "search": "Vyrewatch Sentinel"
+    "search": "Vyrewatch Sentinel,Combat gear,Food"
   },
   "2435": {
     "taskName": "Defeat an Abyssal Demon in Morytania",
-    "search": "Abyssal Demon"
+    "search": "Abyssal Demon,Combat gear,Food"
   },
   "2438": {
     "taskName": "Equip a Piece of any Barrows Armour Set",
-    "search": "Piece of any Barrows Armour Set"
+    "search": "Spade,Combat gear,Prayer potion(4),Food"
   },
   "2441": {
     "taskName": "Loot a Barrows Chest",
-    "search": ""
+    "search": "Spade,Combat gear,Prayer potion(4),Food"
   },
   "2443": {
     "taskName": "Equip a Granite Hammer or Granite Ring",
@@ -2095,19 +2095,19 @@
   },
   "2500": {
     "taskName": "Defeat a Lava Dragon in the Wilderness",
-    "search": "Lava Dragon"
+    "search": "Lava Dragon,Combat gear,Food"
   },
   "2501": {
     "taskName": "Defeat the Crazy Archaeologist",
-    "search": "Crazy Archaeologist"
+    "search": "Combat gear,Food"
   },
   "2509": {
     "taskName": "Defeat the Chaos Fanatic",
-    "search": "Chaos Fanatic"
+    "search": "Combat gear,Food"
   },
   "2512": {
     "taskName": "Defeat a Green Dragon in the Wilderness",
-    "search": "Green Dragon"
+    "search": "Green Dragon,Combat gear,Food"
   },
   "2515": {
     "taskName": "Equip a Fedora",
@@ -2163,7 +2163,7 @@
   },
   "5211": {
     "taskName": "Defeat a Crocodile",
-    "search": "Crocodile"
+    "search": "Crocodile,Combat gear,Food"
   },
   "5212": {
     "taskName": "Make a Combat Potion",
@@ -2187,7 +2187,7 @@
   },
   "3780": {
     "taskName": "Defeat a Drake",
-    "search": "Drake"
+    "search": "Drake,Combat gear,Food"
   },
   "5218": {
     "taskName": "Equip some Steel armour",
@@ -2211,7 +2211,7 @@
   },
   "5941": {
     "taskName": "10 Tempoross Kills",
-    "search": "tempoross,Harpoon,Rope,Bucket of water,Hammer"
+    "search": "Harpoon,Hammer,Rope,Bucket of water"
   },
   "3864": {
     "taskName": "Cast Degrime Spell Full Clean",
@@ -2299,7 +2299,7 @@
   },
   "4964": {
     "taskName": "Kill a Kalphite with the Keris Partisan",
-    "search": "Kalphite with the Keris Partisan"
+    "search": "Kalphite with the Keris Partisan,Combat gear,Food"
   },
   "4981": {
     "taskName": "Create the Divine Rune pouch",
@@ -2335,7 +2335,7 @@
   },
   "5025": {
     "taskName": "Kill three chickens in 6 seconds",
-    "search": "three chickens in 6 seconds"
+    "search": "three chickens in 6 seconds,Combat gear,Food"
   },
   "5030": {
     "taskName": "Smelt a mithril bar in a volcanic fissure",
@@ -2347,7 +2347,7 @@
   },
   "5038": {
     "taskName": "Kill 8 penguins within 5 seconds",
-    "search": "8 penguins within 5 seconds"
+    "search": "8 penguins within 5 seconds,Combat gear,Food"
   },
   "5041": {
     "taskName": "Destroy the one ring to rule them all",
@@ -2391,7 +2391,7 @@
   },
   "5077": {
     "taskName": "Defeat the Evil chicken",
-    "search": "Evil chicken"
+    "search": "Evil chicken,Combat gear,Food"
   },
   "5081": {
     "taskName": "Equip a frog mask",
@@ -2439,7 +2439,7 @@
   },
   "5132": {
     "taskName": "Kill a Black Dragon in Tirannwn",
-    "search": "Black Dragon"
+    "search": "Black Dragon,Combat gear,Food"
   },
   "5726": {
     "taskName": "Complete Sleeping Giants",
@@ -2447,11 +2447,11 @@
   },
   "5760": {
     "taskName": "Kill a Swordchick",
-    "search": "Swordchick"
+    "search": "Swordchick,Combat gear,Food"
   },
   "5761": {
     "taskName": "Kill a Newtroost",
-    "search": "Newtroost"
+    "search": "Newtroost,Combat gear,Food"
   },
   "5763": {
     "taskName": "Sell 20 Iron Sheets",
@@ -2547,7 +2547,7 @@
   },
   "2276": {
     "taskName": "Kill 10 Locusts",
-    "search": "10 Locusts"
+    "search": "10 Locusts,Combat gear,Food"
   },
   "2279": {
     "taskName": "Mine 15 Granite in the Necropolis",
@@ -2559,7 +2559,7 @@
   },
   "2320": {
     "taskName": "Kill 30 Bandits",
-    "search": "30 Bandits"
+    "search": "30 Bandits,Combat gear,Food"
   },
   "2331": {
     "taskName": "Mine 25 gold rocks in Tirannwn",
@@ -2571,7 +2571,7 @@
   },
   "2339": {
     "taskName": "Kill 5 Bunnies",
-    "search": "5 Bunnies"
+    "search": "5 Bunnies,Combat gear,Food"
   },
   "2341": {
     "taskName": "Steal a Cow bell in Rellekka",
@@ -2615,11 +2615,11 @@
   },
   "2360": {
     "taskName": "Kill a King Sand Crab",
-    "search": "King Sand Crab"
+    "search": "King Sand Crab,Combat gear,Food"
   },
   "2365": {
     "taskName": "Kill 5 Sand Crabs",
-    "search": "5 Sand Crabs"
+    "search": "5 Sand Crabs,Combat gear,Food"
   },
   "2366": {
     "taskName": "Dig 25 Saltpetre",
@@ -2655,7 +2655,7 @@
   },
   "2455": {
     "taskName": "Kill a Moss, Fire & Hill Giant in Kourend",
-    "search": "Moss, Fire & Hill Giant"
+    "search": "Moss, Fire & Hill Giant,Combat gear,Food"
   },
   "2456": {
     "taskName": "Talk to the Voice of Yama",
@@ -2671,7 +2671,7 @@
   },
   "2463": {
     "taskName": "Kill 5 Spinners",
-    "search": "5 Spinners"
+    "search": "5 Spinners,Combat gear,Food"
   },
   "2464": {
     "taskName": "Equip a piece of Beekeeper's Outfit",
@@ -2743,15 +2743,15 @@
   },
   "3806": {
     "taskName": "Defeat Scurrius",
-    "search": "Scurrius"
+    "search": "Combat gear,Food"
   },
   "3807": {
     "taskName": "Defeat Scurrius 10 times",
-    "search": "Scurrius 10 times"
+    "search": "Combat gear,Food"
   },
   "3808": {
     "taskName": "Defeat Scurrius 25 times",
-    "search": "Scurrius 25 times"
+    "search": "Combat gear,Food"
   },
   "3810": {
     "taskName": "Build a Quetzal Landing Site",
@@ -2763,7 +2763,7 @@
   },
   "3818": {
     "taskName": "Teleport to the Fortis Colosseum",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Food"
   },
   "3819": {
     "taskName": "Create a Quetzal Whistle",
@@ -2783,7 +2783,7 @@
   },
   "3827": {
     "taskName": "Complete Wave 1 of Fortis Colosseum",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Food"
   },
   "3840": {
     "taskName": "Equip a piece of Blood Moon armour",
@@ -2863,7 +2863,7 @@
   },
   "5919": {
     "taskName": "1 Hueycoatl Kill",
-    "search": "hueycoatl"
+    "search": "hueycoatl,Combat gear,Food"
   },
   "5922": {
     "taskName": "Equip a piece of Hueycoatl armour",
@@ -2879,7 +2879,7 @@
   },
   "5932": {
     "taskName": "1 Amoxliatl Kill",
-    "search": "amoxliatl"
+    "search": "amoxliatl,Combat gear,Food"
   },
   "5935": {
     "taskName": "Complete 10 laps of the Varlamore Agility Course",
@@ -2887,7 +2887,7 @@
   },
   "1187": {
     "taskName": "Kill a Dire Wolf",
-    "search": "Dire Wolf"
+    "search": "Dire Wolf,Combat gear,Food"
   },
   "1188": {
     "taskName": "Give a Dwarf Redberry Antelope",
@@ -2895,7 +2895,7 @@
   },
   "1189": {
     "taskName": "Kill 10 Frost Crabs",
-    "search": "Frost Crab"
+    "search": "Frost Crab,Combat gear,Food"
   },
   "1190": {
     "taskName": "Activate the Statue of Ates",
@@ -2903,11 +2903,11 @@
   },
   "1193": {
     "taskName": "Defeat a Tormented Demon",
-    "search": "Tormented Demon"
+    "search": "Tormented Demon,Combat gear,Food"
   },
   "1194": {
     "taskName": "Defeat 50 Tormented Demons",
-    "search": "50 Tormented Demons"
+    "search": "50 Tormented Demons,Combat gear,Food"
   },
   "1203": {
     "taskName": "Pick up 10 Whiteberries in Tirannwn",
@@ -2951,7 +2951,7 @@
   },
   "1932": {
     "taskName": "Kill a Brine Rat",
-    "search": "Brine Rat"
+    "search": "Brine Rat,Combat gear,Food"
   },
   "1937": {
     "taskName": "Equip a Defender",
@@ -3035,11 +3035,11 @@
   },
   "2052": {
     "taskName": "Kill a Wallasalki",
-    "search": "Wallasalki"
+    "search": "Wallasalki,Combat gear,Food"
   },
   "2055": {
     "taskName": "Kill a Suqah",
-    "search": "Suqah"
+    "search": "Suqah,Combat gear,Food"
   },
   "2056": {
     "taskName": "Steal a Chisel",
@@ -3131,7 +3131,7 @@
   },
   "5457": {
     "taskName": "50 Wintertodt Kills",
-    "search": "wintertodt,Knife,Tinderbox,Axe,Hammer"
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "5469": {
     "taskName": "Complete 50 Farming Contracts",
@@ -3159,47 +3159,47 @@
   },
   "5961": {
     "taskName": "300 Lizardmen Shaman Kills",
-    "search": "lizardmen shaman"
+    "search": "lizardmen shaman,Combat gear,Food"
   },
   "5548": {
     "taskName": "150 Sarachnis Kills",
-    "search": "sarachnis,Knife"
+    "search": "Knife,Slash weapon,Combat gear,Prayer potion(4),Food"
   },
   "5549": {
     "taskName": "300 Sarachnis Kills",
-    "search": "sarachnis,Knife"
+    "search": "Knife,Slash weapon,Combat gear,Prayer potion(4),Food"
   },
   "5557": {
     "taskName": "1 Skotizo Kill",
-    "search": "skotizo,Dark totem"
+    "search": "skotizo,Dark totem,Combat gear,Food"
   },
   "5558": {
     "taskName": "10 Skotizo Kills",
-    "search": "skotizo,Dark totem"
+    "search": "skotizo,Dark totem,Combat gear,Food"
   },
   "5566": {
     "taskName": "1 Alchemical Hydra Kill",
-    "search": "alchemical hydra"
+    "search": "Combat gear,Antidote++(4),Prayer potion(4),Food"
   },
   "5567": {
     "taskName": "50 Alchemical Hydra Kills",
-    "search": "alchemical hydra"
+    "search": "Combat gear,Antidote++(4),Prayer potion(4),Food"
   },
   "5568": {
     "taskName": "150 Alchemical Hydra Kills",
-    "search": "alchemical hydra"
+    "search": "Combat gear,Antidote++(4),Prayer potion(4),Food"
   },
   "5577": {
     "taskName": "1 Chambers of Xeric",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5962": {
     "taskName": "25 Chambers of Xeric",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5578": {
     "taskName": "50 Chambers of Xeric",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5601": {
     "taskName": "Equip Boots of Brimstone",
@@ -3243,11 +3243,11 @@
   },
   "5686": {
     "taskName": "1 Mimic Kill",
-    "search": "mimic,Mimic casket"
+    "search": "Combat gear,Food"
   },
   "5687": {
     "taskName": "5 Mimic Kills",
-    "search": "mimic,Mimic casket"
+    "search": "Combat gear,Food"
   },
   "5696": {
     "taskName": "Equip Tier 5 Shayzien Armour",
@@ -3331,11 +3331,11 @@
   },
   "1819": {
     "taskName": "Defeat 10 Superior Slayer Creatures",
-    "search": "Slayer equipment"
+    "search": "Slayer equipment,Combat gear,Food"
   },
   "1820": {
     "taskName": "Defeat 20 Superior Slayer Creatures",
-    "search": "Slayer equipment"
+    "search": "Slayer equipment,Combat gear,Food"
   },
   "1827": {
     "taskName": "Craft 100 Unpowered Orbs",
@@ -3343,7 +3343,7 @@
   },
   "1830": {
     "taskName": "Craft a Dragonstone Amulet",
-    "search": "Uncut dragonstone,Chisel"
+    "search": "Gold bar,Dragonstone,Amulet mould"
   },
   "1831": {
     "taskName": "Craft 30 Blue Dragonhide Bodies",
@@ -3443,7 +3443,7 @@
   },
   "1962": {
     "taskName": "Defeat a Rune Dragon",
-    "search": "Rune Dragon"
+    "search": "Rune Dragon,Combat gear,Food"
   },
   "1967": {
     "taskName": "Equip a Hill Giant Club",
@@ -3451,11 +3451,11 @@
   },
   "1971": {
     "taskName": "Equip Bryophyta's Staff",
-    "search": "Bryophyta's Staff"
+    "search": "Mossy key,Combat gear,Food"
   },
   "1974": {
     "taskName": "Defeat the Abyssal Sire",
-    "search": "Abyssal Sire"
+    "search": "Combat gear,Efaritay's aid,Prayer potion(4),Food"
   },
   "1978": {
     "taskName": "Offer an Unsired to the Font of Consumption",
@@ -3503,15 +3503,15 @@
   },
   "2032": {
     "taskName": "Defeat Zalcano",
-    "search": "Zalcano,Pickaxe"
+    "search": "Pickaxe,Combat gear,Food"
   },
   "2034": {
     "taskName": "Defeat Zulrah",
-    "search": "Zulrah"
+    "search": "Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food"
   },
   "2036": {
     "taskName": "Defeat a Dark Beast in Tirannwn",
-    "search": "Dark Beast"
+    "search": "Dark Beast,Combat gear,Food"
   },
   "4855": {
     "taskName": "Equip a Dark Bow in Tirannwn",
@@ -3527,15 +3527,15 @@
   },
   "4866": {
     "taskName": "Defeat Zalcano 50 Times",
-    "search": "Zalcano 50 Times,Pickaxe"
+    "search": "Pickaxe,Combat gear,Food"
   },
   "4868": {
     "taskName": "Defeat Zulrah 50 Times",
-    "search": "Zulrah 50 Times"
+    "search": "Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food"
   },
   "2057": {
     "taskName": "Defeat a Nechryael in Tirannwn",
-    "search": "Nechryael"
+    "search": "Nechryael,Combat gear,Food"
   },
   "2060": {
     "taskName": "Craft an Eternal Teleport Crystal",
@@ -3575,7 +3575,7 @@
   },
   "2083": {
     "taskName": "Use Your Portal Nexus to Teleport to Weiss",
-    "search": ""
+    "search": "Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food"
   },
   "2084": {
     "taskName": "Create a Catherby Teleport Tablet",
@@ -3583,11 +3583,11 @@
   },
   "2086": {
     "taskName": "Defeat a Basilisk Knight",
-    "search": "Basilisk Knight"
+    "search": "Basilisk Knight,Combat gear,Food"
   },
   "2087": {
     "taskName": "Defeat Vorkath",
-    "search": "Vorkath"
+    "search": "Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food"
   },
   "2092": {
     "taskName": "Equip an Ava's Assembler",
@@ -3599,7 +3599,7 @@
   },
   "2101": {
     "taskName": "Defeat the Dagannoth Kings Without Leaving",
-    "search": "Dagannoth Kings Without Leaving"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "2104": {
     "taskName": "Equip a Berserker Ring",
@@ -3619,19 +3619,19 @@
   },
   "4878": {
     "taskName": "Defeat Vorkath 50 Times",
-    "search": "Vorkath 50 Times"
+    "search": "Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food"
   },
   "4879": {
     "taskName": "Defeat Vorkath 150 Times",
-    "search": "Vorkath 150 Times"
+    "search": "Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food"
   },
   "4881": {
     "taskName": "Defeat Each Dagannoth King 50 Times",
-    "search": "Each Dagannoth King 50 Times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4882": {
     "taskName": "Defeat Each Dagannoth King 150 Times",
-    "search": "Each Dagannoth King 150 Times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "2122": {
     "taskName": "Equip a Mud Battlestaff",
@@ -3723,19 +3723,19 @@
   },
   "2213": {
     "taskName": "Defeat a Mithril Dragon",
-    "search": "Mithril Dragon"
+    "search": "Mithril Dragon,Combat gear,Food"
   },
   "2214": {
     "taskName": "Defeat a Demonic Gorilla",
-    "search": "Demonic Gorilla"
+    "search": "Demonic Gorilla,Combat gear,Food"
   },
   "2215": {
     "taskName": "Defeat a Smoke Devil",
-    "search": "Smoke Devil"
+    "search": "Smoke Devil,Combat gear,Food"
   },
   "2226": {
     "taskName": "Defeat a Cave Kraken",
-    "search": "Cave Kraken"
+    "search": "Combat gear,Trident of the seas,Prayer potion(4),Food"
   },
   "2230": {
     "taskName": "Equip a Trident of the Seas",
@@ -3747,15 +3747,15 @@
   },
   "5145": {
     "taskName": "Defeat the Kraken Boss 50 Times",
-    "search": "Kraken Boss 50 Times"
+    "search": "Combat gear,Trident of the seas,Prayer potion(4),Food"
   },
   "5146": {
     "taskName": "Defeat the Kraken Boss 150 Times",
-    "search": "Kraken Boss 150 Times"
+    "search": "Combat gear,Trident of the seas,Prayer potion(4),Food"
   },
   "5148": {
     "taskName": "Defeat 150 Demonic Gorillas",
-    "search": "150 Demonic Gorillas"
+    "search": "150 Demonic Gorillas,Combat gear,Food"
   },
   "2252": {
     "taskName": "Complete Elemental Workshop II",
@@ -3763,7 +3763,7 @@
   },
   "2256": {
     "taskName": "Defeat the Penance Queen",
-    "search": "Penance Queen"
+    "search": "Penance Queen,Combat gear,Food"
   },
   "2259": {
     "taskName": "Equip an Ogre Expert Chompy Hat",
@@ -3803,11 +3803,11 @@
   },
   "2296": {
     "taskName": "Defeat K'ril Tsutsaroth",
-    "search": "K'ril Tsutsaroth"
+    "search": "K'ril Tsutsaroth,Combat gear,Food"
   },
   "2301": {
     "taskName": "Defeat General Graardor",
-    "search": "General Graardor"
+    "search": "General Graardor,Combat gear,Food"
   },
   "2302": {
     "taskName": "Equip a Saradomin Sword",
@@ -3815,15 +3815,15 @@
   },
   "2305": {
     "taskName": "Defeat Kree'arra",
-    "search": "Kree'arra"
+    "search": "Kree'arra,Combat gear,Food"
   },
   "2309": {
     "taskName": "Defeat Commander Zilyana",
-    "search": "Commander Zilyana"
+    "search": "Commander Zilyana,Combat gear,Food"
   },
   "2315": {
     "taskName": "Defeat Cerberus",
-    "search": "Cerberus"
+    "search": "Combat gear,Spectral spirit shield,Prayer potion(4),Food"
   },
   "2316": {
     "taskName": "Equip a Pair of Dragon Boots",
@@ -3831,15 +3831,15 @@
   },
   "2317": {
     "taskName": "Defeat Any God Wars Dungeon Boss 100 Times",
-    "search": "Any God Wars Dungeon Boss 100 Times"
+    "search": "Any God Wars Dungeon Boss 100 Times,Combat gear,Food"
   },
   "2318": {
     "taskName": "Defeat Any God Wars Dungeon Boss 250 Times",
-    "search": "Any God Wars Dungeon Boss 250 Times"
+    "search": "Any God Wars Dungeon Boss 250 Times,Combat gear,Food"
   },
   "5158": {
     "taskName": "Defeat the Giant Mole 300 Times",
-    "search": "Giant Mole 300 Times,Spade,Light source"
+    "search": "Spade,Falador shield,Combat gear,Prayer potion(4),Food"
   },
   "2325": {
     "taskName": "Complete the Hard Falador Diary",
@@ -3895,7 +3895,7 @@
   },
   "2372": {
     "taskName": "Defeat the Kalphite Queen",
-    "search": "Kalphite Queen,Rope"
+    "search": "Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food"
   },
   "2374": {
     "taskName": "Cast Ice Burst",
@@ -3907,11 +3907,11 @@
   },
   "2071": {
     "taskName": "Defeat the Kalphite Queen 50 Times",
-    "search": "Kalphite Queen 50 Times,Rope"
+    "search": "Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food"
   },
   "2077": {
     "taskName": "Defeat the Kalphite Queen 150 Times",
-    "search": "Kalphite Queen 150 Times,Rope"
+    "search": "Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food"
   },
   "5180": {
     "taskName": "Equip a Dragon 2-Handed Sword",
@@ -3935,15 +3935,15 @@
   },
   "2428": {
     "taskName": "Defeat The Nightmare",
-    "search": "Nightmare"
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "2439": {
     "taskName": "Equip any Full Barrows Armour Set",
-    "search": "any Full Barrows Armour Set"
+    "search": "Spade,Combat gear,Prayer potion(4),Food"
   },
   "2446": {
     "taskName": "Equip a Nightmare Staff",
-    "search": "Nightmare Staff"
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "2448": {
     "taskName": "Create an Amulet of Blood Fury",
@@ -3955,15 +3955,15 @@
   },
   "2462": {
     "taskName": "Defeat the Grotesque Guardians",
-    "search": "Grotesque Guardians,Brittle key"
+    "search": "Brittle key,Combat gear,Prayer potion(4),Food"
   },
   "5198": {
     "taskName": "Defeat the Grotesque Guardians 50 Times",
-    "search": "Grotesque Guardians 50 Times,Brittle key"
+    "search": "Brittle key,Combat gear,Prayer potion(4),Food"
   },
   "5199": {
     "taskName": "Defeat the Grotesque Guardians 150 Times",
-    "search": "Grotesque Guardians 150 Times,Brittle key"
+    "search": "Brittle key,Combat gear,Prayer potion(4),Food"
   },
   "2467": {
     "taskName": "Complete the Hard Morytania Diary",
@@ -4003,27 +4003,27 @@
   },
   "2502": {
     "taskName": "Defeat Venenatis",
-    "search": "Venenatis"
+    "search": "Combat gear,Antipoison(4),Food"
   },
   "2505": {
     "taskName": "Defeat Scorpia",
-    "search": "Scorpia"
+    "search": "Combat gear,Antipoison(4),Food"
   },
   "5205": {
     "taskName": "Defeat Callisto",
-    "search": "Callisto"
+    "search": "Combat gear,Food"
   },
   "2510": {
     "taskName": "Defeat Vet'ion",
-    "search": "Vet'ion"
+    "search": "Combat gear,Food"
   },
   "2513": {
     "taskName": "Defeat the Chaos Elemental",
-    "search": "Chaos Elemental"
+    "search": "Chaos Elemental,Combat gear,Food"
   },
   "2514": {
     "taskName": "Defeat the King Black Dragon",
-    "search": "King Black Dragon"
+    "search": "Combat gear,Anti-dragon shield,Antifire potion(4),Prayer potion(4),Food"
   },
   "2516": {
     "taskName": "Equip a Dragon Pickaxe",
@@ -4035,11 +4035,11 @@
   },
   "2518": {
     "taskName": "Defeat the Corporeal Beast",
-    "search": "Corporeal Beast"
+    "search": "Combat gear,Spirit shield,Prayer potion(4),Food"
   },
   "5207": {
     "taskName": "Defeat the Corporeal Beast 50 Times",
-    "search": "Corporeal Beast 50 Times"
+    "search": "Combat gear,Spirit shield,Prayer potion(4),Food"
   },
   "2527": {
     "taskName": "Equip an Enchanted Slayer Staff",
@@ -4067,19 +4067,19 @@
   },
   "5215": {
     "taskName": "Equip a Sarachnis Cudgel",
-    "search": "Sarachnis Cudgel"
+    "search": "Knife,Slash weapon,Combat gear,Prayer potion(4),Food"
   },
   "5221": {
     "taskName": "Defeat Phosani's Nightmare",
-    "search": "Phosani's Nightmare"
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "5940": {
     "taskName": "Defeat The Nightmare 25 times",
-    "search": "Nightmare 25 times"
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "5942": {
     "taskName": "25 Tempoross Kills",
-    "search": "tempoross,Harpoon,Rope,Bucket of water,Hammer"
+    "search": "Harpoon,Hammer,Rope,Bucket of water"
   },
   "5273": {
     "taskName": "Combat Achievements Easy Tier",
@@ -4103,15 +4103,15 @@
   },
   "3902": {
     "taskName": "Defeat Nex",
-    "search": "Nex,Frozen key"
+    "search": "Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food"
   },
   "3905": {
     "taskName": "Defeat Nex 50 Times",
-    "search": "Nex 50 Times,Frozen key"
+    "search": "Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food"
   },
   "4908": {
     "taskName": "Defeat Nex 150 Times",
-    "search": "Nex 150 Times,Frozen key"
+    "search": "Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food"
   },
   "3913": {
     "taskName": "Equip some Zaryte Vambraces",
@@ -4119,59 +4119,59 @@
   },
   "4910": {
     "taskName": "Defeat Vardorvis",
-    "search": "Vardorvis"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4911": {
     "taskName": "Defeat Vardorvis 50 times",
-    "search": "Vardorvis 50 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4912": {
     "taskName": "Defeat Vardorvis 150 times",
-    "search": "Vardorvis 150 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4915": {
     "taskName": "Defeat Whisperer",
-    "search": "Whisperer"
+    "search": "Whisperer,Combat gear,Food"
   },
   "4916": {
     "taskName": "Defeat Whisperer 50 times",
-    "search": "Whisperer 50 times"
+    "search": "Whisperer 50 times,Combat gear,Food"
   },
   "4917": {
     "taskName": "Defeat Whisperer 150 times",
-    "search": "Whisperer 150 times"
+    "search": "Whisperer 150 times,Combat gear,Food"
   },
   "4920": {
     "taskName": "Defeat Leviathan",
-    "search": "Leviathan"
+    "search": "Leviathan,Combat gear,Food"
   },
   "4921": {
     "taskName": "Defeat Leviathan 50 times",
-    "search": "Leviathan 50 times"
+    "search": "Leviathan 50 times,Combat gear,Food"
   },
   "4922": {
     "taskName": "Defeat Leviathan 150 times",
-    "search": "Leviathan 150 times"
+    "search": "Leviathan 150 times,Combat gear,Food"
   },
   "4925": {
     "taskName": "Defeat Duke Sucellus",
-    "search": "Duke Sucellus"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4926": {
     "taskName": "Defeat Duke Sucellus 50 times",
-    "search": "Duke Sucellus 50 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4927": {
     "taskName": "Defeat Duke Sucellus 150 times",
-    "search": "Duke Sucellus 150 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4930": {
     "taskName": "Complete Tombs of Amascut",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5943": {
     "taskName": "Complete Tombs of Amascut 25 times",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5946": {
     "taskName": "Guardians of the Rift 25 Rifts closed",
@@ -4179,15 +4179,15 @@
   },
   "4937": {
     "taskName": "Defeat Phantom Muspah",
-    "search": "Phantom Muspah"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4938": {
     "taskName": "Defeat Phantom Muspah 50 times",
-    "search": "Phantom Muspah 50 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4939": {
     "taskName": "Defeat Phantom Muspah 150 times",
-    "search": "Phantom Muspah 150 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4941": {
     "taskName": "Complete Tzhaar-Ket-Rak's first challenge",
@@ -4339,7 +4339,7 @@
   },
   "5133": {
     "taskName": "Kill 50 Elves in Tirannwn",
-    "search": "50 Elves"
+    "search": "50 Elves,Combat gear,Food"
   },
   "5134": {
     "taskName": "Use a prayer altar to restore 90 prayer in Prifddinas",
@@ -4351,11 +4351,11 @@
   },
   "5710": {
     "taskName": "Defeat Cerberus 50 times",
-    "search": "Cerberus 50 times"
+    "search": "Combat gear,Spectral spirit shield,Prayer potion(4),Food"
   },
   "5711": {
     "taskName": "Defeat Cerberus 150 times",
-    "search": "Cerberus 150 times"
+    "search": "Combat gear,Spectral spirit shield,Prayer potion(4),Food"
   },
   "5713": {
     "taskName": "Cook 20 Karambwans in a row",
@@ -4363,27 +4363,27 @@
   },
   "5717": {
     "taskName": "Defeat Venenatis 50 times",
-    "search": "Venenatis 50 times"
+    "search": "Combat gear,Antipoison(4),Food"
   },
   "5718": {
     "taskName": "Defeat Venenatis 150 times",
-    "search": "Venenatis 150 times"
+    "search": "Combat gear,Antipoison(4),Food"
   },
   "5720": {
     "taskName": "Defeat Vet'ion 50 times",
-    "search": "Vet'ion 50 times"
+    "search": "Combat gear,Food"
   },
   "5721": {
     "taskName": "Defeat Vet'ion 150 times",
-    "search": "Vet'ion 150 times"
+    "search": "Combat gear,Food"
   },
   "5723": {
     "taskName": "Defeat Callisto 50 times",
-    "search": "Callisto 50 times"
+    "search": "Combat gear,Food"
   },
   "5724": {
     "taskName": "Defeat Callisto 150 times",
-    "search": "Callisto 150 times"
+    "search": "Combat gear,Food"
   },
   "5727": {
     "taskName": "Complete Beneath Cursed Sands",
@@ -4399,11 +4399,11 @@
   },
   "5758": {
     "taskName": "Kill a Frogeel",
-    "search": "Frogeel"
+    "search": "Frogeel,Combat gear,Food"
   },
   "5759": {
     "taskName": "Kill a Jubster",
-    "search": "Jubster"
+    "search": "Jubster,Combat gear,Food"
   },
   "5765": {
     "taskName": "Score a Goal in Gnomeball",
@@ -4519,11 +4519,11 @@
   },
   "3791": {
     "taskName": "Defeat a Gang Boss",
-    "search": "Gang Boss"
+    "search": "Gang Boss,Combat gear,Food"
   },
   "3796": {
     "taskName": "Scurrius Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "3799": {
     "taskName": "Use a teleport anchoring scroll",
@@ -4551,7 +4551,7 @@
   },
   "3825": {
     "taskName": "Use the Bank Chest inside Fortis Colosseum",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Food"
   },
   "3826": {
     "taskName": "Use the Fortis Salute emote",
@@ -4559,7 +4559,7 @@
   },
   "3828": {
     "taskName": "Complete Wave 6 of Fortis Colosseum",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Food"
   },
   "3833": {
     "taskName": "Equip a piece of Sunfire Fanatic",
@@ -4631,15 +4631,15 @@
   },
   "5912": {
     "taskName": "1 Araxxor Kill",
-    "search": "araxxor"
+    "search": "araxxor,Combat gear,Food"
   },
   "5913": {
     "taskName": "50 Araxxor Kills",
-    "search": "araxxor"
+    "search": "araxxor,Combat gear,Food"
   },
   "5914": {
     "taskName": "150 Araxxor Kills",
-    "search": "araxxor"
+    "search": "araxxor,Combat gear,Food"
   },
   "5918": {
     "taskName": "Equip Aranea Boots",
@@ -4647,11 +4647,11 @@
   },
   "5920": {
     "taskName": "50 Hueycoatl Kills",
-    "search": "hueycoatl"
+    "search": "hueycoatl,Combat gear,Food"
   },
   "5921": {
     "taskName": "150 Hueycoatl Kills",
-    "search": "hueycoatl"
+    "search": "hueycoatl,Combat gear,Food"
   },
   "5923": {
     "taskName": "Equip full Hueycoatl armour",
@@ -4679,11 +4679,11 @@
   },
   "5933": {
     "taskName": "50 Amoxliatl Kills",
-    "search": "amoxliatl"
+    "search": "amoxliatl,Combat gear,Food"
   },
   "5934": {
     "taskName": "150 Amoxliatl Kills",
-    "search": "amoxliatl"
+    "search": "amoxliatl,Combat gear,Food"
   },
   "5936": {
     "taskName": "Equip Glacial Temotli",
@@ -4691,11 +4691,11 @@
   },
   "1195": {
     "taskName": "Defeat 150 Tormented Demons",
-    "search": "150 Tormented Demons"
+    "search": "150 Tormented Demons,Combat gear,Food"
   },
   "1196": {
     "taskName": "Defeat 300 Tormented Demons",
-    "search": "300 Tormented Demons"
+    "search": "300 Tormented Demons,Combat gear,Food"
   },
   "1197": {
     "taskName": "Equip Burning claws",
@@ -4739,15 +4739,15 @@
   },
   "1227": {
     "taskName": "Kill 1 unique Echo Boss",
-    "search": "1 unique Echo Boss"
+    "search": "1 unique Echo Boss,Combat gear,Food"
   },
   "1228": {
     "taskName": "Kill 2 unique Echo Bosses",
-    "search": "2 unique Echo Bosses"
+    "search": "2 unique Echo Bosses,Combat gear,Food"
   },
   "1229": {
     "taskName": "Kill 3 unique Echo Bosses",
-    "search": "3 unique Echo Bosses"
+    "search": "3 unique Echo Bosses,Combat gear,Food"
   },
   "1230": {
     "taskName": "Equip one unique Echo Item",
@@ -4791,7 +4791,7 @@
   },
   "2050": {
     "taskName": "Kill a Rock Lobster",
-    "search": "Rock Lobster"
+    "search": "Rock Lobster,Combat gear,Food"
   },
   "2575": {
     "taskName": "Fill 25 Master Clue Collection Log Slots",
@@ -4815,11 +4815,11 @@
   },
   "5569": {
     "taskName": "300 Alchemical Hydra Kills",
-    "search": "alchemical hydra"
+    "search": "Combat gear,Antidote++(4),Prayer potion(4),Food"
   },
   "5963": {
     "taskName": "100 Chambers of Xeric",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5600": {
     "taskName": "Equip a Dragon Warhammer",
@@ -5059,11 +5059,11 @@
   },
   "1823": {
     "taskName": "Defeat 50 Superior Slayer Creatures",
-    "search": "Slayer equipment"
+    "search": "Slayer equipment,Combat gear,Food"
   },
   "1832": {
     "taskName": "Craft an Onyx Amulet",
-    "search": "Uncut onyx,Chisel"
+    "search": "Gold bar,Onyx,Amulet mould"
   },
   "1848": {
     "taskName": "Smith a Dragonfire Shield",
@@ -5131,15 +5131,15 @@
   },
   "4847": {
     "taskName": "Defeat the Abyssal Sire 50 Times",
-    "search": "Abyssal Sire 50 Times"
+    "search": "Combat gear,Efaritay's aid,Prayer potion(4),Food"
   },
   "4848": {
     "taskName": "Defeat the Abyssal Sire 150 Times",
-    "search": "Abyssal Sire 150 Times"
+    "search": "Combat gear,Efaritay's aid,Prayer potion(4),Food"
   },
   "4849": {
     "taskName": "Defeat the Abyssal Sire 300 Times",
-    "search": "Abyssal Sire 300 Times"
+    "search": "Combat gear,Efaritay's aid,Prayer potion(4),Food"
   },
   "1985": {
     "taskName": "Complete the Elite Lumbridge & Draynor Diary",
@@ -5179,11 +5179,11 @@
   },
   "5952": {
     "taskName": "Defeat Zalcano 100 Times",
-    "search": "Zalcano 100 Times,Pickaxe"
+    "search": "Pickaxe,Combat gear,Food"
   },
   "4869": {
     "taskName": "Defeat Zulrah 150 Times",
-    "search": "Zulrah 150 Times"
+    "search": "Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food"
   },
   "2061": {
     "taskName": "Equip a Piece of the Dragonstone Armour Set",
@@ -5199,7 +5199,7 @@
   },
   "2102": {
     "taskName": "Equip Every Dagannoth King Ring",
-    "search": "Every Dagannoth King Ring"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "2105": {
     "taskName": "Equip a Neitiznot Faceguard",
@@ -5207,19 +5207,19 @@
   },
   "4877": {
     "taskName": "Defeat Vorkath 5 Times Without Special Damage",
-    "search": "Vorkath 5 Times Without Special Damage"
+    "search": "Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food"
   },
   "2110": {
     "taskName": "Defeat Vorkath 15 Times Without Leaving",
-    "search": "Vorkath 15 Times Without Leaving"
+    "search": "Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food"
   },
   "4880": {
     "taskName": "Defeat Vorkath 300 Times",
-    "search": "Vorkath 300 Times"
+    "search": "Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food"
   },
   "2118": {
     "taskName": "Defeat Each Dagannoth King 300 Times",
-    "search": "Each Dagannoth King 300 Times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "2131": {
     "taskName": "Complete the Elite Fremennik Diary",
@@ -5303,15 +5303,15 @@
   },
   "5147": {
     "taskName": "Defeat the Kraken Boss 300 Times",
-    "search": "Kraken Boss 300 Times"
+    "search": "Combat gear,Trident of the seas,Prayer potion(4),Food"
   },
   "2239": {
     "taskName": "Defeat 300 Demonic Gorillas",
-    "search": "300 Demonic Gorillas"
+    "search": "300 Demonic Gorillas,Combat gear,Food"
   },
   "5149": {
     "taskName": "Defeat 500 Demonic Gorillas",
-    "search": "500 Demonic Gorillas"
+    "search": "500 Demonic Gorillas,Combat gear,Food"
   },
   "2247": {
     "taskName": "Reach Level 5 in Any Barbarian Assault Role",
@@ -5375,7 +5375,7 @@
   },
   "2319": {
     "taskName": "Defeat Any God Wars Dungeon Boss 500 Times",
-    "search": "Any God Wars Dungeon Boss 500 Times"
+    "search": "Any God Wars Dungeon Boss 500 Times,Combat gear,Food"
   },
   "2326": {
     "taskName": "Complete the Elite Falador Diary",
@@ -5439,15 +5439,15 @@
   },
   "2080": {
     "taskName": "Complete the Theatre of Blood 25 Times",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "3888": {
     "taskName": "Complete the Theatre of Blood 50 Times",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "2089": {
     "taskName": "Complete the Theatre of Blood 100 Times",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "2468": {
     "taskName": "Complete the Elite Morytania Diary",
@@ -5483,11 +5483,11 @@
   },
   "5208": {
     "taskName": "Defeat the Corporeal Beast 150 Times",
-    "search": "Corporeal Beast 150 Times"
+    "search": "Combat gear,Spirit shield,Prayer potion(4),Food"
   },
   "2520": {
     "taskName": "Defeat the Corporeal Beast 250 Times",
-    "search": "Corporeal Beast 250 Times"
+    "search": "Combat gear,Spirit shield,Prayer potion(4),Food"
   },
   "2524": {
     "taskName": "Equip a Blessed Spirit Shield",
@@ -5531,7 +5531,7 @@
   },
   "2567": {
     "taskName": "Obtain a Zalcano Shard",
-    "search": ""
+    "search": "Pickaxe"
   },
   "2571": {
     "taskName": "Complete the Elite Ardougne Diary",
@@ -5567,11 +5567,11 @@
   },
   "5222": {
     "taskName": "Defeat The Nightmare 50 times",
-    "search": "Nightmare 50 times"
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "5223": {
     "taskName": "Defeat The Nightmare 150 times",
-    "search": "Nightmare 150 times"
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "5265": {
     "taskName": "50 Combat Achievements",
@@ -5615,7 +5615,7 @@
   },
   "4909": {
     "taskName": "Defeat Nex 300 Times",
-    "search": "Nex 300 Times,Frozen key"
+    "search": "Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food"
   },
   "3909": {
     "taskName": "Equip a Piece of Torva Armour",
@@ -5627,47 +5627,47 @@
   },
   "4913": {
     "taskName": "Defeat Vardorvis 300 times",
-    "search": "Vardorvis 300 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4914": {
     "taskName": "Defeat Awakened Vardorvis",
-    "search": "Awakened Vardorvis"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4918": {
     "taskName": "Defeat Whisperer 300 times",
-    "search": "Whisperer 300 times"
+    "search": "Whisperer 300 times,Combat gear,Food"
   },
   "4919": {
     "taskName": "Defeat Awakened Whisperer",
-    "search": "Awakened Whisperer"
+    "search": "Awakened Whisperer,Combat gear,Food"
   },
   "4923": {
     "taskName": "Defeat Leviathan 300 times",
-    "search": "Leviathan 300 times"
+    "search": "Leviathan 300 times,Combat gear,Food"
   },
   "4924": {
     "taskName": "Defeat Awakened Leviathan",
-    "search": "Awakened Leviathan"
+    "search": "Awakened Leviathan,Combat gear,Food"
   },
   "4928": {
     "taskName": "Defeat Duke Sucellus 300 times",
-    "search": "Duke Sucellus 300 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4929": {
     "taskName": "Defeat Awakened Duke Sucellus",
-    "search": "Awakened Duke Sucellus"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4931": {
     "taskName": "Complete Tombs of Amascut 50 times",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5944": {
     "taskName": "Complete Tombs of Amascut 100 times",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "4940": {
     "taskName": "Defeat Phantom Muspah 300 times",
-    "search": "Phantom Muspah 300 times"
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "4944": {
     "taskName": "Complete Tzhaar-Ket-Rak's fourth challenge",
@@ -5795,11 +5795,11 @@
   },
   "5135": {
     "taskName": "Dismantle a Zulrah scale unique",
-    "search": ""
+    "search": "Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food"
   },
   "5712": {
     "taskName": "Defeat Cerberus 300 times",
-    "search": "Cerberus 300 times"
+    "search": "Combat gear,Spectral spirit shield,Prayer potion(4),Food"
   },
   "739": {
     "taskName": "Equip an Enhanced Crystal Weapon",
@@ -5807,19 +5807,19 @@
   },
   "5716": {
     "taskName": "Defeat Zulrah 300 Times",
-    "search": "Zulrah 300 Times"
+    "search": "Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food"
   },
   "5719": {
     "taskName": "Defeat Venenatis 300 times",
-    "search": "Venenatis 300 times"
+    "search": "Combat gear,Antipoison(4),Food"
   },
   "5722": {
     "taskName": "Defeat Vet'ion 300 times",
-    "search": "Vet'ion 300 times"
+    "search": "Combat gear,Food"
   },
   "5725": {
     "taskName": "Defeat Callisto 300 times",
-    "search": "Callisto 300 times"
+    "search": "Combat gear,Food"
   },
   "5734": {
     "taskName": "Complete 10 Speed Tasks",
@@ -5835,55 +5835,55 @@
   },
   "5739": {
     "taskName": "The Whisperer Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "5740": {
     "taskName": "Vardorvis Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "5741": {
     "taskName": "Duke Sucellus Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "5742": {
     "taskName": "The Leviathan Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "5747": {
     "taskName": "Zulrah Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food"
   },
   "5748": {
     "taskName": "Dagannoth Kings Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "5749": {
     "taskName": "Vorkath Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food"
   },
   "5750": {
     "taskName": "Phantom Muspah Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Food"
   },
   "5751": {
     "taskName": "The Nightmare Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "5752": {
     "taskName": "Phosani's Nightmare Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "5753": {
     "taskName": "Grotesque Guardians Combat Achievements",
-    "search": ""
+    "search": "Brittle key,Combat gear,Prayer potion(4),Food"
   },
   "5754": {
     "taskName": "Abyssal Sire Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Efaritay's aid,Prayer potion(4),Food"
   },
   "5755": {
     "taskName": "Alchemical Hydra Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Antidote++(4),Prayer potion(4),Food"
   },
   "5757": {
     "taskName": "Equip a Light Ballista",
@@ -6095,7 +6095,7 @@
   },
   "3829": {
     "taskName": "Complete Wave 12 of Fortis Colosseum",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Food"
   },
   "3830": {
     "taskName": "Obtain 20,000 Glory",
@@ -6127,7 +6127,7 @@
   },
   "5915": {
     "taskName": "300 Araxxor Kills",
-    "search": "araxxor"
+    "search": "araxxor,Combat gear,Food"
   },
   "5916": {
     "taskName": "Equip the Amulet of Rancour",
@@ -6155,11 +6155,11 @@
   },
   "1765": {
     "taskName": "Kill 25 Echo Bosses",
-    "search": "25 Echo Bosses"
+    "search": "25 Echo Bosses,Combat gear,Food"
   },
   "1766": {
     "taskName": "Kill 75 Echo Bosses",
-    "search": "75 Echo Bosses"
+    "search": "75 Echo Bosses,Combat gear,Food"
   },
   "1878": {
     "taskName": "Blast Furnace 100 Runite Bars",
@@ -6239,7 +6239,7 @@
   },
   "2447": {
     "taskName": "Equip a Nightmare Staff With an Orb",
-    "search": "Nightmare Staff With an Orb"
+    "search": "Combat gear,Prayer potion(4),Sanfew serum(4),Food"
   },
   "2451": {
     "taskName": "Equip a Scythe of Vitur",
@@ -6303,15 +6303,15 @@
   },
   "5743": {
     "taskName": "Chambers of Xeric Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5744": {
     "taskName": "Theatre of Blood Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5745": {
     "taskName": "Tombs of Amascut Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food"
   },
   "5746": {
     "taskName": "Godwars Dungeon Combat Achievements",
@@ -6347,15 +6347,15 @@
   },
   "3838": {
     "taskName": "Colosseum Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Prayer potion(4),Super restore(4),Food"
   },
   "3846": {
     "taskName": "Defeat Sol Heredit 5 times",
-    "search": "Sol Heredit 5 times"
+    "search": "Sol Heredit 5 times,Combat gear,Food"
   },
   "3847": {
     "taskName": "Defeat Sol Heredit 10 times",
-    "search": "Sol Heredit 10 times"
+    "search": "Sol Heredit 10 times,Combat gear,Food"
   },
   "1934": {
     "taskName": "Equip a Crystal Tool",

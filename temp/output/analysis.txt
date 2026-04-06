@@ -1,0 +1,62 @@
+Total tasks: 1589
+
+Top 30 task name patterns (first word):
+   281 Equip
+   170 Defeat
+   160 Complete
+    83 Obtain
+    57 Reach
+    49 Kill
+    44 Catch
+    33 Craft
+    29 Use
+    25 Fill
+    24 Open
+    22 Mine
+    20 Steal
+    20 Make
+    20 Create
+    19 Chop
+    19 Enter
+    19 Gain
+    16 Cast
+    15 1
+    14 Cook
+    14 Fletch
+    14 Smith
+    13 Achieve
+    12 Pickpocket
+    12 Check
+    11 Burn
+    10 Pick
+    10 50
+     9 Turn
+
+Categories:
+  Combat: 568
+  Skill: 558
+  Other: 173
+  Minigame: 168
+  Achievement: 97
+  Quest: 25
+
+Has wikiNotes: 1004
+Has skills[]: 839
+
+Sample wikiNotes:
+  [1 Wintertodt Kill] -> 50 Firemaking
+  [Complete 1 Farming Contract] -> 45 Farming
+  [Restore 5 Prayer Points at an Altar] -> 5 Prayer
+  [Superhuman Strength and Improved Reflexes] -> 16 Prayer
+  [Open 1 Grubby Chest] -> 57 Thieving
+  [Steal a Chocolate Slice] -> 5 Thieving Fremennik, Kandarin, Kourend, or Varlamore
+  [Rake a Farming Patch] -> Rake
+  [Plant Seeds in an Allotment Patch] -> Seed dibber and one of Asgarnia, Morytania, Kandarin, Kourend, Tirannwn, or Varlamore
+  [Protect Your Crops] -> Items requested by the farmer to protect the crop
+  [Chop Some Logs] -> Any axe
+
+Combat task name patterns:
+   317 Other combat
+   169 Defeat X
+    74 X Kill(s)
+     8 Slayer
