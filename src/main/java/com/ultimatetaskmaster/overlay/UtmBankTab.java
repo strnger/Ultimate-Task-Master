@@ -255,7 +255,36 @@ public class UtmBankTab
 	}
 
 	/**
+	 * Expand an item name to include all dose variants if it's a potion.
+	 * E.g., "Antipoison(4)" → ["Antipoison(4)", "Antipoison(3)", "Antipoison(2)", "Antipoison(1)"]
+	 */
+	private List<String> expandPotionVariants(String itemName)
+	{
+		List<String> variants = new ArrayList<>();
+		variants.add(itemName);
+
+		// Check if this is a dosed potion like "Antipoison(4)"
+		if (itemName.endsWith("(4)") || itemName.endsWith("(3)") ||
+			itemName.endsWith("(2)") || itemName.endsWith("(1)"))
+		{
+			String base = itemName.substring(0, itemName.length() - 3);
+			// Add all dose variants
+			for (int dose = 4; dose >= 1; dose--)
+			{
+				String variant = base + "(" + dose + ")";
+				if (!variant.equals(itemName))
+				{
+					variants.add(variant);
+				}
+			}
+		}
+
+		return variants;
+	}
+
+	/**
 	 * Try to find an item ID by searching bank contents for a matching name.
+	 * For potions, also checks other dose variants.
 	 */
 	private int findItemIdByName(String name)
 	{
@@ -264,14 +293,20 @@ public class UtmBankTab
 		ItemContainer bank = client.getItemContainer(net.runelite.api.InventoryID.BANK);
 		if (bank == null) return -1;
 
-		String lower = name.toLowerCase();
-		for (net.runelite.api.Item item : bank.getItems())
+		// Try exact name first, then potion variants
+		List<String> namesToTry = expandPotionVariants(name);
+
+		for (String tryName : namesToTry)
 		{
-			if (item.getId() <= 0) continue;
-			ItemComposition def = client.getItemDefinition(item.getId());
-			if (def != null && def.getName() != null && def.getName().toLowerCase().equals(lower))
+			String lower = tryName.toLowerCase();
+			for (net.runelite.api.Item item : bank.getItems())
 			{
-				return item.getId();
+				if (item.getId() <= 0) continue;
+				ItemComposition def = client.getItemDefinition(item.getId());
+				if (def != null && def.getName() != null && def.getName().toLowerCase().equals(lower))
+				{
+					return item.getId();
+				}
 			}
 		}
 		return -1;
