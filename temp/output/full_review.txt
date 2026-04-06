@@ -1,0 +1,5170 @@
+
+================================================================================
+  Combat (568 tasks)
+================================================================================
+
+  [5566] 1 Alchemical Hydra Kill
+         → Combat gear,Antidote++(4),Prayer potion(4),Food
+
+  [5932] 1 Amoxliatl Kill
+         → Combat gear,Food
+
+  [5912] 1 Araxxor Kill
+         → Combat gear,Food
+
+  [5919] 1 Hueycoatl Kill
+         → Combat gear,Food
+
+  [5686] 1 Mimic Kill
+         → Combat gear,Food
+
+  [5546] 1 Sarachnis Kill
+         → Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+
+  [5557] 1 Skotizo Kill
+         → Dark totem,Combat gear,Food
+
+  [5558] 10 Skotizo Kills
+         → Dark totem,Combat gear,Food
+
+  [5536] 100 Superior Slayer Encounters
+         → Slayer equipment
+
+  [5568] 150 Alchemical Hydra Kills
+         → Combat gear,Antidote++(4),Prayer potion(4),Food
+
+  [5934] 150 Amoxliatl Kills
+         → Combat gear,Food
+
+  [5914] 150 Araxxor Kills
+         → Combat gear,Food
+
+  [5921] 150 Hueycoatl Kills
+         → Combat gear,Food
+
+  [5960] 150 Lizardmen Shaman Kills
+         → Combat gear,Food
+
+  [5548] 150 Sarachnis Kills
+         → Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+
+  [5534] 25 Superior Slayer Encounters
+         → Slayer equipment
+
+  [5569] 300 Alchemical Hydra Kills
+         → Combat gear,Antidote++(4),Prayer potion(4),Food
+
+  [5915] 300 Araxxor Kills
+         → Combat gear,Food
+
+  [5961] 300 Lizardmen Shaman Kills
+         → Combat gear,Food
+
+  [5549] 300 Sarachnis Kills
+         → Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+
+  [5687] 5 Mimic Kills
+         → Combat gear,Food
+
+  [5567] 50 Alchemical Hydra Kills
+         → Combat gear,Antidote++(4),Prayer potion(4),Food
+
+  [5933] 50 Amoxliatl Kills
+         → Combat gear,Food
+
+  [5913] 50 Araxxor Kills
+         → Combat gear,Food
+
+  [5920] 50 Hueycoatl Kills
+         → Combat gear,Food
+
+  [5959] 50 Lizardmen Shaman Kills
+         → Combat gear,Food
+
+  [5547] 50 Sarachnis Kills
+         → Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+
+  [5535] 75 Superior Slayer Encounters
+         → Slayer equipment
+
+  [3784] Activate an Arcane or Dexterous Prayer Scroll
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5605] Activate an Imbued Heart
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1904] Add a Jar to a Display Case
+         → Check the associated bosses,
+
+  [1209] Amoxliatl Combat Achievements
+         → Combat gear,Food
+
+  [2426] Assemble a Slayer Helm
+         → 58 Slayer,
+
+  [3876] Attach a Holy ornament kit to the Scythe of Vitur
+         → Theatre of Blood/Hard Mode
+
+  [5278] Attach a Sanguine ornament kit to the Scythe
+         → Theatre of Blood/Hard Mode
+
+  [5034] Brutally murder Conrad King
+         → Conrad King
+
+  [2641] Bury Some Bones
+         → Bones
+
+  [2644] Bury Some Wyvern or Dragon Bones
+         → Bones
+
+  [2539] Cast Claws of Guthix
+         → Air rune,Fire rune,Blood rune,Guthix staff
+
+  [2540] Cast Flames of Zamorak
+         → Air rune,Fire rune,Blood rune,Staff of zamorak
+
+  [2380] Cast Ice Barrage
+         → Blood rune,Death rune,Water rune
+
+  [2377] Cast Ice Blitz
+         → Blood rune,Death rune,Water rune
+
+  [2374] Cast Ice Burst
+         → Chaos rune,Death rune,Water rune
+
+  [2376] Cast Ice Rush
+         → Chaos rune,Death rune,Water rune
+
+  [2538] Cast Saradomin Strike
+         → Air rune,Fire rune,Blood rune,Staff of saradomin
+
+  [1927] Cast a Blast Spell
+         → Death rune,Fire rune
+
+  [1931] Cast a Surge Spell
+         → Wrath rune,Fire rune
+
+  [1930] Cast a Wave Spell
+         → Blood rune,Fire rune
+
+  [5155] Charge an Amulet of Glory in the Heroes' Guild
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1811] Check Your Slayer Task
+         → Enchanted gem
+
+  [5843] Complete 1 Slayer Task
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4930] Complete Tombs of Amascut
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5944] Complete Tombs of Amascut 100 times
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5943] Complete Tombs of Amascut 25 times
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [4931] Complete Tombs of Amascut 50 times
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [3827] Complete Wave 1 of Fortis Colosseum
+         → Combat gear,Prayer potion(4),Super restore(4),Food
+
+  [3829] Complete Wave 12 of Fortis Colosseum
+         → Combat gear,Prayer potion(4),Super restore(4),Food
+
+  [3828] Complete Wave 6 of Fortis Colosseum
+         → Combat gear,Prayer potion(4),Super restore(4),Food
+
+  [2089] Complete the Theatre of Blood 100 Times
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [2080] Complete the Theatre of Blood 25 Times
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [3888] Complete the Theatre of Blood 50 Times
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [1939] Consume a Saradomin's Light
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2037] Craft a Toxic Blowpipe
+         → Crafting materials
+
+  [2039] Craft a Toxic Trident
+         → Crafting materials
+
+  [2448] Create an Amulet of Blood Fury
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4981] Create the Divine Rune pouch
+         → Crystal dust,Potion
+
+  [4989] Create the Saturated Heart
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1819] Defeat 10 Superior Slayer Creatures
+         → Slayer equipment,Combat gear,Food
+
+  [5148] Defeat 150 Demonic Gorillas
+         → Combat gear,Food
+
+  [1195] Defeat 150 Tormented Demons
+         → Combat gear,Food
+
+  [1820] Defeat 20 Superior Slayer Creatures
+         → Slayer equipment,Combat gear,Food
+
+  [2239] Defeat 300 Demonic Gorillas
+         → Combat gear,Food
+
+  [1196] Defeat 300 Tormented Demons
+         → Combat gear,Food
+
+  [1823] Defeat 50 Superior Slayer Creatures
+         → Slayer equipment,Combat gear,Food
+
+  [1194] Defeat 50 Tormented Demons
+         → Combat gear,Food
+
+  [5149] Defeat 500 Demonic Gorillas
+         → Combat gear,Food
+
+  [2317] Defeat Any God Wars Dungeon Boss 100 Times
+         → Combat gear,Food
+
+  [2318] Defeat Any God Wars Dungeon Boss 250 Times
+         → Combat gear,Food
+
+  [2319] Defeat Any God Wars Dungeon Boss 500 Times
+         → Combat gear,Food
+
+  [4929] Defeat Awakened Duke Sucellus
+         → Combat gear,Prayer potion(4),Food
+
+  [4924] Defeat Awakened Leviathan
+         → Combat gear,Food
+
+  [4914] Defeat Awakened Vardorvis
+         → Combat gear,Prayer potion(4),Food
+
+  [4919] Defeat Awakened Whisperer
+         → Combat gear,Food
+
+  [1970] Defeat Bryophyta
+         → Mossy key,Combat gear,Food
+
+  [5205] Defeat Callisto
+         → Combat gear,Food
+
+  [5724] Defeat Callisto 150 times
+         → Combat gear,Food
+
+  [5725] Defeat Callisto 300 times
+         → Combat gear,Food
+
+  [5723] Defeat Callisto 50 times
+         → Combat gear,Food
+
+  [2315] Defeat Cerberus
+         → Combat gear,Spectral spirit shield,Prayer potion(4),Food
+
+  [5711] Defeat Cerberus 150 times
+         → Combat gear,Spectral spirit shield,Prayer potion(4),Food
+
+  [5712] Defeat Cerberus 300 times
+         → Combat gear,Spectral spirit shield,Prayer potion(4),Food
+
+  [5710] Defeat Cerberus 50 times
+         → Combat gear,Spectral spirit shield,Prayer potion(4),Food
+
+  [2309] Defeat Commander Zilyana
+         → Combat gear,Food
+
+  [4925] Defeat Duke Sucellus
+         → Combat gear,Prayer potion(4),Food
+
+  [4927] Defeat Duke Sucellus 150 times
+         → Combat gear,Prayer potion(4),Food
+
+  [4928] Defeat Duke Sucellus 300 times
+         → Combat gear,Prayer potion(4),Food
+
+  [4926] Defeat Duke Sucellus 50 times
+         → Combat gear,Prayer potion(4),Food
+
+  [4882] Defeat Each Dagannoth King 150 Times
+         → Combat gear,Prayer potion(4),Food
+
+  [2118] Defeat Each Dagannoth King 300 Times
+         → Combat gear,Prayer potion(4),Food
+
+  [4881] Defeat Each Dagannoth King 50 Times
+         → Combat gear,Prayer potion(4),Food
+
+  [2301] Defeat General Graardor
+         → Combat gear,Food
+
+  [2296] Defeat K'ril Tsutsaroth
+         → Combat gear,Food
+
+  [2305] Defeat Kree'arra
+         → Combat gear,Food
+
+  [4920] Defeat Leviathan
+         → Combat gear,Food
+
+  [4922] Defeat Leviathan 150 times
+         → Combat gear,Food
+
+  [4923] Defeat Leviathan 300 times
+         → Combat gear,Food
+
+  [4921] Defeat Leviathan 50 times
+         → Combat gear,Food
+
+  [3902] Defeat Nex
+         → Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+
+  [4908] Defeat Nex 150 Times
+         → Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+
+  [4909] Defeat Nex 300 Times
+         → Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+
+  [3905] Defeat Nex 50 Times
+         → Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+
+  [1966] Defeat Obor
+         → Giant key,Combat gear,Food
+
+  [4937] Defeat Phantom Muspah
+         → Combat gear,Prayer potion(4),Food
+
+  [4939] Defeat Phantom Muspah 150 times
+         → Combat gear,Prayer potion(4),Food
+
+  [4940] Defeat Phantom Muspah 300 times
+         → Combat gear,Prayer potion(4),Food
+
+  [4938] Defeat Phantom Muspah 50 times
+         → Combat gear,Prayer potion(4),Food
+
+  [5221] Defeat Phosani's Nightmare
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [2505] Defeat Scorpia
+         → Combat gear,Antipoison(4),Food
+
+  [3806] Defeat Scurrius
+         → Combat gear,Food
+
+  [3807] Defeat Scurrius 10 times
+         → Combat gear,Food
+
+  [3808] Defeat Scurrius 25 times
+         → Combat gear,Food
+
+  [3847] Defeat Sol Heredit 10 times
+         → Combat gear,Food
+
+  [3846] Defeat Sol Heredit 5 times
+         → Combat gear,Food
+
+  [2428] Defeat The Nightmare
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [5223] Defeat The Nightmare 150 times
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [5940] Defeat The Nightmare 25 times
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [5222] Defeat The Nightmare 50 times
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [4910] Defeat Vardorvis
+         → Combat gear,Prayer potion(4),Food
+
+  [4912] Defeat Vardorvis 150 times
+         → Combat gear,Prayer potion(4),Food
+
+  [4913] Defeat Vardorvis 300 times
+         → Combat gear,Prayer potion(4),Food
+
+  [4911] Defeat Vardorvis 50 times
+         → Combat gear,Prayer potion(4),Food
+
+  [2502] Defeat Venenatis
+         → Combat gear,Antipoison(4),Food
+
+  [5718] Defeat Venenatis 150 times
+         → Combat gear,Antipoison(4),Food
+
+  [5719] Defeat Venenatis 300 times
+         → Combat gear,Antipoison(4),Food
+
+  [5717] Defeat Venenatis 50 times
+         → Combat gear,Antipoison(4),Food
+
+  [2510] Defeat Vet'ion
+         → Combat gear,Food
+
+  [5721] Defeat Vet'ion 150 times
+         → Combat gear,Food
+
+  [5722] Defeat Vet'ion 300 times
+         → Combat gear,Food
+
+  [5720] Defeat Vet'ion 50 times
+         → Combat gear,Food
+
+  [2087] Defeat Vorkath
+         → Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+
+  [2110] Defeat Vorkath 15 Times Without Leaving
+         → Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+
+  [4879] Defeat Vorkath 150 Times
+         → Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+
+  [4880] Defeat Vorkath 300 Times
+         → Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+
+  [4877] Defeat Vorkath 5 Times Without Special Damage
+         → Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+
+  [4878] Defeat Vorkath 50 Times
+         → Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+
+  [4915] Defeat Whisperer
+         → Combat gear,Food
+
+  [4917] Defeat Whisperer 150 times
+         → Combat gear,Food
+
+  [4918] Defeat Whisperer 300 times
+         → Combat gear,Food
+
+  [4916] Defeat Whisperer 50 times
+         → Combat gear,Food
+
+  [2032] Defeat Zalcano
+         → Pickaxe,Combat gear,Food
+
+  [5952] Defeat Zalcano 100 Times
+         → Pickaxe,Combat gear,Food
+
+  [4866] Defeat Zalcano 50 Times
+         → Pickaxe,Combat gear,Food
+
+  [2034] Defeat Zulrah
+         → Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+
+  [4869] Defeat Zulrah 150 Times
+         → Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+
+  [5716] Defeat Zulrah 300 Times
+         → Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+
+  [4868] Defeat Zulrah 50 Times
+         → Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+
+  [2086] Defeat a Basilisk Knight
+         → Combat gear,Food
+
+  [2313] Defeat a Black Demon in Asgarnia
+         → Combat gear,Food
+
+  [2229] Defeat a Bloodveld in Kandarin
+         → Combat gear,Food
+
+  [2027] Defeat a Bloodveld in Tirannwn
+         → Combat gear,Food
+
+  [2311] Defeat a Blue Dragon in Asgarnia
+         → Combat gear,Food
+
+  [2226] Defeat a Cave Kraken
+         → Combat gear,Trident of the seas,Prayer potion(4),Food
+
+  [2508] Defeat a Chaos Dwarf in the Wilderness
+         → Combat gear,Food
+
+  [2090] Defeat a Cockatrice in the Fremennik Province
+         → Mirror shield,Combat gear,Food
+
+  [5211] Defeat a Crocodile
+         → Combat gear,Food
+
+  [2103] Defeat a Dagannoth in the Fremennik Province
+         → Combat gear,Prayer potion(4),Food
+
+  [2036] Defeat a Dark Beast in Tirannwn
+         → Combat gear,Food
+
+  [2214] Defeat a Demonic Gorilla
+         → Combat gear,Food
+
+  [3780] Defeat a Drake
+         → Combat gear,Food
+
+  [751] Defeat a Fire Giant in Kandarin
+         → Combat gear,Food
+
+  [2504] Defeat a Fire Giant in the Wilderness
+         → Combat gear,Food
+
+  [2430] Defeat a Fiyr Shade
+         → Combat gear,Food
+
+  [1961] Defeat a Fossil Island Wyvern
+         → Combat gear,Food
+
+  [3791] Defeat a Gang Boss
+         → Combat gear,Food
+
+  [2427] Defeat a Gargoyle in Morytania
+         → Combat gear,Food
+
+  [2633] Defeat a Goblin
+         → Combat gear,Food
+
+  [2165] Defeat a Greater Demon on Karamja
+         → Combat gear,Food
+
+  [2512] Defeat a Green Dragon in the Wilderness
+         → Combat gear,Food
+
+  [2634] Defeat a Guard
+         → Combat gear,Food
+
+  [2116] Defeat a Jelly in the Fremennik Province
+         → Combat gear,Food
+
+  [2373] Defeat a Kalphite Guardian
+         → Combat gear,Food
+
+  [2031] Defeat a Kurask in Tirannwn
+         → Combat gear,Food
+
+  [2091] Defeat a Kurask in the Fremennik Province
+         → Combat gear,Food
+
+  [2500] Defeat a Lava Dragon in the Wilderness
+         → Combat gear,Food
+
+  [2632] Defeat a Lesser Demon
+         → Combat gear,Food
+
+  [2213] Defeat a Mithril Dragon
+         → Combat gear,Food
+
+  [2631] Defeat a Moss Giant
+         → Combat gear,Food
+
+  [2026] Defeat a Moss Giant in Tirannwn
+         → Combat gear,Food
+
+  [2057] Defeat a Nechryael in Tirannwn
+         → Combat gear,Food
+
+  [2094] Defeat a Pyrefiend in the Fremennik Province
+         → Combat gear,Food
+
+  [2085] Defeat a Rock Crab in the Fremennik Province
+         → Combat gear,Food
+
+  [1962] Defeat a Rune Dragon
+         → Combat gear,Food
+
+  [2295] Defeat a Skeletal Wyvern
+         → Combat gear,Food
+
+  [2215] Defeat a Smoke Devil
+         → Combat gear,Food
+
+  [2178] Defeat a Steel Dragon on Karamja
+         → Combat gear,Food
+
+  [1815] Defeat a Superior Slayer Creature
+         → Slayer equipment,Combat gear,Food
+
+  [1193] Defeat a Tormented Demon
+         → Combat gear,Food
+
+  [2216] Defeat a Tortoise With Riders in Kandarin
+         → Combat gear,Food
+
+  [2294] Defeat a Troll in Asgarnia
+         → Combat gear,Food
+
+  [2099] Defeat a Troll in the Fremennik Province
+         → Combat gear,Food
+
+  [2111] Defeat a Turoth in the Fremennik Province
+         → Combat gear,Food
+
+  [2155] Defeat a TzHaar
+         → Combat gear,Food
+
+  [2434] Defeat a Vyrewatch Sentinel
+         → Combat gear,Food
+
+  [2022] Defeat a Waterfiend in Tirannwn
+         → Combat gear,Food
+
+  [5192] Defeat a Werewolf in Morytania
+         → Combat gear,Food
+
+  [2435] Defeat an Abyssal Demon in Morytania
+         → Combat gear,Food
+
+  [2023] Defeat an Elf in Tirannwn
+         → Combat gear,Food
+
+  [1974] Defeat the Abyssal Sire
+         → Combat gear,Efaritay's aid,Prayer potion(4),Food
+
+  [4848] Defeat the Abyssal Sire 150 Times
+         → Combat gear,Efaritay's aid,Prayer potion(4),Food
+
+  [4849] Defeat the Abyssal Sire 300 Times
+         → Combat gear,Efaritay's aid,Prayer potion(4),Food
+
+  [4847] Defeat the Abyssal Sire 50 Times
+         → Combat gear,Efaritay's aid,Prayer potion(4),Food
+
+  [2513] Defeat the Chaos Elemental
+         → Combat gear,Food
+
+  [2509] Defeat the Chaos Fanatic
+         → Combat gear,Food
+
+  [2518] Defeat the Corporeal Beast
+         → Combat gear,Spirit shield,Prayer potion(4),Food
+
+  [5208] Defeat the Corporeal Beast 150 Times
+         → Combat gear,Spirit shield,Prayer potion(4),Food
+
+  [2520] Defeat the Corporeal Beast 250 Times
+         → Combat gear,Spirit shield,Prayer potion(4),Food
+
+  [5207] Defeat the Corporeal Beast 50 Times
+         → Combat gear,Spirit shield,Prayer potion(4),Food
+
+  [2501] Defeat the Crazy Archaeologist
+         → Combat gear,Food
+
+  [2101] Defeat the Dagannoth Kings Without Leaving
+         → Combat gear,Prayer potion(4),Food
+
+  [5077] Defeat the Evil chicken
+         → Combat gear,Food
+
+  [2290] Defeat the Giant Mole
+         → Spade,Falador shield,Combat gear,Prayer potion(4),Food
+
+  [5157] Defeat the Giant Mole 150 Times
+         → Spade,Falador shield,Combat gear,Prayer potion(4),Food
+
+  [5158] Defeat the Giant Mole 300 Times
+         → Spade,Falador shield,Combat gear,Prayer potion(4),Food
+
+  [5156] Defeat the Giant Mole 50 Times
+         → Spade,Falador shield,Combat gear,Prayer potion(4),Food
+
+  [2462] Defeat the Grotesque Guardians
+         → Brittle key,Combat gear,Prayer potion(4),Food
+
+  [5199] Defeat the Grotesque Guardians 150 Times
+         → Brittle key,Combat gear,Prayer potion(4),Food
+
+  [5198] Defeat the Grotesque Guardians 50 Times
+         → Brittle key,Combat gear,Prayer potion(4),Food
+
+  [2372] Defeat the Kalphite Queen
+         → Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food
+
+  [2077] Defeat the Kalphite Queen 150 Times
+         → Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food
+
+  [2071] Defeat the Kalphite Queen 50 Times
+         → Rope,Combat gear,Antipoison(4),Antidote++(4),Super antipoison(4),Prayer potion(4),Food
+
+  [2514] Defeat the King Black Dragon
+         → Combat gear,Anti-dragon shield,Antifire potion(4),Prayer potion(4),Food
+
+  [5146] Defeat the Kraken Boss 150 Times
+         → Combat gear,Trident of the seas,Prayer potion(4),Food
+
+  [5147] Defeat the Kraken Boss 300 Times
+         → Combat gear,Trident of the seas,Prayer potion(4),Food
+
+  [5145] Defeat the Kraken Boss 50 Times
+         → Combat gear,Trident of the seas,Prayer potion(4),Food
+
+  [1960] Defeat the Lesser Demon in the Wizards' Tower
+         → Combat gear,Food
+
+  [2227] Defeat the Thermonuclear Smoke Devil
+         → Combat gear,Facemask,Prayer potion(4),Food
+
+  [5135] Dismantle a Zulrah scale unique
+         → Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+
+  [2097] Eat Eel sushi
+         → Eel sushi
+
+  [2228] Enhance a Trident of the Seas
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2222] Enter the Ranging Guild
+         → (none)
+
+  [2225] Enter the Wizards' Guild
+         → (none)
+
+  [2221] Equip All Zenyte Jewelry
+         → All Zenyte Jewelry
+
+  [5918] Equip Aranea Boots
+         → Aranea Boots
+
+  [3835] Equip Blessed Dizana's Quiver
+         → Blessed Dizana's Quiver
+
+  [5601] Equip Boots of Brimstone
+         → Boots of Brimstone
+
+  [1971] Equip Bryophyta's Staff
+         → Mossy key,Combat gear,Food
+
+  [1197] Equip Burning claws
+         → Burning claws
+
+  [5209] Equip Craw's Bow
+         → Craw's Bow
+
+  [5213] Equip Dinh's Bulwark
+         → Dinh's Bulwark
+
+  [3837] Equip Echo Boots
+         → Echo Boots
+
+  [2102] Equip Every Dagannoth King Ring
+         → Combat gear,Prayer potion(4),Food
+
+  [2293] Equip Every Godsword
+         → Every Godsword
+
+  [5606] Equip Ferocious Gloves
+         → Ferocious Gloves
+
+  [5825] Equip Full Ahrims Armour Set
+         → Ahrims Armour Set
+
+  [5827] Equip Full Dharoks Armour Set
+         → Dharoks Armour Set
+
+  [5826] Equip Full Guthans Armour Set
+         → Guthans Armour Set
+
+  [5830] Equip Full Karils Armour Set
+         → Karils Armour Set
+
+  [5829] Equip Full Torags Armour Set
+         → Torags Armour Set
+
+  [5828] Equip Full Veracs Armour Set
+         → Veracs Armour Set
+
+  [5936] Equip Glacial Temotli
+         → Glacial Temotli
+
+  [4976] Equip Osmumten's Fang
+         → Osmumten's Fang
+
+  [4977] Equip Osmumten's Fang (or)
+         → Osmumten's Fang (or)
+
+  [5930] Equip Pendant of Ates
+         → Pendant of Ates
+
+  [2167] Equip Some Dragon Platelegs or a Dragon Plateskirt
+         → Dragon platelegs,Dragon plateskirt
+
+  [2307] Equip Some Primordial, Pegasian or Eternal Boots
+         → Primordial, Pegasian or Eternal Boots
+
+  [2218] Equip Some Zenyte Jewelry
+         → Zenyte Jewelry
+
+  [3836] Equip Tonalztics of Ralos
+         → Tonalztics of Ralos
+
+  [5190] Equip Viggora's Chainmace
+         → Viggora's Chainmace
+
+  [5698] Equip Xeric's Talisman
+         → Xeric's Talisman
+
+  [2104] Equip a Berserker Ring
+         → Berserker Ring
+
+  [2524] Equip a Blessed Spirit Shield
+         → Blessed Spirit Shield
+
+  [3792] Equip a Bonecrusher necklace
+         → Bonecrusher necklace
+
+  [2528] Equip a Bracelet of Ethereum
+         → Bracelet of Ethereum
+
+  [5608] Equip a Brimstone Ring
+         → Brimstone Ring
+
+  [2100] Equip a Brine Sabre
+         → Brine Sabre
+
+  [1929] Equip a Combination Battlestaff or Mystic Staff
+         → Lava battlestaff,Mud battlestaff,Steam battlestaff,Smoke battlestaff,Mystic lava staff
+
+  [5951] Equip a Corrupted Weapon
+         → Corrupted Weapon
+
+  [2048] Equip a Crystal Bow
+         → Crystal Bow
+
+  [4854] Equip a Crystal Grail
+         → Crystal Grail
+
+  [2051] Equip a Crystal Shield
+         → Crystal Shield
+
+  [4855] Equip a Dark Bow in Tirannwn
+         → Dark bow
+
+  [1937] Equip a Defender
+         → Defender
+
+  [4846] Equip a Dorgeshuun Crossbow
+         → Dorgeshuun Crossbow
+
+  [5180] Equip a Dragon 2-Handed Sword
+         → Dragon 2-Handed Sword
+
+  [5206] Equip a Dragon 2-Handed Sword in the Wilderness
+         → Dragon 2h sword
+
+  [2375] Equip a Dragon Chainbody in the Kharidian Desert
+         → Dragon chainbody
+
+  [1963] Equip a Dragon Crossbow
+         → Dragon Crossbow
+
+  [2291] Equip a Dragon Defender
+         → Dragon Defender
+
+  [2233] Equip a Dragon Full Helm
+         → Dragon Full Helm
+
+  [3782] Equip a Dragon Hunter Crossbow
+         → Dragon Hunter Crossbow
+
+  [5607] Equip a Dragon Hunter Lance
+         → Dragon Hunter Lance
+
+  [2516] Equip a Dragon Pickaxe
+         → Dragon Pickaxe
+
+  [1964] Equip a Dragon Platebody or Dragon Kiteshield
+         → Dragon platebody,Dragon kiteshield
+
+  [2217] Equip a Dragon Scimitar
+         → Dragon Scimitar
+
+  [5600] Equip a Dragon Warhammer
+         → Dragon Warhammer
+
+  [1908] Equip a Dragon Weapon
+         → Dragon Weapon
+
+  [2093] Equip a Dragonbone Necklace
+         → Dragonbone Necklace
+
+  [1968] Equip a Dragonfire Shield
+         → Dragonfire Shield
+
+  [2088] Equip a Dragonfire Ward
+         → Dragonfire Ward
+
+  [5602] Equip a Dust Battlestaff
+         → Dust Battlestaff
+
+  [2515] Equip a Fedora
+         → Fedora
+
+  [2223] Equip a Fighter Torso
+         → Fighter Torso
+
+  [2158] Equip a Fire Cape
+         → Fire Cape
+
+  [1911] Equip a Full Adamant Set
+         → Full Adamant Set
+
+  [2299] Equip a Full Armadyl Armour Set
+         → Full Armadyl Armour Set
+
+  [2304] Equip a Full Bandos Armour Set
+         → Full Bandos Armour Set
+
+  [1918] Equip a Full Black Dragonhide Set
+         → Full Black Dragonhide Set
+
+  [1916] Equip a Full Blue Dragonhide Set
+         → Full Blue Dragonhide Set
+
+  [2025] Equip a Full Crystal Armour Set
+         → Full Crystal Armour Set
+
+  [2556] Equip a Full Dagon'Hai Set
+         → Full Dagon'Hai Set
+
+  [1913] Equip a Full Dragon Set
+         → Full Dragon Set
+
+  [1915] Equip a Full Green Dragonhide Set
+         → Full Green Dragonhide Set
+
+  [2393] Equip a Full Infinity Robe Set
+         → Full Infinity Robe Set
+
+  [2445] Equip a Full Inquisitor's Set
+         → Full Inquisitor's Set
+
+  [2453] Equip a Full Justiciar Set
+         → Full Justiciar Set
+
+  [1910] Equip a Full Mithril Set
+         → Full Mithril Set
+
+  [2157] Equip a Full Obsidian Armour Set
+         → Full Obsidian Armour Set
+
+  [1917] Equip a Full Red Dragonhide Set
+         → Full Red Dragonhide Set
+
+  [2127] Equip a Full Rockshell Armour Set
+         → Full Rockshell Armour Set
+
+  [1912] Equip a Full Rune Set
+         → Full Rune Set
+
+  [3910] Equip a Full Set of Torva Armour
+         → Full Set of Torva Armour
+
+  [3869] Equip a Full Set of Zealot's Robes
+         → Full Set of Zealot's Robes
+
+  [2125] Equip a Full Skeletal Armour Set
+         → Full Skeletal Armour Set
+
+  [2126] Equip a Full Spined Armour Set
+         → Full Spined Armour Set
+
+  [2328] Equip a Full Void Knight Set
+         → Full Void Knight Set
+
+  [2454] Equip a Ghrazi Rapier
+         → Ghrazi Rapier
+
+  [2536] Equip a God Cape
+         → God Cape
+
+  [2310] Equip a Godsword
+         → Godsword
+
+  [2443] Equip a Granite Hammer or Granite Ring
+         → Granite Hammer or Granite Ring
+
+  [2095] Equip a Granite Shield
+         → Granite Shield
+
+  [2220] Equip a Heavy Ballista
+         → Heavy Ballista
+
+  [2108] Equip a Helm of Neitiznot
+         → Helm of Neitiznot
+
+  [1967] Equip a Hill Giant Club
+         → Hill Giant Club
+
+  [5611] Equip a Kodai Wand
+         → Kodai Wand
+
+  [2526] Equip a Lava Battlestaff
+         → Lava Battlestaff
+
+  [4884] Equip a Leaf-Bladed Battleaxe
+         → Leaf-Bladed Battleaxe
+
+  [4883] Equip a Leaf-Bladed Sword
+         → Leaf-Bladed Sword
+
+  [5757] Equip a Light Ballista
+         → Light Ballista
+
+  [1921] Equip a Magic Shortbow
+         → Magic Shortbow
+
+  [2529] Equip a Malediction Ward
+         → Malediction Ward
+
+  [1919] Equip a Maple Shortbow
+         → Maple Shortbow
+
+  [2257] Equip a Marksman Chompy Hat
+         → Marksman Chompy Hat
+
+  [5603] Equip a Mist Battlestaff
+         → Mist Battlestaff
+
+  [1905] Equip a Mithril Weapon
+         → Mithril Weapon
+
+  [2122] Equip a Mud Battlestaff
+         → Mud Battlestaff
+
+  [2105] Equip a Neitiznot Faceguard
+         → Neitiznot Faceguard
+
+  [2446] Equip a Nightmare Staff
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [2447] Equip a Nightmare Staff With an Orb
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [2316] Equip a Pair of Dragon Boots
+         → Pair of Dragon Boots
+
+  [4974] Equip a Piece of Masori Armour
+         → Piece of Masori Armour
+
+  [3909] Equip a Piece of Torva Armour
+         → Piece of Torva Armour
+
+  [3868] Equip a Piece of Zealot's Robes
+         → Piece of Zealot's Robes
+
+  [2638] Equip a Piece of a Mystic Set
+         → Piece of a Mystic Set
+
+  [2438] Equip a Piece of any Barrows Armour Set
+         → Spade,Combat gear,Prayer potion(4),Food
+
+  [2298] Equip a Piece of the Armadyl Armour Set
+         → Piece of the Armadyl Armour Set
+
+  [2303] Equip a Piece of the Bandos Armour Set
+         → Piece of the Bandos Armour Set
+
+  [2555] Equip a Piece of the Dagon'Hai Set
+         → Piece of the Dagon'Hai Set
+
+  [2392] Equip a Piece of the Infinity Robe Set
+         → Piece of the Infinity Robe Set
+
+  [2444] Equip a Piece of the Inquisitor's Set
+         → Piece of the Inquisitor's Set
+
+  [2452] Equip a Piece of the Justiciar Set
+         → Piece of the Justiciar Set
+
+  [2038] Equip a Rat Bone Weapon
+         → Rat Bone Weapon
+
+  [2511] Equip a Ring of the Gods
+         → Ring of the Gods
+
+  [1922] Equip a Rune Crossbow
+         → Rune Crossbow
+
+  [1907] Equip a Rune Weapon
+         → Rune Weapon
+
+  [2450] Equip a Sanguinesti Staff
+         → Sanguinesti Staff
+
+  [5215] Equip a Sarachnis Cudgel
+         → Knife,Slash weapon,Combat gear,Prayer potion(4),Food
+
+  [2302] Equip a Saradomin Sword
+         → Saradomin Sword
+
+  [2451] Equip a Scythe of Vitur
+         → Scythe of Vitur
+
+  [2109] Equip a Seer's Ring
+         → Seer's Ring
+
+  [2123] Equip a Seercull
+         → Seercull
+
+  [2035] Equip a Serpentine Helm
+         → Serpentine Helm
+
+  [2522] Equip a Spectral or Arcane Spirit Shield
+         → Spectral or Arcane Spirit Shield
+
+  [1814] Equip a Spiny Helmet
+         → Spiny helmet
+
+  [2292] Equip a Staff of the Dead
+         → Staff of the Dead
+
+  [1914] Equip a Studded Body and Chaps
+         → Studded body,Studded chaps
+
+  [2205] Equip a Thammaron's Sceptre
+         → Thammaron's Sceptre
+
+  [4894] Equip a Toktz-Ket-Xil
+         → Toktz-Ket-Xil
+
+  [4900] Equip a Toktz-Xil-Ak
+         → Toktz-Xil-Ak
+
+  [4901] Equip a Toktz-Xil-Ek
+         → Toktz-Xil-Ek
+
+  [1198] Equip a Tormented Weapon
+         → Tormented Weapon
+
+  [2503] Equip a Treasonous Ring
+         → Treasonous Ring
+
+  [2230] Equip a Trident of the Seas
+         → Trident of the Seas
+
+  [5609] Equip a Twisted Bow
+         → Twisted Bow
+
+  [3783] Equip a Twisted Buckler
+         → Twisted Buckler
+
+  [2507] Equip a Tyrannical Ring
+         → Tyrannical Ring
+
+  [5834] Equip a Warped Sceptre
+         → Warped Sceptre
+
+  [2106] Equip a Warrior Ring
+         → Warrior Ring
+
+  [2637] Equip a Wizard Robe and Hat
+         → Wizard Robe and Hat
+
+  [1920] Equip a Yew Shortbow
+         → Yew Shortbow
+
+  [2297] Equip a Zamorakian Spear
+         → Zamorakian Spear
+
+  [3912] Equip a Zaryte Crossbow
+         → Zaryte Crossbow
+
+  [5931] Equip a Zombie Axe
+         → Zombie Axe
+
+  [3787] Equip a full set of Ancestral
+         → full set of Ancestral
+
+  [5950] Equip a full set of Masori
+         → full set of Masori
+
+  [3788] Equip a pair of Dragon Claws
+         → pair of Dragon Claws
+
+  [3840] Equip a piece of Blood Moon armour
+         → piece of Blood Moon armour
+
+  [3844] Equip a piece of Blue Moon armour
+         → piece of Blue Moon armour
+
+  [3842] Equip a piece of Eclipse Moon armour
+         → piece of Eclipse Moon armour
+
+  [5922] Equip a piece of Hueycoatl armour
+         → piece of Hueycoatl armour
+
+  [3833] Equip a piece of Sunfire Fanatic
+         → piece of Sunfire Fanatic
+
+  [5778] Equip a piece of Virtus
+         → piece of Virtus
+
+  [1975] Equip an Abyssal Bludgeon
+         → Abyssal Bludgeon
+
+  [1977] Equip an Abyssal Dagger
+         → Abyssal Dagger
+
+  [2224] Equip an Abyssal Tentacle
+         → Abyssal Tentacle
+
+  [1909] Equip an Abyssal Whip
+         → Abyssal Whip
+
+  [1906] Equip an Adamant Weapon
+         → Adamant Weapon
+
+  [1972] Equip an Ancient Wyvern Shield
+         → Ancient Wyvern Shield
+
+  [2112] Equip an Archer's Ring
+         → Archer's Ring
+
+  [2306] Equip an Armadyl Crossbow
+         → Armadyl Crossbow
+
+  [2092] Equip an Ava's Assembler
+         → Ava's Assembler
+
+  [2449] Equip an Avernic Defender
+         → Avernic Defender
+
+  [5610] Equip an Elder Maul
+         → Elder Maul
+
+  [1926] Equip an Elemental Battlestaff or Mystic Staff
+         → Air battlestaff,Water battlestaff,Earth battlestaff,Fire battlestaff,Mystic air staff
+
+  [1923] Equip an Elemental Staff
+         → Staff of air,Staff of water,Staff of earth,Staff of fire
+
+  [2523] Equip an Elysian Spirit Shield
+         → Elysian Spirit Shield
+
+  [2527] Equip an Enchanted Slayer Staff
+         → Enchanted Slayer Staff
+
+  [739] Equip an Enhanced Crystal Weapon
+         → Enhanced Crystal Weapon
+
+  [5604] Equip an Eternal Slayer Ring
+         → Eternal Slayer Ring
+
+  [2159] Equip an Infernal Cape
+         → Infernal Cape
+
+  [2442] Equip an Inquisitor's Mace
+         → Inquisitor's Mace
+
+  [2156] Equip an Obsidian Cape
+         → Obsidian Cape
+
+  [2231] Equip an Occult Necklace
+         → Occult Necklace
+
+  [2530] Equip an Odium Ward
+         → Odium Ward
+
+  [2259] Equip an Ogre Expert Chompy Hat
+         → Ogre Expert Chompy Hat
+
+  [2258] Equip an Ogre Forester Chompy Hat
+         → Ogre Forester Chompy Hat
+
+  [3786] Equip any Ancestral piece
+         → any Ancestral piece
+
+  [2439] Equip any Full Barrows Armour Set
+         → Spade,Combat gear,Prayer potion(4),Food
+
+  [5831] Equip any piece of Crystal Armour
+         → any piece of Crystal Armour
+
+  [3841] Equip full Blood Moon armour
+         → Blood Moon armour
+
+  [3845] Equip full Blue Moon armour
+         → Blue Moon armour
+
+  [3843] Equip full Eclipse Moon armour
+         → Eclipse Moon armour
+
+  [5042] Equip full Elder chaos robe
+         → Elder chaos robe
+
+  [5923] Equip full Hueycoatl armour
+         → Hueycoatl armour
+
+  [3834] Equip full Sunfire Fanatic
+         → Sunfire Fanatic
+
+  [4970] Equip full Virtus
+         → Virtus
+
+  [1230] Equip one unique Echo Item
+         → one unique Echo Item
+
+  [3913] Equip some Zaryte Vambraces
+         → Zaryte Vambraces
+
+  [5002] Equip the Accursed Sceptre
+         → Accursed Sceptre
+
+  [5916] Equip the Amulet of Rancour
+         → Amulet of Rancour
+
+  [4971] Equip the Ancient Sceptre
+         → Ancient Sceptre
+
+  [4967] Equip the Bellator Ring
+         → Bellator Ring
+
+  [2357] Equip the Cursed Amulet of Magic
+         → Cursed Amulet of Magic
+
+  [4972] Equip the Elidinis Ward
+         → Elidinis Ward
+
+  [4979] Equip the Lightbearer
+         → Lightbearer
+
+  [4969] Equip the Magus Ring
+         → Magus Ring
+
+  [5917] Equip the Noxious Halberd
+         → Noxious Halberd
+
+  [5004] Equip the Soulreaper Axe
+         → Soulreaper Axe
+
+  [4980] Equip the Tumeken's Shadow
+         → Tumeken's Shadow
+
+  [4968] Equip the Ultor Ring
+         → Ultor Ring
+
+  [5003] Equip the Ursine Chainmace
+         → Ursine Chainmace
+
+  [4988] Equip the Venator Bow
+         → Venator Bow
+
+  [4966] Equip the Venator Ring
+         → Venator Ring
+
+  [5000] Equip the Voidwaker
+         → Voidwaker
+
+  [5001] Equip the Webweaver
+         → Webweaver
+
+  [1232] Equip three unique Echo Items
+         → three unique Echo Items
+
+  [1231] Equip two unique Echo Items
+         → two unique Echo Items
+
+  [2115] Get a Gem from a Gorak
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5060] Get your revenge against a Dark Wizard
+         → Hairdresser,Emma,Sonalo
+
+  [4965] Hit 150 with the Keris Partisan
+         → Keris partisan,Combat gear,Food
+
+  [1210] Hueycoatl Combat Achievements
+         → Combat gear,Food
+
+  [2537] Imbue a God Cape
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1227] Kill 1 unique Echo Boss
+         → Combat gear,Food
+
+  [1189] Kill 10 Frost Crabs
+         → Combat gear,Food
+
+  [2276] Kill 10 Locusts
+         → Combat gear,Food
+
+  [1228] Kill 2 unique Echo Bosses
+         → Combat gear,Food
+
+  [1765] Kill 25 Echo Bosses
+         → Combat gear,Food
+
+  [1229] Kill 3 unique Echo Bosses
+         → Combat gear,Food
+
+  [2320] Kill 30 Bandits
+         → Combat gear,Food
+
+  [2339] Kill 5 Bunnies
+         → Combat gear,Food
+
+  [2365] Kill 5 Sand Crabs
+         → Combat gear,Food
+
+  [2463] Kill 5 Spinners
+         → Combat gear,Food
+
+  [5133] Kill 50 Elves in Tirannwn
+         → Combat gear,Food
+
+  [1766] Kill 75 Echo Bosses
+         → Combat gear,Food
+
+  [5038] Kill 8 penguins within 5 seconds
+         → Combat gear,Food
+
+  [5016] Kill Salarin the Twisted
+         → Combat gear,Food
+
+  [2358] Kill a Barbarian in Kourend
+         → Combat gear,Food
+
+  [1218] Kill a Barbarian in the Barbarian Village
+         → Combat gear,Food
+
+  [2266] Kill a Billy Goat
+         → Combat gear,Food
+
+  [5132] Kill a Black Dragon in Tirannwn
+         → Combat gear,Food
+
+  [1932] Kill a Brine Rat
+         → Combat gear,Food
+
+  [5905] Kill a Buffalo
+         → Combat gear,Food
+
+  [2200] Kill a Chicken with your fists
+         → Combat gear,Food
+
+  [2174] Kill a Cow in one hit
+         → Combat gear,Food
+
+  [1187] Kill a Dire Wolf
+         → Combat gear,Food
+
+  [2212] Kill a Duck with a fire spell
+         → Fire rune,Air rune,Mind rune
+
+  [2237] Kill a Frog
+         → Combat gear,Food
+
+  [5758] Kill a Frogeel
+         → Combat gear,Food
+
+  [2238] Kill a Goblin holding a spear
+         → Combat gear,Food
+
+  [5714] Kill a Guard in Varlamore underground
+         → Combat gear,Food
+
+  [5759] Kill a Jubster
+         → Combat gear,Food
+
+  [4964] Kill a Kalphite with the Keris Partisan
+         → Combat gear,Food
+
+  [2360] Kill a King Sand Crab
+         → Combat gear,Food
+
+  [2455] Kill a Moss, Fire & Hill Giant in Kourend
+         → Combat gear,Food
+
+  [2185] Kill a Mugger
+         → Combat gear,Food
+
+  [5021] Kill a Necromancer
+         → Combat gear,Food
+
+  [5761] Kill a Newtroost
+         → Combat gear,Food
+
+  [2197] Kill a Ram
+         → Combat gear,Food
+
+  [2177] Kill a Rat
+         → Combat gear,Food
+
+  [2050] Kill a Rock Lobster
+         → Combat gear,Food
+
+  [2046] Kill a Rooster
+         → Combat gear,Food
+
+  [1776] Kill a Snake in Karamja
+         → Combat gear,Food
+
+  [2171] Kill a Spider by kicking it
+         → Combat gear,Food
+
+  [2055] Kill a Suqah
+         → Combat gear,Food
+
+  [5760] Kill a Swordchick
+         → Combat gear,Food
+
+  [2052] Kill a Wallasalki
+         → Combat gear,Food
+
+  [5035] Kill a Yak
+         → Combat gear,Food
+
+  [5058] Kill a port sarim prisoner
+         → Combat gear,Food
+
+  [5907] Kill an Icefiend in Varlamore
+         → Combat gear,Food
+
+  [2236] Kill an Imp with an earth spell
+         → Earth rune,Air rune,Mind rune
+
+  [5025] Kill three chickens in 6 seconds
+         → Combat gear,Food
+
+  [5833] Load a blowpipe with Dragon Darts
+         → Glassblowing pipe,Molten glass
+
+  [1933] Load a blowpipe with Rune Darts
+         → Glassblowing pipe,Molten glass
+
+  [2441] Loot a Barrows Chest
+         → Spade,Combat gear,Prayer potion(4),Food
+
+  [2047] Loot a Lyre
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3830] Obtain 20,000 Glory
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3831] Obtain 40,000 Glory
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3832] Obtain 58,000 Glory
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5210] Obtain Every Revenant Weapon
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1893] Obtain a Boss Pet
+         → Boss Pet
+
+  [1787] Obtain a Frozen Cache from a Cache
+         → Frozen Cache
+
+  [2525] Obtain an Ecumenical Key
+         → Ecumenical Key
+
+  [1978] Offer an Unsired to the Font of Consumption
+         → Unsired
+
+  [5630] Open 1 Grubby Chest
+         → Grubby chest,Grubby key
+
+  [5089] Open 1 Muddy Chest
+         → Muddy key
+
+  [3802] Open 1 Zombie Pirate Locker
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5090] Open 10 Muddy Chests
+         → Muddy key
+
+  [5087] Open 15 Larran's Chests
+         → Larran's key
+
+  [3803] Open 15 Zombie Pirate Lockers
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5088] Open 50 Larran's Chests
+         → Larran's key
+
+  [3804] Open 50 Zombie Pirate Lockers
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2554] Open One of Larran's Chests
+         → Larran's key
+
+  [1784] Open a Frozen Cache
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5075] Open the Dark Chest
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1903] Perform a Special Attack
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1894] Reach Combat Level 10
+         → (none)
+
+  [1898] Reach Combat Level 100
+         → (none)
+
+  [1899] Reach Combat Level 110
+         → (none)
+
+  [1900] Reach Combat Level 120
+         → (none)
+
+  [1901] Reach Combat Level 126
+         → (none)
+
+  [1895] Reach Combat Level 25
+         → (none)
+
+  [1896] Reach Combat Level 50
+         → (none)
+
+  [1897] Reach Combat Level 75
+         → (none)
+
+  [2643] Reach a Prayer Bonus of 15
+         → (none)
+
+  [2636] Reach a Prayer Bonus of 30
+         → (none)
+
+  [5214] Recolour a piece of the Ancestral Robes
+         → Chambers of Xeric/Challenge Mode
+
+  [2639] Restore 5 Prayer Points at an Altar
+         → Altar (Varlamore)
+
+  [2635] Restore 75 Prayer Points at an Altar
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5076] Scrape some blue dragonhide
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2219] Set Up a Dwarf Cannon
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2161] Set a mummy ablaze
+         → Mummy (Ancient Pyramid)
+
+  [1813] Slay 250 Creatures
+         → Combat gear,Food
+
+  [1821] Slay an Abyssal Demon
+         → Combat gear,Food
+
+  [2121] Stun a monster
+         → 30 Defence,
+
+  [3848] Subdue the Moons of Peril
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [3849] Subdue the Moons of Peril 10 times
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [3850] Subdue the Moons of Peril 25 times
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [3851] Subdue the Moons of Peril 50 times
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [2640] Superhuman Strength and Improved Reflexes
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2330] Turn in 100 Mole Claws to Wyson the Gardener
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5159] Unlock a Gate in Taverley Dungeon
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3799] Use a teleport anchoring scroll
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3825] Use the Bank Chest inside Fortis Colosseum
+         → Combat gear,Prayer potion(4),Super restore(4),Food
+
+  [2234] Use the Chivalry Prayer
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3826] Use the Fortis Salute emote
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2235] Use the Piety Prayer
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1880] Use the Protect from Melee Prayer
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2117] Use the Special Attack of a Dragon Axe
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1902] Visit Death's Domain
+         → Death's Office
+
+
+================================================================================
+  Skill (558 tasks)
+================================================================================
+
+  [3816] 1 Tempoross Kill
+         → Harpoon,Hammer,Rope,Bucket of water
+
+  [5456] 1 Wintertodt Kill
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [5941] 10 Tempoross Kills
+         → Harpoon,Hammer,Rope,Bucket of water
+
+  [5956] 10 Wintertodt Kills
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [5942] 25 Tempoross Kills
+         → Harpoon,Hammer,Rope,Bucket of water
+
+  [5957] 25 Wintertodt Kills
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [5457] 50 Wintertodt Kills
+         → Axe,Tinderbox,Knife,Hammer,Warm clothing,Food
+
+  [2649] Achieve Your First Level 10
+         → (none)
+
+  [2650] Achieve Your First Level 20
+         → (none)
+
+  [2651] Achieve Your First Level 30
+         → (none)
+
+  [2652] Achieve Your First Level 40
+         → (none)
+
+  [2648] Achieve Your First Level 5
+         → (none)
+
+  [2653] Achieve Your First Level 50
+         → (none)
+
+  [2654] Achieve Your First Level 60
+         → (none)
+
+  [2655] Achieve Your First Level 70
+         → (none)
+
+  [2656] Achieve Your First Level 80
+         → (none)
+
+  [2657] Achieve Your First Level 90
+         → (none)
+
+  [2658] Achieve Your First Level 95
+         → (none)
+
+  [2647] Achieve Your First Level Up
+         → (none)
+
+  [1950] Barehand catch a Shark
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2146] Beat Jacky Jester
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1851] Blast Furnace 100 Mithril Bars
+         → Ore,Coal
+
+  [1878] Blast Furnace 100 Runite Bars
+         → Ore,Coal
+
+  [5099] Blow 100 Light Orbs
+         → Glassblowing pipe,Molten glass
+
+  [2074] Build a Demonic Throne
+         → Saw,Hammer,Planks
+
+  [2072] Build a Gilded Altar
+         → Saw,Hammer,Planks
+
+  [1852] Build a Mahogany Portal
+         → Saw,Hammer,Planks
+
+  [3810] Build a Quetzal Landing Site
+         → Saw,Hammer,Planks
+
+  [1850] Build a Room in Your Player Owned House
+         → Saw,Hammer,Planks
+
+  [5092] Build a Spirit tree & fairy ring
+         → Saw,Hammer,Planks
+
+  [1785] Build a Waka Canoe
+         → Saw,Hammer,Planks
+
+  [1853] Build an Oak Larder
+         → Saw,Hammer,Planks
+
+  [1867] Burn 100 Willow Logs
+         → Willow logs,Tinderbox
+
+  [1870] Burn 100 Yew Logs
+         → Yew logs,Tinderbox
+
+  [5101] Burn 20 Blisterwood Logs
+         → Logs,Tinderbox
+
+  [5100] Burn 20 Pyre Logs
+         → Logs,Tinderbox
+
+  [5102] Burn 200 Redwood Logs
+         → Redwood logs,Tinderbox
+
+  [1973] Burn 25 Maple Logs
+         → Maple logs,Tinderbox
+
+  [1788] Burn Some Food
+         → Raw food
+
+  [1871] Burn Some Magic Logs
+         → Magic logs,Tinderbox
+
+  [1864] Burn Some Normal Logs
+         → Logs,Tinderbox
+
+  [1865] Burn Some Oak Logs
+         → Oak logs,Tinderbox
+
+  [2485] Bury Some Lava Dragon Bones
+         → Bones
+
+  [2408] Capture 10 sandworms
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3864] Cast Degrime Spell Full Clean
+         → Astral rune,Nature rune
+
+  [1928] Cast High Level Alchemy
+         → Nature rune,Fire rune
+
+  [1924] Cast Home Teleport
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2068] Cast Moonclan Teleport
+         → Law rune,Earth rune,Astral rune
+
+  [2070] Cast Spellbook Swap
+         → Cosmic rune,Astral rune,Law rune
+
+  [2012] Catch 10 Pike
+         → Fishing rod,Fishing bait
+
+  [5203] Catch 100 Dark Crabs
+         → Dark fishing bait,Lobster pot
+
+  [1836] Catch 100 Lobsters
+         → Lobster pot
+
+  [1839] Catch 100 Shark
+         → Harpoon
+
+  [5909] Catch 100 Tecu salamanders
+         → Tecu salamander
+
+  [2423] Catch 150 Anglerfish
+         → Fishing rod,Sandworms
+
+  [5140] Catch 150 Red Chinchompas in Kandarin
+         → Box trap
+
+  [2004] Catch 25 Sardines
+         → Fishing rod,Fishing bait
+
+  [3860] Catch 25 Sunlight Antelopes
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2367] Catch 30 Orange Salamanders
+         → Rope,Small fishing net
+
+  [5123] Catch 300 Red Chinchompas in Tirannwn
+         → Box trap
+
+  [2459] Catch 50 Grey Chinchompas
+         → Box trap
+
+  [4892] Catch 50 Karambwan
+         → Karambwan vessel,Raw karambwanji
+
+  [3859] Catch 50 Moonlight Antelopes
+         → Moonlight Antelope
+
+  [1838] Catch 50 Salmon
+         → Fly fishing rod,Feather
+
+  [1837] Catch 50 Swordfish
+         → Harpoon
+
+  [2460] Catch 500 Chinchompas
+         → Box trap
+
+  [1872] Catch a Baby Impling
+         → Butterfly net,Impling jar
+
+  [2491] Catch a Black Chinchompa
+         → Box trap
+
+  [2490] Catch a Black Salamander
+         → Rope,Small fishing net
+
+  [2041] Catch a Cerulean Twitch
+         → Cerulean twitch,Bird snare
+
+  [2198] Catch a Crimson Swift in the Feldip Hills
+         → Crimson swift,Bird snare
+
+  [2013] Catch a Crystal Impling
+         → Butterfly net,Impling jar
+
+  [1877] Catch a Dragon Impling
+         → Butterfly net,Impling jar
+
+  [2458] Catch a Grey Chinchompa
+         → Box trap
+
+  [4837] Catch a Herbiboar 150 Times
+         → 80 Hunter,
+
+  [4836] Catch a Herbiboar 50 Times
+         → 80 Hunter,
+
+  [1834] Catch a Herring
+         → Fishing rod,Fishing bait,Fishing spot (small net, bait)
+
+  [4891] Catch a Karambwanji
+         → Small fishing net,Fishing spot (karambwanji)
+
+  [4830] Catch a Lucky Impling Bare-Handed
+         → Butterfly net,Impling jar
+
+  [2204] Catch a Monkfish
+         → Small fishing net
+
+  [2040] Catch a Polar Kebbit
+         → Noose wand
+
+  [2202] Catch a Red Salamander
+         → Rope,Small fishing net
+
+  [2042] Catch a Sabre-toothed Kebbit
+         → Deadfall trap
+
+  [2164] Catch a Salmon
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2150] Catch a Salmon on Karamja
+         → Fly fishing rod,Feather
+
+  [2343] Catch a Sapphire Glacialis
+         → Butterfly net,Butterfly jar
+
+  [1833] Catch a Shrimp
+         → Small fishing net,Fishing spot (small net, bait)
+
+  [2079] Catch a Snowy Knight
+         → Butterfly net,Butterfly jar
+
+  [2421] Catch a Swamp Lizard in Morytania
+         → Rope,Small fishing net
+
+  [1875] Catch a Swamp Lizard or Salamander
+         → Rope,Small fishing net
+
+  [5115] Catch a wild kebbit
+         → Wild kebbit
+
+  [1835] Catch an Anchovy
+         → Small fishing net,Fishing spot (small net, bait)
+
+  [4893] Check a grown Calquat Tree
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4852] Check a grown Crystal Tree
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5143] Check a grown Dragonfruit Tree in Catherby
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4823] Check a grown Fruit Tree
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4839] Check a grown Magic Tree in Lumbridge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4851] Check a grown Papaya Tree in Lletya
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5142] Check a grown Papaya Tree in the Gnome Stronghold
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5179] Check a grown Potato Cactus
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5509] Check a grown Redwood Tree
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1936] Check the health of 5 Crystal Trees
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3858] Check the health of Mahogany Tree in Marcellus's Patch
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2348] Chop 100 Blisterwood Logs
+         → Any axe,Blisterwood logs
+
+  [2334] Chop 100 Maples in Tirannwn
+         → Any axe,Maple logs
+
+  [5130] Chop 100 Teak Logs in Prifddinas
+         → Any axe,Teak logs
+
+  [1783] Chop 100 Willow Logs
+         → Any axe,Willow logs
+
+  [1979] Chop 100 Yew Logs
+         → Any axe,Yew logs
+
+  [2417] Chop 15 Yew Logs in Shayzien
+         → Any axe,Yew logs
+
+  [5908] Chop 20 Magic Logs in Varlamore
+         → Any axe,Magic logs
+
+  [5011] Chop 200 Redwood Logs
+         → Any axe,Redwood logs
+
+  [2385] Chop 25 Juniper Logs
+         → Any axe,Juniper logs
+
+  [1202] Chop 50 Magic Logs in Tirannwn
+         → Any axe,Magic logs
+
+  [5122] Chop 500 Redwood logs
+         → Any axe,Redwood logs
+
+  [1786] Chop 75 Magic Logs
+         → Any axe,Magic logs
+
+  [4825] Chop Some Logs
+         → Bronze axe
+
+  [4827] Chop Some Logs With a Rune Axe
+         → Rune Axe,Logs
+
+  [4826] Chop Some Logs With a Steel Axe
+         → Steel axe
+
+  [4845] Chop a Sulliuscep Cap
+         → Any axe,Sulliuscep cap
+
+  [5061] Chop a log from a potato tree
+         → Axe
+
+  [5037] Chop down an arctic pine tree
+         → Arctic pine tree,Bronze axe
+
+  [1224] Clean 100 Grimy Avantoe
+         → Grimy avantoe
+
+  [1222] Clean 15 Grimy Tarromin
+         → Grimy tarromin
+
+  [1221] Clean 25 Grimy Guam Leafs
+         → Grimy guam leaf
+
+  [1225] Clean 50 Grimy Cadantine
+         → Grimy cadantine
+
+  [1226] Clean 50 Grimy Lantadyme
+         → Grimy lantadyme
+
+  [1223] Clean 50 Grimy Ranarr Weed
+         → Grimy ranarr weed
+
+  [1888] Clean a Grimy Avantoe
+         → Grimy avantoe
+
+  [1884] Clean a Grimy Guam
+         → Grimy guam leaf
+
+  [5468] Complete 1 Farming Contract
+         → Guildmaster Jane
+
+  [5958] Complete 10 Farming Contracts
+         → Seed dibber,Rake,Spade
+
+  [3821] Complete 10 Hunter Rumours
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4843] Complete 10 Laps of the Draynor Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5842] Complete 10 Laps of the Varrock Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5935] Complete 10 laps of the Varlamore Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3822] Complete 25 Hunter Rumours
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1889] Complete 25 laps of the Rellekka Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5469] Complete 50 Farming Contracts
+         → Seed dibber,Rake,Spade
+
+  [3823] Complete 50 Hunter Rumours
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1882] Complete 50 Laps of a Rooftop Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5129] Complete 50 laps of the Prifddinas Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3820] Complete a Hunter Rumour
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5177] Complete the Al Kharid Agility Course
+         → Ellis
+
+  [5139] Complete the Ardougne Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2195] Complete the Barbarian Outpost Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5189] Complete the Canifis Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4842] Complete the Draynor Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5152] Complete the Falador Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2194] Complete the Gnome Stronghold Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2076] Complete the Penguin Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2016] Complete the Prifddinas Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4853] Complete the Prifddinas Agility Course in 1:10
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4871] Complete the Rellekka Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5138] Complete the Seers' Village Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2412] Complete the Shayzien Advanced Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2411] Complete the Shayzien Basic Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5841] Complete the Varrock Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2418] Complete the Werewolf Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2489] Complete the Wilderness Agility Course
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2011] Cook 10 Sardines
+         → Raw food
+
+  [5095] Cook 100 Anglerfish
+         → Raw anglerfish
+
+  [2142] Cook 100 Karambwans
+         → Raw karambwan
+
+  [1791] Cook 100 Lobsters
+         → Raw lobster
+
+  [3897] Cook 100 Moonlight Antelopes
+         → Raw food
+
+  [1793] Cook 100 Sharks
+         → Raw shark
+
+  [5093] Cook 100 pies
+         → Pie dish,Pastry dough
+
+  [5713] Cook 20 Karambwans in a row
+         → Raw karambwan
+
+  [2017] Cook 20 Pike
+         → Raw food
+
+  [5094] Cook 20 Redberry Pies
+         → Pie dish,Pastry dough
+
+  [2346] Cook 20 Sharks in Darkmeyer
+         → Raw shark
+
+  [4828] Cook Shrimp
+         → Raw shrimp
+
+  [2487] Cook a Dark Crab
+         → Raw dark crab
+
+  [2008] Cook a Rabbit in Tirannwn
+         → Raw rabbit
+
+  [2410] Craft 100 Blood runes
+         → Dense essence block,Chisel
+
+  [2409] Craft 100 Soul runes
+         → Dense essence block
+
+  [1827] Craft 100 Unpowered Orbs
+         → Crafting materials
+
+  [3852] Craft 1000 Sunfire Runes
+         → Rune essence,Fire talisman
+
+  [1860] Craft 200 Essence Into Runes
+         → Crafting materials
+
+  [1863] Craft 2500 Essence Into Runes
+         → Crafting materials
+
+  [1831] Craft 30 Blue Dragonhide Bodies
+         → Dragon leather,Needle,Thread
+
+  [1861] Craft 4 Runes With 1 Essence
+         → Crafting materials
+
+  [2075] Craft 50 Astral Runes
+         → Crafting materials
+
+  [1957] Craft 50 Cosmic Runes
+         → Pure essence,Cosmic talisman
+
+  [2019] Craft 50 Death Runes
+         → Pure essence,Death talisman
+
+  [2284] Craft 50 Law Runes
+         → Pure essence,Law talisman
+
+  [2153] Craft 50 Nature Runes
+         → Pure essence,Nature talisman
+
+  [1956] Craft 50 Water Runes
+         → Rune essence,Water talisman
+
+  [1862] Craft Any Combination Rune
+         → Crafting materials
+
+  [2283] Craft a Body Rune
+         → Rune essence,Body talisman
+
+  [1830] Craft a Dragonstone Amulet
+         → Gold bar,Dragonstone,Amulet mould
+
+  [2362] Craft a Fire Rune
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2557] Craft a Ghorrock Teleport Tablet
+         → Crafting materials
+
+  [2363] Craft a Lava Rune at the Fire Altar
+         → Crafting materials
+
+  [1826] Craft a Leather Body
+         → Leather,Needle,Thread
+
+  [2024] Craft a Piece of Crystal Armour
+         → Crafting materials
+
+  [1829] Craft a Ruby Amulet
+         → Gold bar,Ruby,Amulet mould
+
+  [2424] Craft a Rune Using Daeyalt Essence
+         → Crafting materials
+
+  [2422] Craft a Snelm
+         → Crafting materials
+
+  [2495] Craft an Air Battlestaff in the Wilderness
+         → Crafting materials
+
+  [2282] Craft an Air Rune
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1828] Craft an Emerald Ring
+         → Gold bar,Emerald,Ring mould
+
+  [1832] Craft an Onyx Amulet
+         → Gold bar,Onyx,Amulet mould
+
+  [2289] Craft some Pottery In Sophanem
+         → Soft clay
+
+  [2851] Create 10 Dynamite
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5127] Create 100 Divine Ranging Potions
+         → Dwarf weed,Wine of zamorak,Vial of water
+
+  [5126] Create 100 Divine Super Combat Potions
+         → Crystal dust,Potion
+
+  [3856] Create 100 Jugs of Blessed Sunfire Wine
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1199] Create 25 Divine Super Attack Potions
+         → Irit leaf,Eye of newt,Vial of water
+
+  [1200] Create 25 Divine Super Strength Potions
+         → Kwuarm,Limpwurt root,Vial of water
+
+  [2084] Create a Catherby Teleport Tablet
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5113] Create a Compost Potion
+         → Volcanic ash,Harralander,Grimy harralander,Vial,Vial of water,Harralander potion (unf)
+
+  [5114] Create a Guthix Rest Tea
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1805] Create a Mithril Grapple
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3819] Create a Quetzal Whistle
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5098] Create a black d'hide shield
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5097] Create a green d'hide shield
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5112] Create an Antipoison
+         → Unicorn horn dust,Unicorn horn,Pestle and mortar,Marrentill,Grimy marrentill,Vial,Vial of water,Marrentill potion (unf)
+
+  [4984] Create the Colossal Rune Pouch
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5006] Create the long rope shortcut in Darkmeyer
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2015] Cross a Trap in Isafdar
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2349] Cross the Chaos Temple Stone Shortcut
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1959] Cut 50 Maple Logs
+         → Chisel
+
+  [1825] Cut a Sapphire
+         → Uncut sapphire,Chisel
+
+  [2340] Cut the Swaying Tree
+         → Swaying tree,Bronze axe
+
+  [4832] Dismantle 20 Filled Bird Houses
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1201] Dissect 250 Sacred Eels
+         → 87 Fishing,
+
+  [2009] Dissect 50 Sacred Eels
+         → 87 Fishing,
+
+  [1886] Drink a Strength Potion
+         → Limpwurt,Limpwurt seed,Grimy tarromin,Tarromin,Vial,Vial of water,Tarromin potion (unf)
+
+  [1945] Enter the Cooks' Guild
+         → (none)
+
+  [2281] Enter the Crafting Guild
+         → (none)
+
+  [5498] Enter the Farming Guild's High Tier
+         → (none)
+
+  [5497] Enter the Farming Guild's Mid Tier
+         → (none)
+
+  [2203] Enter the Fishing Guild
+         → (none)
+
+  [5503] Enter the Woodcutting Guild
+         → (none)
+
+  [749] Enter your Player Owned House
+         → Portal (Player-owned house)
+
+  [5204] Equip 100 Black Chinchompas
+         → 100 Black Chinchompas
+
+  [2492] Equip 250 Black Chinchompas
+         → 250 Black Chinchompas
+
+  [2493] Equip 500 Black Chinchompas
+         → 500 Black Chinchompas
+
+  [1934] Equip a Crystal Tool
+         → Crystal Tool
+
+  [5708] Equip a Fish Sack
+         → Fish Sack
+
+  [2207] Equip a Full Angler's Outfit
+         → Full Angler's Outfit
+
+  [2277] Equip a Full Graceful Outfit
+         → Full Graceful Outfit
+
+  [2280] Equip a Full Prospector Outfit
+         → Full Prospector Outfit
+
+  [2278] Equip a Full Rogue Outfit
+         → Full Rogue Outfit
+
+  [3881] Equip a Full set of Golden Prospector
+         → Full set of Golden Prospector
+
+  [5709] Equip a Golden Tench
+         → Golden Tench
+
+  [2263] Equip a Karamja Monkey Backpack
+         → Karamja Monkey Backpack
+
+  [2264] Equip a Maniacal Monkey Backpack
+         → Maniacal Monkey Backpack
+
+  [2262] Equip a Monkey Backpack
+         → Monkey Backpack
+
+  [3880] Equip a Piece of the Golden Prospector set
+         → Piece of the Golden Prospector set
+
+  [2322] Equip a Pirate Hook
+         → Pirate Hook
+
+  [2414] Equip a Ring of Endurance
+         → Ring of Endurance
+
+  [2201] Equip a Spottier Cape
+         → Spottier Cape
+
+  [5911] Equip a Tecu Salamander
+         → Tecu Salamander
+
+  [4986] Equip a full set of Raiment of the eye
+         → full set of Raiment of the eye
+
+  [5036] Equip a full set of Yakhide Armour
+         → full set of Yakhide Armour
+
+  [5929] Equip a piece of Alchemists outfit
+         → piece of Alchemists outfit
+
+  [2014] Equip an Elven Signet
+         → Elven Signet
+
+  [2275] Equip an Infernal Tool
+         → Infernal Tool
+
+  [5926] Equip full Alchemists outfit
+         → Alchemists outfit
+
+  [1874] Equip full Graahk, Larupia or Kyatt
+         → Graahk, Larupia or Kyatt
+
+  [3889] Equip full Guild Hunter Outfit
+         → Guild Hunter Outfit
+
+  [4985] Equip the Abyssal Lantern
+         → Abyssal Lantern
+
+  [1790] Ferment 100 Jugs of Wine
+         → Jug of water,Grapes
+
+  [1775] Fill a Bucket With Supercompost
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2498] Fill a Giant Pouch
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1855] Fill a Hard STASH Unit
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2497] Fill a Large Pouch
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1854] Fill a Medium STASH Unit
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3875] Fish a House Key
+         → Fishing rod
+
+  [5110] Fletch 100 Dragon Javelins
+         → Javelin shaft
+
+  [5141] Fletch 100 Maple Longbow (u) in Kandarin
+         → Knife,Maple logs
+
+  [5104] Fletch 1000 arrow shafts
+         → Knife,Logs
+
+  [1803] Fletch 150 Iron Arrows
+         → Iron arrowheads,Headless arrow
+
+  [5111] Fletch 200 Dragon Darts
+         → Dart tips,Feather
+
+  [5106] Fletch 200 Magic Longbow (u)
+         → Knife,Magic logs
+
+  [5103] Fletch 25 Oak Stocks
+         → Knife
+
+  [1801] Fletch Some Arrow Shafts
+         → Knife,Logs
+
+  [5107] Fletch a Magic Shield
+         → Knife
+
+  [5108] Fletch a Redwood Shield
+         → Knife,Redwood logs
+
+  [1808] Fletch a Rune Crossbow
+         → Knife
+
+  [5939] Fletch a Willow Shortbow (u)
+         → Knife,Willow logs
+
+  [1802] Fletch an Oak Shortbow
+         → Oak shortbow (u),Oak logs,Knife,Bowstring,Flax,Spinning wheel
+
+  [1806] Fletch some Broad Arrows or Bolts
+         → Broad arrowheads,Headless arrow
+
+  [5082] Give Thurgo a redberry pie
+         → Thurgo
+
+  [1188] Give a Dwarf Redberry Antelope
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4934] Guardians of the Rift 1 Rift closed
+         → Chisel,Any pickaxe
+
+  [5945] Guardians of the Rift 10 Rifts closed
+         → Chisel,Any pickaxe
+
+  [5946] Guardians of the Rift 25 Rifts closed
+         → Chisel,Any pickaxe
+
+  [2772] Harvest 25 Zamorak's Grapes
+         → Seed dibber,Seeds,Spade
+
+  [2287] Harvest Any Herb at the Troll Stronghold
+         → Seed dibber,Seeds,Spade
+
+  [2010] Harvest Some Sweetcorn in Prifddinas
+         → Seed dibber,Seeds,Spade
+
+  [2078] Harvest a Snapdragon in Weiss
+         → Seed dibber,Seeds,Spade
+
+  [1774] Harvest an Irit Leaf
+         → Seed dibber,Seeds,Spade
+
+  [2312] Have Drew create 500 buckets
+         → Bucket
+
+  [3867] Inferior Demonbane Demon Kill
+         → 44 Magic Cannot be an imp.
+
+  [2145] Land a hoop on a stick
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1869] Light a Bullseye Lantern
+         → Tinderbox
+
+  [1947] Light a Pyre Ship
+         → Tinderbox
+
+  [1866] Light a Torch
+         → Unlit torch,Tinderbox
+
+  [1859] Locate a Runecrafting Altar With a Talisman
+         → Air talisman,Water talisman,Earth talisman,Fire talisman,Body talisman,Mind talisman,Cosmic talisman,Chaos talisman,Nature talisman,Law talisman,Death talisman,Blood talisman,Wrath talisman,Elemental talisman,Catalytic talisman
+
+  [5928] Make 100 Prayer Regeneration Potions
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2364] Make 20 Magic Potions
+         → Lantadyme,Potato cactus,Vial of water
+
+  [2285] Make 20 Ranging Potions
+         → Dwarf weed,Wine of zamorak,Vial of water
+
+  [2286] Make 20 Stamina Potions
+         → Super energy,Amylase crystal
+
+  [1887] Make 30 Prayer Potions
+         → Ranarr weed,Snape grass,Vial of water
+
+  [5084] Make 50 Ancient Brews
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5085] Make 50 Forgotten Brews
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5927] Make 50 Goading Potions
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5086] Make 50 Menaphite Remedies
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2356] Make 50 Oak Planks in Kourend
+         → Logs,Coins
+
+  [5131] Make 50 Teak Planks in Prifddinas
+         → Logs,Coins
+
+  [4831] Make a 4 dose potion
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5212] Make a Combat Potion
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1792] Make a Pineapple Pizza
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1890] Make a Saradomin Brew
+         → Toadflax,Crushed nest,Vial of water
+
+  [1892] Make a Super Combat Potion
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1885] Make an Attack Potion
+         → Eye of newt,Grimy guam leaf,Guam leaf,Vial,Vial of water,Guam potion (unf)
+
+  [2488] Make an Extended Antifire Potion
+         → Antifire potion,Lava scale shard
+
+  [2279] Mine 15 Granite in the Necropolis
+         → Any pickaxe
+
+  [5118] Mine 15 coal
+         → Any pickaxe,Coal
+
+  [3857] Mine 20 Mithril Ore in the Stonecutter Outpost
+         → Avinia 
+
+  [5125] Mine 200 Runite Ore in Tirannwn
+         → Any pickaxe,Runite ore
+
+  [5124] Mine 200 Soft Clay in Tirannwn
+         → Any pickaxe
+
+  [2457] Mine 25 Pure Essence
+         → Any pickaxe,Rune essence
+
+  [2331] Mine 25 gold rocks in Tirannwn
+         → Any pickaxe,Gold ore
+
+  [3854] Mine 250 Blessed Bone Shards
+         → Calcified rocks
+
+  [2368] Mine 30 Chunks of Granite
+         → Any pickaxe
+
+  [5969] Mine 5 Tin Ore
+         → Bronze pickaxe,Tin rocks
+
+  [1800] Mine 50 Adamantite Ore
+         → Any pickaxe,Adamantite ore
+
+  [1797] Mine 50 Iron Ore
+         → Any pickaxe,Iron ore
+
+  [1980] Mine 50 Mithril Ore
+         → Any pickaxe,Mithril ore
+
+  [2773] Mine 50 Volcanic Sulphur
+         → Any pickaxe,Volcanic mine
+
+  [2499] Mine Some Runite Ore in the Wilderness
+         → Any pickaxe,Runite ore
+
+  [3853] Mine a Calcified Deposit
+         → Calcified rocks
+
+  [1794] Mine some Copper Ore
+         → Bronze pickaxe,Copper rocks
+
+  [1798] Mine some Ore With a Rune Pickaxe
+         → Rune Pickaxe
+
+  [1795] Mine some Ore With a Steel Pickaxe
+         → Steel pickaxe
+
+  [2021] Move Your House to Prifddinas
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2209] Move Your House to Yanille
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5153] Obtain 20 Golden Nuggets
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2701] Obtain 25 Million Agility XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2697] Obtain 25 Million Construction XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1756] Obtain 25 Million Cooking XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2707] Obtain 25 Million Crafting XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1762] Obtain 25 Million Farming XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1758] Obtain 25 Million Firemaking XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1754] Obtain 25 Million Fishing XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2709] Obtain 25 Million Fletching XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2703] Obtain 25 Million Herblore XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1748] Obtain 25 Million Hunter XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1750] Obtain 25 Million Mining XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2691] Obtain 25 Million Prayer XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2695] Obtain 25 Million Runecraft XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1746] Obtain 25 Million Slayer XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1752] Obtain 25 Million Smithing XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2705] Obtain 25 Million Thieving XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1760] Obtain 25 Million Woodcutting XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5788] Obtain 35 Million Agility XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5786] Obtain 35 Million Construction XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5798] Obtain 35 Million Cooking XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5791] Obtain 35 Million Crafting XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5801] Obtain 35 Million Farming XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5799] Obtain 35 Million Firemaking XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5797] Obtain 35 Million Fishing XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5792] Obtain 35 Million Fletching XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5789] Obtain 35 Million Herblore XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5794] Obtain 35 Million Hunter XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5795] Obtain 35 Million Mining XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5783] Obtain 35 Million Prayer XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5785] Obtain 35 Million Runecraft XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5793] Obtain 35 Million Slayer XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5796] Obtain 35 Million Smithing XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5790] Obtain 35 Million Thieving XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5800] Obtain 35 Million Woodcutting XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5811] Obtain 50 Million Agility XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5802] Obtain 50 Million Attack XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5809] Obtain 50 Million Construction XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5821] Obtain 50 Million Cooking XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5814] Obtain 50 Million Crafting XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5804] Obtain 50 Million Defence XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5824] Obtain 50 Million Farming XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5822] Obtain 50 Million Firemaking XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5820] Obtain 50 Million Fishing XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5815] Obtain 50 Million Fletching XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5812] Obtain 50 Million Herblore XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5810] Obtain 50 Million Hitpoints XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5817] Obtain 50 Million Hunter XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5807] Obtain 50 Million Magic XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5818] Obtain 50 Million Mining XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5806] Obtain 50 Million Prayer XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5805] Obtain 50 Million Ranged XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5808] Obtain 50 Million Runecraft XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5816] Obtain 50 Million Slayer XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5819] Obtain 50 Million Smithing XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5803] Obtain 50 Million Strength XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5813] Obtain 50 Million Thieving XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5823] Obtain 50 Million Woodcutting XP
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4822] Obtain 800 Coins From Coin Pouches At Once
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5505] Obtain Runite Ore at the Blast Mine
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1782] Obtain a Bird Nest
+         → Bird Nest
+
+  [3794] Obtain a Casket from Fishing
+         → Casket
+
+  [1799] Obtain a Clue Geode While Mining
+         → Clue Geode
+
+  [1796] Obtain a Gem While Mining
+         → Gem
+
+  [5136] Obtain a Magic seed from a birds nest
+         → Magic seed
+
+  [1879] Obtain a Mark of Grace
+         → Mark of Grace
+
+  [1763] Obtain a Skilling Pet
+         → Skilling Pet
+
+  [2567] Obtain a Zalcano Shard
+         → Pickaxe
+
+  [3891] Obtain the Huntsman's Kit
+         → Huntsman's Kit
+
+  [2355] Offer an egg to a shrine
+         → egg
+
+  [4820] Open 28 Coin Pouches At Once
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3892] Open a Master Hunter's Loot Sack
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3894] Open an Adept Hunter's Loot Sack
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3877] Pay an Urchin for Information
+         → Urchin
+
+  [5176] Pickpocket a Bandit in the Bandit Camp
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1952] Pickpocket a Bullseye Lantern From a Cave Goblin
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1764] Pickpocket a Citizen
+         → Citizen
+
+  [1948] Pickpocket a HAM Member
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2193] Pickpocket a Hero
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2148] Pickpocket a King Worm
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5953] Pickpocket a Knight of Ardougne 50 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5502] Pickpocket a Master Farmer
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2359] Pickpocket a Menaphite Thug 50 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1949] Pickpocket a Varrock Guard
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2420] Pickpocket a Vyre 50 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2020] Pickpocket an Elf 50 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5494] Plant 100 Bologano Seeds
+         → Seed dibber,Seeds,Spade
+
+  [5493] Plant 100 Golovanova Seeds
+         → Seed dibber,Seeds,Spade
+
+  [5495] Plant 100 Logavano Seeds
+         → Seed dibber,Seeds,Spade
+
+  [1772] Plant Seeds in an Allotment Patch
+         → Allotment Patch
+
+  [5007] Plant an Anima Seed
+         → Seed dibber,Seeds,Spade
+
+  [1773] Protect Your Crops
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3878] Purchase a Celestial ring
+         → Coins
+
+  [1849] Purchase a Player Owned House
+         → Estate agent
+
+  [5925] Purchase the Chugging Barrel
+         → Coins
+
+  [5924] Purchase the Reagents Pouch
+         → Coins
+
+  [1771] Rake a Farming Patch
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2672] Reach Base Level 10
+         → (none)
+
+  [2673] Reach Base Level 20
+         → (none)
+
+  [2674] Reach Base Level 30
+         → (none)
+
+  [2675] Reach Base Level 40
+         → (none)
+
+  [2671] Reach Base Level 5
+         → (none)
+
+  [2676] Reach Base Level 50
+         → (none)
+
+  [2677] Reach Base Level 60
+         → (none)
+
+  [2678] Reach Base Level 70
+         → (none)
+
+  [2679] Reach Base Level 80
+         → (none)
+
+  [2680] Reach Base Level 90
+         → (none)
+
+  [2681] Reach Base Level 95
+         → (none)
+
+  [2700] Reach Level 99 Agility
+         → (none)
+
+  [2682] Reach Level 99 Attack
+         → (none)
+
+  [2696] Reach Level 99 Construction
+         → (none)
+
+  [1755] Reach Level 99 Cooking
+         → (none)
+
+  [2706] Reach Level 99 Crafting
+         → (none)
+
+  [2686] Reach Level 99 Defence
+         → (none)
+
+  [1761] Reach Level 99 Farming
+         → (none)
+
+  [1757] Reach Level 99 Firemaking
+         → (none)
+
+  [1753] Reach Level 99 Fishing
+         → (none)
+
+  [2708] Reach Level 99 Fletching
+         → (none)
+
+  [2702] Reach Level 99 Herblore
+         → (none)
+
+  [2698] Reach Level 99 Hitpoints
+         → (none)
+
+  [1747] Reach Level 99 Hunter
+         → (none)
+
+  [2692] Reach Level 99 Magic
+         → (none)
+
+  [1749] Reach Level 99 Mining
+         → (none)
+
+  [2690] Reach Level 99 Prayer
+         → (none)
+
+  [2688] Reach Level 99 Ranged
+         → (none)
+
+  [2694] Reach Level 99 Runecraft
+         → (none)
+
+  [2710] Reach Level 99 Slayer
+         → (none)
+
+  [1751] Reach Level 99 Smithing
+         → (none)
+
+  [2684] Reach Level 99 Strength
+         → (none)
+
+  [2704] Reach Level 99 Thieving
+         → (none)
+
+  [1759] Reach Level 99 Woodcutting
+         → (none)
+
+  [2659] Reach Total Level 100
+         → (none)
+
+  [2663] Reach Total Level 1000
+         → (none)
+
+  [2664] Reach Total Level 1250
+         → (none)
+
+  [2665] Reach Total Level 1500
+         → (none)
+
+  [2666] Reach Total Level 1750
+         → (none)
+
+  [2667] Reach Total Level 2000
+         → (none)
+
+  [2668] Reach Total Level 2100
+         → (none)
+
+  [2669] Reach Total Level 2200
+         → (none)
+
+  [2670] Reach Total Level 2277
+         → (none)
+
+  [2660] Reach Total Level 250
+         → (none)
+
+  [2661] Reach Total Level 500
+         → (none)
+
+  [2662] Reach Total Level 750
+         → (none)
+
+  [5832] Receive a Dragonstone Amulet from an Impling
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3805] Redeem 50 Wilderness Agility Tickets
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3790] Repair a Fishing Crane
+         → Fishing Crane
+
+  [2429] Restore 14 Prayer points in Hosidius
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5201] Sacrifice Some Bones at the Chaos Temple
+         → Bones
+
+  [5202] Sacrifice Some Dragon Bones at the Chaos Temple
+         → Dragon Bones
+
+  [4833] Set up a Magic Bird House
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1840] Smelt a Bronze Bar
+         → Copper ore,Tin ore,Bronze pickaxe,Copper rock,Tin rock,Furnace
+
+  [1847] Smelt a Runite Bar
+         → Ore
+
+  [1845] Smelt a Steel Bar
+         → Iron ore,Coal
+
+  [2345] Smelt a Steel Bar in Port Phasmatys
+         → Iron ore,Coal
+
+  [5030] Smelt a mithril bar in a volcanic fissure
+         → Mithril ore,Coal
+
+  [1841] Smelt an Iron Bar
+         → Iron ore,Bronze pickaxe,Iron rock,Furnace
+
+  [1846] Smith 1,000 Adamant Dart Tips
+         → Adamantite bar,Hammer
+
+  [2566] Smith 1,000 Rune Dart Tips
+         → Runite bar,Hammer
+
+  [5121] Smith 10 Steel bolts (unf)
+         → Steel bar,Hammer
+
+  [1842] Smith 150 Iron Arrowtips
+         → Iron bar,Hammer
+
+  [1981] Smith 250 Mithril bolts (unf)
+         → Mithril bar,Hammer
+
+  [5970] Smith 500 Runite bolts (unf) in Prifddinas
+         → Metal bar,Hammer
+
+  [3785] Smith Shayzien (1)
+         → Metal bar,Hammer
+
+  [3789] Smith Shayzien (5)
+         → Metal bar,Hammer
+
+  [2419] Smith Steel in Kourend Castle
+         → Steel bar,Hammer
+
+  [5119] Smith a Bronze full helm
+         → Bronze bar,Hammer,Anvil
+
+  [5120] Smith a Bronze plateskirt
+         → Bronze bar,Hammer,Anvil
+
+  [1848] Smith a Dragonfire Shield
+         → Metal bar,Hammer
+
+  [5009] Smith a Rune Item
+         → Runite bar,Hammer
+
+  [1844] Smith a Steel Platebody
+         → Steel bar,Hammer
+
+  [1873] Snare a Bird
+         → Bird snare,Crimson swift
+
+  [1824] Spin a Ball of Wool
+         → Spinning wheel
+
+  [5637] Steal 1 Artefact
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3886] Steal 100 Valuables
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5638] Steal 15 Artefacts
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3863] Steal 15 House Keys
+         → Wealthy citizen
+
+  [3885] Steal 25 Valuables
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1770] Steal From a Gem Stall
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1951] Steal From the Varrock Tea Stall
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3795] Steal Some Silk
+         → Silk stall
+
+  [3884] Steal a Blessed Bone Statuette
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2056] Steal a Chisel
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4821] Steal a Chocolate Slice
+         → Bakery stall
+
+  [2341] Steal a Cow bell in Rellekka
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2043] Steal a Fish
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5492] Steal a Golovanova Fruit Top
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3862] Steal a House Key
+         → Wealthy citizen
+
+  [2044] Steal a Wooden Stock
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1953] Steal from a Fur Stall
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1954] Steal from a Silver Stall
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1955] Steal from a Spice Stall
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3861] Steal from the Fortis Spice Stall
+         → Spice Stall
+
+  [1789] Successfully Cook 5 Pieces of Food
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5096] Successfully Cut a Red Topaz
+         → Uncut red topaz
+
+  [1204] Successfully hop over the Tripwire in Tirannwn
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2067] Switch to the Lunar Spellbook
+         → Astral altar
+
+  [4887] Take a Shortcut Across the Shilo Village River
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1925] Teleport Using Law Runes
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3855] Teleport to Cam Torum using a Calcified Moth
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3817] Teleport to Civitas illa Fortis
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1205] Thieve a Diamond from a Gem Stall in Tirannwn
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1206] Thieve a tiara from a Silver Stall in Tirannwn
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1946] Trade in 1000 Minnows
+         → Coins
+
+  [4872] Trap a Sabre-toothed Kyatt
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2199] Trap a Spined Larupia in the Feldip Hills
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1779] Travel Between Your Spirit Trees
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4829] Turn any Logs Into a Plank
+         → sawmill
+
+  [5644] Turn in 1 Library Book
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5967] Turn in 10 Library Books
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2361] Turn in a Pyramid Top to Simon Templeton
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1958] Use Enriched Bones on the Strange Machine
+         → Enriched Bones
+
+  [2082] Use Some Icy Basalt to Teleport to Weiss
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2083] Use Your Portal Nexus to Teleport to Weiss
+         → Frozen key,Combat gear,Prayer potion(4),Saradomin brew(4),Super restore(4),Food
+
+  [5134] Use a prayer altar to restore 90 prayer in Prifddinas
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2496] Use the Abyss
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1944] Use the Range in Lumbridge Castle
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1857] Visit the Rune Essence Mine
+         → Aubury,Archmage Sedridor, Wizard Distentor, Wizard Cromperty, Brimstail
+
+  [2344] Worship the Ectofuntus
+         → Bucket of slime,Bones
+
+
+================================================================================
+  Other (173 tasks)
+================================================================================
+
+  [1190] Activate the Statue of Ates
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2196] Ask for a Quest from Bob
+         → Bob
+
+  [2166] Balance 5 barrels on your head
+         → Jimmy (Warriors' Guild)
+
+  [5693] Bank at Land's End
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5694] Bank at Mount Quidamortem
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5150] Brimstail Rune Essence Mine teleport
+         → Brimstail
+
+  [2001] Build a Bank on Fossil Island
+         → Saw,Hammer,Planks
+
+  [4907] Buy Something From Trader Crewmembers
+         → Trader crewmember
+
+  [2240] Buy a candle in Lumbridge
+         → Coins
+
+  [5699] Cast Kourend Castle Teleport
+         → Law rune,Fire rune,Water rune,Soul rune
+
+  [2065] Charter a Ship From Prifddinas to Port Tyras
+         → Coins
+
+  [3809] Charter a Ship From Sunset Coast to Civitas
+         → Reinn (Sunset Coast)
+
+  [5062] Churn some butter
+         → Bucket of milk,Pot of cream
+
+  [4885] Collect Miscellania Resources at Full Approval
+         → Throne of Miscellania
+
+  [5065] Commune a Pharoah's Sceptre to the Necropolis
+         → Pharaoh's sceptre
+
+  [2484] Complete the Evil Bob random event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2646] Complete the Leagues Tutorial
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2517] Complete the Maze random event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2006] Complete the Natural History Quiz
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2532] Complete the Pillory random event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2521] Complete the Pinball random event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2486] Complete the Postie Pete random event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2533] Complete the Prison Pete random event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2561] Complete the Surprise Exam random event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2060] Craft an Eternal Teleport Crystal
+         → Crafting materials
+
+  [2400] Create 100 Juniper Charcoal
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5032] Cry in a wheat field
+         → Wheat
+
+  [5033] Dance in a graveyard
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2132] Deposit an Item Using Peer the Seer
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5041] Destroy the one ring to rule them all
+         → Gold ring
+
+  [2366] Dig 25 Saltpetre
+         → Spade
+
+  [1995] Drink From the Tears of Guthix
+         → From the Tears of Guthix
+
+  [5022] Drink a LizardKicker
+         → Lizardkicker
+
+  [3899] Drink a Poison Chalice
+         → Poison Chalice
+
+  [1217] Drink a beer in the Longhall
+         → beer
+
+  [3903] Drink from a bird bath
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2241] Drink some of Ali's tea
+         → Ali the Tea Seller
+
+  [5014] Dye a cape orange
+         → Black cape,Blue cape,Green cape,Pink cape,Purple cape,Red cape,Yellow cape,Orange cape,Orange dye,Red dye,Yellow dye
+
+  [1780] Eat a Banana
+         → Banana
+
+  [2413] Eat a Field Ration
+         → Field ration
+
+  [5070] Eat a magic cabbage
+         → Cabbage (Draynor Manor)
+
+  [2211] Eat an Onion
+         → Onion
+
+  [5013] Enter Puro Puro from Gielinor
+         → Crop circle
+
+  [1988] Enter Zanaris
+         → (none)
+
+  [2191] Enter the Brimhaven Dungeon
+         → (none)
+
+  [2551] Enter the Deep Wilderness Dungeon
+         → (none)
+
+  [2404] Enter the Kalphite Lair
+         → Rope
+
+  [2184] Enter the Tai Bwo Wannai Hardwood Grove
+         → (none)
+
+  [5160] Enter the Taverley Dungeon
+         → (none)
+
+  [2332] Enter the Warriors' Guild
+         → (none)
+
+  [2552] Enter the Wilderness God Wars Dungeon
+         → (none)
+
+  [2550] Enter the Wilderness Resource Area
+         → (none)
+
+  [1996] Equip Some Fancy Boots or Fighting Boots
+         → Fancy Boots or Fighting Boots
+
+  [5696] Equip Tier 5 Shayzien Armour
+         → Tier 5 Shayzien Armour
+
+  [2062] Equip a Crystal Crown
+         → Crystal Crown
+
+  [2045] Equip a Damaged God book
+         → Damaged God book
+
+  [2061] Equip a Piece of the Dragonstone Armour Set
+         → Piece of the Dragonstone Armour Set
+
+  [5031] Equip a Protest Banner
+         → Protest Banners
+
+  [5137] Equip a Red Topaz Machete
+         → Red Topaz Machete
+
+  [2481] Equip a Salve Amulet (e)
+         → Salve Amulet (e)
+
+  [3798] Equip a Willow Shield
+         → Willow Shield
+
+  [5081] Equip a frog mask
+         → frog mask
+
+  [2347] Equip a full set of Vyre Noble
+         → full set of Vyre Noble
+
+  [2464] Equip a piece of Beekeeper's Outfit
+         → piece of Beekeeper's Outfit
+
+  [2483] Equip a piece of Camouflage outfit
+         → piece of Camouflage outfit
+
+  [2519] Equip a piece of Mime Outfit
+         → piece of Mime Outfit
+
+  [2494] Equip a piece of Zombie Outfit
+         → piece of Zombie Outfit
+
+  [5040] Equip a team cape
+         → Team-cape
+
+  [5220] Equip an Imcando Hammer
+         → Imcando Hammer
+
+  [2208] Equip an Iron dagger
+         → Iron dagger
+
+  [5219] Equip some Black armour
+         → Black armour
+
+  [5218] Equip some Steel armour
+         → Steel armour
+
+  [5938] Equip the Moonlight Fanatic Helmet
+         → Moonlight Fanatic Helmet
+
+  [5836] Feed Longramble
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5072] Feed a ghast some sweets
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2183] Fill a Crate With Bananas
+         → Crate (Pirate's Treasure),Banana
+
+  [1216] Fill a Grape Barrel for the Foreman
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2342] Fill up 20 buckets of sand in Rellekka
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2063] Find Every Memoriam Crystal
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2114] Find the Needle
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1999] Fully Unlock the Mycelium Transportation System
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3898] Get Stung By Bees
+         → Beehive
+
+  [5059] Get a chair to follow you
+         → Chair (Draynor Manor)
+
+  [1213] Get a haircut
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1191] Give Oli some Stew
+         → Oli
+
+  [2169] Hang a Painting of a Watermill
+         → Painting
+
+  [5067] Have Elsie tell you a story
+         → Elsie,Cup of tea
+
+  [5057] Have Ned make you some rope
+         → Ned,Ball of wool
+
+  [5052] Have the Taxidermist stuff something for you
+         → Big bass,Crawling hand,Cockatrice head,Basilisk head
+
+  [5053] Insult Aggie the Witch
+         → Aggie
+
+  [1215] Investigate Meztlan
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5039] Loot a dragonstone from the Rogues Castle
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2107] Make a pie for Romily
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3900] Make some Flour
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5906] Milk a Buffalo
+         → Dairy Buffalo
+
+  [5051] Milk a cow
+         → Bucket,Dairy cow
+
+  [1781] Mine some essence
+         → Bronze pickaxe,Rune essence(rock)
+
+  [2152] Obtain Jack's legendary rod
+         → Grandpa Jack
+
+  [1219] Obtain a Cake from a Nest
+         → Cake
+
+  [2478] Obtain a Kebab from the Certer Brothers
+         → Kebab
+
+  [2547] Open a Looting Bag
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2338] Open the Crystal Chest
+         → Crystal key
+
+  [2064] Open the Enhanced Crystal Chest
+         → Crystal key
+
+  [2645] Open the Leagues Menu
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2559] Open the Mystery Box
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5937] Open the Varlamore Moon Chest
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2531] Order a Drink at The Old Nite
+         → Coins
+
+  [5073] Pan for an Uncut Jade
+         → Panning point,Panning tray
+
+  [2321] Pay Saniboch for Permanent Access
+         → 1,000,000 coins
+
+  [2476] Pet Frank
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1192] Pet Renu
+         → Renu
+
+  [3904] Pet Xolo in Civitas
+         → Xolo
+
+  [1992] Pet a Stray Dog in Varrock
+         → Stray dog
+
+  [3887] Pet the Museum Camp dog
+         → Dog (Museum Camp)
+
+  [3896] Pick Wheat in Catherby
+         → Wheat
+
+  [1208] Pick a Cabbage in Varrock
+         → Cabbage (scenery)
+
+  [2187] Pick a Pineapple on Karamja
+         → Pineapple Plant (wild)
+
+  [4497] Pick some Sweetcorn from a Field
+         → Sweetcorn (scenery)
+
+  [1203] Pick up 10 Whiteberries in Tirannwn
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2053] Pick up Snapegrass
+         → Snape grass
+
+  [2210] Pray at an Altar in Lumbridge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2399] Pray at the Elidinis Statuette
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2119] Provide Terry a buckle
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2186] Purchase an Onyx in Mor Ul Rek
+         → Coins
+
+  [5049] Read a prayer book near a lectern
+         → Holy book,Unholy book,Book of balance,Book of war,Book of law,Book of darkness
+
+  [2149] Receive a gift from Arnold
+         → Arnold Lydspor
+
+  [5046] Ring all of the Prifddinas bells
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1220] Scatter some Ashes
+         → Fiendish ashes,Vile ashes,Malicious ashes,Abyssal ashes,Infernal ashes
+
+  [5765] Score a Goal in Gnomeball
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5763] Sell 20 Iron Sheets
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1214] Shear an Alpaca
+         → Alpaca
+
+  [5078] Slash a web in varrock sewers
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2113] Sleep in Paramaya Inn
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2162] Smuggle some Rum
+         → Karamjan rum
+
+  [1212] Stroke your cat
+         → Gertrude
+
+  [1777] Take a Canoe to Champions Guild
+         → Bronze axe,Canoe Station
+
+  [2560] Take a Carpet Ride from Pollnivneach to Sophanem
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2192] Talk to Hans
+         → Hans
+
+  [2066] Talk to Ilfeen in Tirannwn
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2456] Talk to the Voice of Yama
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5066] Telegrab a Bloody bracer
+         → Law rune,Air rune
+
+  [5599] Teleport to Xeric's Honour
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2151] Throw a Shot Put 12 yards
+         → 99 Attack or,if undusted).
+
+  [2506] Trade a herb with Jekyll
+         → Coins
+
+  [5048] Trade in a cat for death runes
+         → Coins
+
+  [2170] Trade with Bardur
+         → Coins
+
+  [1990] Travel to Fossil Island
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5695] Travel to Molch Island
+         → Boaty
+
+  [3812] Travel using the Quetzal Transport System
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5068] Unlock permanent boat travel with Andras
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2163] Upset the homeless
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5045] Use Broken Handz's telescope
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2003] Use a Digsite Pendant to Teleport to Fossil Island
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2002] Use a Fairy Ring
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2147] Use a Hat Stand
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2098] Use a Herring on a mighty tree
+         → Herring
+
+  [2546] Use a Lever to Teleport to Edgeville
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2059] Use an Elven Teleport Crystal
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2553] Use the Bank at the Mage Arena
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2058] Use the Bank in Lletya
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2398] Use the Bank in Nardah
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2137] Use the Bank on Jatizso
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2141] Use the Bank on Lunar Isle
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2139] Use the Bank on Neitiznot
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2096] Use the Falador Party room
+         → Party pete
+
+  [2407] Use the Mine cart transportation System
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1211] Use the Northern Staircase in Lumbridge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2642] Visit Ferox Enclave
+         → (none)
+
+  [2480] Visit Harmony Island
+         → (none)
+
+  [2482] Visit Mos Le'Harmless
+         → (none)
+
+  [2472] Visit Port Phasmatys
+         → (none)
+
+  [2245] Visit the Tree Gnome Stronghold
+         → (none)
+
+  [2242] Visit the Tree Gnome Village
+         → Elkoy
+
+
+================================================================================
+  Minigame (168 tasks)
+================================================================================
+
+  [5577] 1 Chambers of Xeric
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5651] 1 Easy Clue Scroll
+         → Clue scroll (easy)
+
+  [5672] 1 Elite Clue Scroll
+         → Clue scroll (elite)
+
+  [5665] 1 Hard Clue Scroll
+         → Clue scroll (hard)
+
+  [5679] 1 Master Clue Scroll
+         → Clue scroll (master)
+
+  [5658] 1 Medium Clue Scroll
+         → Clue scroll (medium)
+
+  [5963] 100 Chambers of Xeric
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5962] 25 Chambers of Xeric
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5652] 25 Easy Clue Scrolls
+         → Clue scroll (easy)
+
+  [5673] 25 Elite Clue Scrolls
+         → Clue scroll (elite)
+
+  [5666] 25 Hard Clue Scrolls
+         → Clue scroll (hard)
+
+  [5680] 25 Master Clue Scrolls
+         → Clue scroll (master)
+
+  [5659] 25 Medium Clue Scrolls
+         → Clue scroll (medium)
+
+  [5578] 50 Chambers of Xeric
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5653] 75 Easy Clue Scrolls
+         → Clue scroll (easy)
+
+  [5674] 75 Elite Clue Scrolls
+         → Clue scroll (elite)
+
+  [5667] 75 Hard Clue Scrolls
+         → Clue scroll (hard)
+
+  [5681] 75 Master Clue Scrolls
+         → Clue scroll (master)
+
+  [5660] 75 Medium Clue Scrolls
+         → Clue scroll (medium)
+
+  [2479] Achieve 100% Shades of Mort'Ton Sanctity
+         → (none)
+
+  [2576] Burn Some Coloured Logs
+         → Logs,Tinderbox
+
+  [2144] Buy a Snapdragon From Pirate Jackie the Fruit
+         → Coins
+
+  [4838] Catch 50 Implings in Puro-Puro
+         → Butterfly net,Impling jar
+
+  [4961] Chop some Rising Roots
+         → Any axe
+
+  [5947] Complete 10 Mahogany homes contracts
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5948] Complete 25 Mahogany homes contracts
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4951] Complete 50 Mahogany homes contracts
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5840] Complete Tzhaar-Ket-Rak's Special challenge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4945] Complete Tzhaar-Ket-Rak's fifth challenge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4941] Complete Tzhaar-Ket-Rak's first challenge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4944] Complete Tzhaar-Ket-Rak's fourth challenge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4942] Complete Tzhaar-Ket-Rak's second challenge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4946] Complete Tzhaar-Ket-Rak's sixth challenge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4943] Complete Tzhaar-Ket-Rak's third challenge
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2206] Complete a Fishing Trawler Game
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2336] Complete a Game of Intermediate Pest Control
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2335] Complete a Game of Novice Pest Control
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2337] Complete a Game of Veteran Pest Control
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2471] Complete a Hard Temple Trek
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4949] Complete a Mahogany homes adept contract
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4947] Complete a Mahogany homes beginner contract
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4950] Complete a Mahogany homes expert contract
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4948] Complete a Mahogany homes novice contract
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2470] Complete a Medium Temple Trek
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1941] Complete a Volcanic Mine Game
+         → Any pickaxe
+
+  [2469] Complete an Easy Temple Trek
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2029] Complete the Corrupted Gauntlet
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4865] Complete the Corrupted Gauntlet 150 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4864] Complete the Corrupted Gauntlet 50 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4902] Complete the Fight Caves 10 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2172] Complete the Fight Caves 5 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4963] Complete the Flowering Bush event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2028] Complete the Gauntlet
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5188] Complete the Hallowed Sepulchre in 6:30
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2176] Complete the Inferno 10 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4903] Complete the Inferno 15 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2175] Complete the Inferno 5 Times
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5838] Complete the Pheasant Forestry Event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5837] Complete the Ritual Forestry Event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4962] Complete the Struggling Sapling event
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2256] Defeat the Penance Queen
+         → Combat gear,Food
+
+  [2580] Eat some Purple Sweets
+         → Purple Sweets
+
+  [4995] Equip Amy's Saw
+         → Amy's Saw
+
+  [4886] Equip Every Completed God Book
+         → Every Completed God Book
+
+  [2589] Equip Some Ranger Boots
+         → Ranger Boots
+
+  [2135] Equip a Completed God Book
+         → Completed God Book
+
+  [2585] Equip a Full God Dragonhide Set
+         → Full God Dragonhide Set
+
+  [2582] Equip a Full God Rune Set
+         → Full God Rune Set
+
+  [2578] Equip a Full Vestment Set
+         → Full Vestment Set
+
+  [5954] Equip a Gilded or Trimmed Wizard Item
+         → Gilded or Trimmed Wizard Item
+
+  [2584] Equip a Trimmed Amulet
+         → Trimmed Amulet
+
+  [4997] Equip a full set of the Carpenters Outfit
+         → full set of the Carpenters Outfit
+
+  [4990] Equip a full set of the Smith's outfit
+         → full set of the Smith's outfit
+
+  [5839] Equip a two-handed Axe
+         → two-handed Axe
+
+  [2587] Equip an Ornament Kit Item
+         → Ornament Kit Item
+
+  [4991] Equip the Colossal Blade
+         → Colossal Blade
+
+  [4998] Equip the Forestry Basket
+         → Forestry Basket
+
+  [5705] Equip the Pyromancer's Garb
+         → Pyromancer's Garb
+
+  [4994] Equip the Tome of Water
+         → Tome of Water
+
+  [2604] Fill 10 Beginner Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2592] Fill 10 Elite Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2593] Fill 15 Hard Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2599] Fill 20 Easy Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2598] Fill 20 Medium Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2573] Fill 25 Elite Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2575] Fill 25 Master Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2591] Fill 3 Elite Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2596] Fill 3 Hard Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2594] Fill 30 Hard Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2595] Fill 40 Medium Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2603] Fill 5 Beginner Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2602] Fill 5 Easy Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2574] Fill 5 Master Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2597] Fill 5 Medium Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2600] Fill 50 Easy Clue Collection Log Slots
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2601] Fill Every Beginner Clue Collection Log Slot
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2189] Find a Gout Tuber
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5182] Floor 1 of the Hallowed Sepulchre
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5183] Floor 2 of the Hallowed Sepulchre
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5184] Floor 3 of the Hallowed Sepulchre
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5185] Floor 4 of the Hallowed Sepulchre
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5186] Floor 5 of the Hallowed Sepulchre
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2618] Gain 10 Unique Items From Beginner Clues
+         → (none)
+
+  [2616] Gain 10 Unique Items From Easy Clues
+         → (none)
+
+  [2607] Gain 10 Unique Items From Elite Clues
+         → (none)
+
+  [2605] Gain 10 Unique Items From Master Clues
+         → (none)
+
+  [2614] Gain 10 Unique Items From Medium Clues
+         → (none)
+
+  [2609] Gain 20 Unique Items From Hard Clues
+         → (none)
+
+  [2608] Gain 25 Unique Items From Elite Clues
+         → (none)
+
+  [2606] Gain 25 Unique Items From Master Clues
+         → (none)
+
+  [2611] Gain 25 Unique Items From Medium Clues
+         → (none)
+
+  [2615] Gain 35 Unique Items From Beginner Clues
+         → (none)
+
+  [2613] Gain 35 Unique Items From Easy Clues
+         → (none)
+
+  [2612] Gain 5 Unique Items From Hard Clues
+         → (none)
+
+  [2610] Gain 50 Unique Items From Hard Clues
+         → (none)
+
+  [2624] Gain a Unique Item From a Beginner Clue
+         → (none)
+
+  [2619] Gain a Unique Item From a Hard Clue
+         → (none)
+
+  [2617] Gain a Unique Item From a Master Clue
+         → (none)
+
+  [2622] Gain a Unique Item From a Medium Clue
+         → (none)
+
+  [2621] Gain a Unique Item From an Easy Clue
+         → (none)
+
+  [2620] Gain a Unique Item From an Elite Clue
+         → (none)
+
+  [2136] Get 1000 Target points
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2124] Get 250 Target points
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2134] Get 750 Target points
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5949] Giants' Foundry 10 handins
+         → Metal bars,Hammer
+
+  [4956] Giants' Foundry 100 quality sword
+         → Metal bars,Hammer
+
+  [4957] Giants' Foundry 150 quality sword
+         → Metal bars,Hammer
+
+  [4958] Giants' Foundry 25 handins
+         → Metal bars,Hammer
+
+  [4959] Giants' Foundry 50 handins
+         → Metal bars,Hammer
+
+  [4955] Giants' Foundry 50 quality sword
+         → Metal bars,Hammer
+
+  [5161] Keep the Veteran Void Knight Above 150 Hitpoints
+         → 100 Combat level
+
+  [1943] Mine a Runite Ore Fragment
+         → Any pickaxe,Runite ore
+
+  [4954] Mine a shooting star
+         → Any pickaxe,Tin ore
+
+  [2416] Obtain Every Hallowed Tool
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [4993] Obtain the Big Harpoonfish
+         → Big Harpoonfish
+
+  [4992] Obtain the Fish Barrel
+         → Fish Barrel
+
+  [4996] Obtain the Plank Sack
+         → Plank Sack
+
+  [3871] Open a Black Chest
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3870] Open a Bronze Chest
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3872] Open a Gold Chest
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3800] Open an Ornate Lockbox
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2352] Pick a Autumn Sq'irk
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2351] Pick a Spring Sq'irk
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2353] Pick a Summer Sq'irk
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2350] Pick a Winter Sq'irk
+         → Apprentice
+
+  [2415] Purchase a Reward From the Hallowed Sepulchre
+         → Coins
+
+  [5702] Purchase a Seed Box
+         → Coins
+
+  [2247] Reach Level 5 in Any Barbarian Assault Role
+         → (none)
+
+  [4888] Receive 30 Agility Arena Tickets With No Mistakes
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2143] Receive an Agility Arena Ticket
+         → Cap'n Izzy No-Beard
+
+  [5162] Room 1 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5163] Room 2 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5164] Room 3 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5165] Room 4 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5166] Room 5 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5167] Room 6 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5168] Room 7 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5169] Room 8 of Pyramid Plunder
+         → An anonymous looking door
+
+  [5170] Room 8 of Pyramid Plunder 25 Times
+         → An anonymous looking door
+
+  [2168] Sacrifice a Fire Cape to Access the Inferno
+         → Fire Cape
+
+  [4895] Survive a Hit From TzTok-Jad Without Prayer
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5173] Turn in 10 Spring Sq'irkjuices to Osman
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5174] Turn in 25 Autumn Sq'irkjuices to Osman
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5175] Turn in 50 Summer Sq'irkjuices to Osman
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2354] Turn in a Winter Sq'irkjuice to Osman
+         → Osman
+
+  [2081] Unlock Free Use of the Blast Furnace
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2246] Win a Game of Castle Wars
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [3873] Win a Game of Soul Wars
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+
+================================================================================
+  Achievement (97 tasks)
+================================================================================
+
+  [5771] 100 Collection log slots
+         → (none)
+
+  [5266] 100 Combat Achievements
+         → Combat gear,Food
+
+  [5768] 15 Collection log slots
+         → (none)
+
+  [5267] 150 Combat Achievements
+         → Combat gear,Food
+
+  [5772] 200 Collection log slots
+         → (none)
+
+  [5268] 200 Combat Achievements
+         → Combat gear,Food
+
+  [5269] 250 Combat Achievements
+         → Combat gear,Food
+
+  [5769] 30 Collection log slots
+         → (none)
+
+  [5773] 350 Collection log slots
+         → (none)
+
+  [5767] 5 Collection log slots
+         → (none)
+
+  [5770] 50 Collection log slots
+         → (none)
+
+  [5265] 50 Combat Achievements
+         → Combat gear,Food
+
+  [5774] 500 Collection log slots
+         → (none)
+
+  [5775] 750 Collection log slots
+         → (none)
+
+  [5754] Abyssal Sire Combat Achievements
+         → Combat gear,Efaritay's aid,Prayer potion(4),Food
+
+  [5755] Alchemical Hydra Combat Achievements
+         → Combat gear,Antidote++(4),Prayer potion(4),Food
+
+  [3797] Araxxor Combat Achievements
+         → Combat gear,Food
+
+  [5743] Chambers of Xeric Combat Achievements
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [3838] Colosseum Combat Achievements
+         → Combat gear,Prayer potion(4),Super restore(4),Food
+
+  [5273] Combat Achievements Easy Tier
+         → (none)
+
+  [5276] Combat Achievements Elite Tier
+         → (none)
+
+  [5275] Combat Achievements Hard Tier
+         → (none)
+
+  [5274] Combat Achievements Medium Tier
+         → (none)
+
+  [5732] Complete 1 Speed Task
+         → (none)
+
+  [5734] Complete 10 Speed Tasks
+         → (none)
+
+  [5735] Complete 20 Speed Tasks
+         → (none)
+
+  [5736] Complete 30 Speed Tasks
+         → (none)
+
+  [5733] Complete 5 Speed Tasks
+         → (none)
+
+  [2568] Complete the Easy Ardougne Diary
+         → (none)
+
+  [2386] Complete the Easy Desert Diary
+         → (none)
+
+  [2323] Complete the Easy Falador Diary
+         → (none)
+
+  [2128] Complete the Easy Fremennik Diary
+         → (none)
+
+  [2267] Complete the Easy Kandarin Diary
+         → (none)
+
+  [2179] Complete the Easy Karamja Diary
+         → (none)
+
+  [1982] Complete the Easy Lumbridge & Draynor Diary
+         → (none)
+
+  [2465] Complete the Easy Morytania Diary
+         → (none)
+
+  [2562] Complete the Easy Varrock Diary
+         → (none)
+
+  [2271] Complete the Easy Western Provinces Diary
+         → (none)
+
+  [2541] Complete the Easy Wilderness Diary
+         → (none)
+
+  [2571] Complete the Elite Ardougne Diary
+         → (none)
+
+  [2389] Complete the Elite Desert Diary
+         → (none)
+
+  [2326] Complete the Elite Falador Diary
+         → (none)
+
+  [2131] Complete the Elite Fremennik Diary
+         → (none)
+
+  [2270] Complete the Elite Kandarin Diary
+         → (none)
+
+  [2182] Complete the Elite Karamja Diary
+         → (none)
+
+  [1985] Complete the Elite Lumbridge & Draynor Diary
+         → (none)
+
+  [2468] Complete the Elite Morytania Diary
+         → (none)
+
+  [2565] Complete the Elite Varrock Diary
+         → (none)
+
+  [2274] Complete the Elite Western Provinces Diary
+         → (none)
+
+  [2544] Complete the Elite Wilderness Diary
+         → (none)
+
+  [2570] Complete the Hard Ardougne Diary
+         → (none)
+
+  [2388] Complete the Hard Desert Diary
+         → (none)
+
+  [2325] Complete the Hard Falador Diary
+         → (none)
+
+  [2130] Complete the Hard Fremennik Diary
+         → (none)
+
+  [2269] Complete the Hard Kandarin Diary
+         → (none)
+
+  [2181] Complete the Hard Karamja Diary
+         → (none)
+
+  [1984] Complete the Hard Lumbridge & Draynor Diary
+         → (none)
+
+  [2467] Complete the Hard Morytania Diary
+         → (none)
+
+  [2564] Complete the Hard Varrock Diary
+         → (none)
+
+  [2273] Complete the Hard Western Provinces Diary
+         → (none)
+
+  [2543] Complete the Hard Wilderness Diary
+         → (none)
+
+  [2569] Complete the Medium Ardougne Diary
+         → (none)
+
+  [2387] Complete the Medium Desert Diary
+         → (none)
+
+  [2324] Complete the Medium Falador Diary
+         → (none)
+
+  [2129] Complete the Medium Fremennik Diary
+         → (none)
+
+  [2268] Complete the Medium Kandarin Diary
+         → (none)
+
+  [2180] Complete the Medium Karamja Diary
+         → (none)
+
+  [1983] Complete the Medium Lumbridge & Draynor Diary
+         → (none)
+
+  [2466] Complete the Medium Morytania Diary
+         → (none)
+
+  [2563] Complete the Medium Varrock Diary
+         → (none)
+
+  [2272] Complete the Medium Western Provinces Diary
+         → (none)
+
+  [2542] Complete the Medium Wilderness Diary
+         → (none)
+
+  [5748] Dagannoth Kings Combat Achievements
+         → Combat gear,Prayer potion(4),Food
+
+  [5741] Duke Sucellus Combat Achievements
+         → Combat gear,Prayer potion(4),Food
+
+  [5756] Gauntlet Combat Achievements
+         → Combat gear,Food
+
+  [5746] Godwars Dungeon Combat Achievements
+         → Combat gear,Food
+
+  [5753] Grotesque Guardians Combat Achievements
+         → Brittle key,Combat gear,Prayer potion(4),Food
+
+  [5626] Kourend and Kebos Easy Diary Tasks
+         → Kourend & Kebos Diary#Easy
+
+  [5629] Kourend and Kebos Elite Diary Tasks
+         → Kourend & Kebos Diary#Elite
+
+  [5628] Kourend and Kebos Hard Diary Tasks
+         → Kourend & Kebos Diary#Hard
+
+  [5627] Kourend and Kebos Medium Diary Tasks
+         → Kourend & Kebos Diary#Medium
+
+  [3839] Perilous Moons Combat Achievements
+         → Combat gear,Food
+
+  [5750] Phantom Muspah Combat Achievements
+         → Combat gear,Prayer potion(4),Food
+
+  [5752] Phosani's Nightmare Combat Achievements
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [3796] Scurrius Combat Achievements
+         → Combat gear,Food
+
+  [3818] Teleport to the Fortis Colosseum
+         → Combat gear,Prayer potion(4),Super restore(4),Food
+
+  [5738] The Fight Caves Combat Achievements
+         → Combat gear,Food
+
+  [5737] The Inferno Combat Achievements
+         → Combat gear,Food
+
+  [5742] The Leviathan Combat Achievements
+         → Combat gear,Prayer potion(4),Food
+
+  [5751] The Nightmare Combat Achievements
+         → Combat gear,Prayer potion(4),Sanfew serum(4),Food
+
+  [5739] The Whisperer Combat Achievements
+         → Combat gear,Prayer potion(4),Food
+
+  [5744] Theatre of Blood Combat Achievements
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5745] Tombs of Amascut Combat Achievements
+         → Combat gear,Prayer potion(4),Super restore(4),Saradomin brew(4),Food
+
+  [5777] TzHaar-Ket-Rak's Combat Achievements
+         → Combat gear,Food
+
+  [5740] Vardorvis Combat Achievements
+         → Combat gear,Prayer potion(4),Food
+
+  [5749] Vorkath Combat Achievements
+         → Combat gear,Anti-venom+(4),Super antifire potion(4),Prayer potion(4),Food
+
+  [5747] Zulrah Combat Achievements
+         → Combat gear,Anti-venom+(4),Ring of recoil,Prayer potion(4),Food
+
+
+================================================================================
+  Quest (25 tasks)
+================================================================================
+
+  [2327] Complete A Porcine of Interest
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [5727] Complete Beneath Cursed Sands
+         → Beneath Cursed Sands
+
+  [1935] Complete Death on the Isle
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [1993] Complete Demon Slayer
+         → Demon Slayer
+
+  [2252] Complete Elemental Workshop II
+         → Elemental Workshop II
+
+  [3901] Complete Fishing Contest
+         → Fishing Contest
+
+  [2473] Complete Haunted Mine
+         → Haunted Mine
+
+  [5910] Complete Meat and Greet
+         → Meat and Greet
+
+  [2249] Complete Monk's Friend
+         → Monk's Friend
+
+  [5835] Complete Path of Glouphrie
+         → Path of Glouphrie
+
+  [1207] Complete Perilous Moons
+         → Perilous Moons
+
+  [2138] Complete Royal Trouble
+         → Royal Trouble
+
+  [2253] Complete Sea Slug
+         → Sea Slug
+
+  [2405] Complete Shadow of the Storm
+         → Shadow of the Storm
+
+  [1994] Complete Sheep Shearer
+         → Sheep Shearer
+
+  [2474] Complete Sins of the Father
+         → Sins of the Father
+
+  [5726] Complete Sleeping Giants
+         → Sleeping Giants
+
+  [2395] Complete Spirits of the Elid
+         → Spirits of the Elid
+
+  [2406] Complete The Golem
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2133] Complete Throne of Miscellania
+         → Throne of Miscellania
+
+  [2251] Complete Tower of Life
+         → Tower of Life
+
+  [1997] Complete Vampyre Slayer
+         → Vampyre Slayer
+
+  [3824] Complete a Ribbiting Tale
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2629] Complete the Garden of Death
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+  [2254] Complete the Observatory Quest
+         → (none)
+          ⚠️  EMPTY SEARCH
+
+
+================================================================================
+  SUMMARY: 1589 tasks reviewed, 369 potential issues flagged
+================================================================================

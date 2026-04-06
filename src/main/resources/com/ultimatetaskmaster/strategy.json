@@ -102,7 +102,7 @@
   },
   "1773": {
     "taskName": "Protect Your Crops",
-    "search": "Items requested by the farmer to protect the crop"
+    "search": ""
   },
   "4825": {
     "taskName": "Chop Some Logs",
@@ -114,7 +114,7 @@
   },
   "1782": {
     "taskName": "Obtain a Bird Nest",
-    "search": ""
+    "search": "Bird Nest"
   },
   "4828": {
     "taskName": "Cook Shrimp",
@@ -263,11 +263,12 @@
   },
   "4842": {
     "taskName": "Complete the Draynor Agility Course",
-    "search": "Rough wall (Draynor Village Rooftop Course)"
+    "search": ""
   },
   "1960": {
     "taskName": "Defeat the Lesser Demon in the Wizards' Tower",
-    "points": "3110,3157"
+    "points": "3110,3157",
+    "search": "Combat gear,Food"
   },
   "1988": {
     "taskName": "Enter Zanaris",
@@ -367,7 +368,7 @@
   },
   "2194": {
     "taskName": "Complete the Gnome Stronghold Agility Course",
-    "search": "Log balance (Gnome Stronghold Agility Course)"
+    "search": ""
   },
   "2198": {
     "taskName": "Catch a Crimson Swift in the Feldip Hills",
@@ -500,7 +501,7 @@
   },
   "3794": {
     "taskName": "Obtain a Casket from Fishing",
-    "search": ""
+    "search": "Casket"
   },
   "3795": {
     "taskName": "Steal Some Silk",
@@ -596,7 +597,8 @@
   },
   "5058": {
     "taskName": "Kill a port sarim prisoner",
-    "points": "3010,3197"
+    "points": "3010,3197",
+    "search": "Combat gear,Food"
   },
   "5059": {
     "taskName": "Get a chair to follow you",
@@ -608,7 +610,8 @@
   },
   "5061": {
     "taskName": "Chop a log from a potato tree",
-    "points": "3147,3273,3259,3300"
+    "points": "3147,3273,3259,3300",
+    "search": "Axe"
   },
   "5067": {
     "taskName": "Have Elsie tell you a story",
@@ -660,7 +663,7 @@
   },
   "5841": {
     "taskName": "Complete the Varrock Agility Course",
-    "search": "Rough wall (Varrock Rooftop Course)"
+    "search": ""
   },
   "2096": {
     "taskName": "Use the Falador Party room",
@@ -772,7 +775,7 @@
   },
   "2407": {
     "taskName": "Use the Mine cart transportation System",
-    "search": "Minecart (Lovakengj Minecart Network)"
+    "search": ""
   },
   "2413": {
     "taskName": "Eat a Field Ration",
@@ -805,7 +808,7 @@
   },
   "5714": {
     "taskName": "Kill a Guard in Varlamore underground",
-    "search": "",
+    "search": "Combat gear,Food",
     "points": "1641,3164"
   },
   "5905": {
@@ -850,7 +853,8 @@
   },
   "1217": {
     "taskName": "Drink a beer in the Longhall",
-    "points": "3079,3441"
+    "points": "3079,3441",
+    "search": "beer"
   },
   "1218": {
     "taskName": "Kill a Barbarian in the Barbarian Village",
@@ -1231,7 +1235,7 @@
   },
   "1796": {
     "taskName": "Obtain a Gem While Mining",
-    "search": ""
+    "search": "Gem"
   },
   "1797": {
     "taskName": "Mine 50 Iron Ore",
@@ -1243,7 +1247,7 @@
   },
   "1799": {
     "taskName": "Obtain a Clue Geode While Mining",
-    "search": ""
+    "search": "Clue Geode"
   },
   "1803": {
     "taskName": "Fletch 150 Iron Arrows",
@@ -1259,7 +1263,7 @@
   },
   "1813": {
     "taskName": "Slay 250 Creatures",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "1815": {
     "taskName": "Defeat a Superior Slayer Creature",
@@ -1343,7 +1347,7 @@
   },
   "1879": {
     "taskName": "Obtain a Mark of Grace",
-    "search": ""
+    "search": "Mark of Grace"
   },
   "1880": {
     "taskName": "Use the Protect from Melee Prayer",
@@ -1419,7 +1423,7 @@
   },
   "1926": {
     "taskName": "Equip an Elemental Battlestaff or Mystic Staff",
-    "search": "Elemental Battlestaff or Mystic Staff"
+    "search": "Air battlestaff,Water battlestaff,Earth battlestaff,Fire battlestaff,Mystic air staff"
   },
   "1927": {
     "taskName": "Cast a Blast Spell",
@@ -1971,7 +1975,7 @@
   },
   "2406": {
     "taskName": "Complete The Golem",
-    "search": "The Golem"
+    "search": ""
   },
   "5182": {
     "taskName": "Floor 1 of the Hallowed Sepulchre",
@@ -2067,7 +2071,7 @@
   },
   "5201": {
     "taskName": "Sacrifice Some Bones at the Chaos Temple",
-    "search": ""
+    "search": "Bones"
   },
   "2485": {
     "taskName": "Bury Some Lava Dragon Bones",
@@ -2115,7 +2119,7 @@
   },
   "2525": {
     "taskName": "Obtain an Ecumenical Key",
-    "search": ""
+    "search": "Ecumenical Key"
   },
   "2526": {
     "taskName": "Equip a Lava Battlestaff",
@@ -2311,7 +2315,7 @@
   },
   "4993": {
     "taskName": "Obtain the Big Harpoonfish",
-    "search": ""
+    "search": "Big Harpoonfish"
   },
   "4994": {
     "taskName": "Equip the Tome of Water",
@@ -2323,7 +2327,7 @@
   },
   "4996": {
     "taskName": "Obtain the Plank Sack",
-    "search": ""
+    "search": "Plank Sack"
   },
   "4998": {
     "taskName": "Equip the Forestry Basket",
@@ -2351,7 +2355,7 @@
   },
   "5041": {
     "taskName": "Destroy the one ring to rule them all",
-    "search": "Use a gold ring on the Wilderness Volcano"
+    "search": "Gold ring"
   },
   "5046": {
     "taskName": "Ring all of the Prifddinas bells",
@@ -2359,11 +2363,11 @@
   },
   "5049": {
     "taskName": "Read a prayer book near a lectern",
-    "search": "Great Brain Robbery, or Fremennik to complete a god book"
+    "search": "Holy book,Unholy book,Book of balance,Book of war,Book of law,Book of darkness"
   },
   "5052": {
     "taskName": "Have the Taxidermist stuff something for you",
-    "search": "Big bass requires,46 Fishing, crawling hand requires"
+    "search": "Big bass,Crawling hand,Cockatrice head,Basilisk head"
   },
   "5062": {
     "taskName": "Churn some butter",
@@ -2371,7 +2375,7 @@
   },
   "5065": {
     "taskName": "Commune a Pharoah's Sceptre to the Necropolis",
-    "search": "21 Thieving Completion of,Beneath Cursed Sands"
+    "search": "Pharaoh's sceptre"
   },
   "5066": {
     "taskName": "Telegrab a Bloody bracer",
@@ -2495,7 +2499,7 @@
   },
   "2098": {
     "taskName": "Use a Herring on a mighty tree",
-    "search": ""
+    "search": "Herring"
   },
   "2107": {
     "taskName": "Make a pie for Romily",
@@ -2535,11 +2539,11 @@
   },
   "2162": {
     "taskName": "Smuggle some Rum",
-    "search": "Garden of Tranquillity, Asgarnia to travel to Port Sarim"
+    "search": "Karamjan rum"
   },
   "2169": {
     "taskName": "Hang a Painting of a Watermill",
-    "search": "44 Construction Completion of,Sheep Shearer and,Cook's Assistant"
+    "search": "Painting"
   },
   "2240": {
     "taskName": "Buy a candle in Lumbridge",
@@ -2603,7 +2607,7 @@
   },
   "2355": {
     "taskName": "Offer an egg to a shrine",
-    "search": ""
+    "search": "egg"
   },
   "2356": {
     "taskName": "Make 50 Oak Planks in Kourend",
@@ -2727,7 +2731,7 @@
   },
   "2629": {
     "taskName": "Complete the Garden of Death",
-    "search": "the Garden of Death"
+    "search": ""
   },
   "2773": {
     "taskName": "Mine 50 Volcanic Sulphur",
@@ -2799,15 +2803,15 @@
   },
   "3848": {
     "taskName": "Subdue the Moons of Peril",
-    "search": ""
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "3849": {
     "taskName": "Subdue the Moons of Peril 10 times",
-    "search": ""
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "3850": {
     "taskName": "Subdue the Moons of Peril 25 times",
-    "search": ""
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "3853": {
     "taskName": "Mine a Calcified Deposit",
@@ -2935,7 +2939,7 @@
   },
   "1219": {
     "taskName": "Obtain a Cake from a Nest",
-    "search": ""
+    "search": "Cake"
   },
   "1223": {
     "taskName": "Clean 50 Grimy Ranarr Weed",
@@ -3415,7 +3419,7 @@
   },
   "1929": {
     "taskName": "Equip a Combination Battlestaff or Mystic Staff",
-    "search": "Combination Battlestaff or Mystic Staff"
+    "search": "Lava battlestaff,Mud battlestaff,Steam battlestaff,Smoke battlestaff,Mystic lava staff"
   },
   "1930": {
     "taskName": "Cast a Wave Spell",
@@ -3439,7 +3443,7 @@
   },
   "1958": {
     "taskName": "Use Enriched Bones on the Strange Machine",
-    "search": ""
+    "search": "Enriched Bones"
   },
   "1962": {
     "taskName": "Defeat a Rune Dragon",
@@ -3459,7 +3463,7 @@
   },
   "1978": {
     "taskName": "Offer an Unsired to the Font of Consumption",
-    "search": ""
+    "search": "Unsired"
   },
   "1984": {
     "taskName": "Complete the Hard Lumbridge & Draynor Diary",
@@ -3515,7 +3519,7 @@
   },
   "4855": {
     "taskName": "Equip a Dark Bow in Tirannwn",
-    "search": "Dark Bow in Tirannwn"
+    "search": "Dark bow"
   },
   "2048": {
     "taskName": "Equip a Crystal Bow",
@@ -3687,7 +3691,7 @@
   },
   "2167": {
     "taskName": "Equip Some Dragon Platelegs or a Dragon Plateskirt",
-    "search": "Dragon Platelegs or a Dragon Plateskirt"
+    "search": "Dragon platelegs,Dragon plateskirt"
   },
   "2181": {
     "taskName": "Complete the Hard Karamja Diary",
@@ -3847,7 +3851,7 @@
   },
   "2327": {
     "taskName": "Complete A Porcine of Interest",
-    "search": "A Porcine of Interest"
+    "search": ""
   },
   "2328": {
     "taskName": "Equip a Full Void Knight Set",
@@ -3979,7 +3983,7 @@
   },
   "5202": {
     "taskName": "Sacrifice Some Dragon Bones at the Chaos Temple",
-    "search": ""
+    "search": "Dragon Bones"
   },
   "5203": {
     "taskName": "Catch 100 Dark Crabs",
@@ -4031,7 +4035,7 @@
   },
   "5206": {
     "taskName": "Equip a Dragon 2-Handed Sword in the Wilderness",
-    "search": "Dragon 2-Handed Sword in the Wilderness"
+    "search": "Dragon 2h sword"
   },
   "2518": {
     "taskName": "Defeat the Corporeal Beast",
@@ -4247,7 +4251,7 @@
   },
   "4992": {
     "taskName": "Obtain the Fish Barrel",
-    "search": ""
+    "search": "Fish Barrel"
   },
   "5007": {
     "taskName": "Plant an Anima Seed",
@@ -4347,7 +4351,7 @@
   },
   "5136": {
     "taskName": "Obtain a Magic seed from a birds nest",
-    "search": ""
+    "search": "Magic seed"
   },
   "5710": {
     "taskName": "Defeat Cerberus 50 times",
@@ -4483,7 +4487,7 @@
   },
   "2312": {
     "taskName": "Have Drew create 500 buckets",
-    "search": "35 Mining All buckets of sand must be claimed in one go."
+    "search": "Bucket"
   },
   "2346": {
     "taskName": "Cook 20 Sharks in Darkmeyer",
@@ -4507,7 +4511,7 @@
   },
   "2478": {
     "taskName": "Obtain a Kebab from the Certer Brothers",
-    "search": ""
+    "search": "Kebab"
   },
   "2772": {
     "taskName": "Harvest 25 Zamorak's Grapes",
@@ -4547,7 +4551,7 @@
   },
   "3824": {
     "taskName": "Complete a Ribbiting Tale",
-    "search": "a Ribbiting Tale"
+    "search": ""
   },
   "3825": {
     "taskName": "Use the Bank Chest inside Fortis Colosseum",
@@ -4587,7 +4591,7 @@
   },
   "3851": {
     "taskName": "Subdue the Moons of Peril 50 times",
-    "search": ""
+    "search": "Axe,Tinderbox,Knife,Hammer,Warm clothing,Food"
   },
   "3852": {
     "taskName": "Craft 1000 Sunfire Runes",
@@ -4615,7 +4619,7 @@
   },
   "3891": {
     "taskName": "Obtain the Huntsman's Kit",
-    "search": ""
+    "search": "Huntsman's Kit"
   },
   "3892": {
     "taskName": "Open a Master Hunter's Loot Sack",
@@ -4723,11 +4727,11 @@
   },
   "1209": {
     "taskName": "Amoxliatl Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "1210": {
     "taskName": "Hueycoatl Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "1224": {
     "taskName": "Clean 100 Grimy Avantoe",
@@ -4763,7 +4767,7 @@
   },
   "1787": {
     "taskName": "Obtain a Frozen Cache from a Cache",
-    "search": ""
+    "search": "Frozen Cache"
   },
   "1851": {
     "taskName": "Blast Furnace 100 Mithril Bars",
@@ -4779,7 +4783,7 @@
   },
   "1935": {
     "taskName": "Complete Death on the Isle",
-    "search": "Death on the Isle"
+    "search": ""
   },
   "1946": {
     "taskName": "Trade in 1000 Minnows",
@@ -5047,7 +5051,7 @@
   },
   "1763": {
     "taskName": "Obtain a Skilling Pet",
-    "search": ""
+    "search": "Skilling Pet"
   },
   "1779": {
     "taskName": "Travel Between Your Spirit Trees",
@@ -5055,7 +5059,7 @@
   },
   "1821": {
     "taskName": "Slay an Abyssal Demon",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "1823": {
     "taskName": "Defeat 50 Superior Slayer Creatures",
@@ -5079,7 +5083,7 @@
   },
   "1893": {
     "taskName": "Obtain a Boss Pet",
-    "search": ""
+    "search": "Boss Pet"
   },
   "1900": {
     "taskName": "Reach Combat Level 120",
@@ -5111,7 +5115,7 @@
   },
   "1964": {
     "taskName": "Equip a Dragon Platebody or Dragon Kiteshield",
-    "search": "Dragon Platebody or Dragon Kiteshield"
+    "search": "Dragon platebody,Dragon kiteshield"
   },
   "1968": {
     "taskName": "Equip a Dragonfire Shield",
@@ -5235,7 +5239,7 @@
   },
   "2168": {
     "taskName": "Sacrifice a Fire Cape to Access the Inferno",
-    "search": ""
+    "search": "Fire Cape"
   },
   "2172": {
     "taskName": "Complete the Fight Caves 5 Times",
@@ -5387,7 +5391,7 @@
   },
   "2375": {
     "taskName": "Equip a Dragon Chainbody in the Kharidian Desert",
-    "search": "Dragon Chainbody in the Kharidian Desert"
+    "search": "Dragon chainbody"
   },
   "2380": {
     "taskName": "Cast Ice Barrage",
@@ -5575,23 +5579,23 @@
   },
   "5265": {
     "taskName": "50 Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5266": {
     "taskName": "100 Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5267": {
     "taskName": "150 Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5268": {
     "taskName": "200 Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5269": {
     "taskName": "250 Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5274": {
     "taskName": "Combat Achievements Medium Tier",
@@ -5683,7 +5687,7 @@
   },
   "4965": {
     "taskName": "Hit 150 with the Keris Partisan",
-    "search": "65 Attack Completion of,Beneath Cursed Sands"
+    "search": "Keris partisan,Combat gear,Food"
   },
   "4966": {
     "taskName": "Equip the Venator Ring",
@@ -6091,7 +6095,7 @@
   },
   "3797": {
     "taskName": "Araxxor Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "3829": {
     "taskName": "Complete Wave 12 of Fortis Colosseum",
@@ -6111,7 +6115,7 @@
   },
   "3839": {
     "taskName": "Perilous Moons Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "3859": {
     "taskName": "Catch 50 Moonlight Antelopes",
@@ -6295,11 +6299,11 @@
   },
   "5737": {
     "taskName": "The Inferno Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5738": {
     "taskName": "The Fight Caves Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5743": {
     "taskName": "Chambers of Xeric Combat Achievements",
@@ -6315,11 +6319,11 @@
   },
   "5746": {
     "taskName": "Godwars Dungeon Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5756": {
     "taskName": "Gauntlet Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5775": {
     "taskName": "750 Collection log slots",
@@ -6327,7 +6331,7 @@
   },
   "5777": {
     "taskName": "TzHaar-Ket-Rak's Combat Achievements",
-    "search": ""
+    "search": "Combat gear,Food"
   },
   "5840": {
     "taskName": "Complete Tzhaar-Ket-Rak's Special challenge",
