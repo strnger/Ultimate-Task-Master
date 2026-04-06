@@ -6,11 +6,19 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import javax.swing.JTextField;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -24,6 +32,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
+import com.ultimatetaskmaster.data.RouteGenerator;
+import com.ultimatetaskmaster.data.TaskItemService;
 import com.ultimatetaskmaster.data.LocationCluster;
 import com.ultimatetaskmaster.data.NearbyTask;
 import com.ultimatetaskmaster.data.PlanItem;
@@ -62,7 +72,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	// --- "All Tasks" tab ---
 	private final IconTextField allSearchField = new IconTextField();
 	private final JToggleButton allHideCompletedToggle = new JToggleButton("Hide Done");
-	private final JComboBox<SpatialTaskQuery.SortCriteria> allSortDropdown;
 	private final JLabel allStatusLabel = new JLabel();
 	private final JPanel allTaskListContainer = new JPanel();
 
@@ -70,8 +79,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private final JButton findNearbyButton = new JButton("Find Nearby");
 	private final IconTextField nearbySearchField = new IconTextField();
 	private final JToggleButton nearbyHideCompletedToggle = new JToggleButton("Hide Done");
-	@Getter
-	private final JComboBox<SpatialTaskQuery.SortCriteria> sortDropdown;
 	private final JLabel nearbyStatusLabel = new JLabel();
 	private final JPanel nearbyTaskListContainer = new JPanel();
 
@@ -82,7 +89,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	// --- Route generation (merged into Explore tab) ---
 	private final JButton generateRouteButton = new JButton("Create Route");
 	private Runnable onGenerateRouteCallback;
-	private java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> currentRoute = java.util.Collections.emptyList();
+	private List<RouteGenerator.RouteStep> currentRoute = Collections.emptyList();
 
 	private final JLabel leagueInfoLabel = new JLabel();
 
@@ -100,15 +107,15 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private JButton syncButton;
 	private PlanService planService;
 	private TaskLocationService locationService;
-	private com.ultimatetaskmaster.data.TaskItemService taskItemService;
-	private java.util.function.Consumer<TaskData> onAddToPlanCallback;
-	private java.util.function.Consumer<TaskData> onRemoveFromPlanTaskCallback;
-	private java.util.function.BiConsumer<String, Boolean> onToggleShowLocationsCallback;
-	private java.util.function.Consumer<TaskData> onMarkCompletedCallback;
-	private java.util.Set<String> shownLocationTasks = new java.util.HashSet<>();
-	private java.util.Set<String> hiddenTaskNames = new java.util.HashSet<>();
-	private java.util.function.Consumer<String> onHideTaskCallback;
-	private java.util.function.Consumer<String> onUnhideTaskCallback;
+	private TaskItemService taskItemService;
+	private Consumer<TaskData> onAddToPlanCallback;
+	private Consumer<TaskData> onRemoveFromPlanTaskCallback;
+	private BiConsumer<String, Boolean> onToggleShowLocationsCallback;
+	private Consumer<TaskData> onMarkCompletedCallback;
+	private Set<String> shownLocationTasks = new HashSet<>();
+	private Set<String> hiddenTaskNames = new HashSet<>();
+	private Consumer<String> onHideTaskCallback;
+	private Consumer<String> onUnhideTaskCallback;
 	private boolean showHidden = false;
 
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
@@ -211,10 +218,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		// --- Card panel with both tabs ---
 		cardPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
 
-		// Init sort dropdowns
-		allSortDropdown = new JComboBox<>(SpatialTaskQuery.SortCriteria.values());
-		sortDropdown = new JComboBox<>(SpatialTaskQuery.SortCriteria.values());
-
 		cardPanel.add(buildAllTasksCard(), CARD_ALL);
 		cardPanel.add(buildNearbyCard(), CARD_NEARBY);
 		cardPanel.add(buildPlanCard(), CARD_PLAN);
@@ -262,7 +265,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		lock.setBorder(new EmptyBorder(40, 20, 40, 20));
 
 		JLabel lockIcon = new JLabel("\uD83D\uDD12");
-		lockIcon.setFont(new java.awt.Font("Segoe UI Emoji", java.awt.Font.PLAIN, 32));
+		lockIcon.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 32));
 		lockIcon.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lock.add(lockIcon);
 		lock.add(Box.createVerticalStrut(12));
@@ -281,10 +284,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		lock.add(lockDesc);
 		lock.add(Box.createVerticalStrut(16));
 
-		javax.swing.JTextField keyField = new javax.swing.JTextField(12);
+		JTextField keyField = new JTextField(12);
 		keyField.setMaximumSize(new Dimension(160, 28));
 		keyField.setAlignmentX(Component.CENTER_ALIGNMENT);
-		keyField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+		keyField.setHorizontalAlignment(JTextField.CENTER);
 		keyField.setToolTipText("Enter beta key");
 		lock.add(keyField);
 		lock.add(Box.createVerticalStrut(8));
@@ -347,10 +350,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		allSearchField.setPreferredSize(new Dimension(0, 24));
 		allSearchField.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		allSearchField.setAlignmentX(Component.LEFT_ALIGNMENT);
-		allSearchField.addKeyListener(new java.awt.event.KeyAdapter()
+		allSearchField.addKeyListener(new KeyAdapter()
 		{
 			@Override
-			public void keyReleased(java.awt.event.KeyEvent e) { rebuildAllTasksList(); }
+			public void keyReleased(KeyEvent e) { rebuildAllTasksList(); }
 		});
 		controls.add(allSearchField);
 		controls.add(Box.createVerticalStrut(4));
@@ -373,19 +376,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		toggleRow.add(showHiddenToggle);
 
 		controls.add(toggleRow);
-		controls.add(Box.createVerticalStrut(4));
-
-		JPanel allSortRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
-		allSortRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		allSortRow.setAlignmentX(Component.LEFT_ALIGNMENT);
-		JLabel allSortLbl = new JLabel("Sort: ");
-		allSortLbl.setFont(FontManager.getRunescapeSmallFont());
-		allSortLbl.setForeground(Color.WHITE);
-		allSortRow.add(allSortLbl);
-		allSortDropdown.setFont(FontManager.getRunescapeSmallFont());
-		allSortDropdown.addActionListener(e -> rebuildAllTasksList());
-		allSortRow.add(allSortDropdown);
-		controls.add(allSortRow);
 		controls.add(Box.createVerticalStrut(4));
 
 		allStatusLabel.setFont(FontManager.getRunescapeSmallFont());
@@ -413,7 +403,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		controls.setBorder(new EmptyBorder(6, 10, 4, 10));
 
 		// Button row: Find Nearby + Generate Route
-		JPanel buttonRow = new JPanel(new java.awt.GridLayout(1, 2, 6, 0));
+		JPanel buttonRow = new JPanel(new GridLayout(1, 2, 6, 0));
 		buttonRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		buttonRow.setAlignmentX(Component.LEFT_ALIGNMENT);
 		buttonRow.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
@@ -442,10 +432,10 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		nearbySearchField.setPreferredSize(new Dimension(0, 24));
 		nearbySearchField.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		nearbySearchField.setAlignmentX(Component.LEFT_ALIGNMENT);
-		nearbySearchField.addKeyListener(new java.awt.event.KeyAdapter()
+		nearbySearchField.addKeyListener(new KeyAdapter()
 		{
 			@Override
-			public void keyReleased(java.awt.event.KeyEvent e) { rebuildNearbyList(); }
+			public void keyReleased(KeyEvent e) { rebuildNearbyList(); }
 		});
 		controls.add(nearbySearchField);
 		controls.add(Box.createVerticalStrut(4));
@@ -454,19 +444,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		nearbyHideCompletedToggle.setAlignmentX(Component.LEFT_ALIGNMENT);
 		nearbyHideCompletedToggle.addActionListener(e -> rebuildNearbyList());
 		controls.add(nearbyHideCompletedToggle);
-		controls.add(Box.createVerticalStrut(4));
-
-		JPanel nearbySortRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
-		nearbySortRow.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		nearbySortRow.setAlignmentX(Component.LEFT_ALIGNMENT);
-		JLabel nearbySortLbl = new JLabel("Sort: ");
-		nearbySortLbl.setFont(FontManager.getRunescapeSmallFont());
-		nearbySortLbl.setForeground(Color.WHITE);
-		nearbySortRow.add(nearbySortLbl);
-		sortDropdown.setFont(FontManager.getRunescapeSmallFont());
-		sortDropdown.addActionListener(e -> rebuildNearbyList());
-		nearbySortRow.add(sortDropdown);
-		controls.add(nearbySortRow);
 		controls.add(Box.createVerticalStrut(4));
 
 		nearbyStatusLabel.setFont(FontManager.getRunescapeSmallFont());
@@ -556,11 +533,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.onFindNearby = callback;
 	}
 
-	public SpatialTaskQuery.SortCriteria getSelectedSort()
-	{
-		return (SpatialTaskQuery.SortCriteria) sortDropdown.getSelectedItem();
-	}
-
 	public void setLeagueInfo(String leagueName, int taskCount, String dataSource)
 	{
 		leagueInfoLabel.setText(leagueName + " | " + taskCount + " tasks | " + dataSource);
@@ -610,27 +582,27 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.locationService = locationService;
 	}
 
-	public void setTaskItemService(com.ultimatetaskmaster.data.TaskItemService service)
+	public void setTaskItemService(TaskItemService service)
 	{
 		this.taskItemService = service;
 	}
 
-	public void setOnAddToPlan(java.util.function.Consumer<TaskData> callback)
+	public void setOnAddToPlan(Consumer<TaskData> callback)
 	{
 		this.onAddToPlanCallback = callback;
 	}
 
-	public void setOnRemoveFromPlan(java.util.function.Consumer<TaskData> callback)
+	public void setOnRemoveFromPlan(Consumer<TaskData> callback)
 	{
 		this.onRemoveFromPlanTaskCallback = callback;
 	}
 
-	public void setOnToggleShowLocations(java.util.function.BiConsumer<String, Boolean> callback)
+	public void setOnToggleShowLocations(BiConsumer<String, Boolean> callback)
 	{
 		this.onToggleShowLocationsCallback = callback;
 	}
 
-	public void setOnMarkCompleted(java.util.function.Consumer<TaskData> callback)
+	public void setOnMarkCompleted(Consumer<TaskData> callback)
 	{
 		this.onMarkCompletedCallback = callback;
 	}
@@ -652,7 +624,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		this.onGenerateRouteCallback = callback;
 	}
 
-	public void displayRoute(java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> route)
+	public void displayRoute(List<RouteGenerator.RouteStep> route)
 	{
 		this.currentRoute = route;
 		nearbyTaskListContainer.removeAll();
@@ -673,31 +645,18 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			Set<String> planNames = getPlanTaskNames();
 			for (int i = 0; i < route.size(); i++)
 			{
-				com.ultimatetaskmaster.data.RouteGenerator.RouteStep step = route.get(i);
+				RouteGenerator.RouteStep step = route.get(i);
 				boolean done = completedTaskNames.contains(step.getTask().getName());
 				boolean inPlan = planNames.contains(step.getTask().getName());
 				TaskRowPanel row = new TaskRowPanel(step.getTask(), done, step.getDistanceFromPrevious(), i % 2 == 0, inPlan, false);
-				row.setOnAddToPlan(onAddToPlanCallback);
-				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
-				row.setOnMarkCompleted(onMarkCompletedCallback);
-				row.setOnHideTask(td -> {
-					if (onHideTaskCallback != null)
-					{
-						onHideTaskCallback.accept(td.getName());
-					}
-					hiddenTaskNames.add(td.getName());
-					// Re-display route with hidden task filtered out
-					java.util.List<com.ultimatetaskmaster.data.RouteGenerator.RouteStep> filtered = 
+				wireRowCallbacks(row, step.getTask(), () -> {
+					List<RouteGenerator.RouteStep> filtered =
 						currentRoute.stream()
 							.filter(s -> !hiddenTaskNames.contains(s.getTask().getName()))
-							.collect(java.util.stream.Collectors.toList());
+							.collect(Collectors.toList());
 					currentRoute = filtered;
 					displayRoute(filtered);
 				});
-				if (taskItemService != null)
-				{
-					row.setItemRequirements(taskItemService.getItemRequirements(step.getTask()));
-				}
 				nearbyTaskListContainer.add(row);
 			}
 		}
@@ -706,19 +665,19 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		nearbyTaskListContainer.repaint();
 	}
 
-	public void setOnHideTask(java.util.function.Consumer<String> callback)
+	public void setOnHideTask(Consumer<String> callback)
 	{
 		this.onHideTaskCallback = callback;
 	}
 
-	public void setOnUnhideTask(java.util.function.Consumer<String> callback)
+	public void setOnUnhideTask(Consumer<String> callback)
 	{
 		this.onUnhideTaskCallback = callback;
 	}
 
-	public void setHiddenTaskNames(java.util.Set<String> names)
+	public void setHiddenTaskNames(Set<String> names)
 	{
-		this.hiddenTaskNames = names != null ? names : new java.util.HashSet<>();
+		this.hiddenTaskNames = names != null ? names : new HashSet<>();
 	}
 
 	// ========== Rebuild: All Tasks tab ==========
@@ -734,7 +693,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			.filter(t -> searchText.isEmpty() || t.getName().toLowerCase().contains(searchText))
 			.filter(t -> !hideCompleted || !completedTaskNames.contains(t.getName()))
 			.filter(t -> showHidden ? hiddenTaskNames.contains(t.getName()) : !hiddenTaskNames.contains(t.getName()))
-			.sorted(getTaskComparator(allSortDropdown))
+			.sorted(getDefaultTaskComparator())
 			.collect(Collectors.toList());
 
 		if (filtered.isEmpty())
@@ -757,17 +716,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				boolean inPlan = planNames.contains(t.getName());
 				boolean isHidden = hiddenTaskNames.contains(t.getName());
 				TaskRowPanel row = new TaskRowPanel(t, done, null, i % 2 == 0, inPlan, isHidden);
-				row.setOnAddToPlan(onAddToPlanCallback);
-				row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
-				row.setOnMarkCompleted(onMarkCompletedCallback);
-				row.setOnHideTask(td -> {
-					if (onHideTaskCallback != null)
-					{
-						onHideTaskCallback.accept(td.getName());
-					}
-					hiddenTaskNames.add(td.getName());
-					rebuildAllTasksList();
-				});
+				wireRowCallbacks(row, t, this::rebuildAllTasksList);
 				row.setOnUnhideTask(td -> {
 					hiddenTaskNames.remove(td.getName());
 					if (onUnhideTaskCallback != null)
@@ -776,10 +725,6 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					}
 					rebuildAllTasksList();
 				});
-				if (taskItemService != null)
-				{
-					row.setItemRequirements(taskItemService.getItemRequirements(t));
-				}
 				allTaskListContainer.add(row);
 			}
 		}
@@ -835,21 +780,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				boolean inPlan = planNames.contains(nt.getTask().getName());
 				TaskRowPanel nearbyRow = new TaskRowPanel(
 					nt.getTask(), done, nt.getDistance(), i % 2 == 0, inPlan, false);
-				nearbyRow.setOnAddToPlan(onAddToPlanCallback);
-				nearbyRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
-				nearbyRow.setOnMarkCompleted(onMarkCompletedCallback);
-				nearbyRow.setOnHideTask(td -> {
-					if (onHideTaskCallback != null)
-					{
-						onHideTaskCallback.accept(td.getName());
-					}
-					hiddenTaskNames.add(td.getName());
-					rebuildNearbyList();
-				});
-				if (taskItemService != null)
-				{
-					nearbyRow.setItemRequirements(taskItemService.getItemRequirements(nt.getTask()));
-				}
+				wireRowCallbacks(nearbyRow, nt.getTask(), this::rebuildNearbyList);
 				nearbyTaskListContainer.add(nearbyRow);
 			}
 		}
@@ -872,7 +803,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			return;
 		}
 
-		java.util.List<PlanItem> items = planService.getItems();
+		List<PlanItem> items = planService.getItems();
 		if (items.isEmpty())
 		{
 			planStatusLabel.setText("No tasks in plan. Add tasks from All Tasks tab.");
@@ -904,7 +835,8 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					.findFirst()
 					.orElse(null);
 				
-				if (taskData != null) {
+				if (taskData != null)
+				{
 					boolean done = completedTaskNames.contains(taskData.getName());
 					
 					// Wrapper panel to stack TaskRowPanel + LocationButtonsPanel
@@ -915,27 +847,15 @@ public class UltimateTaskMasterPanel extends PluginPanel
 					
 					// Task row (same as All Tasks, but isInPlan=true always)
 					TaskRowPanel taskRow = new TaskRowPanel(taskData, done, null, i % 2 == 0, true, false);
-					taskRow.setOnAddToPlan(onAddToPlanCallback);
-					taskRow.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
-					taskRow.setOnMarkCompleted(onMarkCompletedCallback);
-					taskRow.setOnHideTask(td -> {
-						if (onHideTaskCallback != null)
-						{
-							onHideTaskCallback.accept(td.getName());
-						}
-						hiddenTaskNames.add(td.getName());
-						rebuildPlanList();
-					});
-					if (taskItemService != null)
-					{
-						taskRow.setItemRequirements(taskItemService.getItemRequirements(taskData));
-					}
+					wireRowCallbacks(taskRow, taskData, this::rebuildPlanList);
 					itemWrapper.add(taskRow);
 					
 					// Location buttons panel (the extra piece for Plan tab)
-					if (locationService != null) {
+					if (locationService != null)
+					{
 						List<LocationCluster> locations = locationService.getLocationsForTask(taskData.getStructId());
-						if (locations != null && !locations.isEmpty()) {
+						if (locations != null && !locations.isEmpty())
+						{
 							boolean isShown = shownLocationTasks.contains(planItem.getTaskName());
 							LocationButtonsPanel locationPanel = new LocationButtonsPanel(
 								planItem.getTaskName(),
@@ -981,46 +901,37 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 	// ========== Comparators ==========
 
-	private Comparator<NearbyTask> getNearbyComparator()
+	private static Comparator<NearbyTask> getNearbyComparator()
 	{
-		SpatialTaskQuery.SortCriteria sort = getSelectedSort();
-		if (sort == null) sort = SpatialTaskQuery.SortCriteria.DISTANCE;
-
-		switch (sort)
-		{
-			case POINTS:
-				return Comparator.comparingInt((NearbyTask nt) -> nt.getTask().getPoints()).reversed();
-			case COMPLETION_PCT:
-				return Comparator.comparing(
-					(NearbyTask nt) -> nt.getTask().getCompletionPct() != null
-						? nt.getTask().getCompletionPct() : 0f
-				).reversed();
-			case TIER:
-				return Comparator.comparingInt((NearbyTask nt) -> nt.getTask().getTier().ordinal());
-			case DISTANCE:
-			default:
-				return Comparator.comparingInt(NearbyTask::getDistance);
-		}
+		return Comparator.comparingInt(NearbyTask::getDistance);
 	}
 
-	private static Comparator<TaskData> getTaskComparator(JComboBox<SpatialTaskQuery.SortCriteria> dropdown)
+	private static Comparator<TaskData> getDefaultTaskComparator()
 	{
-		SpatialTaskQuery.SortCriteria sort = (SpatialTaskQuery.SortCriteria) dropdown.getSelectedItem();
-		if (sort == null) sort = SpatialTaskQuery.SortCriteria.POINTS;
+		return Comparator.comparing(TaskData::getName, String.CASE_INSENSITIVE_ORDER);
+	}
 
-		switch (sort)
+	// ========== Row callback wiring ==========
+
+	private void wireRowCallbacks(TaskRowPanel row, TaskData task, Runnable afterHide)
+	{
+		row.setOnAddToPlan(onAddToPlanCallback);
+		row.setOnRemoveFromPlan(onRemoveFromPlanTaskCallback);
+		row.setOnMarkCompleted(onMarkCompletedCallback);
+		row.setOnHideTask(td -> {
+			if (onHideTaskCallback != null)
+			{
+				onHideTaskCallback.accept(td.getName());
+			}
+			hiddenTaskNames.add(td.getName());
+			if (afterHide != null)
+			{
+				afterHide.run();
+			}
+		});
+		if (taskItemService != null)
 		{
-			case POINTS:
-				return Comparator.comparingInt(TaskData::getPoints).reversed();
-			case COMPLETION_PCT:
-				return Comparator.comparing(
-					(TaskData t) -> t.getCompletionPct() != null ? t.getCompletionPct() : 0f
-				).reversed();
-			case TIER:
-				return Comparator.comparingInt(t -> t.getTier().ordinal());
-			case DISTANCE:
-			default:
-				return Comparator.comparing(TaskData::getName, String.CASE_INSENSITIVE_ORDER);
+			row.setItemRequirements(taskItemService.getItemRequirements(task));
 		}
 	}
 

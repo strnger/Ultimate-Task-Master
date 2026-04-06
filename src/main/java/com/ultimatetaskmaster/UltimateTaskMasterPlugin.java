@@ -33,6 +33,7 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.StatChanged;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.SoundEffectID;
 import net.runelite.api.SpriteID;
@@ -471,7 +472,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 		if (client.getLocalPlayer() != null)
 		{
 			cachedPlayerPosition = client.getLocalPlayer().getWorldLocation();
-			cachedPlayerSkills = client.getRealSkillLevels();
 		}
 
 		// Deactivate UTM bank tab if bank was closed
@@ -491,6 +491,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		switch (event.getGameState())
 		{
 			case LOGGED_IN:
+				cachedPlayerSkills = client.getRealSkillLevels();
 				// Auto-sync on login: push pending completions + pull latest locations
 				performSync(true);
 				break;
@@ -506,6 +507,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 				SwingUtilities.invokeLater(() -> panel.showNotLoggedIn());
 				break;
 		}
+	}
+
+	@Subscribe
+	public void onStatChanged(StatChanged event)
+	{
+		cachedPlayerSkills = client.getRealSkillLevels();
 	}
 
 	@Subscribe
@@ -838,7 +845,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		}
 
 		WorldPoint playerLocation = client.getLocalPlayer().getWorldLocation();
-		SpatialTaskQuery.SortCriteria sort = panel.getSelectedSort();
+		SpatialTaskQuery.SortCriteria sort = SpatialTaskQuery.SortCriteria.DISTANCE;
 
 		nearbyTasks = SpatialTaskQuery.findNearby(
 			enrichedTasks.isEmpty() ? taskDataProvider.getTasks() : enrichedTasks,
