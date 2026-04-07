@@ -33,8 +33,12 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.worldmap.WorldMap;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.StatChanged;
 import net.runelite.api.events.MenuEntryAdded;
+import net.runelite.api.InventoryID;
+import net.runelite.api.Item;
+import net.runelite.api.ItemContainer;
 import net.runelite.api.SoundEffectID;
 import net.runelite.api.SpriteID;
 import net.runelite.api.widgets.ComponentID;
@@ -171,6 +175,12 @@ public class UltimateTaskMasterPlugin extends Plugin
 	private Widget utmBankButton;
 
 	private final Map<String, List<TaskWorldMapPoint>> shownLocationPoints = new HashMap<>();
+
+	/** Item IDs the player currently owns (inventory + equipment + bank). */
+	private final Set<Integer> ownedItemIds = new HashSet<>();
+
+	/** Flag to trigger a one-time item scan after login. */
+	private boolean needsInitialItemScan = true;
 
 	private volatile WorldPoint cachedPlayerPosition;
 	private volatile int[] cachedPlayerSkills;
@@ -479,6 +489,13 @@ public class UltimateTaskMasterPlugin extends Plugin
 			cachedPlayerPosition = client.getLocalPlayer().getWorldLocation();
 		}
 
+		// One-time item scan after login so icons reflect ownership immediately
+		if (needsInitialItemScan)
+		{
+			scanOwnedItems();
+			needsInitialItemScan = false;
+		}
+
 		// Deactivate UTM bank tab if bank was closed
 		if (utmBankTab.isActive())
 		{
@@ -497,6 +514,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		{
 			case LOGGED_IN:
 				cachedPlayerSkills = client.getRealSkillLevels();
+				needsInitialItemScan = true;
 				// Auto-sync on login: push pending completions + pull latest locations
 				performSync(true);
 				break;
@@ -512,6 +530,79 @@ public class UltimateTaskMasterPlugin extends Plugin
 				SwingUtilities.invokeLater(() -> panel.showNotLoggedIn());
 				break;
 		}
+	}
+
+	@Subscribe
+	public void onItemContainerChanged(ItemContainerChanged event)
+	{
+		int containerId = event.getContainerId();
+		if (containerId == InventoryID.INVENTORY.getId()
+			|| containerId == InventoryID.EQUIPMENT.getId()
+			|| containerId == InventoryID.BANK.getId())
+		{
+			scanOwnedItems();
+		}
+	}
+
+	/**
+	 * Scans inventory, equipment, and bank containers to build the set of
+	 * owned item IDs. Pushes the result to the panel on the EDT so item
+	 * icons update in real time (full-color = owned, greyed-out = missing).
+	 */
+	private void scanOwnedItems()
+	{
+		Set<Integer> owned = new HashSet<>();
+
+		// Scan inventory
+		ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
+		if (inventory != null)
+		{
+			for (Item item : inventory.getItems())
+			{
+				if (item.getId() > 0)
+				{
+					owned.add(item.getId());
+				}
+			}
+		}
+
+		// Scan equipment
+		ItemContainer equipment = client.getItemContainer(InventoryID.EQUIPMENT);
+		if (equipment != null)
+		{
+			for (Item item : equipment.getItems())
+			{
+				if (item.getId() > 0)
+				{
+					owned.add(item.getId());
+				}
+			}
+		}
+
+		// Scan bank (only available while bank interface is open/cached)
+		ItemContainer bank = client.getItemContainer(InventoryID.BANK);
+		if (bank != null)
+		{
+			for (Item item : bank.getItems())
+			{
+				if (item.getId() > 0)
+				{
+					owned.add(item.getId());
+				}
+			}
+		}
+
+		ownedItemIds.clear();
+		ownedItemIds.addAll(owned);
+
+		// Push to panel on EDT
+		SwingUtilities.invokeLater(() ->
+		{
+			if (panel != null)
+			{
+				panel.updateItemIcons(ownedItemIds);
+			}
+		});
 	}
 
 	@Subscribe

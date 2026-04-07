@@ -120,6 +120,9 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private Consumer<String> onUnhideTaskCallback;
 	private boolean showHidden = false;
 
+	/** Item IDs the player currently owns (inventory + equipment + bank). Used for icon colouring. */
+	private Set<Integer> ownedItemIds;
+
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
 	private List<TaskData> allTasks = Collections.emptyList();
 	/** Names of completed tasks (for green background + hide filter). */
@@ -942,10 +945,29 @@ public class UltimateTaskMasterPanel extends PluginPanel
 			}
 		});
 		row.setItemManager(itemManager);
+		if (ownedItemIds != null)
+		{
+			row.setOwnedItemIds(ownedItemIds);
+		}
 		if (taskItemService != null)
 		{
 			row.setItemRequirements(taskItemService.getItemRequirements(task));
 		}
+	}
+
+	// ========== Live item-icon updates ==========
+
+	/**
+	 * Called from the plugin when inventory/equipment/bank contents change.
+	 * Stores the new ownership set and rebuilds all lists so item icons
+	 * update in real time (full-color = owned, greyed-out = missing).
+	 */
+	public void updateItemIcons(Set<Integer> ownedItemIds)
+	{
+		this.ownedItemIds = ownedItemIds;
+		rebuildAllTasksList();
+		rebuildNearbyList();
+		rebuildPlanList();
 	}
 
 	// ========== Helpers ==========

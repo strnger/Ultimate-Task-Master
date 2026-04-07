@@ -58,6 +58,7 @@ public class TaskRowPanel extends JPanel
 	private ItemManager itemManager;
 	private Consumer<TaskData> onHideTask;
 	private Consumer<TaskData> onUnhideTask;
+	private java.util.Set<Integer> ownedItemIds;
 
 	private final JPanel container;
 	private final JPanel body;
@@ -260,6 +261,11 @@ public class TaskRowPanel extends JPanel
 		this.onUnhideTask = callback;
 	}
 
+	public void setOwnedItemIds(java.util.Set<Integer> ids)
+	{
+		this.ownedItemIds = ids;
+	}
+
 	public void setItemRequirements(java.util.List<TaskItemRequirement> items)
 	{
 		this.itemRequirements = items != null ? items : java.util.Collections.emptyList();
@@ -271,7 +277,7 @@ public class TaskRowPanel extends JPanel
 			{
 				body.remove(itemIconPanel);
 			}
-			itemIconPanel = new ItemIconPanel(this.itemRequirements, this.itemManager, null);
+			itemIconPanel = new ItemIconPanel(this.itemRequirements, this.itemManager, this.ownedItemIds);
 			body.add(itemIconPanel, java.awt.BorderLayout.SOUTH);
 			body.revalidate();
 			body.repaint();
