@@ -941,6 +941,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 				afterHide.run();
 			}
 		});
+		row.setItemManager(itemManager);
 		if (taskItemService != null)
 		{
 			row.setItemRequirements(taskItemService.getItemRequirements(task));
