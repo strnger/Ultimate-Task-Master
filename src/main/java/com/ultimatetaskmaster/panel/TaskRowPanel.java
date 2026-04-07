@@ -18,6 +18,7 @@ import com.ultimatetaskmaster.data.TaskData;
 import com.ultimatetaskmaster.data.TaskItemRequirement;
 import com.ultimatetaskmaster.data.TaskSkillRequirement;
 import lombok.Getter;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
@@ -54,6 +55,7 @@ public class TaskRowPanel extends JPanel
 	private Consumer<TaskData> onAddToPlan;
 	private Consumer<TaskData> onRemoveFromPlan;
 	private Consumer<TaskData> onMarkCompleted;
+	private ItemManager itemManager;
 	private Consumer<TaskData> onHideTask;
 	private Consumer<TaskData> onUnhideTask;
 
@@ -260,6 +262,11 @@ public class TaskRowPanel extends JPanel
 	public void setItemRequirements(java.util.List<TaskItemRequirement> items)
 	{
 		this.itemRequirements = items != null ? items : java.util.Collections.emptyList();
+	}
+
+	public void setItemManager(ItemManager itemManager)
+	{
+		this.itemManager = itemManager;
 	}
 
 	@Override

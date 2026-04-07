@@ -70,6 +70,7 @@ import com.ultimatetaskmaster.data.TaskItemService;
 import com.ultimatetaskmaster.data.RouteGenerator;
 import com.ultimatetaskmaster.data.TaskLocationService;
 
+import net.runelite.client.game.ItemManager;
 import com.ultimatetaskmaster.detection.TaskCompletionEvent;
 import com.ultimatetaskmaster.detection.TaskCompletionListener;
 import com.ultimatetaskmaster.overlay.UtmBankTab;
@@ -146,6 +147,9 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	@Inject
 	private TaskItemService taskItemService;
+
+	@Inject
+	private ItemManager itemManager;
 
 	@Inject
 	private CrowdsourcingService crowdsourcingService;
@@ -237,6 +241,7 @@ public class UltimateTaskMasterPlugin extends Plugin
 		panel.setPlanService(planService);
 		panel.setLocationService(locationService);
 		panel.setTaskItemService(taskItemService);
+		panel.setItemManager(itemManager);
 
 		panel.setOnRemoveFromPlan(task -> {
 			if (task != null && planService != null) {
