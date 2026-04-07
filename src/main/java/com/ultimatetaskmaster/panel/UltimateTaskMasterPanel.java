@@ -42,6 +42,7 @@ import com.ultimatetaskmaster.data.SpatialTaskQuery;
 import com.ultimatetaskmaster.data.TaskData;
 import com.ultimatetaskmaster.data.TaskLocationService;
 import lombok.Getter;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
@@ -108,6 +109,7 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	private PlanService planService;
 	private TaskLocationService locationService;
 	private TaskItemService taskItemService;
+	private ItemManager itemManager;
 	private Consumer<TaskData> onAddToPlanCallback;
 	private Consumer<TaskData> onRemoveFromPlanTaskCallback;
 	private BiConsumer<String, Boolean> onToggleShowLocationsCallback;
@@ -585,6 +587,16 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	public void setTaskItemService(TaskItemService service)
 	{
 		this.taskItemService = service;
+	}
+
+	public void setItemManager(ItemManager itemManager)
+	{
+		this.itemManager = itemManager;
+	}
+
+	public ItemManager getItemManager()
+	{
+		return itemManager;
 	}
 
 	public void setOnAddToPlan(Consumer<TaskData> callback)
