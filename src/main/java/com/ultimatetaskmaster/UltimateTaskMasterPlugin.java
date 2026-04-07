@@ -176,9 +176,6 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	private final Map<String, List<TaskWorldMapPoint>> shownLocationPoints = new HashMap<>();
 
-	/** Item IDs the player currently owns (inventory + equipment + bank). */
-	private final Set<Integer> ownedItemIds = new HashSet<>();
-
 	/** Flag to trigger a one-time item scan after login. */
 	private boolean needsInitialItemScan = true;
 
@@ -546,63 +543,46 @@ public class UltimateTaskMasterPlugin extends Plugin
 
 	/**
 	 * Scans inventory, equipment, and bank containers to build the set of
-	 * owned item IDs. Pushes the result to the panel on the EDT so item
-	 * icons update in real time (full-color = owned, greyed-out = missing).
+	 * owned item IDs. Creates an immutable snapshot and passes it to the
+	 * panel on the EDT so item icons update in real time
+	 * (full-color = owned, greyed-out = missing).
+	 *
+	 * Thread-safety: the snapshot is an unmodifiable copy — safe to read
+	 * on the EDT without races against the game thread.
 	 */
 	private void scanOwnedItems()
 	{
 		Set<Integer> owned = new HashSet<>();
+		collectItems(client, InventoryID.INVENTORY, owned);
+		collectItems(client, InventoryID.EQUIPMENT, owned);
+		collectItems(client, InventoryID.BANK, owned);
 
-		// Scan inventory
-		ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
-		if (inventory != null)
-		{
-			for (Item item : inventory.getItems())
-			{
-				if (item.getId() > 0)
-				{
-					owned.add(item.getId());
-				}
-			}
-		}
-
-		// Scan equipment
-		ItemContainer equipment = client.getItemContainer(InventoryID.EQUIPMENT);
-		if (equipment != null)
-		{
-			for (Item item : equipment.getItems())
-			{
-				if (item.getId() > 0)
-				{
-					owned.add(item.getId());
-				}
-			}
-		}
-
-		// Scan bank (only available while bank interface is open/cached)
-		ItemContainer bank = client.getItemContainer(InventoryID.BANK);
-		if (bank != null)
-		{
-			for (Item item : bank.getItems())
-			{
-				if (item.getId() > 0)
-				{
-					owned.add(item.getId());
-				}
-			}
-		}
-
-		ownedItemIds.clear();
-		ownedItemIds.addAll(owned);
-
-		// Push to panel on EDT
+		final Set<Integer> snapshot = Collections.unmodifiableSet(new HashSet<>(owned));
 		SwingUtilities.invokeLater(() ->
 		{
 			if (panel != null)
 			{
-				panel.updateItemIcons(ownedItemIds);
+				panel.updateItemIcons(snapshot);
 			}
 		});
+	}
+
+	/**
+	 * Collects all valid item IDs from the given container into the target set.
+	 */
+	private static void collectItems(Client client, InventoryID id, Set<Integer> target)
+	{
+		ItemContainer container = client.getItemContainer(id);
+		if (container != null)
+		{
+			for (Item item : container.getItems())
+			{
+				if (item.getId() > 0)
+				{
+					target.add(item.getId());
+				}
+			}
+		}
 	}
 
 	@Subscribe

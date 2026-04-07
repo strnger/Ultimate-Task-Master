@@ -123,6 +123,11 @@ public class UltimateTaskMasterPanel extends PluginPanel
 	/** Item IDs the player currently owns (inventory + equipment + bank). Used for icon colouring. */
 	private Set<Integer> ownedItemIds;
 
+	/** Stale flags for lazy tab rebuilding — only the visible tab is rebuilt on item updates. */
+	private boolean allTasksStale = false;
+	private boolean nearbyStale = false;
+	private boolean planStale = false;
+
 	/** All tasks from the data provider. Set once via {@link #setAllTasks}. */
 	private List<TaskData> allTasks = Collections.emptyList();
 	/** Names of completed tasks (for green background + hide filter). */
@@ -166,9 +171,18 @@ public class UltimateTaskMasterPanel extends PluginPanel
 		tabGroup.add(planTab);
 
 		allTasksTab.setSelected(true);
-		allTasksTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_ALL));
-		nearbyTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_NEARBY));
-		planTab.addActionListener(e -> cardLayout.show(cardPanel, CARD_PLAN));
+		allTasksTab.addActionListener(e -> {
+			cardLayout.show(cardPanel, CARD_ALL);
+			if (allTasksStale) { rebuildAllTasksList(); allTasksStale = false; }
+		});
+		nearbyTab.addActionListener(e -> {
+			cardLayout.show(cardPanel, CARD_NEARBY);
+			if (nearbyStale) { rebuildNearbyList(); nearbyStale = false; }
+		});
+		planTab.addActionListener(e -> {
+			cardLayout.show(cardPanel, CARD_PLAN);
+			if (planStale) { rebuildPlanList(); planStale = false; }
+		});
 
 		tabRow.add(Box.createHorizontalGlue());
 		tabRow.add(allTasksTab);
@@ -959,15 +973,30 @@ public class UltimateTaskMasterPanel extends PluginPanel
 
 	/**
 	 * Called from the plugin when inventory/equipment/bank contents change.
-	 * Stores the new ownership set and rebuilds all lists so item icons
-	 * update in real time (full-color = owned, greyed-out = missing).
+	 * Stores the new ownership set and rebuilds only the currently visible
+	 * tab; the other two are marked stale and rebuilt lazily when selected.
 	 */
 	public void updateItemIcons(Set<Integer> ownedItemIds)
 	{
 		this.ownedItemIds = ownedItemIds;
-		rebuildAllTasksList();
-		rebuildNearbyList();
-		rebuildPlanList();
+		if (allTasksTab.isSelected())
+		{
+			rebuildAllTasksList();
+			nearbyStale = true;
+			planStale = true;
+		}
+		else if (nearbyTab.isSelected())
+		{
+			rebuildNearbyList();
+			allTasksStale = true;
+			planStale = true;
+		}
+		else
+		{
+			rebuildPlanList();
+			allTasksStale = true;
+			nearbyStale = true;
+		}
 	}
 
 	// ========== Helpers ==========
