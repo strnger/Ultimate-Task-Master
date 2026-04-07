@@ -34,7 +34,15 @@ public final class ItemIdMapping
 
 		// ── Tools ──────────────────────────────────────────────────────
 		ids.put("axe", ItemID.BRONZE_AXE);
-		alts.put("axe", Arrays.asList(
+		ids.put("any axe", ItemID.BRONZE_AXE);
+		ids.put("bronze axe", ItemID.BRONZE_AXE);
+		ids.put("iron axe", ItemID.IRON_AXE);
+		ids.put("steel axe", ItemID.STEEL_AXE);
+		ids.put("mithril axe", ItemID.MITHRIL_AXE);
+		ids.put("adamant axe", ItemID.ADAMANT_AXE);
+		ids.put("rune axe", ItemID.RUNE_AXE);
+		ids.put("dragon axe", ItemID.DRAGON_AXE);
+		alts.put("axe", Collections.unmodifiableList(Arrays.asList(
 			ItemID.BRONZE_AXE,
 			ItemID.IRON_AXE,
 			ItemID.STEEL_AXE,
@@ -43,7 +51,26 @@ public final class ItemIdMapping
 			ItemID.ADAMANT_AXE,
 			ItemID.RUNE_AXE,
 			ItemID.DRAGON_AXE
-		));
+		)));
+		alts.put("any axe", alts.get("axe"));
+
+		// ── Pickaxes ──────────────────────────────────────────────────
+		ids.put("pickaxe", ItemID.BRONZE_PICKAXE);
+		ids.put("any pickaxe", ItemID.BRONZE_PICKAXE);
+		ids.put("bronze pickaxe", ItemID.BRONZE_PICKAXE);
+		ids.put("iron pickaxe", ItemID.IRON_PICKAXE);
+		ids.put("steel pickaxe", ItemID.STEEL_PICKAXE);
+		ids.put("mithril pickaxe", ItemID.MITHRIL_PICKAXE);
+		ids.put("adamant pickaxe", ItemID.ADAMANT_PICKAXE);
+		ids.put("rune pickaxe", ItemID.RUNE_PICKAXE);
+		ids.put("dragon pickaxe", ItemID.DRAGON_PICKAXE);
+		alts.put("pickaxe", Collections.unmodifiableList(Arrays.asList(
+			ItemID.BRONZE_PICKAXE, ItemID.IRON_PICKAXE, ItemID.STEEL_PICKAXE,
+			ItemID.MITHRIL_PICKAXE, ItemID.ADAMANT_PICKAXE, ItemID.RUNE_PICKAXE,
+			ItemID.DRAGON_PICKAXE
+		)));
+		alts.put("any pickaxe", alts.get("pickaxe"));
+
 		ids.put("tinderbox", ItemID.TINDERBOX);
 		ids.put("knife", ItemID.KNIFE);
 		ids.put("hammer", ItemID.HAMMER);
@@ -53,6 +80,9 @@ public final class ItemIdMapping
 		ids.put("spade", ItemID.SPADE);
 		ids.put("rope", ItemID.ROPE);
 		ids.put("bucket", ItemID.BUCKET);
+		ids.put("bucket of water", ItemID.BUCKET_OF_WATER);
+		ids.put("seed dibber", ItemID.SEED_DIBBER);
+		ids.put("rake", ItemID.RAKE);
 
 		// ── Ores ───────────────────────────────────────────────────────
 		ids.put("iron ore", ItemID.IRON_ORE);
@@ -71,6 +101,7 @@ public final class ItemIdMapping
 		ids.put("gold bar", ItemID.GOLD_BAR);
 		ids.put("silver bar", ItemID.SILVER_BAR);
 		ids.put("mithril bar", ItemID.MITHRIL_BAR);
+		ids.put("bronze bar", ItemID.BRONZE_BAR);
 
 		// ── Runes ──────────────────────────────────────────────────────
 		ids.put("fire rune", ItemID.FIRE_RUNE);
@@ -87,6 +118,8 @@ public final class ItemIdMapping
 		ids.put("soul rune", ItemID.SOUL_RUNE);
 		ids.put("astral rune", ItemID.ASTRAL_RUNE);
 		ids.put("wrath rune", ItemID.WRATH_RUNE);
+		ids.put("rune essence", ItemID.RUNE_ESSENCE);
+		ids.put("pure essence", ItemID.PURE_ESSENCE);
 
 		// ── Fishing ────────────────────────────────────────────────────
 		ids.put("small fishing net", ItemID.SMALL_FISHING_NET);
@@ -123,6 +156,8 @@ public final class ItemIdMapping
 		ids.put("maple logs", ItemID.MAPLE_LOGS);
 		ids.put("yew logs", ItemID.YEW_LOGS);
 		ids.put("magic logs", ItemID.MAGIC_LOGS);
+		ids.put("redwood logs", ItemID.REDWOOD_LOGS);
+		ids.put("teak logs", ItemID.TEAK_LOGS);
 
 		// ── Miscellaneous ──────────────────────────────────────────────
 		ids.put("coins", ItemID.COINS_995);
