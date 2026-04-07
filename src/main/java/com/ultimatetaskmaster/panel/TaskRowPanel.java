@@ -63,6 +63,7 @@ public class TaskRowPanel extends JPanel
 	private final JPanel body;
 	private final JPanel buttons;
 	private Color baseBackground;
+	private ItemIconPanel itemIconPanel;
 
 	public TaskRowPanel(TaskData task, boolean completed, Integer distance, boolean isOddRow, boolean isInPlan, boolean isHidden)
 	{
@@ -262,6 +263,19 @@ public class TaskRowPanel extends JPanel
 	public void setItemRequirements(java.util.List<TaskItemRequirement> items)
 	{
 		this.itemRequirements = items != null ? items : java.util.Collections.emptyList();
+
+		// Build the item icon panel if we have items and an item manager
+		if (!this.itemRequirements.isEmpty() && this.itemManager != null)
+		{
+			if (itemIconPanel != null)
+			{
+				body.remove(itemIconPanel);
+			}
+			itemIconPanel = new ItemIconPanel(this.itemRequirements, this.itemManager, null);
+			body.add(itemIconPanel, java.awt.BorderLayout.SOUTH);
+			body.revalidate();
+			body.repaint();
+		}
 	}
 
 	public void setItemManager(ItemManager itemManager)
